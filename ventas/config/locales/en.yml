@@ -1,5 +1,12 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en:
-  hello: "Hello world"
+en:  
+  errors:  
+    messages:  
+      email_format: "no tiene un formato correcto"  
+      blank: "no puede estar vacio"
+      invalid: "es invalido"
+      confirmation: "No se ha realizado la confirmacion"
+      too_long: "es muy largo (maximo es %{count} caracteres)"
+      too_short: "es muy corto (minimo es %{count} caracteres)"

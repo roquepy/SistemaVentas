@@ -1,0 +1,38 @@
+<%= form_tag login_path, method: :post  do%>
+         <div class="hero-unit">
+		         <form class="form-horizontal">
+		              <fieldset>
+						    <div class="page-header">
+						         	<div class="row-fluid">
+										<div class="span1">
+										  	
+						                </div>
+								         <div class="span10">
+								         	<div class="well well-small" align="center">
+									         	<h2>Login</h2>
+									         	<p>
+													<%= label_tag :username%>
+													<%= text_field_tag :username %>
+													<%= label_tag :password%>
+													<%= password_field_tag :password %><br />
+												   <ul class="nav">
+													   	<li class="active">
+															<a href="#">Cambiar Contraseña </a>
+						
+												  </ul> 
+												</p>	
+												    <p>
+														<div class="control-group">
+															  <div class="controls">
+															     <button type="submit" class="btn btn-primary">LOGIN</button>
+															  </div>
+														 </div>
+												    </p>
+											</div>	    
+										  </div>
+							         </div>
+							</div>
+					  </fieldset>
+			   </form>	
+	      </div>
+<% end %>

@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@funcionario) do |f| %>
+   		 <%= render 'mensajes/error_mensajes', object: f.object %>
+	    <div class="center hero-unit">
+		   <form class="form-horizontal">
+			   <fieldset>
+				  <div class="page-header">
+					 <div class="row-fluid">
+						<div class="span1">  	
+					    </div>
+					    <div class="span10">
+							<div class="well well-small" align="center">
+								<h4><%= yield(:title) %></h4>
+							      <%= f.label :nombres%>
+							      <%= f.text_field :nombres%>
+							      <%= f.label :apellidos%>
+							      <%= f.text_field :apellidos %>
+							      <%= f.label :Nro_de_doc%>
+							      <%= f.text_field :num_identidad%>
+							      <%= f.label :direccion%>
+							      <%= f.text_field :direccion %>
+							      <%= f.label :telefono%>
+							      <%= f.text_field :telefono %>
+							       <p>Estado Civil</p>
+									 <select name="funcionario[estado_civil]">
+									 	<option value="1">--Seleccione--</option> 
+                                        <option value="Soltero">Soltero</option> 
+                                        <option value="Casado">Casado</option> 
+                                     </select> 
+							       <p>Sexo</p>
+									 <select name="funcionario[sexo]">
+									 	<option value="1">--Seleccione--</option> 
+                                        <option value="M">Masculino</option> 
+                                        <option value="F">Femenino</option> 
+                                     </select>  
+		                          <p>
+							      <p>Localidades</p>
+									 <select name="funcionario[id_localidad]">
+									 	<option value="1">--Seleccione--</option> 
+                                        <%= options_from_collection_for_select(Localidad.find(:all), :id,:nombre,:id) %>
+                                     </select>  
+		                          <p>
+							      <p>Funciones</p>
+									 <select name="funcionario[id_funcion]">
+									 	<option value="1">--Seleccione--</option> 
+                                        <%= options_from_collection_for_select( Funcion.find(:all), :id,:nombre,:id) %>
+                                     </select>  
+		                          <p>
+		                          	<p>Estado del Funcionario</p>
+									 <select name="funcionario[id_estado_funcionario]">
+									 	<option value="1">--Seleccione--</option> 
+                                        <%= options_from_collection_for_select(EstadosFuncionario.find(:all), :id,:descripcion,:id) %>
+                                     </select>  
+		                          <p>
+							      <%= f.submit "Guardar", class: "btn btn-primary" %>
+							 </div>	    
+						 </div>
+					 </div>
+				 </div>
+			  </fieldset>
+		   </form>	
+		</div>
+    <% end %>
+  </div>
+</div>

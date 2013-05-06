@@ -1,0 +1,26 @@
+<% provide(:title, @user.nombre) %>
+<div align="center">
+	<h3>Datos del Usuario </h3><br/>
+</div>
+<div class="container-fluid">
+    <table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Username</th>
+				<th>Password</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+	  <tbody>
+	  	<tr>
+			<td><%= @user.nombre %></td>
+			<td><%= @user.clave %></td>
+            <td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_user_path(@user) %> &nbsp &nbsp &nbsp   
+			    <i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar", @user, :confirm => "Delete to User name "+ @user.nombre, :method => :delete %>
+			</td>
+		</tr>
+	   </tbody>
+  </table>
+  </div>
+ <%= link_to 'Nuevo Usuario', new_user_path %>
+   

@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Ventas::Application.config.secret_token = '04cf5a8a46bed4ff98ce1e979e2156e989b999cf6dd28cc95e37ca418f282624a4a85c3fc9af6e3db0c60c9eb8df093e8e5f9befc21f1ac4a6c5a34a287fd663'
+Ventas::Application.config.secret_token = '5985bfe305388a391e7bf308258699155307ca1073ab7793dbd69ad727a3479517e803feab45998c42dab51bd824bd22036457daa8f27d34fc1e753a404402a8'

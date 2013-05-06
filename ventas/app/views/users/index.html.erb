@@ -1,0 +1,32 @@
+  <div align="center">
+	<h3> Lista de Usuarios</h3>
+	</div>
+ <div class="page-header">
+	   <div class="container-fluid">
+			<table class="table table-bordered">
+				<thead>
+						<tr>
+							<th>Usuario</th>
+							<th>Contraseña</th>
+							<th>Acciones</th>
+						</tr>
+				</thead>
+				<tbody>
+		            <% @users.each do |user| %>					
+						<tr>
+							<td><%= user.nombre %></td>
+							<td><%= user.clave %></td>
+							
+							<td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_user_path(user) %> &nbsp &nbsp &nbsp   
+							    		<i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar", user, :confirm => "Desea eliminar el usuario "+ user.nombre, :method => :delete %>
+							</td>
+						</tr>
+		            <% end %>
+				</tbody>
+			</table>
+	  </div>
+	  <div align="center">
+	  	<p><%= link_to "Agregar nuevo", new_user_path %></p>
+	  </div>
+  </div>
+

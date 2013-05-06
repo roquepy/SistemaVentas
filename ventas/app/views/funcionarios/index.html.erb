@@ -1,0 +1,40 @@
+  <div align="center">
+	<h3> Lista de Funcionarios</h3>
+	</div>
+   <div class="container-fluid">
+		<table class="table table-bordered">
+			<thead>
+					<tr>
+						<th>Nombres</th>
+						<th>Apellidos</th>
+						<th>Nro de doc</th>
+						<th>Direccion</th>
+						<th>Telefono</th>
+						<th>Estado Civil</th>
+						<th>Sexo</th>
+						<th>Localidad</th>
+						<th>Estado Funcionario</th>
+						<th>Funcion</th>
+						<th>Acciones</th>
+					</tr>
+			</thead>
+			<tbody>
+	            <% @funcionarios.each  do |funcionario| %>					
+					<tr>
+						<td><%= funcionario.nombres %></td>
+						<td><%= funcionario.apellidos %></td>
+                        <td><%= funcionario.num_identidad %></td>
+						<td><%= funcionario.direccion %></td>
+                        <td><%= funcionario.telefono%></td>
+                      <td><%= funcionario.estado_civil %></td>
+			            <td><%= funcionario.sexo %></td>
+						<td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_funcionario_path(funcionario) %> &nbsp &nbsp &nbsp   
+						    		<i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar", funcionario, :confirm => "Desea eliminar el funcionario "+funcionario.nombres, :method => :delete %>
+						</td>
+					</tr>
+	            <% end %>
+			</tbody>
+		</table>
+  </div>
+
+<%= link_to 'Nuevo Funcionario', new_funcionario_path %>

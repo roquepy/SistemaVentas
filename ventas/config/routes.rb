@@ -1,4 +1,16 @@
 Ventas::Application.routes.draw do
+  get "logout" => "sesiones#destroy", :as => "logout"
+  get "login" => "sesiones#new", :as => "login"
+  get "signup" => "users#new", :as => "signup"
+  
+  resources :funcions
+  resources :funcionarios
+   resources :users
+  resources :sesiones
+   match '/Home',    to: 'paginas_estaticas#principal'
+  root to: 'sesiones#new'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
