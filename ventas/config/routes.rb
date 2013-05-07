@@ -1,4 +1,5 @@
 Ventas::Application.routes.draw do
+
   resources :clientes
 
   get "logout" => "sesiones#destroy", :as => "logout"
@@ -8,7 +9,8 @@ Ventas::Application.routes.draw do
   resources :funcionarios
    resources :users
   resources :sesiones
-   match '/Home',    to: 'paginas_estaticas#principal'
+  resources :paginas_estaticas
+   match '/principal',    to: 'paginas_estaticas#principal'
   root to: 'sesiones#new'
 
 

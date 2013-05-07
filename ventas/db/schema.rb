@@ -56,13 +56,11 @@ ActiveRecord::Schema.define(:version => 20130507014636) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "nombre",         :null => false
-    t.string   "clave"
-    t.string   "crypted_clave"
-    t.string   "salt"
-    t.integer  "id_funcionario", :null => false
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.string  "username",         :null => false
+    t.string  "password"
+    t.string  "crypted_password"
+    t.string  "salt"
+    t.integer "id_funcionario"
   end
 
 end

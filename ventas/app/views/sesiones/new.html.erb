@@ -12,11 +12,11 @@
 								  	<h3>LOGIN</h3>
 								 <div class="field">
 										<%= label_tag :usuario %>
-										<%= text_field_tag :nombre, params[:nombre] %>
+										<%= text_field_tag :username, params[:username] %>
 									  </div>
 									  <div class="field">
 										<%= label_tag :contrasena %>
-										<%= password_field_tag :clave %>
+										<%= password_field_tag :password %>
 									 </div>
 		                            <div class="actions"><%= submit_tag "Login", class: "btn btn-primary" %></div>
 		                             <p>Nuevo Usuario? <%= link_to "Sign up now!", signup_path %></p>

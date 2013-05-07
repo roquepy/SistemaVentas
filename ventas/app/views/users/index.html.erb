@@ -1,3 +1,4 @@
+  <br/>
   <div align="center">
 	<h3> Lista de Usuarios</h3>
 	</div>
@@ -16,11 +17,11 @@
 		            <% @users.each do |user| %>					
 						<tr>
 							<td><%= user.funcionario.nombres %></td>
-							<td><%= user.nombre %></td>
-							<td><%= user.clave %></td>
+							<td><%= user.username %></td>
+							<td><%= user.password%></td>
 							
 							<td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_user_path(user) %> &nbsp &nbsp &nbsp   
-							    		<i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar", user, :confirm => "Desea eliminar el usuario "+ user.nombre, :method => :delete %>
+							    		<i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar", user, :confirm => "Desea eliminar el usuario "+ user.username, :method => :delete %>
 							</td>
 						</tr>
 		            <% end %>

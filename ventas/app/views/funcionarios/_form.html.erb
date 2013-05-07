@@ -1,5 +1,7 @@
+
 <div class="row">
   <div class="span6 offset3">
+  	<br/>
     <%= form_for(@funcionario) do |f| %>
    		 <%= render 'mensajes/error_mensajes', object: f.object %>
 	    <div class="center hero-unit">
@@ -36,7 +38,7 @@
                                      </select>  
 		                         
 									 <p>Localidades</p>
-		                          	 <select name="cliente[id_localidad]">
+		                          	 <select name="funcionario[id_localidad]">
 									 	<option value="1">--Seleccione--</option> 
 									   <% @localidades.each do |localidad| %>
 									       <option value="<%= localidad.id %>" 
@@ -58,13 +60,13 @@
 		                          	<p>Estado del Funcionario</p>
 		                          	<select name="funcionario[id_estado_funcionario]">
 		                          		<option value="1">--Seleccione--</option> 
-									 <% @estados_funcionarios.each do |estado_funcionario| %>
+									    <% @estados_funcionarios.each do |estado_funcionario| %>
 									       <option value="<%= estado_funcionario.id %>" 
 									         <%= 'selected' if estado_funcionario.id == @funcionario.id_estado_funcionario%>>
 									         <%= estado_funcionario.descripcion %>
 									       </option>
 									   <% end %> 
-		                            </select> 
+		                            </select> <br/>
 							      <%= f.submit "Guardar", class: "btn btn-primary" %>
 							 </div>	    
 						 </div>

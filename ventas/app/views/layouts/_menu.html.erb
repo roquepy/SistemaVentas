@@ -1,26 +1,44 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to "AutoServicio Virgen del Rosario", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
           <li><%= link_to "Home", root_path %></li>
         
            <% if current_user %>
-            <li><%= link_to "Users", '#' %></li>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Funcionarios <b class="caret"></b>
+                Usuario <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to "Nuevo Funcionario", current_funcionario %></li>
-                <li><%= link_to "Lista de Funcionarios", '#' %></li>
+                <li><%= link_to "Nuevo Usuario", new_user_path %></li>
+                <li><%= link_to "Lista de Usuarios",new_user_path  %></li>
+              </ul>
+            </li>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Cliente <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Nuevo Cliente", new_cliente_path %></li>
+                <li><%= link_to "Lista de Clientes",new_cliente_path  %></li>
+              </ul>
+            </li>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Funcionario <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Nuevo Funcionario", new_funcionario_path %></li>
+                <li><%= link_to "Lista de Funcionarios",new_funcionario_path  %></li>
+               </ul>
+             </li>
                 <li class="divider"></li>
                 <li>
                   <%= link_to "Cerrar Sesion", logout_path, method: "delete" %>
                 </li>
-              </ul>
-            </li>
+              
+           
           <% else %>
             <li><%= link_to "Iniciar Session", login_path %></li>
           <% end %>
