@@ -1,28 +1,31 @@
-<div class="navbar">
-			<div class="navbar-inner">
-				<ul class="nav">
-							<li class="active"><a href="">Home</a></li>
-				</ul>
-				
-				<ul class="nav">
-							<li class="active"><a href="">Ventas</a></li>
-				</ul>
-				
-				<ul class="nav">
-							<li class="active"><a href="">Productos</a></li>
-				</ul>
-				
-				<ul class="nav">
-							<li class="active"><a href="">Clientes</a></li>
-				</ul>
-				
-				<ul class="nav">
-							<li class="active"><a href="">Cta Cte Ventas</a></li>
-				</ul>
-				
-				
-				<ul class="nav">
-							<li class="active"><a href="">Conf del Sistema</a></li>
-				</ul>
-	         </div>
-	 </div>
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "AutoServicio Virgen del Rosario", root_path, id: "logo" %>
+      <nav>
+        <ul class="nav pull-right">
+          <li><%= link_to "Home", root_path %></li>
+        
+           <% if current_user %>
+            <li><%= link_to "Users", '#' %></li>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Funcionarios <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Nuevo Funcionario", current_funcionario %></li>
+                <li><%= link_to "Lista de Funcionarios", '#' %></li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Cerrar Sesion", logout_path, method: "delete" %>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+            <li><%= link_to "Iniciar Session", login_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

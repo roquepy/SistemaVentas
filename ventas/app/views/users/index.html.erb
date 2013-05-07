@@ -6,6 +6,7 @@
 			<table class="table table-bordered">
 				<thead>
 						<tr>
+							<th>Funcionario</th>
 							<th>Usuario</th>
 							<th>Contraseña</th>
 							<th>Acciones</th>
@@ -14,6 +15,7 @@
 				<tbody>
 		            <% @users.each do |user| %>					
 						<tr>
+							<td><%= user.funcionario.nombres %></td>
 							<td><%= user.nombre %></td>
 							<td><%= user.clave %></td>
 							

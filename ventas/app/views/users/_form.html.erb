@@ -13,13 +13,17 @@
 							<div class="well well-small" align="center">
 								<h4><%= yield(:title) %></h4>
 								  <p>Funcionario</p>
-									 <select name="usuario[id_funcionario]">
-									 	<option value="1">--Seleccione--</option> 
-                                        <%= options_from_collection_for_select(Funcionario.find(:all), :id,:nombres,:id) %>
-                                     </select>  
-		                          <p>
+									 <select name="user[id_funcionario]">
+									 	 	<option value="1">--Seleccione--</option> 
+									 	 <% @funcionarios.each do |funcionario| %>
+									       <option value="<%= funcionario.id %>" 
+									         <%= 'selected' if funcionario.id == @user.id_funcionario%>>
+									         <%= funcionario.nombres %>
+									       </option>
+									   <% end %> 
+		                            </select> 
 							      <%= f.label :usuario %>
-							      <%= f.text_field :nombre%>
+							      <%= f.text_field :nombre %>
 							      <%= f.label :contrasena %>
 							      <%= f.password_field :clave %>
 							      <%= f.submit "Guardar", class: "btn btn-primary" %>

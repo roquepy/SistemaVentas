@@ -1,3 +1,4 @@
+  <br/>
   <div align="center">
 	<h3> Lista de Funcionarios</h3>
 	</div>
@@ -26,8 +27,11 @@
                         <td><%= funcionario.num_identidad %></td>
 						<td><%= funcionario.direccion %></td>
                         <td><%= funcionario.telefono%></td>
-                      <td><%= funcionario.estado_civil %></td>
+                        <td><%= funcionario.estado_civil %></td>
 			            <td><%= funcionario.sexo %></td>
+			             <td><%= funcionario.localidad.nombre %></td>
+			             <td><%= funcionario.estados_funcionario.descripcion %></td>
+			             <td><%= funcionario.funcion.nombre %></td>
 						<td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_funcionario_path(funcionario) %> &nbsp &nbsp &nbsp   
 						    		<i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar", funcionario, :confirm => "Desea eliminar el funcionario "+funcionario.nombres, :method => :delete %>
 						</td>

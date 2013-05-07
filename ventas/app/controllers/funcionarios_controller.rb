@@ -25,7 +25,9 @@ class FuncionariosController < ApplicationController
   # GET /funcionarios/new.json
   def new
     @funcionario = Funcionario.new
-
+    @localidades=Localidad.all
+    @funciones=Funcion.all
+    @estados_funcionarios=EstadosFuncionario.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @funcionario }
@@ -35,13 +37,16 @@ class FuncionariosController < ApplicationController
   # GET /funcionarios/1/edit
   def edit
     @funcionario = Funcionario.find(params[:id])
+    @localidades=Localidad.all
+    @funciones=Funcion.all
+    @estados_funcionarios=EstadosFuncionario.all
   end
 
   # POST /funcionarios
   # POST /funcionarios.json
   def create
     @funcionario = Funcionario.new(params[:funcionario])
-
+    
     respond_to do |format|
       if @funcionario.save
         flash[:success] = "Se ha creado correctamente el funcionario"

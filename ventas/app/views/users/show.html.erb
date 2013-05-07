@@ -6,6 +6,7 @@
     <table class="table table-bordered">
 		<thead>
 			<tr>
+				<th>Funcionario</th>
 				<th>Username</th>
 				<th>Password</th>
 				<th>Acciones</th>
@@ -13,6 +14,7 @@
 		</thead>
 	  <tbody>
 	  	<tr>
+	  		<td><%= @user.funcionario.nombres%></td>
 			<td><%= @user.nombre %></td>
 			<td><%= @user.clave %></td>
             <td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_user_path(@user) %> &nbsp &nbsp &nbsp   

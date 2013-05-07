@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@cliente) do |f| %>
+   		 <%= render 'mensajes/error_mensajes', object: f.object %>
+	    <div class="center hero-unit">
+		   <form class="form-horizontal">
+			   <fieldset>
+				  <div class="page-header">
+					 <div class="row-fluid">
+						<div class="span1">  	
+					    </div>
+					    <div class="span10">
+							<div class="well well-small" align="center">
+								<h4><%= yield(:title) %></h4>
+							      <%= f.label :nombre%>
+							      <%= f.text_field :nombre%>
+							      <%= f.label :apellido%>
+							      <%= f.text_field :apellido %>
+							      <%= f.label :Nro_de_doc%>
+							      <%= f.text_field :num_identidad%>
+							      <%= f.label :direccion%>
+							      <%= f.text_field :direccion %>
+							      <%= f.label :telefono%>
+							      <%= f.text_field :telefono %>
+							       <p>Sexo</p>
+									 <select name="cliente[sexo]">
+									 	<option value="1">--Seleccione--</option> 
+                                        <option value="M">Masculino</option> 
+                                        <option value="F">Femenino</option> 
+                                     </select>  
+		                          <p>
+							      <p>Localidades</p>
+		                          	 <select name="cliente[id_localidad]">
+									 	<option value="1">--Seleccione--</option> 
+									   <% @localidades.each do |localidad| %>
+									       <option value="<%= localidad.id %>" 
+									         <%= 'selected' if localidad.id == @cliente.id_localidad%>>
+									         <%= localidad.nombre %>
+									       </option>
+									   <% end %>
+							      <%= f.submit "Guardar", class: "btn btn-primary" %>
+							 </div>	    
+						 </div>
+					 </div>
+				 </div>
+			  </fieldset>
+		   </form>	
+		</div>
+    <% end %>
+  </div>
+</div>

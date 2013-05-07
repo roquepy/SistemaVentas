@@ -1,9 +1,10 @@
 Ventas::Application.routes.draw do
+  resources :clientes
+
   get "logout" => "sesiones#destroy", :as => "logout"
   get "login" => "sesiones#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
   
-  resources :funcions
   resources :funcionarios
    resources :users
   resources :sesiones

@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
   def new
     @user = User.new
+    @funcionarios=Funcionario.all
   end
 
   def create
@@ -24,6 +25,7 @@ class UsersController < ApplicationController
    end
   def edit
     @user = User.find(params[:id])
+    @funcionarios=Funcionario.all
   end
 
   def update

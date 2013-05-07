@@ -34,25 +34,37 @@
                                         <option value="M">Masculino</option> 
                                         <option value="F">Femenino</option> 
                                      </select>  
-		                          <p>
-							      <p>Localidades</p>
-									 <select name="funcionario[id_localidad]">
+		                         
+									 <p>Localidades</p>
+		                          	 <select name="cliente[id_localidad]">
 									 	<option value="1">--Seleccione--</option> 
-                                        <%= options_from_collection_for_select(Localidad.find(:all), :id,:nombre,:id) %>
-                                     </select>  
-		                          <p>
+									   <% @localidades.each do |localidad| %>
+									       <option value="<%= localidad.id %>" 
+									         <%= 'selected' if localidad.id == @funcionario.id_localidad%>>
+									         <%= localidad.nombre %>
+									       </option>
+									   <% end %>
+		                              </select> 
 							      <p>Funciones</p>
 									 <select name="funcionario[id_funcion]">
-									 	<option value="1">--Seleccione--</option> 
-                                        <%= options_from_collection_for_select( Funcion.find(:all), :id,:nombre,:id) %>
-                                     </select>  
-		                          <p>
+									 	 	<option value="1">--Seleccione--</option> 
+									 	 <% @funciones.each do |funcion| %>
+									       <option value="<%= funcion.id %>" 
+									         <%= 'selected' if funcion.id == @funcionario.id_funcion%>>
+									         <%= funcion.nombre %>
+									       </option>
+									   <% end %> 
+		                            </select> 
 		                          	<p>Estado del Funcionario</p>
-									 <select name="funcionario[id_estado_funcionario]">
-									 	<option value="1">--Seleccione--</option> 
-                                        <%= options_from_collection_for_select(EstadosFuncionario.find(:all), :id,:descripcion,:id) %>
-                                     </select>  
-		                          <p>
+		                          	<select name="funcionario[id_estado_funcionario]">
+		                          		<option value="1">--Seleccione--</option> 
+									 <% @estados_funcionarios.each do |estado_funcionario| %>
+									       <option value="<%= estado_funcionario.id %>" 
+									         <%= 'selected' if estado_funcionario.id == @funcionario.id_estado_funcionario%>>
+									         <%= estado_funcionario.descripcion %>
+									       </option>
+									   <% end %> 
+		                            </select> 
 							      <%= f.submit "Guardar", class: "btn btn-primary" %>
 							 </div>	    
 						 </div>
