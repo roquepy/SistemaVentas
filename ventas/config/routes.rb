@@ -2,7 +2,7 @@ Ventas::Application.routes.draw do
 
   resources :clientes
 
-  get "logout" => "sesiones#destroy", :as => "logout"
+  get "/logout" => "sesiones#destroy", :as => "logout"
   get "login" => "sesiones#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
   
@@ -10,7 +10,6 @@ Ventas::Application.routes.draw do
    resources :users
   resources :sesiones
   resources :paginas_estaticas
-   match '/principal',    to: 'paginas_estaticas#principal'
   root to: 'sesiones#new'
 
 
