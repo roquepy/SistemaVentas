@@ -15,15 +15,15 @@
 							<div class="well well-small" align="center">
 								<h4><%= yield(:title) %></h4>
 							      <%= f.label :nombres%>
-							      <%= f.text_field :nombres%>
+							      <%= f.text_field :nombres,:placeholder => "nombre" %>
 							      <%= f.label :apellidos%>
-							      <%= f.text_field :apellidos %>
+							      <%= f.text_field :apellidos,:placeholder => "apellido"  %>
 							      <%= f.label :Nro_de_doc%>
-							      <%= f.text_field :num_identidad%>
+							      <%= f.text_field :num_identidad,:placeholder => "num_documenhto" %>
 							      <%= f.label :direccion%>
-							      <%= f.text_field :direccion %>
+							      <%= f.text_field :direccion,:placeholder => "direccion"  %>
 							      <%= f.label :telefono%>
-							      <%= f.text_field :telefono %>
+							      <%= f.text_field :telefono,:placeholder => "telefono"  %>
 							       <p>Estado Civil</p>
 									 <select name="funcionario[estado_civil]">
 									 	<option value="1">--Seleccione--</option> 

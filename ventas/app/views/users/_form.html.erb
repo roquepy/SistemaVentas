@@ -23,9 +23,9 @@
 									   <% end %> 
 		                            </select> 
 							      <%= f.label :usuario %>
-							      <%= f.text_field :username %>
+							      <%= f.text_field :username,:placeholder => "usuario"  %>
 							      <%= f.label :contrasena %>
-							      <%= f.password_field :password %><br/>
+							      <%= f.password_field :password,:placeholder => "contrasena"  %><br/>
 							      <%= f.submit "Guardar", class: "btn btn-primary" %>
 							 </div>	    
 						 </div>

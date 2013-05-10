@@ -1,6 +1,6 @@
 Ventas::Application.routes.draw do
-  get "/logout" => "sesiones#destroy", :as => "logout"
-  get "login" => "sesiones#new", :as => "login"
+  match 'logout' => 'sesiones#destroy', as: :logout
+  get 'login' => 'sesiones#new', as: :login
   get "signup" => "users#new", :as => "signup"
   resources :clientes
   resources :funcionarios

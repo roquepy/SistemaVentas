@@ -13,15 +13,15 @@
 							<div class="well well-small" align="center">
 								<h4><%= yield(:title) %></h4>
 							      <%= f.label :nombre%>
-							      <%= f.text_field :nombre%>
+							      <%= f.text_field :nombre,:placeholder => "nombre" %>
 							      <%= f.label :apellido%>
-							      <%= f.text_field :apellido %>
+							      <%= f.text_field :apellido,:placeholder => "apellido"  %>
 							      <%= f.label :Nro_de_doc%>
-							      <%= f.text_field :num_identidad%>
+							      <%= f.text_field :num_identidad,:placeholder => "num_documento" %>
 							      <%= f.label :direccion%>
-							      <%= f.text_field :direccion %>
+							      <%= f.text_field :direccion,:placeholder => "direccion"  %>
 							      <%= f.label :telefono%>
-							      <%= f.text_field :telefono %>
+							      <%= f.text_field :telefono,:placeholder => "telefono"  %>
 							       <p>Sexo</p>
 									 <select name="cliente[sexo]">
 									 	<option value="1">--Seleccione--</option> 
