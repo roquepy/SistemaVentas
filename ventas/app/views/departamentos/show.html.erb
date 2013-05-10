@@ -1,0 +1,28 @@
+<br/>
+<% provide(:title, @departamento.nombre) %>
+<div align="center">
+	<h3>Datos del Departamento </h3><br/>
+</div>
+<div class="container-fluid">
+    <table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+	  <tbody>
+	  	<tr>
+			<td><%= @departamento.nombre %></td>
+            <td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_departamento_path(@departamento) %> &nbsp &nbsp &nbsp   
+			    <i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar",@departamento, :confirm => "Desea Eliminar el departamento "+ @departamento.nombre, :method => :delete %>
+			</td>
+		</tr>
+	   </tbody>
+  </table>
+  </div>
+  <div align="center">
+     <%= link_to 'Agregar Nuevo Departamento', new_departamento_path %>
+   </div>
+
+   

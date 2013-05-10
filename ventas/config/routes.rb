@@ -1,14 +1,13 @@
 Ventas::Application.routes.draw do
-
-  resources :clientes
-
   get "/logout" => "sesiones#destroy", :as => "logout"
   get "login" => "sesiones#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
-  
+  resources :clientes
   resources :funcionarios
-   resources :users
+  resources :users
   resources :sesiones
+  resources :localidads
+  resources :departamentos
   resources :paginas_estaticas
   root to: 'sesiones#new'
 

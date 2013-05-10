@@ -1,0 +1,30 @@
+<br/>
+<% provide(:title, @localidad.nombre) %>
+<div align="center">
+	<h3>Datos de la Localidad </h3><br/>
+</div>
+<div class="container-fluid">
+    <table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Departamento</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+	  <tbody>
+	  	<tr>
+			<td><%= @localidad.nombre %></td>
+			<td><%= @localidad.departamento.nombre %></td>
+            <td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_localidad_path(@localidad) %> &nbsp &nbsp &nbsp   
+			    <i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar",@localidad, :confirm => "Desea Eliminar la localidad "+ @localidad.nombre, :method => :delete %>
+			</td>
+		</tr>
+	   </tbody>
+  </table>
+  </div>
+  <div align="center">
+     <%= link_to 'Agregar Nueva Localidad', new_localidad_path %>
+   </div>
+
+   

@@ -41,6 +41,24 @@
                 <li><%= link_to "Lista de Facturas",funcionarios_path  %></li>
                </ul>
              </li>
+              <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Localidad<b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Nueva Localidad", new_localidad_path %></li>
+                <li><%= link_to "Lista de Localidades",localidads_path  %></li>
+               </ul>
+             </li>
+             <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Departamento<b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Nuevo Departamento", new_departamento_path %></li>
+                <li><%= link_to "Lista de Departamentos",departamentos_path  %></li>
+               </ul>
+             </li>
                 <li class="divider"></li>
                 <li>
                   <%= link_to "Cerrar Sesion", logout_path, method: "delete" %>
