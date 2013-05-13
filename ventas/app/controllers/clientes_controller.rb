@@ -2,8 +2,8 @@ class ClientesController < ApplicationController
   # GET /clientes
   # GET /clientes.json
   def index
-   @clientes = Cliente.paginate(page: params[:page], :per_page => 2)
-    #@clientes = Cliente.buscar(params[:buscar]).paginate(page: params[:page], :per_page => 2)
+   #@clientes = Cliente.paginate(page: params[:page], :per_page => 2)
+    @clientes = Cliente.buscar(params[:buscar]).paginate(page: params[:page], :per_page => 2)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @clientes }

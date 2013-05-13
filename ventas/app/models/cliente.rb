@@ -7,7 +7,7 @@ class Cliente < ActiveRecord::Base
   validates :apellido, :length => { :minimum => 10}
   validates :direccion, :length => { :minimum => 10}
   validates :telefono, :length => { :minimum => 9}
-
+   has_many :facturas_venta
 
 def self.buscar(buscar)
   if buscar

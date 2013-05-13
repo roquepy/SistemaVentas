@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@facturas_venta) do |f| %>
+   		 <%= render 'mensajes/error_mensajes', object: f.object %>
+	    <div class="center hero-unit">
+		   <form class="form-horizontal">
+			   <fieldset>
+				  <div class="page-header">
+					 <div class="row-fluid">
+						<div class="span1">  	
+					    </div>
+					    <div class="span10">
+							<div class="well well-small" align="center">
+								<h4><%= yield(:title) %></h4>
+							      <%= f.label :fecha%>
+							      <%= f.text_field :fecha,:placeholder => "fecha" %>
+							      <%= f.label :Nro_de_Factura%>
+							      <%= f.text_field :nro_factura,:placeholder => "nro de factura"  %>
+			 
+							      <label>Clientes</label>
+		                          	 <select name="facturas_venta[id_cliente]">
+									 	<option value="1">--Seleccione--</option> 
+									   <% @clientes.each do |cliente| %>
+									       <option value="<%= clliente.id %>" 
+									         <%= 'selected' if cliente.id == @facturas_venta.id_cliente%>>
+									         <%= cliente.nombres %>
+									       </option>
+									   <% end %>
+									  </select> <br/>
+									  <label>Condicion de pago</label>
+		                          	 <select name="facturas_venta[id_condicion_de_pago]">
+									 	<option value="1">--Seleccione--</option> 
+									   <% @condiciones_de_pagos.each do |condicion_de_pago| %>
+									       <option value="<%= clliente.id %>" 
+									         <%= 'selected' if condicion_de_pago.id == @facturas_venta.id_condicion_de_pago%>>
+									         <%= condicion_de_pago.nombre_condicion_de_pago %>
+									       </option>
+									   <% end %>
+									  </select> <br/>
+									   <label>Tipo de Valor</label>
+		                          	 <select name="facturas_venta[id_tipo_de_valor]">
+									 	<option value="1">--Seleccione--</option> 
+									   <% @tipos_de_valores.each do |tipo_de_valor| %>
+									       <option value="<%= tipo_de_valor.id %>" 
+									         <%= 'selected' if tipo_de_valor.id == @facturas_venta.id_tipo_de_valor%>>
+									         <%= tipo_de_valor.descripcion%>
+									       </option>
+									   <% end %>
+									  </select> <br/>
+							      <%= f.submit "Guardar", class: "btn btn-primary" %>
+							 </div>	    
+						 </div>
+					 </div>
+				 </div>
+			  </fieldset>
+		   </form>	
+		</div>
+    <% end %>
+  </div>
+</div>
