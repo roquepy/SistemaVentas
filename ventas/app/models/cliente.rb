@@ -7,4 +7,15 @@ class Cliente < ActiveRecord::Base
   validates :apellido, :length => { :minimum => 10}
   validates :direccion, :length => { :minimum => 10}
   validates :telefono, :length => { :minimum => 9}
+
+
+def self.buscar(buscar)
+  if buscar
+    find(:all, :conditions => ['nombre LIKE ?', "%#{buscar}%"])
+  else
+    find(:all)
+  end
+end
+
+
 end

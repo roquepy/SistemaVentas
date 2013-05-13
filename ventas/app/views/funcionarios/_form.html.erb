@@ -24,20 +24,20 @@
 							      <%= f.text_field :direccion,:placeholder => "direccion"  %>
 							      <%= f.label :telefono%>
 							      <%= f.text_field :telefono,:placeholder => "telefono"  %>
-							       <p>Estado Civil</p>
+							       <label>Estado Civil</label>
 									 <select name="funcionario[estado_civil]">
 									 	<option value="1">--Seleccione--</option> 
                                         <option value="Soltero">Soltero</option> 
                                         <option value="Casado">Casado</option> 
                                      </select> 
-							       <p>Sexo</p>
+							       <label>Sexo</label>
 									 <select name="funcionario[sexo]">
 									 	<option value="1">--Seleccione--</option> 
                                         <option value="M">Masculino</option> 
                                         <option value="F">Femenino</option> 
                                      </select>  
 		                         
-									 <p>Localidades</p>
+									 <label>Localidades</label>
 		                          	 <select name="funcionario[id_localidad]">
 									 	<option value="1">--Seleccione--</option> 
 									   <% @localidades.each do |localidad| %>
@@ -47,7 +47,7 @@
 									       </option>
 									   <% end %>
 		                              </select> 
-							      <p>Funciones</p>
+							      <label>Funciones</label>
 									 <select name="funcionario[id_funcion]">
 									 	 	<option value="1">--Seleccione--</option> 
 									 	 <% @funciones.each do |funcion| %>
@@ -57,7 +57,7 @@
 									       </option>
 									   <% end %> 
 		                            </select> 
-		                          	<p>Estado del Funcionario</p>
+		                          	<label>Estado del Funcionario</label>
 		                          	<select name="funcionario[id_estado_funcionario]">
 		                          		<option value="1">--Seleccione--</option> 
 									    <% @estados_funcionarios.each do |estado_funcionario| %>

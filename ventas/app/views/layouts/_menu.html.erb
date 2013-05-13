@@ -4,13 +4,13 @@
       <nav>
         <ul class="nav pull-right">
            <% if current_user %>
-             <li><%= link_to "Home", paginas_estaticas_path %></li>
+             <li><%= link_to "Home" ,paginas_estaticas_path%></li>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Usuario <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to "Nuevo Usuario", new_user_path %></li>
+                <li><%= link_to "Nuevo Usuario",new_user_path %></li>
                 <li><%= link_to "Lista de Usuarios",users_path  %></li>
               </ul>
             </li>

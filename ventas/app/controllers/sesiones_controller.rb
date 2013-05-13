@@ -5,8 +5,8 @@ class SesionesController < ApplicationController
         if user
           redirect_back_or_to(paginas_estaticas_path,message:"Login Exitoso");
         else
-          flash.now.alert = "Usuario o contrasena incorrecta"
-          render :new
+           flash.now[:error]= "Usuario o contrasena incorrecta";
+           render :new
         end
     end
 

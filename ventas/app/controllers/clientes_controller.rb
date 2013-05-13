@@ -2,8 +2,8 @@ class ClientesController < ApplicationController
   # GET /clientes
   # GET /clientes.json
   def index
-    @clientes = Cliente.all
-    
+   @clientes = Cliente.paginate(page: params[:page], :per_page => 2)
+    #@clientes = Cliente.buscar(params[:buscar]).paginate(page: params[:page], :per_page => 2)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @clientes }
@@ -45,7 +45,7 @@ class ClientesController < ApplicationController
     @localidades=Localidad.all
     respond_to do |format|
       if @cliente.save
-        format.html { redirect_to @cliente, notice: 'Cliente was successfully created.' }
+        format.html { redirect_to @cliente, notice: 'El Cliente se ha guardado correctamente.' }
         format.json { render json: @cliente, status: :created, location: @cliente }
       else
         format.html { render action: "new" }

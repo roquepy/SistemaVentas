@@ -2,7 +2,7 @@ class DepartamentosController < ApplicationController
   # GET /departamentos
   # GET /departamentos.json
   def index
-    @departamentos = Departamento.all
+     @departamentos = Departamento.paginate(page: params[:page], :per_page => 10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,6 +45,7 @@ class DepartamentosController < ApplicationController
     @localidades=Localidad.all
     respond_to do |format|
       if @departamento.save
+        flash.now[:alert]= "El departamento se ha guardado correctamente"
         format.html { redirect_to @departamento, notice: 'El departamento se ha guardado correctamente' }
         format.json { render json: @departamento, status: :created, location: @departamento }
       else
@@ -61,6 +62,7 @@ class DepartamentosController < ApplicationController
 
     respond_to do |format|
       if @departamento.update_attributes(params[:departamento])
+         flash.now[:alert]= "El departamento se ha actualizado correctamente"
         format.html { redirect_to @departamento, notice: 'El departamento se ha actualizado correctamente.' }
         format.json { head :no_content }
       else

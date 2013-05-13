@@ -14,6 +14,7 @@
 								<h4><%= yield(:title) %></h4>
 							      <%= f.label :localidad%>
 							      <%= f.text_field :nombre,:placeholder => "localidad" %>
+
 							      <p>Departamentos</p>
 		                          	 <select name="localidad[id_departamento]">
 									 	<option value="1">--Seleccione--</option> 
@@ -23,8 +24,9 @@
 									         <%= departamento.nombre %>
 									       </option>
 									   <% end %>
-									   
-									  </select> <br/>
+									 </select>
+                                    
+									   <br/>
 							      <%= f.submit "Guardar", class: "btn btn-primary" %>
 							 </div>	    
 						 </div>
