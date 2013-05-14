@@ -2,8 +2,7 @@ class LocalidadsController < ApplicationController
   # GET /localidads
   # GET /localidads.json
   def index
-   @localidads = Localidad.paginate(page: params[:page], :per_page => 10)
-
+    @localidads = Localidad.buscar(params[:buscar],params[:page])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @localidads }

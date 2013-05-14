@@ -9,12 +9,8 @@ class Cliente < ActiveRecord::Base
   validates :telefono, :length => { :minimum => 9}
 
 
-def self.buscar(buscar)
-  if buscar
-    find(:all, :conditions => ['nombre LIKE ?', "%#{buscar}%"])
-  else
-    find(:all)
-  end
+def self.buscar(buscar,page)
+  Cliente.paginate :page => page, :per_page => 2, :conditions=>['nombre like ? or direccion like ? or apellido like ?',"%#{buscar}%","%#{buscar}%","%#{buscar}%"], :order => "nombre"
 end
 
 

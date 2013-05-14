@@ -1,30 +1,36 @@
   <br/>
-  <div align="center">
-	<h3> Lista de Departamentos</h3>
-	</div>
-   <div class="container-fluid">
-		<table class="table table-bordered">
-			<thead>
-					<tr>
-						<th>Nombre</th>
-						
-						<th>Acciones</th>
-					</tr>
-			</thead>
-			<tbody>
-	            <% @departamentos.each  do |departamento| %>					
-					<tr>
-						<td><%= departamento.nombre %></td>
+  <%= form_tag departamentos_path, :method => 'get' do %>
+	  <div align="center">
+		<h3> Lista de Departamentos</h3>
+		</div>
+	   <div class="container-fluid">
+	     	<p>
+			    <%= text_field_tag :buscar, params[:buscar] %>
+			    <%= submit_tag "Buscar",  class: "btn btn-primary",:name => nil %>
+		    </p>
+			<table class="table table-bordered">
+				<thead>
+						<tr>
+							<th>Nombre</th>
+							
+							<th>Acciones</th>
+						</tr>
+				</thead>
+				<tbody>
+		            <% @departamentos.each  do |departamento| %>					
+						<tr>
+							<td><%= departamento.nombre %></td>
 
-						<td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_departamento_path(departamento) %> &nbsp &nbsp &nbsp   
-						    		<i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar",departamento, :confirm => "Desea eliminar el departamento "+departamento.nombre, :method => :delete %>
-						</td>
-					</tr>
-	            <% end %>
-			</tbody>
-		</table>
-		<%=will_paginate %>
-  </div>
-   <div align="center">
-		<%= link_to 'Agregar Nuevo Departamento', new_departamento_path %>
-  </div>		
+							<td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_departamento_path(departamento) %> &nbsp &nbsp &nbsp   
+							    		<i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar",departamento, :confirm => "Desea eliminar el departamento "+departamento.nombre, :method => :delete %>
+							</td>
+						</tr>
+		            <% end %>
+				</tbody>
+			</table>
+			<%=will_paginate %>
+	  </div>
+	   <div align="center">
+			<%= link_to 'Agregar Nuevo Departamento', new_departamento_path %>
+	  </div>
+<% end %>	  		
