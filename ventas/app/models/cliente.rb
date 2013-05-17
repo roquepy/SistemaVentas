@@ -8,10 +8,8 @@ class Cliente < ActiveRecord::Base
   validates :direccion, :length => { :minimum => 10}
   validates :telefono, :length => { :minimum => 9}
    has_many :facturas_venta
-
 def self.buscar(buscar,page)
   Cliente.paginate :page => page, :per_page => 2, :conditions=>['nombre like ? or direccion like ? or apellido like ?',"%#{buscar}%","%#{buscar}%","%#{buscar}%"], :order => "nombre"
-end
 
 
 end
