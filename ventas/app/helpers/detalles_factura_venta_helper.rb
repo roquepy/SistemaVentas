@@ -1,0 +1,2 @@
+module DetallesFacturaVentaHelper
+end

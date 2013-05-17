@@ -1,0 +1,21 @@
+<h1>Listing detalles_factura_venta</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @detalles_factura_venta.each do |detalles_factura_ventum| %>
+  <tr>
+    <td><%= link_to 'Show', detalles_factura_ventum %></td>
+    <td><%= link_to 'Edit', edit_detalles_factura_ventum_path(detalles_factura_ventum) %></td>
+    <td><%= link_to 'Destroy', detalles_factura_ventum, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Detalles factura ventum', new_detalles_factura_ventum_path %>
