@@ -4,7 +4,7 @@ class Funcionario < ActiveRecord::Base
   belongs_to :estados_funcionario, :foreign_key=>"id_estado_funcionario"
   belongs_to :funcion, :foreign_key=>"id_funcion"
   has_many :users
-  has_many :facturas_venta
+  has_many :factura_venta
   validates :nombres,:apellidos,:num_identidad,:telefono, :presence => true
   validates :num_identidad, :length => { :minimum => 9}
   validates :nombres, :length => { :minimum => 10}

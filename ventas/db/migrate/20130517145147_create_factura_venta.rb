@@ -1,7 +1,7 @@
-class CreateFacturasVenta < ActiveRecord::Migration
+class CreateFacturaVenta < ActiveRecord::Migration
   def change
-    create_table :facturas_venta do |t|
-       t.date :fecha,  :null => false
+    create_table :factura_venta do |t|
+        t.date :fecha,  :null => false
        t.integer :id_cliente,  :null => false
        t.integer :id_condicion_pago,  :null => false
        t.integer :id_tipo_valor,  :null => false

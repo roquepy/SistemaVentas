@@ -1,8 +1,5 @@
 Ventas::Application.routes.draw do
-  resources :detalles_factura_venta
-
-  resources :facturas_venta
-
+  
   match 'logout' => 'sesiones#destroy', as: :logout
   get 'login' => 'sesiones#new', as: :login
   get "signup" => "users#new", :as => "signup"
@@ -11,6 +8,8 @@ Ventas::Application.routes.draw do
   resources :users
   resources :sesiones
   resources :localidads
+  resources :factura_venta
+  resources :detalles_factura_venta
   resources :departamentos
   resources :paginas_estaticas
   root to: 'sesiones#new'
