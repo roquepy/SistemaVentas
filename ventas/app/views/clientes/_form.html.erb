@@ -13,24 +13,24 @@
 							<div class="well well-small" align="center">
 								<h4><%= yield(:title) %></h4>
 							      <%= f.label :nombre%>
-							      <%= f.text_field :nombre,:placeholder => "nombre" %>
+							      <%= f.text_field :nombre,:placeholder => "Nombre" %>
 							      <%= f.label :apellido%>
-							      <%= f.text_field :apellido,:placeholder => "apellido"  %>
+							      <%= f.text_field :apellido,:placeholder => "Apellido"  %>
 							      <%= f.label :Nro_de_doc%>
-							      <%= f.text_field :num_identidad,:placeholder => "num_documento" %>
+							      <%= f.text_field :num_identidad,:placeholder => "RUC o Cedula de Identidad" %>
 							      <%= f.label :direccion%>
-							      <%= f.text_field :direccion,:placeholder => "direccion"  %>
+							      <%= f.text_field :direccion,:placeholder => "Direccion"  %>
 							      <%= f.label :telefono%>
-							      <%= f.text_field :telefono,:placeholder => "telefono"  %>
+							      <%= f.text_field :telefono,:placeholder => "(xxx) xxx xxx"  %>
 							       <label>Sexo</label>
 									 <select name="cliente[sexo]">
-									 	<option value="1">--Seleccione--</option> 
+									 	<option value="1">Seleccione su sexo</option> 
                                         <option value="M">Masculino</option> 
                                         <option value="F">Femenino</option> 
                                      </select>  
 							      <label>Localidades</label>
 		                          	 <select name="cliente[id_localidad]">
-									 	<option value="1">--Seleccione--</option> 
+									 	<option value="1">Seleccione una Localidad</option> 
 									   <% @localidades.each do |localidad| %>
 									       <option value="<%= localidad.id %>" 
 									         <%= 'selected' if localidad.id == @cliente.id_localidad%>>
