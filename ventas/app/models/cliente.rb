@@ -11,5 +11,5 @@ class Cliente < ActiveRecord::Base
 def self.buscar(buscar,page)
   Cliente.paginate :page => page, :per_page => 2, :conditions=>['nombre like ? or direccion like ? or apellido like ?',"%#{buscar}%","%#{buscar}%","%#{buscar}%"], :order => "nombre"
 
-end
+ end
 end
