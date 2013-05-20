@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DetallesFacturaVentumTest < ActiveSupport::TestCase
+class DetalleFacturaVentumTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

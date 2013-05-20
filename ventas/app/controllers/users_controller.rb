@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @users = User.paginate(page: params[:page], :per_page => 10)
+    @users =User.buscar(params[:buscar],params[:page])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }

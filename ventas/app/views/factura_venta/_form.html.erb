@@ -16,8 +16,8 @@
                     <%= f.text_field :fecha,:value => Date.today,:disabled=>true%>
                     <%= f.label :Nro_de_Factura%>
                     <%= f.text_field :nro_factura,:value => FacturaVentum.obtener_nro_factura(),:disabled=>true %>
-                   <%= f.label :Funcionario%>
-                    <%= f.text_field :nro_factura,:value => FacturaVentum.obtener_nro_factura(),:disabled=>true %>
+                   <%= f.label :funcionario%>
+                    <%= f.text_field :id_funcionario,:value => current_user.funcionario.nombres + " " + current_user.funcionario.apellidos,:disabled=>true %>
                     <label>Clientes</label>
                                  <select name="factura_ventum[id_cliente]">
                     <option value="1">--Seleccione--</option> 
@@ -48,39 +48,9 @@
                          </option>
                      <% end %>
                     </select> <br/>
-                     <a data-toggle="modal" href="#producto" >Cargar Producto</a>
-                    <div id="producto" class="modal hide fade in" style="display: none; ">
-                          <div class="modal-header">
-                            <a class="close" data-dismiss="modal">×</a>
-                            <h3>Ingresar Producto</h3>
-                        </div>
-                        <div class="modal-body">
-                            <p id="notice"><%= notice %></p>
-                            <%= form_for(@detalle_factura_venta) do |f| %>
-                              <%= render 'shared/error_messages', object: f.object %>
-                               <label>Clientes</label>
-                                 <select name="detalle_factura_venta[id_producto]">
-                                    <option value="1">--Seleccione--</option> 
-                                     <% @productos.each do |producto| %>
-                                         <option value="<%= producto.id %>" 
-                                           <%= 'selected' if producto.id == @detalle_factura_venta.id_producto%>>
-                                           <%= producto.descripcion %>
-                                         </option>
-                                    <% end %>
-                                    <%= f.label :cantidad %><br />
-                                    <%= f.text_field :cantidad %>
-                                    <%= f.label :descuento %><br />
-                                    <%= f.text_field :decuento %>
-          
-                        </div>
-                        <div class="modal-footer">
-                            <%= f.submit :class => 'btn btn-success', :controller => 'factura_venta_controller', :action =>'detalle_factura_venta_create' %>
-                            <a href="#" class="btn" data-dismiss="modal">Close</a>
-                        </div>
-                            <% end %>
-                   </div>
-                    <%= f.submit "Guardar", class: "btn btn-primary" %>
-               </div>     
+                      <a data-toggle="modal" href="#producto" ><label>Cargar Producto </label></a>
+                     <%= f.submit "Guardar", class: "btn btn-primary" %>
+                     </div>     
              </div>
            </div>
          </div>
@@ -88,5 +58,39 @@
        </form>  
     </div>
     <% end %>
-  </div>
+
+                     <a data-toggle="modal" href="#producto" ><label>Cargar Producto </label></a>
+                    <div id="producto" class="modal hide fade in" style="display: none; ">
+                          <div class="modal-header">
+                            <a class="close" data-dismiss="modal">×</a>
+                            <h3>Ingresar Producto</h3>
+                        </div>
+                        <div class="modal-body">
+                            <p id="notice"><%= notice %></p>
+                            <%= form_for @detalle_factura_venta do |g| %>
+                               <%= render 'mensajes/error_mensajes', object: g.object %>
+                               <label>Producto</label>
+                                 <select name="detalle_factura_venta[id_producto]">
+                                    <option value="1">--Seleccione--</option> 
+                                     <% @productos.each do |producto| %>
+                                         <option value="<%= producto.id %>" 
+                                           <%= 'selected' if producto.id == @detalle_factura_venta.id_producto%>>
+                                           <%= producto.descripcion %>
+                                         </option>
+                                    <% end %>>
+                                    </select> 
+                                    <%= g.label :cantidad %>
+                                    <%= g.text_field :cantidad %>
+                                    <%= g.label :descuento %>
+                                    <%= g.text_field :descuento %>
+          
+                        </div>
+                        <div class="modal-footer">
+                            <%= g.submit "Guardar", :class => 'btn btn-success', :controller => 'factura_venta_controller', :action =>'detalle_factura_venta_create' %>
+                            <a href="#" class="btn" data-dismiss="modal">Close</a>
+                        </div>
+                            <% end %>
+                   </div>
+                   </div>  
+               
 </div>

@@ -4,6 +4,10 @@
 	</div>
  <div class="page-header">
 	   <div class="container-fluid">
+	   	<p>
+		    <%= text_field_tag :buscar, params[:buscar] %>
+		    <%= submit_tag "Buscar",  class: "btn btn-primary",:name => nil %>
+	    </p>
 			<table class="table table-bordered">
 				<thead>
 						<tr>

@@ -1,13 +1,13 @@
 class CreateClientes < ActiveRecord::Migration
   def change
     create_table :clientes do |t|
-    t.string :nombre, :null => false
-    t.string :apellido,:null => false
-    t.string :num_identidad,:null => false
+    t.string :nombre, :limit => 50,:null => false
+    t.string :apellido,:limit => 50,:null => false
+    t.string :num_identidad,:limit => 15,:null => false
     t.integer :id_localidad,:null => false
-    t.string :direccion,:null => false
-    t.string :telefono,:null => false
-    t.string :sexo,:null => false
+    t.string :direccion,:limit => 70,:null => false
+    t.string :telefono,:limit => 15,:null => false
+    t.string :sexo,:limit => 15,:null => false
     end
   end
 end

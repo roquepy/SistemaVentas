@@ -4,6 +4,7 @@ class FacturaVentum < ActiveRecord::Base
     belongs_to :condicion_de_pago, :foreign_key=>"id_condicion_pago"
     belongs_to :tipo_valor_pago, :foreign_key=>"id_tipo_valor"
     belongs_to :funcionario, :foreign_key=>"id_funcionario"
+    has_many :detalle_fatura_ventum
     def  self.obtener_nro_factura()
     	factura_nro=where ('SELECT MAX(nro_factura)  FROM factura_venta')
     	if factura_nro.blank?

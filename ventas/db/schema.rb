@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130510015357) do
+ActiveRecord::Schema.define(:version => 20130518222858) do
 
   create_table "clientes", :force => true do |t|
     t.string  "nombre",        :null => false
@@ -23,12 +23,37 @@ ActiveRecord::Schema.define(:version => 20130510015357) do
     t.string  "sexo",          :null => false
   end
 
+  create_table "condicion_de_pagos", :force => true do |t|
+    t.string "nombre_condicion_de_pago", :null => false
+  end
+
   create_table "departamentos", :force => true do |t|
     t.string "nombre", :null => false
   end
 
+  create_table "detalle_factura_venta", :force => true do |t|
+    t.integer "id_factura_venta", :null => false
+    t.integer "id_producto",      :null => false
+    t.integer "cantidad",         :null => false
+    t.integer "descuento"
+  end
+
   create_table "estados_funcionarios", :force => true do |t|
     t.string "descripcion", :null => false
+  end
+
+  create_table "factura_venta", :force => true do |t|
+    t.date    "fecha",                                            :null => false
+    t.integer "id_cliente",                                       :null => false
+    t.integer "id_condicion_pago",                                :null => false
+    t.integer "id_tipo_valor",                                    :null => false
+    t.integer "id_funcionario",                                   :null => false
+    t.string  "anulado",                                          :null => false
+    t.integer "nro_factura",                                      :null => false
+    t.decimal "total_descuento",   :precision => 10, :scale => 0, :null => false
+    t.decimal "total_iva5",        :precision => 10, :scale => 0, :null => false
+    t.decimal "total_iva10",       :precision => 10, :scale => 0, :null => false
+    t.decimal "total_iva",         :precision => 10, :scale => 0, :null => false
   end
 
   create_table "funcionarios", :force => true do |t|
@@ -53,6 +78,19 @@ ActiveRecord::Schema.define(:version => 20130510015357) do
   create_table "localidads", :force => true do |t|
     t.string  "nombre",          :null => false
     t.integer "id_departamento", :null => false
+  end
+
+  create_table "productos", :force => true do |t|
+    t.integer "codigo",                                         :null => false
+    t.string  "descripcion",                                    :null => false
+    t.integer "cant_minima",                                    :null => false
+    t.integer "cant_optima",                                    :null => false
+    t.decimal "precio_unitario", :precision => 10, :scale => 0, :null => false
+    t.integer "porcentaje",                                     :null => false
+  end
+
+  create_table "tipo_valor_pagos", :force => true do |t|
+    t.string "descripcion", :null => false
   end
 
   create_table "users", :force => true do |t|

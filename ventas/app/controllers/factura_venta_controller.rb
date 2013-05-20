@@ -25,10 +25,12 @@ class FacturaVentaController < ApplicationController
   # GET /factura_venta/new.json
   def new
     @factura_ventum = FacturaVentum.new
+    detalle_factura_venta_new
+
     @clientes= Cliente.all
     @condiciones_de_pagos= CondicionDePago.all
     @tipos_de_valores= TipoValorPago.all 
-    @detalles_factura_ventas = DetallesFacturaVenta.all
+    @detalles_factura_ventas = DetalleFacturaVentum.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @factura_ventum }
@@ -41,6 +43,7 @@ class FacturaVentaController < ApplicationController
     @clientes= Cliente.all
     @condiciones_de_pagos= CondicionDePago.all
     @tipos_de_valores= TipoValorPago.all 
+    detalle_factura_venta_new
   end
 
   # POST /factura_venta
@@ -88,9 +91,14 @@ class FacturaVentaController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+ 
+  def detalle_factura_venta_new
+      @detalle_factura_venta = DetalleFacturaVentum.new
+      @productos=Producto.all
+  end
   def detalle_factura_venta_create
-      @detalle_factura_venta = DetallesFacturaVenta.new(params[:detalle_factura_venta])
+      @detalle_factura_venta = DetalleFacturaVentum.new(params[:detalle_factura_venta])
+      @productos=Producto.all
       if @detalle_factura_venta.save
         flash[:notice] = "Se ha guardado el producto"
       else

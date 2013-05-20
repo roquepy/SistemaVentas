@@ -1,0 +1,17 @@
+<%= form_for(@detalle_factura_ventum) do |f| %>
+  <% if @detalle_factura_ventum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@detalle_factura_ventum.errors.count, "error") %> prohibited this detalle_factura_ventum from being saved:</h2>
+
+      <ul>
+      <% @detalle_factura_ventum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -7,8 +7,8 @@ class Funcionario < ActiveRecord::Base
   has_many :factura_venta
   validates :nombres,:apellidos,:num_identidad,:telefono, :presence => true
   validates :num_identidad, :length => { :minimum => 9}
-  validates :nombres, :length => { :minimum => 10}
-  validates :apellidos, :length => { :minimum => 10}
-  validates :direccion, :length => { :minimum => 10}
-  validates :telefono, :length => { :minimum => 9}
+  validates :nombres, :length => { :minimum => 2, :maximum => 50}, :format => { :with => /\A[a-zA-Z]+\z/}
+  validates :apellidos, :length => { :minimum => 2, :maximum => 50}, :format => { :with => /\A[a-zA-Z]+\z/}
+  validates :direccion,  :length => { :minimum => 5, :maximum => 70 }
+  validates :telefono, :length => { :minimum => 6, :maximum => 15}, :format => { :with => /\((\d{3})\)\s+(\d{3})\s+(\d{3})/}
 end
