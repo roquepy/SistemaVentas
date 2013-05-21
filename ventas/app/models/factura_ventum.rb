@@ -6,17 +6,19 @@ class FacturaVentum < ActiveRecord::Base
     belongs_to :funcionario, :foreign_key=>"id_funcionario"
     has_many :detalle_fatura_ventum
     def  self.obtener_nro_factura()
-    	factura_nro=where ('SELECT MAX(nro_factura)  FROM factura_venta')
+    	factura_nro=FacturaVentum.find(:all,{:select=>"MAX(f.nro_factura)",:from=>"factura_venta as f"})
+        #factura_nro=find_by_sql("<<-SQL select max(nro_factura) from factura_venta SQL")
     	if factura_nro.blank?
     		factura_nro=100
     	    else
-    	    	factura_nro=factura_nro+1
+    	    	factura_nro
+                
     	end	
     	return factura_nro
     	
     end
      def  self.descuento(nrofactura)
-        descuento=where ('SELECT SUM(((p.precio_unitario*fd.cantidad)* fd.descuento)/100)
+        descuento=FacturaVentum.where('SELECT SUM(((p.precio_unitario*fd.cantidad)* fd.descuento)/100)
           FROM factura_venta AS fv INNER JOIN detalle_factura_venta AS 
           fd ON fv.id=fd.id_factura_venta INNER JOIN productos AS p ON fd.id_producto=p.id 
           WHERE fv.nro_factura="%#{nro_factura}%"')
@@ -27,7 +29,7 @@ class FacturaVentum < ActiveRecord::Base
     end
 
      def  self.factura_total_iva(nro_factura)
-        total_iva=where ('SELECT SUM(p.precio_unitario*fd.cantidad)  
+        total_iva=FacturaVentum.where('SELECT SUM(p.precio_unitario*fd.cantidad)  
             FROM factura_venta AS fv INNER JOIN detalle_factura_venta 
             AS fd ON fv.id=fd.id_factura_venta INNER JOIN productos AS p 
             ON fd.id_producto=p.id WHERE fv.nro_factura="%#{nro_factura}%"')

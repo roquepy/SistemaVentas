@@ -13,11 +13,11 @@
               <div class="well well-small" align="center">
                 <h4><%= yield(:title) %></h4>
                     <%= f.label :fecha%>
-                    <%= f.text_field :fecha,:value => Date.today,:disabled=>true%>
+                    <%= f.text_field :fecha,:value => Date.today,:readonly => true%>
                     <%= f.label :Nro_de_Factura%>
-                    <%= f.text_field :nro_factura,:value => FacturaVentum.obtener_nro_factura(),:disabled=>true %>
+                    <%= f.text_field :nro_factura,:value => FacturaVentum.obtener_nro_factura(),:readonly => true %>
                    <%= f.label :funcionario%>
-                    <%= f.text_field :id_funcionario,:value => current_user.funcionario.nombres + " " + current_user.funcionario.apellidos,:disabled=>true %>
+                    <%= f.text_field :id_funcionario,:text=>current_user.funcionario.nombres + " " + current_user.funcionario.apellidos,:value => current_user.funcionario.id,:readonly => true %>
                     <label>Clientes</label>
                                  <select name="factura_ventum[id_cliente]">
                     <option value="1">--Seleccione--</option> 
@@ -49,17 +49,16 @@
                      <% end %>
                     </select> <br/>
                      <%= f.label :descuento%>
-                     <%= f.text_field :total_descuento ,:value => FacturaVentum.descuento(100),:disabled=>true %>
+                     <%= f.text_field :total_descuento ,:value => FacturaVentum.descuento(100),:readonly => true %>
                        <%= f.label :Total_Iva_5%>
-                     <%= f.text_field :total_iva5,:value => FacturaVentum.factura_total_iva5(100),:disabled=>true %>
+                     <%= f.text_field :total_iva5,:value => FacturaVentum.factura_total_iva5(100),:readonly => true %>
                       <%= f.label :Total_Iva_10%>
-                      <%= f.text_field :total_iva10,:value => FacturaVentum.factura_total_iva10(100),:disabled=>true %>
+                      <%= f.text_field :total_iva10,:value => FacturaVentum.factura_total_iva10(100),:readonly => true %>
                      <%= f.label :Total_Iva%>
-                     <%= f.text_field :total_iva,:value => FacturaVentum.factura_total_iva(100),:disabled=>true %>
-                      <%= f.label :Total_Iva_10%>
-                     
+                     <%= f.text_field :total_iva,:value => FacturaVentum.factura_total_iva(100),:readonly => true %>
+                      <%= f.submit "Guardar", class: "btn btn-primary" %>
                       <a data-toggle="modal" href="#producto" ><label>Cargar Producto </label></a>
-                     <%= f.submit "Guardar", class: "btn btn-primary" %>
+                     
                      </div>     
              </div>
            </div>
