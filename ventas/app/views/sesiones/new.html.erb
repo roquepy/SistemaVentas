@@ -10,9 +10,9 @@
 							  <div class="span10">
 								  <div class="well well-small" align="center">
 								  	<h3>LOGIN</h3>
-								 <div class="field">
+								 	<div class="field">
 										<%= label_tag :usuario %>
-										<%= text_field_tag :username, params[:username],:placeholder => "usuario"  %>
+										<%= text_field_tag :username, params[:username],:placeholder => "Ingrese su usuario"  %>
 									  </div>
 									  <div class="field">
 										<%= label_tag :contrasena %>
@@ -20,7 +20,8 @@
 									 </div>
 		                            <div class="actions"><%= submit_tag "Login", class: "btn btn-primary" %></div>
 		                             <label>Nuevo Usuario? <%= link_to "Sign up now!", signup_path %></label>
-		                           </div>	    
+		                           </div>	
+		                           </div>
 					          </div>
 					     </div>
 					</div>
