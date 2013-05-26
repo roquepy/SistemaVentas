@@ -25,6 +25,7 @@ class LocalidadsController < ApplicationController
   def new
     @localidad = Localidad.new
     @departamentos=Departamento.all
+    departamento_new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @localidad }
@@ -35,6 +36,7 @@ class LocalidadsController < ApplicationController
   def edit
     @localidad = Localidad.find(params[:id])
      @departamentos=Departamento.all
+     departamento_new
   end
 
   # POST /localidads
@@ -79,5 +81,17 @@ class LocalidadsController < ApplicationController
       format.html { redirect_to localidads_url }
       format.json { head :no_content }
     end
+  end
+  def departamento_new
+      @departamento= Departamento.new
+     
+  end
+  def funcionario_create
+      @departamento= Departamento.new(params[:departamento])
+      if @departamento.save
+        flash[:notice] = "Se ha guardado el departamento"
+      else
+        flash[:notice] = "Hubo Problemas, no guardo"
+      end
   end
 end

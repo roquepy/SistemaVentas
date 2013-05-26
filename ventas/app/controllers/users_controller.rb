@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @funcionarios=Funcionario.all
+    funcionario_new
   end
 
   def create
@@ -26,6 +27,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     @funcionarios=Funcionario.all
+    funcionario_new
   end
 
   def update
@@ -51,4 +53,23 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+   def funcionario_new
+      @funcionario = Funcionario.new
+      @localidades=Localidad.all
+      @funciones=Funcion.all
+      @estados_funcionarios=EstadosFuncionario.all
+  end
+  def funcionario_create
+      @funcionario = Funcionario.new(params[:funcionario])
+      @localidades=Localidad.all
+      @funciones=Funcion.all
+      @estados_funcionarios=EstadosFuncionario.all
+      if @funcionario.save
+        flash[:notice] = "Se ha guardado el funcionario"
+      else
+        flash[:notice] = "Hubo Problemas, no guardo"
+      end
+  end
+
 end

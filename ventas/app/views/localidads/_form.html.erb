@@ -6,7 +6,7 @@
 				 <%= f.label "Localidad:",class:"mismalinea"%>
 				 <%= f.text_field :nombre,:placeholder => "localidad",class:"mismalinea-espacio",:maxlength=>"35" %>
 		     </div>
-		     <div class="mismalinea-espacio">		 
+		     <div class="mismalinea-espacio-grande">		 
                  <label class="mismalinea">Departamento:</label>
                  <div class="mismalinea-espacio">
 		              <select name="localidad[id_departamento]" class="selectpicker">
@@ -17,12 +17,35 @@
 								  </option>
 							  <% end %>
 				       </select><br/>
-				  </div>    
+				  </div> 
+				  <a data-toggle="modal" href="#departamento" ><label  class="mismalinea-espacio">Nuevo Departamento </label></a> 	   
 			 </div>	  
 </div>			 
 			 <div class="abajo"><br/>    
 				<%= f.submit "Guardar", class: "btn btn-primary" %>
              </div>
 							
-    <% end %><br/><br/>
+    <% end %>
+    <div id="departamento" class="modal hide fade in" style="display: none;  " >
+           <div class="modal-header">
+               <a class="close" data-dismiss="modal">×</a>
+                   <h3>Nuevo Departamento</h3>
+           </div>
+           <div class="modal-body">
+               <p id="notice"><%= notice %></p>
+                 
+                    <%= form_for(@departamento) do |f| %>
+   		                <%= render 'mensajes/error_mensajes', object: f.object %>
+						    <div class="mismalinea">
+									 <%= f.label "Departamento:",class:"mismalinea"%>
+									  <%= f.text_field :nombre,:placeholder => "departamento",class:"mismalinea-espacio",:maxlength=>"35" %>
+				             </div> 
+            </div>
+             <div class="modal-footer">
+                  <%= f.submit "Guardar", :class => 'btn btn-success', :controller => 'localidads_controller', :action =>'departamento_create' %>
+                   <a href="#" class="btn" data-dismiss="modal">Close</a>
+               </div>
+                    <% end %>
+        </div><br/></br>
+     
     

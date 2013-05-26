@@ -27,6 +27,7 @@ class FuncionariosController < ApplicationController
     @funcionario = Funcionario.new
    @localidades=Localidad.all
     @funciones=Funcion.all
+    localidad_new
     @estados_funcionarios=EstadosFuncionario.all
     respond_to do |format|
       format.html # new.html.erb
@@ -40,6 +41,7 @@ class FuncionariosController < ApplicationController
     @localidades=Localidad.all
     @funciones=Funcion.all
     @estados_funcionarios=EstadosFuncionario.all
+     localidad_new
   end
 
   # POST /funcionarios
@@ -89,5 +91,19 @@ class FuncionariosController < ApplicationController
       format.html { redirect_to funcionarios_url }
       format.json { head :no_content }
     end
+  end
+  def localidad_new
+      @localidad= Localidad.new
+       @departamentos=Departamento.all
+     
+  end
+  def funcionario_create
+      @localidad = Localidad.new(params[:funcionario])
+       @departamentos=Departamento.all
+      if @localidad.save
+        flash[:notice] = "Se ha guardado la localidad"
+      else
+        flash[:notice] = "Hubo Problemas, no guardo"
+      end
   end
 end

@@ -26,6 +26,7 @@ class ClientesController < ApplicationController
   def new
     @cliente = Cliente.new
     @localidades=Localidad.all
+    localidad_new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @cliente }
@@ -36,6 +37,7 @@ class ClientesController < ApplicationController
   def edit
     @cliente = Cliente.find(params[:id])
     @localidades=Localidad.all
+    localidad_new
   end
 
   # POST /clientes
@@ -80,5 +82,19 @@ class ClientesController < ApplicationController
       format.html { redirect_to clientes_url }
       format.json { head :no_content }
     end
+  end
+  def localidad_new
+      @localidad= Localidad.new
+       @departamentos=Departamento.all
+     
+  end
+  def funcionario_create
+      @localidad = Localidad.new(params[:funcionario])
+       @departamentos=Departamento.all
+      if @localidad.save
+        flash[:notice] = "Se ha guardado la localidad"
+      else
+        flash[:notice] = "Hubo Problemas, no guardo"
+      end
   end
 end
