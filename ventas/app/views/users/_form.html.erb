@@ -1,39 +1,30 @@
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
-   		 <%= render 'mensajes/error_mensajes', object: f.object %>
-	    <div class="center hero-unit">
-		   <form class="form-horizontal">
-			   <fieldset>
-				  <div class="page-header">
-					 <div class="row-fluid">
-						<div class="span1">  	
-					    </div>
-					    <div class="span10">
-							<div class="well well-small" align="center">
-								<h4><%= yield(:title) %></h4>
-								  <p>Funcionario</p>
-									 <select name="user[id_funcionario]">
-									 	 	<option value="1">--Seleccione--</option> 
-									 	 <% @funcionarios.each do |funcionario| %>
-									       <option value="<%= funcionario.id %>" 
-									         <%= 'selected' if funcionario.id == @user.id_funcionario%>>
-									         <%= funcionario.nombres %>
-									       </option>
-									   <% end %> 
-		                            </select> 
-							      <%= f.label :usuario %>
-							      <%= f.text_field :username,:placeholder => "usuario"  %>
-							      <%= f.label :contrasena %>
-							      <%= f.password_field :password,:placeholder => "contrasena"  %><br/>
-							      <%= f.submit "Guardar", class: "btn btn-primary" %>
-							 </div>	    
-						 </div>
-					 </div>
-				 </div>
-			  </fieldset>
-		   </form>	
-		</div>
-    <% end %>
-  </div>
-</div>
+ <div class="centrar">
+	 <%= form_for(@user) do |f| %>
+	   	<%= render 'mensajes/error_mensajes', object: f.object %>
+			<h4><%= yield(:title) %></h4></br>
+			<div class="mismalinea">
+				<%= f.label "Usuario:" ,class:"mismalinea"%>
+			    <%= f.text_field :username,:placeholder => "usuario",class:"mismalinea-espacio",:maxlength=>"15" %>
+			</div>
+			<div class="mismalinea-espacio">
+				<%= f.label "Contrasena:",class:"mismalinea" %>
+			    <%= f.password_field :password,:placeholder => "contrasena" ,class:"mismalinea-espacio",:maxlength=>"15" %><br/>
+            </div><br/><br/><br/>
+			<div class="mismalinea">
+				<label class="mismalinea">Funcionario:</label>
+				 <div class="mismalinea-espacio">
+					<select name="user[id_funcionario]" class="selectpicker">
+						<option value="1">--Seleccione--</option> 
+							<% @funcionarios.each do |funcionario| %>
+								<option value="<%= funcionario.id %>" 
+									<%= 'selected' if funcionario.id == @user.id_funcionario%>><%= funcionario.nombres %>
+								</option>
+							<% end %> 
+				    </select> 
+				 </div>    	
+			</div>   	    
+  </div>				    			    
+			<div class="abajo"><br/>
+					<%= f.submit "Guardar", class: "btn btn-primary" %>
+			</div>			
+	  <% end %><br/></br>

@@ -1,51 +1,56 @@
-<div class="row">
-  <div class="span6 offset3">
+   <div class="centrar">
     <%= form_for(@cliente) do |f| %>
    		 <%= render 'mensajes/error_mensajes', object: f.object %>
-	    <div class="center hero-unit">
-		   <form class="form-horizontal">
-			   <fieldset>
-				  <div class="page-header">
-					 <div class="row-fluid">
-						<div class="span1">  	
+		 
+				 	<h4><%= yield(:title) %></h4><br/>
+					     <div class="mismalinea">
+					         <%= f.label "Nombre:",class:"mismalinea"%>
+							<%= f.text_field :nombre,:id=>"txt_nombres",:placeholder => "Nombre",:maxlength=>"25",class:"mismalinea-espacio" %>
+						</div> 
+						<div class="mismalinea-espacio">
+					        <%= f.label "Apellido:",class:"mismalinea"%>
+					 	    <%= f.text_field :apellido,:placeholder => "Apellido",class:"mismalinea-espacio"  %>
+				       </div><br/><br/><br/>
+				       <div class="mismalinea">
+							<%= f.label "Nro de doc:" ,class:"mismalinea"%>
+							<%= f.text_field :num_identidad,:placeholder => "RUC o Cedula de Identidad",class:"mismalinea-espacio" %>
+						</div>	
+						<div class="mismalinea-espacio">
+							<%= f.label "Direccion:",class:"mismalinea"%>
+							<%= f.text_field :direccion,:placeholder => "Direccion",class:"mismalinea-espacio"  %>
+						</div><br/><br/><br/>
+						<div class="mismalinea">
+							<%= f.label "Telefono:",class:"mismalinea"%>
+							<%= f.text_field :telefono,:placeholder => "(xxx) xxx xxx" ,class:"mismalinea-espacio" %>
 					    </div>
-					    <div class="span10">
-							<div class="well well-small" align="center">
-								<h4><%= yield(:title) %></h4>
-							      <%= f.label :nombre%>
-							      <%= f.text_field :nombre,:placeholder => "Nombre" %>
-							      <%= f.label :apellido%>
-							      <%= f.text_field :apellido,:placeholder => "Apellido"  %>
-							      <%= f.label :Nro_de_doc%>
-							      <%= f.text_field :num_identidad,:placeholder => "RUC o Cedula de Identidad" %>
-							      <%= f.label :direccion%>
-							      <%= f.text_field :direccion,:placeholder => "Direccion"  %>
-							      <%= f.label :telefono%>
-							      <%= f.text_field :telefono,:placeholder => "(xxx) xxx xxx"  %>
-							       <label>Sexo</label>
-									 <select name="cliente[sexo]">
-									 	<option value="1">Seleccione su sexo</option> 
-                                        <option value="M">Masculino</option> 
-                                        <option value="F">Femenino</option> 
-                                     </select>  
-							      <label>Localidades</label>
-		                          	 <select name="cliente[id_localidad]">
-									 	<option value="1">Seleccione una Localidad</option> 
-									   <% @localidades.each do |localidad| %>
-									       <option value="<%= localidad.id %>" 
-									         <%= 'selected' if localidad.id == @cliente.id_localidad%>>
-									         <%= localidad.nombre %>
-									       </option>
+					    <div class="mismalinea-espacio">
+					        <label class="mismalinea">Sexo:</label>
+					        <div class="mismalinea-espacio">
+								<select name="cliente[sexo]" class="selectpicker" >
+								   <option value="1">Seleccione su sexo</option> 
+					                <option value="M">Masculino</option> 
+					                <option value="F">Femenino</option> 
+					            </select>  
+					        </div>
+				        </div><br/><br/><br/>
+				        <div class="mismalinea">
+				            <label class="mismalinea">Localidad:</label>
+				            <div class="mismalinea-espacio">
+							    <select name="cliente[id_localidad]" class="selectpicker">
+							    	<option value="1">Seleccione la localidad</option> 
+								      <% @localidades.each do |localidad| %>
+											<option value="<%= localidad.id %>" 
+											       <%= 'selected' if localidad.id == @cliente.id_localidad%>>
+												    <%= localidad.nombre %>
+											</option>
 									   <% end %>
-									  </select> <br/>
-							      <%= f.submit "Guardar", class: "btn btn-primary" %>
-							 </div>	    
-						 </div>
-					 </div>
-				 </div>
-			  </fieldset>
-		   </form>	
-		</div>
-    <% end %>
-  </div>
-</div>
+								 </select> 
+							</div>
+						</div>
+			</div>			
+			      <div class="abajo"><br/>
+					<%= f.submit "Guardar", class: "btn btn-primary"%>
+				   </div>	 
+	
+    <% end %><br/><br/>
+     

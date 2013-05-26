@@ -3,13 +3,28 @@
 <head>
   <title>Ventas</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application", :media => "all" %>
+  <%= javascript_include_tag "bootstrap-select" %>
+  <%= javascript_include_tag "bootstrap-select.min" %>
   <%= csrf_meta_tags %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $("table").tablecloth({
+          theme: "dark",
+          striped: true,
+          sortable: true,
+          condensed: true
+        });
+       $('.selectpicker').selectpicker('selectAll');
+   });
+    
+  </script>
 </head>
 <body>
 	<br/><br/>
 	  <%= render 'layouts/header' %>
-	 <%= yield %>
+    
+	     <%= yield %>
     
    <%= render 'layouts/footer' %>
 	

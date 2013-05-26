@@ -19,7 +19,7 @@
                    <%= f.label :funcionario%>
                     <%= f.text_field :id_funcionario,:text=>current_user.funcionario.nombres + " " + current_user.funcionario.apellidos,:value => current_user.funcionario.id,:readonly => true %>
                     <label>Clientes</label>
-                                 <select name="factura_ventum[id_cliente]">
+                                 <select name="factura_ventum[id_cliente]" class="selectpicker">
                     <option value="1">--Seleccione--</option> 
                      <% @clientes.each do |cliente| %>
                          <option value="<%= cliente.id %>" 
@@ -29,7 +29,7 @@
                      <% end %>
                     </select> <br/>
                     <label>Condicion de pago</label>
-                                 <select name="factura_ventum[id_condicion_pago]">
+                                 <select name="factura_ventum[id_condicion_pago]" class="selectpicker">
                     <option value="1">--Seleccione--</option> 
                      <% @condiciones_de_pagos.each do |condicion_de_pago| %>
                          <option value="<%= condicion_de_pago.id %>" 
@@ -39,7 +39,7 @@
                      <% end %>
                     </select> <br/>
                      <label>Tipo de Valor</label>
-                                 <select name="factura_ventum[id_tipo_valor]">
+                                 <select name="factura_ventum[id_tipo_valor]" class="selectpicker">
                     <option value="1">--Seleccione--</option> 
                      <% @tipos_de_valores.each do |tipo_de_valor| %>
                          <option value="<%= tipo_de_valor.id %>" 

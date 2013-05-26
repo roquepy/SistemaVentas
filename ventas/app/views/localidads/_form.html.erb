@@ -1,40 +1,28 @@
-<div class="row">
-  <div class="span6 offset3">
+<div class="centrar">
     <%= form_for(@localidad) do |f| %>
    		 <%= render 'mensajes/error_mensajes', object: f.object %>
-	    <div class="center hero-unit">
-		   <form class="form-horizontal">
-			   <fieldset>
-				  <div class="page-header">
-					 <div class="row-fluid">
-						<div class="span1">  	
-					    </div>
-					    <div class="span10">
-							<div class="well well-small" align="center">
-								<h4><%= yield(:title) %></h4>
-							      <%= f.label :localidad%>
-							      <%= f.text_field :nombre,:placeholder => "localidad" %>
-
-							      <p>Departamentos</p>
-		                          	 <select name="localidad[id_departamento]">
-									 	<option value="1">--Seleccione--</option> 
-									   <% @departamentos.each do |departamento| %>
-									       <option value="<%= departamento.id %>" 
-									         <%= 'selected' if departamento.id == @localidad.id_departamento%>>
-									         <%= departamento.nombre %>
-									       </option>
-									   <% end %>
-									 </select>
-                                    
-									   <br/>
-							      <%= f.submit "Guardar", class: "btn btn-primary" %>
-							 </div>	    
-						 </div>
-					 </div>
-				 </div>
-			  </fieldset>
-		   </form>	
-		</div>
-    <% end %>
-  </div>
-</div>
+	        <h4><%= yield(:title) %></h4><br/>
+	         <div class="mismalinea">
+				 <%= f.label "Localidad:",class:"mismalinea"%>
+				 <%= f.text_field :nombre,:placeholder => "localidad",class:"mismalinea-espacio",:maxlength=>"35" %>
+		     </div>
+		     <div class="mismalinea-espacio">		 
+                 <label class="mismalinea">Departamento:</label>
+                 <div class="mismalinea-espacio">
+		              <select name="localidad[id_departamento]" class="selectpicker">
+						 <option value="1">--Seleccione--</option> 
+							 <% @departamentos.each do |departamento| %>
+								 <option value="<%= departamento.id %>" 
+									    <%= 'selected' if departamento.id == @localidad.id_departamento%>><%= departamento.nombre %>
+								  </option>
+							  <% end %>
+				       </select><br/>
+				  </div>    
+			 </div>	  
+</div>			 
+			 <div class="abajo"><br/>    
+				<%= f.submit "Guardar", class: "btn btn-primary" %>
+             </div>
+							
+    <% end %><br/><br/>
+    

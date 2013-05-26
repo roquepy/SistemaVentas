@@ -1,80 +1,88 @@
 
-<div class="row">
-  <div class="span6 offset3">
-  	<br/>
+   <div class="centrar">
     <%= form_for(@funcionario) do |f| %>
    		 <%= render 'mensajes/error_mensajes', object: f.object %>
-	    <div class="center hero-unit">
-		   <form class="form-horizontal">
-			   <fieldset>
-				  <div class="page-header">
-					 <div class="row-fluid">
-						<div class="span1">  	
-					    </div>
-					    <div class="span10">
-							<div class="well well-small" align="center">
-								<h4><%= yield(:title) %></h4>
-							      <%= f.label :nombres%>
-							      <%= f.text_field :nombres,:placeholder => "nombre" %>
-							      <%= f.label :apellidos%>
-							      <%= f.text_field :apellidos,:placeholder => "apellido"  %>
-							      <%= f.label :Nro_de_doc%>
-							      <%= f.text_field :num_identidad,:placeholder => "num_documenhto" %>
-							      <%= f.label :direccion%>
-							      <%= f.text_field :direccion,:placeholder => "direccion"  %>
-							      <%= f.label :telefono%>
-							      <%= f.text_field :telefono,:placeholder => "telefono"  %>
-							       <label>Estado Civil</label>
-									 <select name="funcionario[estado_civil]">
-									 	<option value="1">--Seleccione--</option> 
-                                        <option value="Soltero">Soltero</option> 
-                                        <option value="Casado">Casado</option> 
-                                     </select> 
-							       <label>Sexo</label>
-									 <select name="funcionario[sexo]">
-									 	<option value="1">--Seleccione--</option> 
-                                        <option value="M">Masculino</option> 
-                                        <option value="F">Femenino</option> 
-                                     </select>  
-		                         
-									 <label>Localidades</label>
-		                          	 <select name="funcionario[id_localidad]">
-									 	<option value="1">--Seleccione--</option> 
-									   <% @localidades.each do |localidad| %>
-									       <option value="<%= localidad.id %>" 
-									         <%= 'selected' if localidad.id == @funcionario.id_localidad%>>
-									         <%= localidad.nombre %>
-									       </option>
-									   <% end %>
-		                              </select> 
-							      <label>Funciones</label>
-									 <select name="funcionario[id_funcion]">
-									 	 	<option value="1">--Seleccione--</option> 
-									 	 <% @funciones.each do |funcion| %>
-									       <option value="<%= funcion.id %>" 
-									         <%= 'selected' if funcion.id == @funcionario.id_funcion%>>
-									         <%= funcion.nombre %>
-									       </option>
-									   <% end %> 
-		                            </select> 
-		                          	<label>Estado del Funcionario</label>
-		                          	<select name="funcionario[id_estado_funcionario]">
-		                          		<option value="1">--Seleccione--</option> 
-									    <% @estados_funcionarios.each do |estado_funcionario| %>
-									       <option value="<%= estado_funcionario.id %>" 
-									         <%= 'selected' if estado_funcionario.id == @funcionario.id_estado_funcionario%>>
-									         <%= estado_funcionario.descripcion %>
-									       </option>
-									   <% end %> 
-		                            </select> <br/>
-							      <%= f.submit "Guardar", class: "btn btn-primary" %>
-							 </div>	    
-						 </div>
-					 </div>
-				 </div>
-			  </fieldset>
-		   </form>	
-		</div>
-    <% end %>
-  </div>
-</div>
+			<h4><%= yield(:title) %></h4><br/>
+			    <div class="mismalinea">
+					<%= f.label "Nombres:",class:"mismalinea"%>
+					<%= f.text_field :nombres,:placeholder => "nombre" ,class:"mismalinea-espacio",:maxlength=>"50"%>
+				</div>
+				<div class="mismalinea-espacio">
+					<%= f.label "Apellidos:",class:"mismalinea"%>
+					<%= f.text_field :apellidos,:placeholder => "apellido",class:"mismalinea-espacio",:maxlength=>"50"  %>
+				</div>	<br/><br/><br/>
+				<div class="mismalinea">	
+					<%= f.label "Nro de doc:",class:"mismalinea"%>
+					<%= f.text_field :num_identidad,:placeholder => "num_documenhto",class:"mismalinea-espacio",:maxlength=>"9" %>
+				</div>	
+				<div class="mismalinea-espacio">
+				    <%= f.label "Direccion:",class:"mismalinea"%>
+					<%= f.text_field :direccion,:placeholder => "direccion",class:"mismalinea-espacio",:maxlength=>"70"  %>
+				</div><br/><br/><br/>	
+				<div class="mismalinea">
+					<%= f.label "Telefono:",class:"mismalinea"%>
+					<%= f.text_field :telefono,:placeholder => "telefono" ,class:"mismalinea-espacio",:maxlength=>"15" %>
+				</div>
+				<div class="mismalinea-espacio">	
+					<label class="mismalinea">Estado Civil:</label>
+					<div class="mismalinea-espacio">
+					    <select name="funcionario[estado_civil]" class="selectpicker" >
+					    	 <option value="Soltero">--Seleccione--</option>
+		                     <option value="Soltero">Soltero</option> 
+		                      <option value="Casado">Casado</option> 
+		                </select> 
+		             </div>   
+	             </div>  <br/><br/><br/> 
+                <div class="mismalinea">
+					<label class="mismalinea">Sexo:</label>
+					<div class="mismalinea-espacio">
+						<select name="funcionario[sexo]" class="selectpicker">
+							<option value="1">--Seleccione--</option> 
+		                    <option value="M">Masculino</option> 
+		                    <option value="F">Femenino</option> 
+		                </select> 
+		             </div>    
+	            </div> 
+	            <div class="mismalinea-espacio">   
+			        <label class="mismalinea">Localidad: </label>
+			        <div class="mismalinea-espacio">
+			             <select name="funcionario[id_localidad]" class="selectpicker">
+							  <% @localidades.each do |localidad| %>
+							        <option value="<%= localidad.id %>" 
+										  <%= 'selected' if localidad.id == @funcionario.id_localidad%>><%= localidad.nombre %>
+								     </option>
+							  <% end %>
+			              </select> 
+			        </div>      
+			     </div> <br/><br/><br/>        
+		        <div class="mismalinea">
+				    <label class="mismalinea">Funcion:</label>
+				    <div class="mismalinea-espacio">
+					     <select name="funcionario[id_funcion]" class="selectpicker">
+								<% @funciones.each do |funcion| %>
+									<option value="<%= funcion.id %>" 
+										  <%= 'selected' if funcion.id == @funcionario.id_funcion%>><%= funcion.nombre %>
+									</option>
+								<% end %> 
+			             </select> 
+			        </div>     
+			     </div> 
+			     <div class="mismalinea-espacio">  
+			        <label class="mismalinea">Estado del Funcionario:</label>
+			           <div class="mismalinea-espacio">
+			               <select name="funcionario[id_estado_funcionario]" class="selectpicker">
+			                    <option value="1">--Seleccione--</option> 
+									<% @estados_funcionarios.each do |estado_funcionario| %>
+										<option value="<%= estado_funcionario.id %>" 
+										     <%= 'selected' if estado_funcionario.id == @funcionario.id_estado_funcionario%>>
+										     <%= estado_funcionario.descripcion %>
+									    </option>
+									<% end %> 
+			                 </select> <br/>
+			          </div>     
+			     </div> 
+	</div>		
+	            <div class="abajo"><br/>                 
+			    	<%= f.submit "Guardar", class: "btn btn-primary" %>	
+			    </div>		 
+    <% end %><br/><br/>

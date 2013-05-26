@@ -6,7 +6,7 @@ class FacturaVentum < ActiveRecord::Base
     belongs_to :funcionario, :foreign_key=>"id_funcionario"
     has_many :detalle_fatura_ventum
     def  self.obtener_nro_factura()
-    	factura_nro=FacturaVentum.find(:all,{:select=>"MAX(f.nro_factura)",:from=>"factura_venta as f"})
+    	factura_nro=FacturaVentum.select("MAX(nro_factura)").from("factura_venta")
         #factura_nro=find_by_sql("<<-SQL select max(nro_factura) from factura_venta SQL")
     	if factura_nro.blank?
     		factura_nro=100

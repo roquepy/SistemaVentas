@@ -4,9 +4,8 @@
 en:  
   errors:  
     messages:  
-      email_format: "no tiene un formato correcto"  
       blank: "no puede estar vacio"
       invalid: "es invalido"
-      confirmation: "No se ha realizado la confirmacion"
       too_long: "es muy largo (maximo es %{count} caracteres)"
       too_short: "es muy corto (minimo es %{count} caracteres)"
+      unique: "ya existe debe de ser uno nuevo"

@@ -8,3 +8,4 @@ en:
       invalid: "es invalido"
       too_long: "es muy largo (maximo es %{count} caracteres)"
       too_short: "es muy corto (minimo es %{count} caracteres)"
+      unique: "ya existe debe de ser uno nuevo"

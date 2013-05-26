@@ -1,29 +1,14 @@
-<div class="row">
-  <div class="span6 offset3">
+<div class="centrar-solo-un-componente">
     <%= form_for(@departamento) do |f| %>
    		 <%= render 'mensajes/error_mensajes', object: f.object %>
-	    <div class="center hero-unit">
-		   <form class="form-horizontal">
-			   <fieldset>
-				  <div class="page-header">
-					 <div class="row-fluid">
-						<div class="span1">  	
-					    </div>
-					    <div class="span10">
-							<div class="well well-small" align="center">
-								<h4><%= yield(:title) %></h4>
-							      <%= f.label :departamento%>
-							      <%= f.text_field :nombre,:placeholder => "departamento" %>
-							      
-
-							      <%= f.submit "Guardar", class: "btn btn-primary" %>
-							 </div>	    
-						 </div>
-					 </div>
-				 </div>
-			  </fieldset>
-		   </form>	
-		</div>
-    <% end %>
-  </div>
-</div>
+                 <h4><%= yield(:title) %></h4><br/>
+				 <div class="mismalinea">
+					 <%= f.label "Departamento:",class:"mismalinea"%>
+					  <%= f.text_field :nombre,:placeholder => "departamento",class:"mismalinea-espacio",:maxlength=>"35" %>
+				</div> 
+</div>				
+				 <div class="abajo"><br/>
+					<%= f.submit "Guardar", class: "btn btn-primary" %>
+				</div>
+							
+    <% end %><br/><br/>

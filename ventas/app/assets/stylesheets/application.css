@@ -11,6 +11,29 @@
  *= require_self
  *= require_tree .
 */
-.misma_linea{
-	float: right;
+.centrar{
+	 
+	 margin-left: 200px;
+}
+.centrar h4{
+	margin-left: 250px;
+}
+.mismalinea{
+    float: left;
+}
+
+.mismalinea-espacio{
+    float: left;
+    margin-left: 30px;
+}
+
+.abajo{
+    clear: both;
+    margin-left: 470px;
+}
+.centrar-solo-un-componente{
+	margin-left: 300px;
+}
+.centrar-solo-un-componente h4{
+	margin-left: 110px;
 }
