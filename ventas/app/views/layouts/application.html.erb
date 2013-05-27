@@ -10,13 +10,37 @@
   <script type="text/javascript">
     $(document).ready(function() {
         $("table").tablecloth({
-          theme: "dark",
+          theme: "stats",
           striped: true,
           sortable: true,
           condensed: true
         });
        $('.selectpicker').selectpicker('selectAll');
-   });
+
+       var buscarEnTabla = function() {
+        var table = $('#table');
+        var value = this.value;
+        table.find('tr').each(function(index, row) {
+            var allCells = $(row).find('td');
+            if(allCells.length > 0) {
+                var found = false;
+                allCells.each(function(index, td) {
+                    var regExp = new RegExp(value, 'i');
+                    if(regExp.test($(td).text())) {
+                        found = true;
+                        return false;
+                    }
+                });
+                if (found == true) $(row).show();
+                else $(row).hide();
+            }
+        });
+    };
+     
+    $(function(){
+        $('#filtrar').keyup(buscarEnTabla);
+    });
+ });
     
   </script>
 </head>

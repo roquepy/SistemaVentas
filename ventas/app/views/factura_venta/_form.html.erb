@@ -1,74 +1,83 @@
-<div class="row">
-  <div class="span6 offset3">
+ <div class="centrar">
     <%= form_for(@factura_ventum) do |f| %>
        <%= render 'mensajes/error_mensajes', object: f.object %>
-      <div class="center hero-unit">
-       <form class="form-horizontal">
-         <fieldset>
-          <div class="page-header">
-           <div class="row-fluid">
-            <div class="span1">   
-              </div>
-              <div class="span10">
-              <div class="well well-small" align="center">
-                <h4><%= yield(:title) %></h4>
-                    <%= f.label :fecha%>
-                    <%= f.text_field :fecha,:value => Date.today,:readonly => true%>
-                    <%= f.label :Nro_de_Factura%>
-                    <%= f.text_field :nro_factura,:value => FacturaVentum.obtener_nro_factura(),:readonly => true %>
-                   <%= f.label :funcionario%>
-                    <%= f.text_field :id_funcionario,:text=>current_user.funcionario.nombres + " " + current_user.funcionario.apellidos,:value => current_user.funcionario.id,:readonly => true %>
-                    <label>Clientes</label>
-                                 <select name="factura_ventum[id_cliente]" class="selectpicker">
-                    <option value="1">--Seleccione--</option> 
-                     <% @clientes.each do |cliente| %>
-                         <option value="<%= cliente.id %>" 
-                           <%= 'selected' if cliente.id == @factura_ventum.id_cliente%>>
-                           <%= cliente.nombre %>
-                         </option>
-                     <% end %>
-                    </select> <br/>
-                    <label>Condicion de pago</label>
-                                 <select name="factura_ventum[id_condicion_pago]" class="selectpicker">
-                    <option value="1">--Seleccione--</option> 
-                     <% @condiciones_de_pagos.each do |condicion_de_pago| %>
-                         <option value="<%= condicion_de_pago.id %>" 
-                           <%= 'selected' if condicion_de_pago.id == @factura_ventum.id_condicion_pago%>>
-                           <%= condicion_de_pago.nombre_condicion_de_pago %>
-                         </option>
-                     <% end %>
-                    </select> <br/>
-                     <label>Tipo de Valor</label>
-                                 <select name="factura_ventum[id_tipo_valor]" class="selectpicker">
-                    <option value="1">--Seleccione--</option> 
-                     <% @tipos_de_valores.each do |tipo_de_valor| %>
-                         <option value="<%= tipo_de_valor.id %>" 
-                           <%= 'selected' if tipo_de_valor.id == @factura_ventum.id_tipo_valor%>>
-                           <%= tipo_de_valor.descripcion%>
-                         </option>
-                     <% end %>
-                    </select> <br/>
-                     <%= f.label :descuento%>
-                     <%= f.text_field :total_descuento ,:value => FacturaVentum.descuento(100),:readonly => true %>
-                       <%= f.label :Total_Iva_5%>
-                     <%= f.text_field :total_iva5,:value => FacturaVentum.factura_total_iva5(100),:readonly => true %>
-                      <%= f.label :Total_Iva_10%>
-                      <%= f.text_field :total_iva10,:value => FacturaVentum.factura_total_iva10(100),:readonly => true %>
-                     <%= f.label :Total_Iva%>
-                     <%= f.text_field :total_iva,:value => FacturaVentum.factura_total_iva(100),:readonly => true %>
-                      <%= f.submit "Guardar", class: "btn btn-primary" %>
-                      <a data-toggle="modal" href="#producto" ><label>Cargar Producto </label></a>
-                     
-                     </div>     
+          <h4><%= yield(:title) %></h4><br/>
+              <div class="mismalinea">
+                 <%= f.label :fecha,class:"mismalinea"%>
+                 <%= f.text_field :fecha,:value => Date.today,:readonly => true,class:"mismalinea-espacio"%>
              </div>
-           </div>
-         </div>
-        </fieldset>
-       </form>  
-    </div>
+             <div class="mismalinea-espacio-grande">
+                 <%= f.label :Nro_de_Factura,class:"mismalinea"%>
+                 <%= f.text_field :nro_factura,:readonly => true ,class:"mismalinea-espacio"%>
+             </div><br/><br/><br/>    
+              <div class="mismalinea">
+                  <%= f.label :funcionario,class:"mismalinea"%>
+                  <%= f.text_field :id_funcionario,:text=>current_user.funcionario.nombres + " " + current_user.funcionario.apellidos,:value => current_user.funcionario.id,:readonly => true,class:"mismalinea-espacio" %>
+              </div>    
+              <div class="mismalinea-espacio-grande">
+                 <label class="mismalinea">Clientes</label>
+                 <div class="mismalinea-espacio">
+                      <select name="factura_ventum[id_cliente]" class="selectpicker">
+                          <option value="1">--Seleccione--</option> 
+                              <% @clientes.each do |cliente| %>
+                                  <option value="<%= cliente.id %>" 
+                                      <%= 'selected' if cliente.id == @factura_ventum.id_cliente%>> <%= cliente.nombre %>
+                                   </option>
+                             <% end %>
+                    </select> <br/>
+                  </div>
+                </div>  <br/><br/><br/>  
+                <div class="mismalinea">
+                    <label class="mismalinea">Condicion de pago</label>
+                    <div class="mismalinea-espacio">
+                          <select name="factura_ventum[id_condicion_pago]" class="selectpicker">
+                              <option value="1">--Seleccione--</option> 
+                                  <% @condiciones_de_pagos.each do |condicion_de_pago| %>
+                                       <option value="<%= condicion_de_pago.id %>" 
+                                          <%= 'selected' if condicion_de_pago.id == @factura_ventum.id_condicion_pago%>>
+                                           <%= condicion_de_pago.nombre_condicion_de_pago %>
+                                       </option>
+                                  <% end %>
+                            </select> <br/>
+                     </div>     
+                  </div> 
+                  <div class="mismalinea-espacio-grande">         
+                     <label class="mismalinea">Tipo de Valor</label>
+                     <div class="mismalinea-espacio">
+                          <select name="factura_ventum[id_tipo_valor]" class="selectpicker">
+                               <option value="1">--Seleccione--</option> 
+                                  <% @tipos_de_valores.each do |tipo_de_valor| %>
+                                      <option value="<%= tipo_de_valor.id %>" 
+                                         <%= 'selected' if tipo_de_valor.id == @factura_ventum.id_tipo_valor%>>
+                                           <%= tipo_de_valor.descripcion%>
+                                </option>
+                                    <% end %>
+                           </select> <br/>
+                     </div>      
+                  </div><br/><br/><br/>
+                  <div class="mismalinea">
+                     <%= f.label :descuento,class:"mismalinea"%>
+                     <%= f.text_field :total_descuento ,:value => FacturaVentum.descuento(100),:readonly => true,class:"mismalinea-espacio" %>
+                   </div>  
+                   <div class="mismalinea-espacio-grande">
+                       <%= f.label :Total_Iva_5,class:"mismalinea"%>
+                       <%= f.text_field :total_iva5,:value => FacturaVentum.factura_total_iva5(100),:readonly => true,class:"mismalinea-espacio" %>
+                    </div>  <br/><br/><br/> 
+                   <div class="mismalinea">   
+                      <%= f.label :Total_Iva_10,class:"mismalinea"%>
+                      <%= f.text_field :total_iva10,:value => FacturaVentum.factura_total_iva10(100),:readonly => true,class:"mismalinea-espacio" %>
+                   </div>   
+                   <div class="mismalinea-espacio-grande">
+                     <%= f.label :Total_Iva,class:"mismalinea"%>
+                     <%= f.text_field :total_iva,:value => FacturaVentum.factura_total_iva(100),:readonly => true,class:"mismalinea-espacio" %>
+                   </div>  
+                      <a data-toggle="modal" href="#producto" ><label>Cargar Producto </label></a>     
+       </div>
+                   <div class="abajo"><br/>
+                      <%= f.submit "Guardar", class: "btn btn-primary"%>
+                  </div>                  
     <% end %>
 
-                     <a data-toggle="modal" href="#producto" ><label>Cargar Producto </label></a>
                     <div id="producto" class="modal hide fade in" style="display: none; ">
                           <div class="modal-header">
                             <a class="close" data-dismiss="modal">×</a>
@@ -101,7 +110,5 @@
                             <a href="#" class="btn" data-dismiss="modal">Close</a>
                         </div>
                             <% end %>
-                   </div>
-                   </div>  
+                   </div> <br/><br/>
                
-</div>

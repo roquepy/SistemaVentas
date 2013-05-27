@@ -4,11 +4,11 @@
 		<h3> Lista de Departamentos</h3>
 		</div>
 	   <div class="container-fluid">
-	     	<p>
-			    <%= text_field_tag :buscar, params[:buscar] %>
-			    <%= submit_tag "Buscar",  class: "btn btn-primary",:name => nil %>
-		    </p>
-			<table class="table table-bordered">
+	     <div class="mismalinea">
+	   		<label class="mismalinea">Filtrar:</label>
+		   <input type="text" id="filtrar" placeholder="Filtrar" class="mismalinea-espacio">
+	    </div>
+			<table id="table" class="table table-bordered">
 				<thead>
 						<tr>
 							<th>Nombre</th>

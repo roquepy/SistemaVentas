@@ -1,5 +1,7 @@
 Ventas::Application.routes.draw do
   
+  resources :productos
+
   resources :detalle_factura_venta
 
   match 'logout' => 'sesiones#destroy', as: :logout

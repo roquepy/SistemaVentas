@@ -2,7 +2,7 @@ class DepartamentosController < ApplicationController
   # GET /departamentos
   # GET /departamentos.json
   def index
-       @departamentos = Departamento.buscar(params[:buscar],params[:page])
+       @departamentos = Departamento.paginate(:page => params[:page], :per_page => 10)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @departamentos }
