@@ -5,20 +5,20 @@
 </div>
 <div class="container-fluid">
     <table class="table table-bordered">
-		<thead>
-			<tr>
-			  <th>Codigo</th>
+    <thead>
+      <tr>
+        <th>Codigo</th>
               <th>Descripcion</th>
               <th>Cantidad Minima</th>
               <th>Cantidad Optima</th>
               <th>Precio Unitario</th>
               <th>Porcentaje</th>
               <th>Acciones</th>
-			</tr>
-		</thead>
-	  <tbody>
-	  	<tr>
-			 <td><%= procucto.codigo %></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+       <td><%= procucto.codigo %></td>
               <td><%= producto.descripcion %></td>
               <td><%= producto.cant_minima %></td>
               <td><%= producto.cant_optima %></td>
@@ -27,8 +27,8 @@
               <td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_producto_path(producto) %> &nbsp &nbsp &nbsp   
                       <i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar",producto, :confirm => "Desea eliminar el producto "+producto.descripcion, :method => :delete %>
               </td>
-		</tr>
-	   </tbody>
+    </tr>
+     </tbody>
   </table>
   </div>
   <div align="center">

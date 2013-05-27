@@ -12,11 +12,10 @@
  *= require_tree .
 */
 .centrar{
-	 
-	 margin-left: 200px;
+   margin-left: 380px;
 }
 .centrar h4{
-	margin-left: 250px;
+	margin-left: 220px;
 }
 .mismalinea{
     float:left;
@@ -33,11 +32,11 @@
 
 .abajo{
     clear: both;
-    margin-left: 470px;
+    margin-left: 650px;
 }
 .centrar-solo-un-componente{
-	margin-left: 300px;
+	margin-left: 500px;
 }
 .centrar-solo-un-componente h4{
-	margin-left: 110px;
+	margin-left: 95px;
 }

@@ -7,15 +7,6 @@
              <li><%= link_to "Home" ,paginas_estaticas_path%></li>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Usuario <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Nuevo Usuario",new_user_path %></li>
-                <li><%= link_to "Lista de Usuarios",users_path  %></li>
-              </ul>
-            </li>
-            <li id="fat-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Cliente <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
@@ -23,15 +14,6 @@
                 <li><%= link_to "Lista de Clientes",clientes_path  %></li>
               </ul>
             </li>
-            <li id="fat-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Funcionario <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Nuevo Funcionario", new_funcionario_path %></li>
-                <li><%= link_to "Lista de Funcionarios",funcionarios_path  %></li>
-               </ul>
-             </li>
              <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Facturacion <b class="caret"></b>
@@ -60,18 +42,43 @@
                </ul>
              </li>
              <li id="fat-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Departamento<b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Nuevo Departamento", new_departamento_path %></li>
-                <li><%= link_to "Lista de Departamentos",departamentos_path  %></li>
-               </ul>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Departamento<b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Nuevo Departamento", new_departamento_path %></li>
+                  <li><%= link_to "Lista de Departamentos",departamentos_path  %></li>
+                </ul>
              </li>
+
+              <li id="fat-menu" class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Configuracion del Sistema<b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                   <li class="dropdown-submenu">
+                      <a tabindex="-1" href="#">Usuario</a>
+                      <ul class="dropdown-menu">
+                        <li><%= link_to "Nuevo Usuario", new_user_path %></li>
+                        <li><%= link_to "Lista de Usuario", users_path %></li>
+                      </ul>
+                    </li>
+                  <li class="divider"></li>
+                    <li class="dropdown-submenu">
+                      <a tabindex="-1" href="#">Funcionario</a>
+                      <ul class="dropdown-menu">
+                        <li><%= link_to "Nuevo Funcionario", new_funcionario_path %></li>
+                        <li><%= link_to "Lista de Funcionario", funcionarios_path %></li>
+                      </ul>
+                    </li>
+                </ul>
+             </li>
+
                 <li class="divider"></li>
                 <li>
                   <%= link_to "Cerrar Sesion", logout_path, method: "delete" %>
                 </li>
+                          
           <% else %>
           <% end %>
         </ul>
