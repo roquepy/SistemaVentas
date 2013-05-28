@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130527013334) do
+ActiveRecord::Schema.define(:version => 20130528180011) do
 
   create_table "clientes", :force => true do |t|
     t.string  "nombre",        :null => false
@@ -25,6 +25,10 @@ ActiveRecord::Schema.define(:version => 20130527013334) do
 
   create_table "condicion_de_pagos", :force => true do |t|
     t.string "nombre_condicion_de_pago", :null => false
+  end
+
+  create_table "configuracions", :force => true do |t|
+    t.binary "logo", :null => false
   end
 
   create_table "departamentos", :force => true do |t|

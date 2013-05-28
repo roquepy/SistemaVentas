@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     @funcionarios=Funcionario.all
+    funcionario_new
      respond_to do |format|
         if @user.save
           format.html { redirect_to @user, notice: 'El usuario se ha creado correctamente.' }

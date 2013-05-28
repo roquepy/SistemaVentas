@@ -1,5 +1,6 @@
 Ventas::Application.routes.draw do
   
+
   resources :productos
 
   resources :detalle_factura_venta
@@ -16,6 +17,10 @@ Ventas::Application.routes.draw do
   resources :detalles_factura_venta
   resources :departamentos
   resources :paginas_estaticas
+  resources :configuracions do
+    get "serve", :on => :member
+  end
+resources :configuracions, :member => {:serve => :get}
   root to: 'sesiones#new'
 
 

@@ -1,0 +1,21 @@
+<h1>Listing configuracions</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @configuracions.each do |configuracion| %>
+  <tr>
+    <td><%= link_to 'Show', configuracion %></td>
+    <td><%= link_to 'Edit', edit_configuracion_path(configuracion) %></td>
+    <td><%= link_to 'Destroy', configuracion, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Configuracion', new_configuracion_path %>

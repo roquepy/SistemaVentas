@@ -9,19 +9,19 @@
 						</div> 
 						<div class="mismalinea-espacio-grande">
 					        <%= f.label "Apellido:",class:"mismalinea"%>
-					 	    <%= f.text_field :apellido,:placeholder => "Apellido",class:"mismalinea-espacio"  %>
+					 	    <%= f.text_field :apellido,:placeholder => "Apellido",class:"mismalinea-espacio",:maxlength=>"25" %>
 				       </div><br/><br/><br/>
 				       <div class="mismalinea">
 							<%= f.label "Nro de doc:" ,class:"mismalinea"%>
-							<%= f.text_field :num_identidad,:placeholder => "RUC o Cedula de Identidad",class:"mismalinea-espacio" %>
+							<%= f.text_field :num_identidad,:placeholder => "RUC o Cedula de Identidad",class:"mismalinea-espacio",:maxlength=>"9" %>
 						</div>	
 						<div class="mismalinea-espacio-grande">
 							<%= f.label "Direccion:",class:"mismalinea"%>
-							<%= f.text_field :direccion,:placeholder => "Direccion",class:"mismalinea-espacio"  %>
+							<%= f.text_field :direccion,:placeholder => "Direccion",class:"mismalinea-espacio",:maxlength=>"50"  %>
 						</div><br/><br/><br/>
 						<div class="mismalinea">
 							<%= f.label "Telefono:",class:"mismalinea"%>
-							<%= f.text_field :telefono,:placeholder => "(xxx) xxx xxx" ,class:"mismalinea-espacio" %>
+							<%= f.text_field :telefono,:placeholder => "(xxx) xxx xxx" ,class:"mismalinea-espacio",:maxlength=>"15" %>
 					    </div>
 					    <div class="mismalinea-espacio-grande">
 					        <label class="mismalinea">Sexo:</label>

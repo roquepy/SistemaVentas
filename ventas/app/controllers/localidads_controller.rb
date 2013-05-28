@@ -44,6 +44,7 @@ class LocalidadsController < ApplicationController
   def create
     @localidad = Localidad.new(params[:localidad])
      @departamentos=Departamento.all
+     departamento_new
     respond_to do |format|
       if @localidad.save
         format.html { redirect_to @localidad, notice: 'Se ha guardado correctamente la localidad' }

@@ -45,6 +45,7 @@ class ClientesController < ApplicationController
   def create
     @cliente = Cliente.new(params[:cliente])
     @localidades=Localidad.all
+    localidad_new
     respond_to do |format|
       if @cliente.save
         format.html { redirect_to @cliente, notice: 'El Cliente se ha guardado correctamente.' }

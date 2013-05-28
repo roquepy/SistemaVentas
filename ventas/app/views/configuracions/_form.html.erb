@@ -1,0 +1,13 @@
+<div class="centrar"><br/>
+	<%= form_for(@configuracion, :html => {:multipart => true}) do |f| %>
+	 <h4><%= yield(:title) %></h4><br/>
+		  <div class="mismalinea">
+				<%= f.label "Logo:",class:"mismalinea"%>
+				<%= f.file_field :logo,class:"mismalinea-espacio"  %>
+		  </div>
+</div>  
+         <div class="abajo"><br/>
+              <%= f.submit "Subir", class: "btn btn-primary"%>
+           </div> 
+	<% end %><br/><br/>
+

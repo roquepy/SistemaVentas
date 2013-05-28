@@ -53,6 +53,7 @@ class FacturaVentaController < ApplicationController
     @clientes= Cliente.all
     @condiciones_de_pagos= CondicionDePago.all
     @tipos_de_valores= TipoValorPago.all 
+    detalle_factura_venta_new
     respond_to do |format|
       if @factura_ventum.save
         format.html { redirect_to @factura_ventum, notice: 'Factura ventum was successfully created.' }
