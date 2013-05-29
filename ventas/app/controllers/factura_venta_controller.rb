@@ -26,9 +26,8 @@ class FacturaVentaController < ApplicationController
   def new
     @factura_ventum = FacturaVentum.new
     detalle_factura_venta_new
-
+     params[:factura_ventum ][:ids_condicion_pago] ||= []
     @clientes= Cliente.all
-    @condiciones_de_pagos= CondicionDePago.all
     @tipos_de_valores= TipoValorPago.all 
     @detalles_factura_ventas = DetalleFacturaVentum.all
     respond_to do |format|

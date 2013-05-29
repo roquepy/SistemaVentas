@@ -30,15 +30,12 @@
                 <div class="mismalinea">
                     <label class="mismalinea">Condicion de pago</label>
                     <div class="mismalinea-espacio">
-                          <select name="factura_ventum[id_condicion_pago]" class="selectpicker">
-                              <option value="1">--Seleccione--</option> 
-                                  <% @condiciones_de_pagos.each do |condicion_de_pago| %>
-                                       <option value="<%= condicion_de_pago.id %>" 
-                                          <%= 'selected' if condicion_de_pago.id == @factura_ventum.id_condicion_pago%>>
-                                           <%= condicion_de_pago.nombre_condicion_de_pago %>
-                                       </option>
-                                  <% end %>
-                            </select> <br/>
+                         <% for condicionpago in CondicionDePago.find(:all) %>  
+                              <div>  
+                                <%= check_box_tag "factura_ventum[ids_condicion_pago][]", condicionpago.id, @factura_ventum.@condiciones_de_pagos.include?(condicionpago) %>  
+                                <%= condicionpago.descripcion%>  
+                              </div>  
+                           <% end %>
                      </div>     
                   </div> 
                   <div class="mismalinea-espacio-grande">         

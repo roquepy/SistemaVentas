@@ -23,6 +23,7 @@ group :assets do
   gem 'will_paginate'
   gem 'bootstrap-will_paginate'
   gem 'simple-image-uploader'
+  gem 'client_side_validations'
 end
 
 gem 'jquery-rails'
