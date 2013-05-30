@@ -16,7 +16,7 @@
    margin-left: 380px;
 }
 .centrar h4{
-	margin-left: 220px;
+	margin-left: 190px;
 }
 .mismalinea{
     float:left;
@@ -33,7 +33,7 @@
 
 .abajo{
     clear: both;
-    margin-left: 650px;
+    margin-left: 250px;
 }
 .centrar-solo-un-componente{
 	margin-left: 500px;
@@ -41,3 +41,10 @@
 .centrar-solo-un-componente h4{
 	margin-left: 95px;
 }
+.mover{
+      margin-left:60px;
+}
+.mover h4{
+      margin-left:350px;
+}
+

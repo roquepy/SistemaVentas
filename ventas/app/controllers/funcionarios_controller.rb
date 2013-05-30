@@ -51,7 +51,7 @@ class FuncionariosController < ApplicationController
     @localidades=Localidad.all
     @funciones=Funcion.all
     @estados_funcionarios=EstadosFuncionario.all
- 
+   localidad_new
     respond_to do |format|
       if @funcionario.save
         flash[:success] = "Se ha creado correctamente el funcionario"

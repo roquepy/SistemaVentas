@@ -1,77 +1,43 @@
 
-   <div class="centrar">
     <%= form_for(@funcionario) do |f| %>
-   		 <%= render 'mensajes/error_mensajes', object: f.object %>
-			<h4><%= yield(:title) %></h4><br/>
-			    <div class="mismalinea">
-					<%= f.label "Nombres:",class:"mismalinea"%>
-					<%= f.text_field :nombres,:placeholder => "nombre" ,class:"mismalinea-espacio",:maxlength=>"50"%>
-				</div>
-				<div class="mismalinea-espacio-grande">
-					<%= f.label "Apellidos:",class:"mismalinea"%>
-					<%= f.text_field :apellidos,:placeholder => "apellido",class:"mismalinea-espacio",:maxlength=>"50"  %>
-				</div>	<br/><br/><br/>
-				<div class="mismalinea">	
-					<%= f.label "Nro de doc:",class:"mismalinea"%>
-					<%= f.text_field :num_identidad,:placeholder => "num_documenhto",class:"mismalinea-espacio",:maxlength=>"9" %>
-				</div>	
-				<div class="mismalinea-espacio-grande">
-				    <%= f.label "Direccion:",class:"mismalinea"%>
-					<%= f.text_field :direccion,:placeholder => "direccion",class:"mismalinea-espacio",:maxlength=>"70"  %>
-				</div><br/><br/><br/>	
-				<div class="mismalinea">
-					<%= f.label "Telefono:",class:"mismalinea"%>
-					<%= f.text_field :telefono,:placeholder => "telefono" ,class:"mismalinea-espacio",:maxlength=>"15" %>
-				</div>
-				<div class="mismalinea-espacio-grande">	
-					<label class="mismalinea">Estado Civil:</label>
-					<div class="mismalinea-espacio">
-					    <select name="funcionario[estado_civil]" class="selectpicker" >
-					    	 <option value="Soltero">--Seleccione--</option>
-		                     <option value="Soltero">Soltero</option> 
-		                      <option value="Casado">Casado</option> 
-		                </select> 
-		             </div>   
-	             </div>  <br/><br/><br/> 
-                <div class="mismalinea">
-					<label class="mismalinea">Sexo:</label>
-					<div class="mismalinea-espacio">
+       <%= render 'mensajes/error_mensajes', object: f.object %>
+       <h4><%= yield(:title) %></h4><br/>
+			 <div class="container">
+                <div class="row">
+                	<div class="span3">
+						<%= f.label "Nombres:",class:"label"%>
+						<%= f.text_field :nombres,:placeholder => "nombre",:maxlength=>"50" %><br/>
+						<%= f.label "Nro de doc:",class:"label"%>
+						<%= f.text_field :num_identidad,:placeholder => "num_documenhto",:maxlength=>"9" %><br/>
+						<%= f.label "Telefono:",class:"label"%>
+					    <%= f.text_field :telefono,:placeholder => "telefono",:maxlength=>"15" %><br/>
+					    <label class="label">Sexo:</label>
 						<select name="funcionario[sexo]" class="selectpicker">
 							<option value="1">--Seleccione--</option> 
 		                    <option value="M">Masculino</option> 
 		                    <option value="F">Femenino</option> 
-		                </select> 
-		             </div>    
-	            </div> 
-	            <div class="mismalinea-espacio-grande">   
-			        <label class="mismalinea">Localidad: </label>
-			        <div class="mismalinea-espacio">
-			             <select name="funcionario[id_localidad]" class="selectpicker">
-							  <% @localidades.each do |localidad| %>
-							        <option value="<%= localidad.id %>" 
-										  <%= 'selected' if localidad.id == @funcionario.id_localidad%>><%= localidad.nombre %>
-								     </option>
-							  <% end %>
-			              </select>
-			               
-			        </div>  
-			        <a data-toggle="modal" href="#localidad" ><label  class="mismalinea-espacio">Nueva Localidad </label></a> 	    
-			     </div> <br/><br/><br/>        
-		        <div class="mismalinea">
-				    <label class="mismalinea">Funcion:</label>
-				    <div class="mismalinea-espacio">
+		                </select> <br/>
+		                <label class="label">Funcion:</label>
 					     <select name="funcionario[id_funcion]" class="selectpicker">
 								<% @funciones.each do |funcion| %>
 									<option value="<%= funcion.id %>" 
 										  <%= 'selected' if funcion.id == @funcionario.id_funcion%>><%= funcion.nombre %>
 									</option>
 								<% end %> 
-			             </select> 
-			        </div>     
-			     </div> 
-			     <div class="mismalinea-espacio-grande">  
-			        <label class="mismalinea">Estado del Funcionario:</label>
-			           <div class="mismalinea-espacio">
+			             </select>  
+		            </div>
+		            <div class="span3 offset1">
+		             	<%= f.label "Apellidos:",class:"label"%>
+						<%= f.text_field :apellidos,:placeholder => "apellido",:maxlength=>"50"  %><br/>
+					    <%= f.label "Direccion:",class:"label"%>
+						<%= f.text_field :direccion,:placeholder => "direccion",:maxlength=>"70"  %><br/>
+	                    <label class="label">Estado Civil:</label>
+						    <select name="funcionario[estado_civil]" class="selectpicker" >
+						    	 <option value="Soltero">--Seleccione--</option>
+			                     <option value="Soltero">Soltero</option> 
+			                      <option value="Casado">Casado</option> 
+			                </select> <br/>  
+			            <label class="label">Estado del Funcionario:</label>
 			               <select name="funcionario[id_estado_funcionario]" class="selectpicker">
 			                    <option value="1">--Seleccione--</option> 
 									<% @estados_funcionarios.each do |estado_funcionario| %>
@@ -80,14 +46,23 @@
 										     <%= estado_funcionario.descripcion %>
 									    </option>
 									<% end %> 
-			                 </select> <br/>
-			          </div>     
+			                 </select>
+			                  <label class="label">Localidad:</label>
+					             <select name="funcionario[id_localidad]" class="selectpicker">
+									  <% @localidades.each do |localidad| %>
+									        <option value="<%= localidad.id %>" 
+												  <%= 'selected' if localidad.id == @funcionario.id_localidad%>><%= localidad.nombre %>
+										     </option>
+									  <% end %>
+					              </select>
+			       		 <a data-toggle="modal" href="#localidad" ><label  class="mismalinea-espacio">Nueva Localidad </label></a> 	<br/>  
 			     </div> 
 	</div>		
 	            <div class="abajo"><br/>                 
 			    	<%= f.submit "Guardar", class: "btn btn-primary" %>	
 			    </div>		 
     <% end %>
+
      <div id="localidad" class="modal hide fade in" style="display: none;  " >
            <div class="modal-header">
                <a class="close" data-dismiss="modal">×</a>
