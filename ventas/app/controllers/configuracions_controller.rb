@@ -34,17 +34,14 @@ class ConfiguracionsController < ApplicationController
 
   # GET /configuracions/1/edit
   def edit
-    @configuracion = Configuracion.find(params[:id])
+    @configuracion = Configuracion.find(1)
+
   end
 
   # POST /configuracions
   # POST /configuracions.json
   def create
-    @configuracion = Configuracion.new(params[:configuracion]) do |t|
-      if params[:configuracion][:logo]
-        t.logo = params[:configuracion][:logo].read
-      end
-  end
+    @configuracion = Configuracion.new(params[:configuracion]) 
    if @configuracion.save
        redirect_to(@configuracion, :notice => '')
        else
@@ -55,8 +52,8 @@ end
   # PUT /configuracions/1
   # PUT /configuracions/1.json
   def update
-    @configuracion = Configuracion.find(params[:id])
-
+    @configuracion = Configuracion.find(1)
+    
     respond_to do |format|
       if @configuracion.update_attributes(params[:configuracion])
         format.html { redirect_to @configuracion, notice: 'Configuracion was successfully updated.' }
@@ -79,8 +76,4 @@ end
       format.json { head :no_content }
     end
   end
-    def serve
-      @configuracion = Configuracion.find(params[:id])
-      send_data(@configuracion.logo,:disposition => "inline")
-    end
 end

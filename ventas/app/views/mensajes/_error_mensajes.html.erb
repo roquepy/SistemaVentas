@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="row">
     <div class="span7">
 		<% if object.errors.any? %>
@@ -8,3 +9,10 @@
 		<% end %>	
      </div>	
  </div>		
+=======
+<% if object.errors.any? %>
+  <div class="alert alert-block">
+    El formulario contiene <%= pluralize(object.errors.count, "error") %>.
+  </div>
+<% end %>
+>>>>>>> a8cb3eda73d7ee3e1525e0c3ee72e2444a5b51e2

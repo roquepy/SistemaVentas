@@ -14,25 +14,26 @@
 ActiveRecord::Schema.define(:version => 20130528180011) do
 
   create_table "clientes", :force => true do |t|
-    t.string  "nombre",        :null => false
-    t.string  "apellido",      :null => false
-    t.string  "num_identidad", :null => false
-    t.integer "id_localidad",  :null => false
-    t.string  "direccion",     :null => false
-    t.string  "telefono",      :null => false
-    t.string  "sexo",          :null => false
+    t.string  "nombre",        :limit => 50, :null => false
+    t.string  "apellido",      :limit => 50, :null => false
+    t.string  "num_identidad", :limit => 15, :null => false
+    t.integer "id_localidad",                :null => false
+    t.string  "direccion",     :limit => 70, :null => false
+    t.string  "telefono",      :limit => 15, :null => false
+    t.string  "sexo",          :limit => 15, :null => false
   end
 
   create_table "condicion_de_pagos", :force => true do |t|
-    t.string "nombre_condicion_de_pago", :null => false
+    t.string "nombre_condicion_de_pago", :limit => 15, :null => false
   end
 
   create_table "configuracions", :force => true do |t|
-    t.binary "logo", :null => false
+    t.string "nombre_logo"
+    t.binary "logo",        :null => false
   end
 
   create_table "departamentos", :force => true do |t|
-    t.string "nombre", :null => false
+    t.string "nombre", :limit => 30, :null => false
   end
 
   create_table "detalle_factura_venta", :force => true do |t|
@@ -42,15 +43,8 @@ ActiveRecord::Schema.define(:version => 20130528180011) do
     t.integer "descuento"
   end
 
-  create_table "detalles_factura_venta", :force => true do |t|
-    t.integer "id_factura_venta", :null => false
-    t.integer "id_producto",      :null => false
-    t.integer "cantidad",         :null => false
-    t.integer "descuento"
-  end
-
   create_table "estados_funcionarios", :force => true do |t|
-    t.string "descripcion", :null => false
+    t.string "descripcion", :limit => 15, :null => false
   end
 
   create_table "factura_venta", :force => true do |t|
@@ -68,26 +62,26 @@ ActiveRecord::Schema.define(:version => 20130528180011) do
 
   create_table "funcionarios", :force => true do |t|
     t.string   "num_identidad"
-    t.string   "nombres",               :null => false
-    t.string   "apellidos",             :null => false
-    t.string   "direccion"
-    t.string   "telefono",              :null => false
-    t.string   "estado_civil",          :null => false
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
-    t.string   "sexo",                  :null => false
-    t.integer  "id_localidad",          :null => false
-    t.integer  "id_estado_funcionario", :null => false
-    t.integer  "id_funcion",            :null => false
+    t.string   "nombres",               :limit => 50, :null => false
+    t.string   "apellidos",             :limit => 50, :null => false
+    t.string   "direccion",             :limit => 70
+    t.string   "telefono",              :limit => 10, :null => false
+    t.string   "estado_civil",          :limit => 10, :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.string   "sexo",                  :limit => 15, :null => false
+    t.integer  "id_localidad",                        :null => false
+    t.integer  "id_estado_funcionario",               :null => false
+    t.integer  "id_funcion",                          :null => false
   end
 
   create_table "funcions", :force => true do |t|
-    t.string "nombre", :null => false
+    t.string "nombre", :limit => 30, :null => false
   end
 
   create_table "localidads", :force => true do |t|
-    t.string  "nombre",          :null => false
-    t.integer "id_departamento", :null => false
+    t.string  "nombre",          :limit => 30, :null => false
+    t.integer "id_departamento",               :null => false
   end
 
   create_table "productos", :force => true do |t|
@@ -100,12 +94,12 @@ ActiveRecord::Schema.define(:version => 20130528180011) do
   end
 
   create_table "tipo_valor_pagos", :force => true do |t|
-    t.string "descripcion", :null => false
+    t.string "descripcion", :limit => 50, :null => false
   end
 
   create_table "users", :force => true do |t|
-    t.string  "username",         :null => false
-    t.string  "password"
+    t.string  "username",         :limit => 20, :null => false
+    t.string  "password",         :limit => 20
     t.string  "crypted_password"
     t.string  "salt"
     t.integer "id_funcionario"
