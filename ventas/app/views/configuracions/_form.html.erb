@@ -4,7 +4,10 @@
 		  <div class="mismalinea">
 				<%= f.label "Logo:",class:"mismalinea"%>
 				<%= f.file_field :logo,class:"mismalinea-espacio"  %>
+				<%= f.label :nombre_logo,class:"mismalinea"%>
+				<%= f.text_field :nombre_logo,class:"mismalinea"%>
 		  </div>
+
 </div>  
          <div class="abajo"><br/>
               <%= f.submit "Subir", class: "btn btn-primary"%>
