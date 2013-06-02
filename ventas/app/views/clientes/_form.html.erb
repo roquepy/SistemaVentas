@@ -1,55 +1,33 @@
    <div class="centrar" >
-    <%= form_for @cliente, :validate => true do |f| %>
+    <%= form_for @cliente do |f| %>
    		 <%= render 'mensajes/error_mensajes', object: f.object %>
-				 	<h4><%= yield(:title) %></h4><br/>
-					     <div class="mismalinea">
-					         <%= f.label "Nombre:",class:"mismalinea"%>
-							<%= f.text_field :nombre,:id=>"txt_nombres",:placeholder => "Nombre",:maxlength=>"25",class:"mismalinea-espacio" %>
-						</div> 
-						<div class="mismalinea-espacio-grande">
-					        <%= f.label "Apellido:",class:"mismalinea"%>
-					 	    <%= f.text_field :apellido,:placeholder => "Apellido",class:"mismalinea-espacio",:maxlength=>"25" %>
-				       </div><br/><br/><br/>
-				       <div class="mismalinea">
-							<%= f.label "Nro de doc:" ,class:"mismalinea"%>
-							<%= f.text_field :num_identidad,:placeholder => "RUC o Cedula de Identidad",class:"mismalinea-espacio",:maxlength=>"9" %>
-						</div>	
-						<div class="mismalinea-espacio-grande">
-							<%= f.label "Direccion:",class:"mismalinea"%>
-							<%= f.text_field :direccion,:placeholder => "Direccion",class:"mismalinea-espacio",:maxlength=>"50"  %>
-						</div><br/><br/><br/>
-						<div class="mismalinea">
-							<%= f.label "Telefono:",class:"mismalinea"%>
-							<%= f.text_field :telefono,:placeholder => "(xxx) xxx xxx" ,class:"mismalinea-espacio",:maxlength=>"15" %>
-					    </div>
-					    <div class="mismalinea-espacio-grande">
-					        <label class="mismalinea">Sexo:</label>
-					        <div class="mismalinea-espacio">
-								<select name="cliente[sexo]" class="selectpicker" >
-								   <option value="1">Seleccione su sexo</option> 
-					                <option value="M">Masculino</option> 
-					                <option value="F">Femenino</option> 
-					            </select>  
-					        </div>
-				        </div><br/><br/><br/>
-				        <div class="mismalinea">
-				            <label class="mismalinea">Localidad:</label>
-				            <div class="mismalinea-espacio">
-							    <select name="cliente[id_localidad]" class="selectpicker">
-							    	<option value="1">Seleccione la localidad</option> 
-								      <% @localidades.each do |localidad| %>
-											<option value="<%= localidad.id %>" 
-											       <%= 'selected' if localidad.id == @cliente.id_localidad%>>
-												    <%= localidad.nombre %>
-											</option>
-									   <% end %>
-								 </select> 
+			<h4><%= yield(:title) %></h4><br/>
+			<div class="container">
+               <div class="row">
+                   <div class="span3">
+				        <%= f.label "Nombre:",class:"label"%>
+					    <%= f.text_field :nombre,:id=>"txt_nombres",:placeholder => "Nombre",:maxlength=>"25" %>
+					    <%= f.label "Nro de doc:",class:"label"%>
+						<%= f.text_field :num_identidad,:placeholder => "RUC o Cedula de Identidad",:maxlength=>"9" %>
+						<%= f.label "Telefono:",class:"label"%>
+							<%= f.text_field :telefono,:placeholder => "(xxx) xxx xxx" ,:maxlength=>"15" %>
+						<label class="label">Localidad:</label>
+				           <%=f.collection_select :id_localidad,Localidad.find(:all),:id,:nombre,:prompt=>"--Seleccione--"%>    
 								
-							</div>
-							<a data-toggle="modal" href="#localidad" ><label  class="mismalinea-espacio">Nueva Localidad </label></a> 	
-						</div>
-			</div>			
-			      <div class="abajo"><br/>
+							<a data-toggle="modal" href="#localidad" ><label>Nueva Localidad </label></a> 
+					</div>
+					<div class="span3 offset1">
+					        <%= f.label "Apellido:",class:"label"%>
+					 	    <%= f.text_field :apellido,:placeholder => "Apellido",:maxlength=>"25" %>
+					 	    <%= f.label "Direccion:",class:"label"%>
+							<%= f.text_field :direccion,:placeholder => "Direccion",:maxlength=>"50"  %>
+							<label class="label">Sexo:</label>
+							<%= f.select(:sexo, ['M', 'F' ],:prompt=>"--Seleccione--",id:"select")%>
+				     </div>
+				</div>
+			</div>	
+</div>		    			
+			      <div class="abajo" align="center"><br/>
 					<%= f.submit "Guardar", class: "btn btn-primary"%>
 				   </div>	 
 	
@@ -70,24 +48,16 @@
 					     </div><br/>
 					     <div class="mismalinea">		 
 			                 <label class="mismalinea">Departamento:</label>
-			                 <div class="mismalinea-espacio">
-					              <select name="localidad[id_departamento]" class="selectpicker">
-									 <option value="1">--Seleccione--</option> 
-										 <% @departamentos.each do |departamento| %>
-											 <option value="<%= departamento.id %>" 
-												    <%= 'selected' if departamento.id == @localidad.id_departamento%>><%= departamento.nombre %>
-											  </option>
-										  <% end %>
-							       </select><br/>
-							  </div>    
-						 </div>	   
+			                 <%=f.collection_select :id_departamento,Departamento.find(:all),:id,:nombre,:prompt=>"--Seleccione--"%>  
+						 </div>    
+			 </div>	   
 	        	
-            </div>
+      
        
                         <div class="modal-footer">
                             <%= f.submit "Guardar", :class => 'btn btn-success', :controller => 'clientes_controller', :action =>'localidad_create' %>
                             <a href="#" class="btn" data-dismiss="modal">Close</a>
                         </div>
                     <% end %>
-        </div><br/></br>
+        <div><br/></br>
      

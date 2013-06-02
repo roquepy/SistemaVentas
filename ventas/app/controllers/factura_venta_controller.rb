@@ -26,10 +26,6 @@ class FacturaVentaController < ApplicationController
   def new
     @factura_ventum = FacturaVentum.new
     detalle_factura_venta_new
-   @condiciones_de_pagos= CondicionDePago.all
-    @clientes= Cliente.all
-    @tipos_de_valores= TipoValorPago.all 
-    @detalles_factura_ventas = DetalleFacturaVentum.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @factura_ventum }
@@ -39,9 +35,6 @@ class FacturaVentaController < ApplicationController
   # GET /factura_venta/1/edit
   def edit
     @factura_ventum = FacturaVentum.find(params[:id])
-    @clientes= Cliente.all
-    @condiciones_de_pagos= CondicionDePago.all
-    @tipos_de_valores= TipoValorPago.all 
     detalle_factura_venta_new
   end
 
@@ -49,9 +42,6 @@ class FacturaVentaController < ApplicationController
   # POST /factura_venta.json
   def create
     @factura_ventum = FacturaVentum.new(params[:factura_ventum])
-    @clientes= Cliente.all
-    @condiciones_de_pagos= CondicionDePago.all
-    @tipos_de_valores= TipoValorPago.all 
     detalle_factura_venta_new
     respond_to do |format|
       if @factura_ventum.save

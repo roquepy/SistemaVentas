@@ -1,4 +1,4 @@
-
+<div class="centrar"><br/>
     <%= form_for(@funcionario) do |f| %>
        <%= render 'mensajes/error_mensajes', object: f.object %>
        <h4><%= yield(:title) %></h4><br/>
@@ -12,19 +12,9 @@
 						<%= f.label "Telefono:",class:"label"%>
 					    <%= f.text_field :telefono,:placeholder => "telefono",:maxlength=>"15" %><br/>
 					    <label class="label">Sexo:</label>
-						<select name="funcionario[sexo]" class="selectpicker">
-							<option value="1">--Seleccione--</option> 
-		                    <option value="M">Masculino</option> 
-		                    <option value="F">Femenino</option> 
-		                </select> <br/>
+						 	<%= f.select(:sexo, ['M', 'F' ],:prompt=>"--Seleccione--",id:"select")%>
 		                <label class="label">Funcion:</label>
-					     <select name="funcionario[id_funcion]" class="selectpicker">
-								<% @funciones.each do |funcion| %>
-									<option value="<%= funcion.id %>" 
-										  <%= 'selected' if funcion.id == @funcionario.id_funcion%>><%= funcion.nombre %>
-									</option>
-								<% end %> 
-			             </select>  
+					     <%=f.collection_select :id_funcion,Funcion.find(:all),:id,:nombre,:prompt=>"--Seleccione--",id:"select"%>
 		            </div>
 		            <div class="span3 offset1">
 		             	<%= f.label "Apellidos:",class:"label"%>
@@ -32,35 +22,21 @@
 					    <%= f.label "Direccion:",class:"label"%>
 						<%= f.text_field :direccion,:placeholder => "direccion",:maxlength=>"70"  %><br/>
 	                    <label class="label">Estado Civil:</label>
-						    <select name="funcionario[estado_civil]" class="selectpicker" >
-						    	 <option value="Soltero">--Seleccione--</option>
-			                     <option value="Soltero">Soltero</option> 
-			                      <option value="Casado">Casado</option> 
-			                </select> <br/>  
+						     <%= f.select(:estado_civil, ['Casado', 'Soltero' ],:prompt=>"--Seleccione--")%> 
 			            <label class="label">Estado del Funcionario:</label>
-			               <select name="funcionario[id_estado_funcionario]" class="selectpicker">
-			                    <option value="1">--Seleccione--</option> 
-									<% @estados_funcionarios.each do |estado_funcionario| %>
-										<option value="<%= estado_funcionario.id %>" 
-										     <%= 'selected' if estado_funcionario.id == @funcionario.id_estado_funcionario%>>
-										     <%= estado_funcionario.descripcion %>
-									    </option>
-									<% end %> 
-			                 </select>
-			                  <label class="label">Localidad:</label>
-					             <select name="funcionario[id_localidad]" class="selectpicker">
-									  <% @localidades.each do |localidad| %>
-									        <option value="<%= localidad.id %>" 
-												  <%= 'selected' if localidad.id == @funcionario.id_localidad%>><%= localidad.nombre %>
-										     </option>
-									  <% end %>
-					              </select>
+			               <%=f.collection_select :id_estado_funcionario,EstadosFuncionario.find(:all),:id,:descripcion,:prompt=>"--Seleccione--"%>  
+			             <label class="label">Localidad:</label>
+					      <%=f.collection_select :id_localidad,Localidad.find(:all),:id,:nombre,:prompt=>"--Seleccione--"%>    
 			       		 <a data-toggle="modal" href="#localidad" ><label  class="mismalinea-espacio">Nueva Localidad </label></a> 	<br/>  
 			     </div> 
-	</div>		
-	            <div class="abajo"><br/>                 
-			    	<%= f.submit "Guardar", class: "btn btn-primary" %>	
-			    </div>		 
+	        </div>	
+	    </div>
+</div>	        	
+	           <div align="center">
+		            <div class="abajo"><br/>                 
+				    	<%= f.submit "Guardar", class: "btn btn-primary" %>	
+				    </div>	
+				</div>    	 
     <% end %>
 
      <div id="localidad" class="modal hide fade in" style="display: none;  " >
@@ -78,16 +54,7 @@
 					     </div><br/>
 					     <div class="mismalinea">		 
 			                 <label class="mismalinea">Departamento:</label>
-			                 <div class="mismalinea-espacio">
-					              <select name="localidad[id_departamento]" class="selectpicker">
-									 <option value="1">--Seleccione--</option> 
-										 <% @departamentos.each do |departamento| %>
-											 <option value="<%= departamento.id %>" 
-												    <%= 'selected' if departamento.id == @localidad.id_departamento%>><%= departamento.nombre %>
-											  </option>
-										  <% end %>
-							       </select><br/>
-							  </div>    
+			                  <%=f.collection_select:id_departamento,Departamento.find(:all),:id,:nombre,:prompt=>"--Seleccione--"%>  
 						 </div>	   
 	        	
             </div>

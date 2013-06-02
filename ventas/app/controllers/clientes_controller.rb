@@ -25,7 +25,6 @@ class ClientesController < ApplicationController
   # GET /clientes/new.json
   def new
     @cliente = Cliente.new
-    @localidades=Localidad.all
     localidad_new
     respond_to do |format|
       format.html # new.html.erb
@@ -36,7 +35,6 @@ class ClientesController < ApplicationController
   # GET /clientes/1/edit
   def edit
     @cliente = Cliente.find(params[:id])
-    @localidades=Localidad.all
     localidad_new
   end
 
@@ -44,7 +42,6 @@ class ClientesController < ApplicationController
   # POST /clientes.json
   def create
     @cliente = Cliente.new(params[:cliente])
-    @localidades=Localidad.all
     localidad_new
     respond_to do |format|
       if @cliente.save

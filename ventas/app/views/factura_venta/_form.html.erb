@@ -1,4 +1,5 @@
 <div class="mover">
+
     <%= form_for(@factura_ventum) do |f| %>
        <%= render 'mensajes/error_mensajes', object: f.object %>
           <h4><%= yield(:title) %></h4><br/>
@@ -8,41 +9,19 @@
                    <%= f.label :fecha,class:"label"%>
                    <%= f.text_field :fecha,:value => Date.today,:readonly => true%>
                    <label class="label">Clientes</label>
-                      <select name="factura_ventum[id_cliente]" class="selectpicker">
-                          <option value="1">--Seleccione--</option> 
-                              <% @clientes.each do |cliente| %>
-                                  <option value="<%= cliente.id %>" 
-                                      <%= 'selected' if cliente.id == @factura_ventum.id_cliente%>> <%= cliente.nombre %>
-                                   </option>
-                             <% end %>
-                    </select>  
+                       <%=f.collection_select :id_cliente,Cliente.find(:all),:id,:nombre,:prompt=>"--Seleccione--",id:"select"%>
                 </div>
                 <div class="span3 offset1">
                    <%= f.label :Nro_de_Factura,class:"label"%>
                    <%= f.text_field :nro_factura,:readonly => true%>
                     <label class="label">Condicion de pago:</label>
-                        <select name="factura_ventum[id_condicion_pago]" class="selectpicker">
-                          <option value="1">--Seleccione--</option> 
-                              <% @condiciones_de_pagos.each do |condicion_pago| %>
-                                  <option value="<%= condicion_pago.id %>" 
-                                      <%= 'selected' if condicion_pago.id == @factura_ventum.id_condicion_pago%>> <%= condicion_pago.nombre_condicion_de_pago %>
-                                   </option>
-                             <% end %>
-                    </select>      
+                        <%=f.collection_select :id_condicion_pago,CondicionDePago.find(:all),:id,:nombre_condicion_de_pago,:prompt=>"--Seleccione--",id:"select"%>
                 </div> 
                 <div class="span3 offset1">  
                    <%= f.label :funcionario,class:"label"%>
                    <%= f.text_field :id_funcionario,:text=>current_user.funcionario.nombres + " " + current_user.funcionario.apellidos,:value =>current_user.funcionario.nombres + " " + current_user.funcionario.apellidos,:readonly => true %> 
                     <label class="label">Tipo de Valor</label>
-                          <select name="factura_ventum[id_tipo_valor]" class="selectpicker">
-                               <option value="1">--Seleccione--</option> 
-                                  <% @tipos_de_valores.each do |tipo_de_valor| %>
-                                      <option value="<%= tipo_de_valor.id %>" 
-                                         <%= 'selected' if tipo_de_valor.id == @factura_ventum.id_tipo_valor%>>
-                                           <%= tipo_de_valor.descripcion%>
-                                </option>
-                                    <% end %>
-                           </select> 
+                          <%=f.collection_select :id_tipo_valor,TipoValorPago.find(:all),:id,:descripcion,:prompt=>"--Seleccione--",id:"select"%>
                  </div>   
                     <div class="span3">
                        <%= f.label :descuento,class:"label"%>
@@ -61,30 +40,25 @@
                      
             </div>
          </div>   
-   
-                   <div class="abajo"><br/>    
-                    <a style='cursor: pointer;' onclick="muestra_oculta('producto')"><label>Cargar Producto </label></a>
-                  </div>  
+                 <div align="center">
+                     <div class="abajo"><br/>    
+                      <a style='cursor: pointer;' onclick="muestra_oculta('producto')"><label>Cargar Producto </label></a>
+                    </div>  
+                 </div> 
+                 <div align="center">        
+              
+         
   </div>                
   
-            <div id="producto"style="display: none; ">
+          <div id="producto"style="display: none; ">
               <div class="mover">
-                   <h4>Producto</h4><br/>
-                      <%= form_for @detalle_factura_venta do |g| %>
-                        <%= render 'mensajes/error_mensajes', object: g.object %>
+                      <%= form_for :detalle_factura_ventum, :url=>detalle_factura_venta_path, :remote => true  do |g| %>
                             <div class="container">
                                 <div class="row">
                                     <div class="span3">
+                                       <%g.hidden_field :id_factura,:value=>@factura_ventum.id%>
                                        <label class="label">Producto:</label>
-                                         <select name="detalle_factura_venta[id_producto]" class="selectpicker">
-                                            <option value="1">--Seleccione--</option> 
-                                             <% @productos.each do |producto| %>
-                                                 <option value="<%= producto.id %>" 
-                                                   <%= 'selected' if producto.id == @detalle_factura_venta.id_producto%>>
-                                                   <%= producto.descripcion %>
-                                                 </option>
-                                            <% end %>>
-                                            </select> 
+                                         <%=g.collection_select :id_producto,Producto.find(:all),:id,:descripcion,:prompt=>"--Seleccione--",id:"select"%>
                                    </div>      
                                    <div class="span3 offset1">
                                         <%= g.label "Cantidad:",class:"label" %>
@@ -95,17 +69,20 @@
                                             <%= g.text_field :descuento %>
                                     </div>       
                               </div><br/>
-                           </div>   
-                                 <div class="abajo"><br/>
-                                    <%= g.submit "Guardar", :class => 'btn btn-success', :controller => 'factura_venta_controller', :action =>'detalle_factura_venta_create' %>
-                                 </div>   
+                           </div>
+                 </div>            
+                               <div align="center">   
+                                   <div class="abajo"><br/>
+                                      <%= g.submit "Agregar", :class => 'btn btn-success'%>
+                                   </div>   
                              </div>
-                           </div>   
-                            <% end %>
-                   </div> <br/><br/>
-
-                   <div class="abajo"><br/>    
-                      <%= f.submit "Guardar", class: "btn btn-primary"%>
-                  </div>    
-              <% end %>
+                 
+                   <% end %>
+        </div> <br/><br/>
+          <div class="abajo"><br/>
+                <%= f.submit "Guardar", class: "btn btn-primary"%>
+          </div> 
+        </div>    
+        <% end %>   
+        
                

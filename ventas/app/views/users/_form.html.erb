@@ -1,34 +1,27 @@
- <div class="centrar">
+ <div class="centrar"><br/>
 	 <%= form_for(@user) do |f| %>
 	   	<%= render 'mensajes/error_mensajes', object: f.object %>
 			<h4><%= yield(:title) %></h4></br>
-			<div class="mismalinea">
-				<%= f.label "Usuario:" ,class:"mismalinea"%>
-			    <%= f.text_field :username,:placeholder => "usuario",class:"mismalinea-espacio",:maxlength=>"15", :size => "15"  %>
-			</div>
-			<div class="mismalinea-espacio-grande">
-				<%= f.label "Contrasena:",class:"mismalinea" %>
-			    <%= f.password_field :password,:placeholder => "contrasena" ,class:"mismalinea-espacio",:maxlength=>"15" %><br/>
-            </div><br/><br/><br/>
-			<div class="mismalinea">
-				<label class="mismalinea">Funcionario:</label>
-				 <div class="mismalinea-espacio">
-					<select name="user[id_funcionario]" class="selectpicker">
-						<option value="1">--Seleccione--</option> 
-							<% @funcionarios.each do |funcionario| %>
-								<option value="<%= funcionario.id %>" 
-									<%= 'selected' if funcionario.id == @user.id_funcionario%>><%= funcionario.nombres %>
-								</option>
-							<% end %> 
-				    </select> 
-				 </div>   
-				 <a data-toggle="modal" href="#funcionario" ><label  class="mismalinea-espacio">Nuevo Funcionario </label></a> 	
-			</div>   	    
-  </div>				    			    
-			<div class="abajo"><br/>
+			<div class="container">
+               <div class="row">
+                   <div class="span3">
+						<%= f.label "Usuario:" ,class:"label"%>
+					    <%= f.text_field :username,:placeholder => "usuario",:maxlength=>"15"%>
+					    <label class="label">Funcionario:</label>
+						  <%=f.collection_select :id_funcionario,Funcionario.find(:all),:id,:nombres,:prompt=>"--Seleccione--"%>     
+						 <a data-toggle="modal" href="#funcionario" ><label  class="mismalinea-espacio">Nuevo Funcionario </label></a> 
+				    </div>
+				   <div class="span3 offset1">
+						<%= f.label "Contrasena:",class:"label" %>
+					    <%= f.password_field :password,:placeholder => "contrasena",:maxlength=>"15" %><br/>
+				   </div>	
+			    </div>   	    
+           </div>
+ </div>          				    			    
+			<div class="abajo" align="center"><br/>
 					<%= f.submit "Guardar", class: "btn btn-primary" %>
 			</div>			
-	  <% end %>
+    <% end %>
 
       <div id="funcionario" class="modal hide fade in" style="display: none;  " >
            <div class="modal-header">

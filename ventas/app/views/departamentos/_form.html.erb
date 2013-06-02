@@ -1,18 +1,17 @@
-<div class="centrar-solo-un-componente">
+<div class="centrar-solo-un-componente"></br>
     <%= form_for(@departamento) do |f| %>
-   		 <%= render 'mensajes/error_mensajes', object: f.object %>
-                 <h4><%= yield(:title) %></h4><br/>
-				 <div class="mismalinea">
-					 <%= f.label "Departamento:",class:"mismalinea"%>
-					  <%= f.text_field :nombre,:placeholder => "departamento",class:"mismalinea-espacio",:maxlength=>"35" %>
-				</div> 
+   		<%= render 'mensajes/error_mensajes', object: f.object %>
+           <h4><%= yield(:title) %></h4><br/>
+               <div class="container">
+                    <div class="row">
+                        <div class="span3">
+						    <%= f.label "Departamento:"%>
+						    <%= f.text_field :nombre,:placeholder => "departamento",:maxlength=>"35" %>
+					    </div>
+				    </div>
+			    </div>	
 </div>				
-				 <div class="abajo"><br/>
-					<%= f.submit "Guardar", class: "btn btn-primary" %>
-				</div>
-
-				 <div class="fileupload fileupload-new" data-provides="fileupload">
-   
- </div>
-						
-    <% end %><br/><br/>
+				<div class="abajo" align="center"><br/>
+					<%= f.submit "Guardar", class: "btn btn-primary"%>
+				</div>	
+	<% end %><br/><br/>

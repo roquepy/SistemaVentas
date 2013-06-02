@@ -24,7 +24,6 @@ class LocalidadsController < ApplicationController
   # GET /localidads/new.json
   def new
     @localidad = Localidad.new
-    @departamentos=Departamento.all
     departamento_new
     respond_to do |format|
       format.html # new.html.erb
@@ -35,7 +34,6 @@ class LocalidadsController < ApplicationController
   # GET /localidads/1/edit
   def edit
     @localidad = Localidad.find(params[:id])
-     @departamentos=Departamento.all
      departamento_new
   end
 
@@ -43,7 +41,6 @@ class LocalidadsController < ApplicationController
   # POST /localidads.json
   def create
     @localidad = Localidad.new(params[:localidad])
-     @departamentos=Departamento.all
      departamento_new
     respond_to do |format|
       if @localidad.save

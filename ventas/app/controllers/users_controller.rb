@@ -8,13 +8,11 @@ class UsersController < ApplicationController
   end
   def new
     @user = User.new
-    @funcionarios=Funcionario.all
     funcionario_new
   end
 
   def create
     @user = User.new(params[:user])
-    @funcionarios=Funcionario.all
     funcionario_new
      respond_to do |format|
         if @user.save
@@ -27,7 +25,6 @@ class UsersController < ApplicationController
    end
   def edit
     @user = User.find(params[:id])
-    @funcionarios=Funcionario.all
     funcionario_new
   end
 
