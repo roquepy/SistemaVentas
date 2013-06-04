@@ -130,67 +130,67 @@ Desarrollado por :
                     </task>
                     <task id="61" name="T12.4. Testeo de las las subtareas T12.2 y T12.3" color="#8cb6ce" meeting="false" start="2013-05-01" duration="2" complete="0" priority="1" expand="true"/>
                 </task>
-                <task id="29" name="T13. FUNCIONARIOS" color="#8cb6ce" meeting="false" start="2013-05-05" duration="3" complete="0" priority="1" expand="false">
+                <task id="29" name="T13. FUNCIONARIOS" color="#8cb6ce" meeting="false" start="2013-05-05" duration="5" complete="0" priority="1" expand="true">
                     <depend id="25" type="2" difference="0" hardness="Strong"/>
                     <depend id="37" type="2" difference="0" hardness="Strong"/>
                     <depend id="73" type="2" difference="0" hardness="Strong"/>
                     <depend id="93" type="2" difference="0" hardness="Strong"/>
-                    <task id="30" name="T13.1. UI de Nuevo Funcionario" color="#8cb6ce" meeting="false" start="2013-05-06" duration="1" complete="0" priority="1" expand="true">
+                    <task id="30" name="T13.1. UI de Nuevo Funcionario" color="#8cb6ce" meeting="false" start="2013-05-05" duration="1" complete="0" priority="1" expand="true">
                         <depend id="31" type="2" difference="0" hardness="Strong"/>
                     </task>
-                    <task id="31" name="T13.2. ABM de Nuevo Funcionario" color="#8cb6ce" meeting="false" start="2013-05-07" duration="2" complete="0" priority="1" expand="true">
+                    <task id="31" name="T13.2. ABM de Nuevo Funcionario" color="#8cb6ce" meeting="false" start="2013-05-06" duration="2" complete="0" priority="1" expand="true">
                         <depend id="32" type="2" difference="0" hardness="Strong"/>
                         <depend id="62" type="2" difference="0" hardness="Strong"/>
                         <depend id="66" type="2" difference="0" hardness="Strong"/>
                     </task>
-                    <task id="66" name="T13.3. Lista de Funcionarios" color="#8cb6ce" meeting="false" start="2013-05-09" duration="1" complete="0" priority="1" expand="true">
+                    <task id="66" name="T13.3. Lista de Funcionarios" color="#8cb6ce" meeting="false" start="2013-05-08" duration="1" complete="0" priority="1" expand="true">
                         <depend id="32" type="2" difference="0" hardness="Strong"/>
                     </task>
-                    <task id="32" name="T13.4. Pruebas y Soluciones de Errores" color="#8cb6ce" meeting="false" start="2013-05-10" duration="1" complete="0" priority="1" expand="true"/>
+                    <task id="32" name="T13.4. Pruebas y Soluciones de Errores" color="#8cb6ce" meeting="false" start="2013-05-09" duration="1" complete="0" priority="1" expand="true"/>
                 </task>
-                <task id="112" name="T14. USUARIOS" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="false">
+                <task id="112" name="T14. USUARIOS" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true">
                     <task id="113" name="T14.1. UI de Usuarios" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                     <task id="114" name="T14.2. ABM de Usuarios" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                     <task id="115" name="T14.3. Lista de Usuarios" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                     <task id="116" name="T14.4. Pruebas y Soluciones de Errores" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                 </task>
-                <task id="33" name="T15. CLIENTES" color="#8cb6ce" meeting="false" start="2013-05-06" duration="4" complete="0" priority="1" expand="false">
+                <task id="33" name="T15. CLIENTES" color="#8cb6ce" meeting="false" start="2013-05-06" duration="6" complete="0" priority="1" expand="true">
                     <depend id="25" type="2" difference="0" hardness="Strong"/>
                     <depend id="37" type="2" difference="0" hardness="Strong"/>
                     <depend id="73" type="2" difference="0" hardness="Strong"/>
                     <depend id="93" type="2" difference="0" hardness="Strong"/>
-                    <task id="34" name="T15.1. UI de Nuevo Cliente" color="#8cb6ce" meeting="false" start="2013-05-07" duration="1" complete="0" priority="1" expand="true">
+                    <task id="34" name="T15.1. UI de Nuevo Cliente" color="#8cb6ce" meeting="false" start="2013-05-06" duration="1" complete="0" priority="1" expand="true">
                         <depend id="35" type="2" difference="0" hardness="Strong"/>
                         <depend id="36" type="2" difference="0" hardness="Strong"/>
                     </task>
-                    <task id="35" name="T15.2. ABM de Nuevo Cleinte" color="#8cb6ce" meeting="false" start="2013-05-08" duration="2" complete="0" priority="1" expand="true">
+                    <task id="35" name="T15.2. ABM de Nuevo Cleinte" color="#8cb6ce" meeting="false" start="2013-05-07" duration="2" complete="0" priority="1" expand="true">
                         <depend id="36" type="2" difference="0" hardness="Strong"/>
                         <depend id="68" type="2" difference="0" hardness="Strong"/>
                     </task>
-                    <task id="68" name="T15.3. Lista de Clientes" color="#8cb6ce" meeting="false" start="2013-05-10" duration="1" complete="0" priority="1" expand="true">
+                    <task id="68" name="T15.3. Lista de Clientes" color="#8cb6ce" meeting="false" start="2013-05-09" duration="1" complete="0" priority="1" expand="true">
                         <depend id="36" type="2" difference="0" hardness="Strong"/>
                     </task>
-                    <task id="36" name="T15.4.Pruebas y Soluciones de Errores" color="#8cb6ce" meeting="false" start="2013-05-11" duration="2" complete="0" priority="1" expand="true"/>
+                    <task id="36" name="T15.4.Pruebas y Soluciones de Errores" color="#8cb6ce" meeting="false" start="2013-05-10" duration="2" complete="0" priority="1" expand="true"/>
                 </task>
-                <task id="97" name="T16. PRODUCTOS" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="false">
+                <task id="97" name="T16. PRODUCTOS" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true">
                     <task id="98" name="T16.1. UI de Nuevo Producto" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                     <task id="99" name="T16.2. ABM de Nuevo Producto" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                     <task id="100" name="T16.3. Lista de Productos" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                     <task id="101" name="T16.4. Pruebas y Soluciones de Errores." color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                 </task>
-                <task id="102" name="T17. LOCALIDADES" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="false">
+                <task id="102" name="T17. LOCALIDADES" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true">
                     <task id="103" name="T17.1. UI de Nueva Localidad" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                     <task id="104" name="T17.2. ABM de Nueva Localidad" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                     <task id="105" name="T17.3. Lista de Localidades" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                     <task id="106" name="T17.4. Pruebas y Soluciones de Errores" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                 </task>
-                <task id="107" name="T18. DEPARTAMENTOS" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="false">
+                <task id="107" name="T18. DEPARTAMENTOS" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true">
                     <task id="108" name="T18.1. UI de  Nuevo Departamento." color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                     <task id="109" name="T18.2. ABM de Nuevo Departamento" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                     <task id="110" name="T18.3. Lista de Departamentos" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                     <task id="111" name="T18.4. Pruebas y Soluciones de Errores." color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                 </task>
-                <task id="25" name="T19. FACTURA DE VENTAS" color="#8cb6ce" meeting="false" start="2013-05-17" duration="11" complete="0" priority="1" expand="false">
+                <task id="25" name="T19. FACTURA DE VENTAS" color="#8cb6ce" meeting="false" start="2013-05-15" duration="14" complete="0" priority="1" expand="true">
                     <depend id="37" type="2" difference="0" hardness="Strong"/>
                     <depend id="43" type="2" difference="0" hardness="Strong"/>
                     <depend id="73" type="2" difference="0" hardness="Strong"/>
@@ -198,7 +198,7 @@ Desarrollado por :
                     <task id="26" name="T19.1. UI de Factura de Venta" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true">
                         <depend id="27" type="2" difference="0" hardness="Strong"/>
                     </task>
-                    <task id="27" name="T19.2.ABM de Factura de Venta" color="#8cb6ce" meeting="false" start="2013-05-17" duration="7" complete="0" priority="1" expand="true">
+                    <task id="27" name="T19.2.ABM de Factura de Venta" color="#8cb6ce" meeting="false" start="2013-05-15" duration="7" complete="0" priority="1" expand="true">
                         <depend id="28" type="2" difference="0" hardness="Strong"/>
                         <depend id="62" type="2" difference="0" hardness="Strong"/>
                         <depend id="74" type="2" difference="0" hardness="Strong"/>
@@ -206,39 +206,39 @@ Desarrollado por :
                     <task id="62" name="T19.3. Lista de Facturas de Ventas" color="#8cb6ce" meeting="false" start="2013-05-22" duration="2" complete="0" priority="1" expand="true">
                         <depend id="28" type="2" difference="0" hardness="Strong"/>
                     </task>
-                    <task id="74" name="T19.4. Diseño de Impresion de Factura de Ventas" color="#8cb6ce" meeting="false" start="2013-05-21" duration="3" complete="0" priority="1" expand="true">
+                    <task id="74" name="T19.4. Diseño de Impresion de Factura de Ventas" color="#8cb6ce" meeting="false" start="2013-05-22" duration="3" complete="0" priority="1" expand="true">
                         <depend id="28" type="2" difference="0" hardness="Strong"/>
                     </task>
-                    <task id="28" name="T19.5. Pruebas y Soluciones de Errores" color="#8cb6ce" meeting="false" start="2013-05-24" duration="4" complete="0" priority="1" expand="true"/>
+                    <task id="28" name="T19.5. Pruebas y Soluciones de Errores" color="#8cb6ce" meeting="false" start="2013-05-25" duration="4" complete="0" priority="1" expand="true"/>
                 </task>
-                <task id="43" name="T20. REPORTES" color="#8cb6ce" meeting="false" start="2013-05-28" duration="2" complete="0" priority="1" expand="false">
-                    <task id="44" name="T20.1. Reportes de Ventas" color="#8cb6ce" meeting="false" start="2013-05-28" duration="2" complete="0" priority="1" expand="true"/>
+                <task id="43" name="T20. REPORTES" color="#8cb6ce" meeting="false" start="2013-05-29" duration="2" complete="0" priority="1" expand="true">
+                    <task id="44" name="T20.1. Reportes de Ventas" color="#8cb6ce" meeting="false" start="2013-05-29" duration="2" complete="0" priority="1" expand="true"/>
                 </task>
-                <task id="37" name="T21. CONFIGURACIONES DEL SISTEMA" color="#8cb6ce" meeting="false" start="2013-05-28" duration="6" complete="0" priority="1" expand="false">
-                    <task id="73" name="T21.1. Otras Configuraciones de la Empresa" color="#8cb6ce" meeting="false" start="2013-05-28" duration="2" complete="0" priority="1" expand="true">
+                <task id="37" name="T21. CONFIGURACIONES DEL SISTEMA" color="#8cb6ce" meeting="false" start="2013-05-29" duration="6" complete="0" priority="1" expand="true">
+                    <task id="73" name="T21.1. Otras Configuraciones de la Empresa" color="#8cb6ce" meeting="false" start="2013-05-29" duration="3" complete="0" priority="1" expand="true">
                         <depend id="40" type="2" difference="0" hardness="Strong"/>
                     </task>
-                    <task id="93" name="T21.2. Auditoria" color="#8cb6ce" meeting="false" start="2013-05-28" duration="3" complete="0" priority="1" expand="true">
+                    <task id="93" name="T21.2. Auditoria" color="#8cb6ce" meeting="false" start="2013-05-29" duration="4" complete="0" priority="1" expand="true">
                         <depend id="40" type="2" difference="0" hardness="Strong"/>
                     </task>
-                    <task id="40" name="T21.3. Pruebas y Soluciones de Errores" color="#8cb6ce" meeting="false" start="2013-05-31" duration="3" complete="0" priority="1" expand="true"/>
+                    <task id="40" name="T21.3. Pruebas y Soluciones de Errores" color="#8cb6ce" meeting="false" start="2013-06-02" duration="2" complete="0" priority="1" expand="true"/>
                 </task>
-                <task id="41" name="T22. GESTIÓN DE SEGURIDAD" color="#8cb6ce" meeting="false" start="2013-05-03" duration="2" complete="0" priority="1" expand="false">
-                    <task id="42" name="T22.1. Programación de permisos" color="#8cb6ce" meeting="false" start="2013-05-03" duration="2" complete="0" priority="1" expand="true"/>
+                <task id="41" name="T22. GESTIÓN DE SEGURIDAD" color="#8cb6ce" meeting="false" start="2013-06-03" duration="2" complete="0" priority="1" expand="true">
+                    <task id="42" name="T22.1. Programación de permisos" color="#8cb6ce" meeting="false" start="2013-06-03" duration="2" complete="0" priority="1" expand="true"/>
                 </task>
             </task>
         </task>
-        <task id="48" name="T23.REVISIONES Y  PRUEBAS GENERALES" color="#8cb6ce" meeting="false" start="2013-06-15" duration="70" complete="0" priority="1" expand="false">
-            <task id="49" name="T19.1. Diseños de pruebas y revisiones" color="#8cb6ce" meeting="false" start="2013-07-15" duration="1" complete="0" priority="1" expand="true">
+        <task id="48" name="T23.REVISIONES Y  PRUEBAS GENERALES" color="#8cb6ce" meeting="false" start="2013-04-26" duration="52" complete="0" priority="1" expand="true">
+            <task id="49" name="T19.1. Diseños de pruebas y revisiones" color="#8cb6ce" meeting="false" start="2013-04-26" duration="3" complete="0" priority="1" expand="true">
                 <depend id="50" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="50" name="T19.2. Creación de Casos de Pruebas y Revisiones" color="#8cb6ce" meeting="false" start="2013-07-16" duration="2" complete="0" priority="1" expand="true">
+            <task id="50" name="T19.2. Creación de Casos de Pruebas y Revisiones" color="#8cb6ce" meeting="false" start="2013-04-29" duration="2" complete="0" priority="1" expand="true">
                 <depend id="51" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="51" name="T19.3. Aplicación de las Pruebas y Revisiones" color="#8cb6ce" meeting="false" start="2013-06-15" duration="40" complete="0" priority="1" expand="true">
+            <task id="51" name="T19.3. Aplicación de las Pruebas y Revisiones" color="#8cb6ce" meeting="false" start="2013-05-01" duration="43" complete="0" priority="1" expand="true">
                 <depend id="52" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="52" name="T19.4. Solución de Bugs" color="#8cb6ce" meeting="false" start="2013-07-15" duration="40" complete="0" priority="1" expand="true"/>
+            <task id="52" name="T19.4. Solución de Bugs" color="#8cb6ce" meeting="false" start="2013-06-13" duration="4" complete="0" priority="1" expand="true"/>
         </task>
     </tasks>
     <resources>

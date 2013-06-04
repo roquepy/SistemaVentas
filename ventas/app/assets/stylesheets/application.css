@@ -47,4 +47,13 @@
 .mover h4{
       margin-left:350px;
 }
+}
+.texto{
 
+      text-align: justify;
+      font-size: 18px;
+      font-family: Times New Roman;
+      color:black;
+      margin-left: 120px;
+      margin-right: 120px;
+}
