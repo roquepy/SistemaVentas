@@ -6,45 +6,42 @@
            <div class="container">
               <div class="row">
                 <div class="span3">
-                   <%= f.label :fecha,class:"label"%>
+                   <%= f.label :Nro_de_Factura,class:"label"%>
+                   <%= f.text_field :nro_factura,:readonly => true%><br/>
+                   <%= f.label :fecha,class:"label"%><br/>
                    <%= f.text_field :fecha,:value => Date.today,:readonly => true%>
-                   <label class="label">Clientes</label>
-                       <%=f.collection_select :id_cliente,Cliente.find(:all),:id,:nombre,:prompt=>"--Seleccione--",id:"select"%>
+                   
                 </div>
                 <div class="span3 offset1">
-                   <%= f.label :Nro_de_Factura,class:"label"%>
-                   <%= f.text_field :nro_factura,:readonly => true%>
+                    <label class="label">Clientes</label>
+                       <%=f.collection_select :id_cliente,Cliente.find(:all),:id,:nombre,:prompt=>"--Seleccione--",id:"select"%>
                     <label class="label">Condicion de pago:</label>
                         <%=f.collection_select :id_condicion_pago,CondicionDePago.find(:all),:id,:nombre_condicion_de_pago,:prompt=>"--Seleccione--",id:"select"%>
-                </div> 
-                <div class="span3 offset1">  
+                </div>   
+                <div class="span3 offset2">
                    <%= f.label :funcionario,class:"label"%>
                    <%= f.text_field :id_funcionario,:text=>current_user.funcionario.nombres + " " + current_user.funcionario.apellidos,:value =>current_user.funcionario.nombres + " " + current_user.funcionario.apellidos,:readonly => true %> 
-                    <label class="label">Tipo de Valor</label>
-                          <%=f.collection_select :id_tipo_valor,TipoValorPago.find(:all),:id,:descripcion,:prompt=>"--Seleccione--",id:"select"%>
-                 </div>   
-                    <div class="span3">
-                       <%= f.label :descuento,class:"label"%>
-                       <%= f.text_field :total_descuento ,:value => FacturaVentum.descuento(100),:readonly => true %>  
-                       <%= f.label :Total_Iva,class:"label"%>
-                       <%= f.text_field :total_iva,:value => FacturaVentum.factura_total_iva(100),:readonly => true %>
-                    </div>   
-                    <div class="span3 offset1">
-                       <%= f.label :Total_Iva_5,class:"label"%>
-                       <%= f.text_field :total_iva5,:value => FacturaVentum.factura_total_iva5(100),:readonly => true %>
-                    </div>
-                    <div class="span3 offset1">
-                      <%= f.label :Total_Iva_10,class:"label"%>
-                      <%= f.text_field :total_iva10,:value => FacturaVentum.factura_total_iva10(100),:readonly => true %>
-                     </div> 
-                     
-            </div>
-         </div>   
+                   <label class="label">Tipo de Valor</label>
+                        <%=f.collection_select :id_tipo_valor,TipoValorPago.find(:all),:id,:descripcion,:prompt=>"--Seleccione--",id:"select"%>
+                </div>    
+              </div>   
                  <div align="center">
                      <div class="abajo"><br/>    
                       <a style='cursor: pointer;' onclick="muestra_oculta('producto')"><label>Cargar Producto </label></a>
                     </div>  
                  </div> 
+
+                 <div class="abajo-factura">
+                       <%= f.label :descuento,class:"label"%>
+                       <%= f.text_field :total_descuento ,:value => FacturaVentum.descuento(100),:readonly => true %>  
+                       <%= f.label :Total_Iva_5,class:"label"%>
+                       <%= f.text_field :total_iva5,:value => FacturaVentum.factura_total_iva5(100),:readonly => true %>
+                       <%= f.label :Total_Iva_10,class:"label"%>
+                       <%= f.text_field :total_iva10,:value => FacturaVentum.factura_total_iva10(100),:readonly => true %>
+                       <%= f.label :Total_Iva,class:"label"%>
+                       <%= f.text_field :total_iva,:value => FacturaVentum.factura_total_iva(100),:readonly => true %> 
+                 </div>
+
                  <div align="center">        
               
          

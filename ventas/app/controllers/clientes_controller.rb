@@ -14,7 +14,6 @@ class ClientesController < ApplicationController
   # GET /clientes/1.json
   def show
     @cliente = Cliente.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @cliente }
@@ -83,7 +82,7 @@ class ClientesController < ApplicationController
   end
   def localidad_new
       @localidad= Localidad.new
-       @departamentos=Departamento.all
+      @departamentos=Departamento.all
      
   end
   def funcionario_create
