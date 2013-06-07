@@ -46,6 +46,7 @@ class LocalidadsController < ApplicationController
       if @localidad.save
         format.html { redirect_to @localidad, notice: 'Se ha guardado correctamente la localidad' }
         format.json { render json: @localidad, status: :created, location: @localidad }
+  
       else
         format.html { render action: "new" }
         format.json { render json: @localidad.errors, status: :unprocessable_entity }

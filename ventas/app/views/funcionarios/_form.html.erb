@@ -11,22 +11,22 @@
 						<%= f.text_field :num_identidad,:placeholder => "num_documenhto",:maxlength=>"9" %><br/>
 						<%= f.label "Telefono:",class:"label"%>
 					    <%= f.text_field :telefono,:placeholder => "telefono",:maxlength=>"15" %><br/>
-					    <label class="label">Sexo:</label>
-						 	<%= f.select(:sexo, ['M', 'F' ],:prompt=>"--Seleccione--",id:"select")%>
-		                <label class="label">Funcion:</label>
-					     <%=f.collection_select :id_funcion,Funcion.find(:all),:id,:nombre,:prompt=>"--Seleccione--",id:"select"%>
+					    <%= f.label "Sexo:",class:"label"%>
+						<%= f.select(:sexo, ['M', 'F' ],:prompt=>"--Seleccione--",id:"select")%>
+		                <%= f.label "Funcion:",class:"label"%>
+					    <%=f.collection_select :id_funcion,Funcion.find(:all),:id,:nombre,:prompt=>"--Seleccione--",id:"select"%>
 		            </div>
 		            <div class="span3 offset1">
 		             	<%= f.label "Apellidos:",class:"label"%>
 						<%= f.text_field :apellidos,:placeholder => "apellido",:maxlength=>"50"  %><br/>
 					    <%= f.label "Direccion:",class:"label"%>
 						<%= f.text_field :direccion,:placeholder => "direccion",:maxlength=>"70"  %><br/>
-	                    <label class="label">Estado Civil:</label>
-						     <%= f.select(:estado_civil, ['Casado', 'Soltero' ],:prompt=>"--Seleccione--")%> 
-			            <label class="label">Estado del Funcionario:</label>
-			               <%=f.collection_select :id_estado_funcionario,EstadosFuncionario.find(:all),:id,:descripcion,:prompt=>"--Seleccione--"%>  
-			             <label class="label">Localidad:</label>
-					      <%=f.collection_select :id_localidad,Localidad.find(:all),:id,:nombre,:prompt=>"--Seleccione--"%>    
+	                    <%= f.label "Estado civil:",class:"label"%>
+						<%= f.select(:estado_civil, ['Casado', 'Soltero' ],:prompt=>"--Seleccione--")%> 
+			            <%= f.label "Estado Funcionario:",class:"label"%>
+			            <%=f.collection_select :id_estado_funcionario,EstadosFuncionario.find(:all),:id,:descripcion,:prompt=>"--Seleccione--"%>  
+			             <%= f.label "Localidad:",class:"label"%>
+					     <%=f.collection_select :id_localidad,Localidad.find(:all),:id,:nombre,:prompt=>"--Seleccione--"%>    
 			       		 <a data-toggle="modal" href="#localidad" ><label  class="mismalinea-espacio">Nueva Localidad </label></a> 	<br/>  
 			     </div> 
 	        </div>	
@@ -40,29 +40,6 @@
     <% end %>
 
      <div id="localidad" class="modal hide fade in" style="display: none;  " >
-           <div class="modal-header">
-               <a class="close" data-dismiss="modal">×</a>
-                   <h3>Nueva Localidad</h3>
-           </div>
-           <div class="modal-body">
-               <p id="notice"><%= notice %></p>
-                    <%= form_for(@localidad) do |f| %>
-   		               <%= render 'mensajes/error_mensajes', object: f.object %>
-				         <div class="mismalinea">
-							 <%= f.label "Localidad:",class:"mismalinea"%>
-							 <%= f.text_field :nombre,:placeholder => "localidad",class:"mismalinea-espacio",:maxlength=>"35" %>
-					     </div><br/>
-					     <div class="mismalinea">		 
-			                 <label class="mismalinea">Departamento:</label>
-			                  <%=f.collection_select:id_departamento,Departamento.find(:all),:id,:nombre,:prompt=>"--Seleccione--"%>  
-						 </div>	   
-	        	
-            </div>
-       
-                        <div class="modal-footer">
-                            <%= f.submit "Guardar", :class => 'btn btn-success', :controller => 'clientes_controller', :action =>'localidad_create' %>
-                            <a href="#" class="btn" data-dismiss="modal">Close</a>
-                        </div>
-                    <% end %>
-        </div><br/></br>
+           <%= render 'funcionarios/ventana_modal'%>
+      </div><br/></br>
      

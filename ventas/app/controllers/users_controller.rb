@@ -18,6 +18,7 @@ class UsersController < ApplicationController
         if @user.save
           format.html { redirect_to @user, notice: 'El usuario se ha creado correctamente.' }
           format.json { render json: @user, status: :created, location: @user }
+          format.js   {}
         else
            format.html { render action: "new" }
         end

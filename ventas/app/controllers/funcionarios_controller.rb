@@ -43,13 +43,12 @@ class FuncionariosController < ApplicationController
   # POST /funcionarios.json
   def create
     @funcionario = Funcionario.new(params[:funcionario])
- 
-    localidad_new
     respond_to do |format|
       if @funcionario.save
         flash[:success] = "Se ha creado correctamente el funcionario"
         format.html {  redirect_to @funcionario, notice: 'El funcionario se ha creado correctamente.' }
         format.json { render json: @funcionario, status: :created, location: @funcionario }
+        format.js   {}
       else
         format.html { render action: "new" }
         format.json { render json: @funcionario.errors, status: :unprocessable_entity }
@@ -87,16 +86,5 @@ class FuncionariosController < ApplicationController
   end
   def localidad_new
       @localidad= Localidad.new
-       @departamentos=Departamento.all
-     
-  end
-  def funcionario_create
-      @localidad = Localidad.new(params[:funcionario])
-       @departamentos=Departamento.all
-      if @localidad.save
-        flash[:notice] = "Se ha guardado la localidad"
-      else
-        flash[:notice] = "Hubo Problemas, no guardo"
-      end
   end
 end

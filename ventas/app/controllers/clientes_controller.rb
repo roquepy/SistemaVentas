@@ -43,10 +43,12 @@ class ClientesController < ApplicationController
   def create
     @cliente = Cliente.new(params[:cliente])
     localidad_new
+
     respond_to do |format|
       if @cliente.save
         format.html { redirect_to @cliente, notice: 'El Cliente se ha guardado correctamente.' }
         format.json { render json: @cliente, status: :created, location: @cliente }
+        format.js   {}
       else
         format.html { render action: "new" }
         format.json { render json: @cliente.errors, status: :unprocessable_entity }

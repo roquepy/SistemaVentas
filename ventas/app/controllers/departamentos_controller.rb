@@ -47,6 +47,7 @@ class DepartamentosController < ApplicationController
         flash.now[:alert]= "El departamento se ha guardado correctamente"
         format.html { redirect_to @departamento, notice: 'El departamento se ha guardado correctamente' }
         format.json { render json: @departamento, status: :created, location: @departamento }
+          format.js   {}
       else
         format.html { render action: "new" }
         format.json { render json: @departamento.errors, status: :unprocessable_entity }

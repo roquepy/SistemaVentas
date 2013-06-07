@@ -1,0 +1,18 @@
+<div class="modal-header">
+  <a class="close" data-dismiss="modal">×</a>
+     <h3>Nuevo Departamento</h3>
+</div>
+<div class="modal-body">
+    <p id="notice"><%= notice %></p>
+        <%= form_for@departamento, remote:true do |f| %>
+   		      <%= render 'mensajes/error_mensajes', object: f.object %>
+						<div class="mismalinea">
+  						<%= f.label "Departamento:",class:"mismalinea"%>
+  						<%= f.text_field :nombre,:placeholder => "departamento",class:"mismalinea-espacio",:maxlength=>"35" %>
+				    </div> 
+            </div>
+            <div class="modal-footer">
+                <%= f.submit "Guardar", :class => 'btn btn-success'%>
+                  <a href="#" class="btn" data-dismiss="modal">Close</a>
+            </div>
+       <% end %>
