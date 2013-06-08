@@ -5,16 +5,18 @@ class FacturaVentum < ActiveRecord::Base
     belongs_to :tipo_valor_pago, :foreign_key=>"id_tipo_valor"
     belongs_to :funcionario, :foreign_key=>"id_funcionario"
     has_many :detalle_fatura_ventum
-    def  self.obtener_nro_factura()
-    	factura_nro=FacturaVentum.select("MAX(nro_factura)").from("factura_venta")
-        #factura_nro=find_by_sql("<<-SQL select max(nro_factura) from factura_venta SQL")
-    	if factura_nro.blank?
-    		factura_nro=100
+    def  self.nro_factura()
+    	last_factura=FacturaVentum.last
+        last_factura.each do |factura| 
+          nro_factura=factura.nro_factura
+        end 
+    	if nro_factura.blank?
+    		nro_factura=100
     	    else
-    	    	factura_nro
+    	    	nro_factura=nro_factura+1
                 
     	end	
-    	return factura_nro
+    	return nro_factura
     	
     end
      def  self.descuento(nrofactura)

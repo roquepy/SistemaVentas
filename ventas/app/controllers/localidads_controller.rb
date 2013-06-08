@@ -85,12 +85,4 @@ class LocalidadsController < ApplicationController
       @departamento= Departamento.new
      
   end
-  def funcionario_create
-      @departamento= Departamento.new(params[:departamento])
-      if @departamento.save
-        flash[:notice] = "Se ha guardado el departamento"
-      else
-        flash[:notice] = "Hubo Problemas, no guardo"
-      end
-  end
 end

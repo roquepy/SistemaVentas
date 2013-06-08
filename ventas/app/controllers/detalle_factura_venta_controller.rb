@@ -3,10 +3,11 @@ class DetalleFacturaVentaController < ApplicationController
   # GET /detalle_factura_venta.json
   def index
     @detalle_factura_venta = DetalleFacturaVentum.all
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @detalle_factura_venta }
+      format.js {}
     end
   end
 
@@ -35,18 +36,17 @@ class DetalleFacturaVentaController < ApplicationController
   # GET /detalle_factura_venta/1/edit
   def edit
     @detalle_factura_ventum = DetalleFacturaVentum.find(params[:id])
-     @productos=Producto.all
   end
 
   # POST /detalle_factura_venta
   # POST /detalle_factura_venta.json
   def create
     @detalle_factura_ventum = DetalleFacturaVentum.new(params[:detalle_factura_ventum])
-     @productos=Producto.all
     respond_to do |format|
       if @detalle_factura_ventum.save
         format.html { redirect_to @detalle_factura_ventum, notice: 'Detalle factura ventum was successfully created.' }
         format.json { render json: @detalle_factura_ventum, status: :created, location: @detalle_factura_ventum }
+        format.js {}
       else
         format.html { render action: "new" }
         format.json { render json: @detalle_factura_ventum.errors, status: :unprocessable_entity }

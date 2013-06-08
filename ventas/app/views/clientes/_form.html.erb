@@ -10,16 +10,16 @@
 					    <%= f.label "Nro de doc:",class:"label"%>
 						<%= f.text_field :num_identidad,:placeholder => "RUC o Cedula de Identidad",:maxlength=>"9" %>
 						<%= f.label "Telefono:",class:"label"%>
-<<<<<<< HEAD
+
 					    <%= f.text_field :telefono,:placeholder => "(xxx) xxx xxx" ,:maxlength=>"15" %>
 						<%= f.label "Localidad:",class:"label"%>
 				        <%=f.collection_select :id_localidad,Localidad.find(:all),:id,:nombre,:prompt=>"--Seleccione--"%>    
 								
-=======
+
 							<%= f.text_field :telefono,:placeholder => "(xxx) xxx xxx" ,:maxlength=>"15" %>
 						<%= f.label "Localidad:",class:"label"%>
 				           <%=f.collection_select :id_localidad,Localidad.find(:all),:id,:nombre,:prompt=>"--Seleccione--"%>    		
->>>>>>> f05fd159980f58776e4c1d6a84db55d734fd1d22
+
 							<a data-toggle="modal" href="#localidad" ><label>Nueva Localidad </label></a> 
 					</div>
 
@@ -27,13 +27,12 @@
 					        <%= f.label "Apellido:",class:"label"%>
 					 	    <%= f.text_field :apellido,:placeholder => "Apellido",:maxlength=>"25" %>
 					 	    <%= f.label "Direccion:",class:"label"%>
-<<<<<<< HEAD
+
 							<%= f.text_field :direccion,:placeholder => "Direccion",:maxlength=>"50"  %>
 							<%= f.label "Sexo:",class:"label"%>
-=======
+
 							<%= f.text_field :direccion,:placeholder => "Direccion",:maxlength=>"50"  %><br/> 
 							<%= f.label "Sexo:",class:"label"%><br/> 
->>>>>>> f05fd159980f58776e4c1d6a84db55d734fd1d22
 							<%= f.select(:sexo, ['M', 'F' ],:prompt=>"--Seleccione--",id:"select")%>
 				     </div>
 				</div>

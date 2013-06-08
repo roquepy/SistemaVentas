@@ -3,7 +3,6 @@ class FacturaVentaController < ApplicationController
   # GET /factura_venta.json
   def index
     @factura_venta = FacturaVentum.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @factura_venta }
@@ -14,7 +13,6 @@ class FacturaVentaController < ApplicationController
   # GET /factura_venta/1.json
   def show
     @factura_ventum = FacturaVentum.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @factura_ventum }
@@ -25,7 +23,7 @@ class FacturaVentaController < ApplicationController
   # GET /factura_venta/new.json
   def new
     @factura_ventum = FacturaVentum.new
-    detalle_factura_venta_new
+    detalle_factura_venta
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @factura_ventum }
@@ -35,14 +33,14 @@ class FacturaVentaController < ApplicationController
   # GET /factura_venta/1/edit
   def edit
     @factura_ventum = FacturaVentum.find(params[:id])
-    detalle_factura_venta_new
+    detalle_factura_venta
   end
 
   # POST /factura_venta
   # POST /factura_venta.json
   def create
     @factura_ventum = FacturaVentum.new(params[:factura_ventum])
-    detalle_factura_venta_new
+    detalle_factura_venta
     respond_to do |format|
       if @factura_ventum.save
         format.html { redirect_to @factura_ventum, notice: 'Factura ventum was successfully created.' }
@@ -82,18 +80,9 @@ class FacturaVentaController < ApplicationController
     end
   end
  
-  def detalle_factura_venta_new
+  def detalle_factura_venta
       @detalle_factura_venta = DetalleFacturaVentum.new
-      @productos=Producto.all
-  end
-  def detalle_factura_venta_create
-      @detalle_factura_venta = DetalleFacturaVentum.new(params[:detalle_factura_venta])
-      @productos=Producto.all
-      if @detalle_factura_venta.save
-        flash[:notice] = "Se ha guardado el producto"
-      else
-        flash[:notice] = "Hubo Problemas, no guardo"
-      end
+      @detalles_factura_ventas = DetalleFacturaVentum.all
   end
 
 

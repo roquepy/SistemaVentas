@@ -6,31 +6,36 @@
            <div class="container">
               <div class="row">
                 <div class="span3">
-                   <%= f.label :Nro_de_Factura,class:"label"%>
+                   <%= f.label :Nro_de_Factura,class:"label",value:FacturaVentum.nro_factura()%>
                    <%= f.text_field :nro_factura,:readonly => true%><br/>
                    <%= f.label :fecha,class:"label"%><br/>
                    <%= f.text_field :fecha,:value => Date.today,:readonly => true%>
                    
                 </div>
                 <div class="span3 offset1">
-                    <label class="label">Clientes</label>
-                       <%=f.collection_select :id_cliente,Cliente.find(:all),:id,:nombre,:prompt=>"--Seleccione--",id:"select"%>
-                    <label class="label">Condicion de pago:</label>
-                        <%=f.collection_select :id_condicion_pago,CondicionDePago.find(:all),:id,:nombre_condicion_de_pago,:prompt=>"--Seleccione--",id:"select"%>
+                     <%= f.label "Clientes:",class:"label"%>
+                      <%=f.collection_select :id_cliente,Cliente.find(:all),:id,:nombre,:prompt=>"--Seleccione--",id:"select"%>
+                      <%= f.label "Condicion de Pago:",class:"label"%>
+                      <%=f.collection_select :id_condicion_pago,CondicionDePago.find(:all),:id,:nombre_condicion_de_pago,:prompt=>"--Seleccione--",id:"select"%>
                 </div>   
                 <div class="span3 offset2">
                    <%= f.label :funcionario,class:"label"%>
                    <%= f.text_field :id_funcionario,:text=>current_user.funcionario.nombres + " " + current_user.funcionario.apellidos,:value =>current_user.funcionario.nombres + " " + current_user.funcionario.apellidos,:readonly => true %> 
-                   <label class="label">Tipo de Valor</label>
-                        <%=f.collection_select :id_tipo_valor,TipoValorPago.find(:all),:id,:descripcion,:prompt=>"--Seleccione--",id:"select"%>
-                </div>    
+                    <%= f.label "Tipo de Valor:",class:"label"%>
+                    <%=f.collection_select :id_tipo_valor,TipoValorPago.find(:all),:id,:descripcion,:prompt=>"--Seleccione--",id:"select"%>
+                </div> 
+                <div id="lista_productos">
+                    <%= render 'factura_venta/lista_productos'%>
+                </div>   
               </div>   
                  <div align="center">
                      <div class="abajo"><br/>    
-                      <a style='cursor: pointer;' onclick="muestra_oculta('producto')"><label>Cargar Producto </label></a>
+                      <a style='cursor: pointer;' onclick="muestra_oculta('producto')"><%= f.label "Cargar Producto"%></a>
                     </div>  
                  </div> 
-
+                 <div id="producto"style="display: none; ">
+                    <%= render 'factura_venta/producto'%>
+                 </div> <br/>
                  <div class="abajo-factura">
                        <%= f.label :descuento,class:"label"%>
                        <%= f.text_field :total_descuento ,:value => FacturaVentum.descuento(100),:readonly => true %>  
@@ -40,42 +45,10 @@
                        <%= f.text_field :total_iva10,:value => FacturaVentum.factura_total_iva10(100),:readonly => true %>
                        <%= f.label :Total_Iva,class:"label"%>
                        <%= f.text_field :total_iva,:value => FacturaVentum.factura_total_iva(100),:readonly => true %> 
-                 </div>
-
-                 <div align="center">        
+                 </div>        
               
          
   </div>                
-  
-          <div id="producto"style="display: none; ">
-              <div class="mover">
-                      <%= form_for :detalle_factura_ventum, :url=>detalle_factura_venta_path, :remote => true  do |g| %>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="span3">
-                                       <%g.hidden_field :id_factura,:value=>@factura_ventum.id%>
-                                       <label class="label">Producto:</label>
-                                         <%=g.collection_select :id_producto,Producto.find(:all),:id,:descripcion,:prompt=>"--Seleccione--",id:"select"%>
-                                   </div>      
-                                   <div class="span3 offset1">
-                                        <%= g.label "Cantidad:",class:"label" %>
-                                      <%= g.text_field :cantidad %>
-                                    </div>
-                                    <div class="span3 offset1">
-                                            <%= g.label "Descuento:" ,class:"label"%>
-                                            <%= g.text_field :descuento %>
-                                    </div>       
-                              </div><br/>
-                           </div>
-                 </div>            
-                               <div align="center">   
-                                   <div class="abajo"><br/>
-                                      <%= g.submit "Agregar", :class => 'btn btn-success'%>
-                                   </div>   
-                             </div>
-                 
-                   <% end %>
-        </div> <br/><br/>
           <div class="abajo"><br/>
                 <%= f.submit "Guardar", class: "btn btn-primary"%>
           </div> 
