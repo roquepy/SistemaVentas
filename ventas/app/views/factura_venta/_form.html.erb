@@ -6,8 +6,8 @@
            <div class="container">
               <div class="row">
                 <div class="span3">
-                   <%= f.label :Nro_de_Factura,class:"label",value:FacturaVentum.nro_factura()%>
-                   <%= f.text_field :nro_factura,:readonly => true%><br/>
+                   <%= f.label :Nro_de_Factura,class:"label"%>
+                   <%= f.text_field :nro_factura,:readonly => true,:value=>FacturaVentum.nro_factura()%><br/>
                    <%= f.label :fecha,class:"label"%><br/>
                    <%= f.text_field :fecha,:value => Date.today,:readonly => true%>
                    
@@ -34,6 +34,11 @@
                     </div>  
                  </div> 
                  <div id="producto"style="display: none; ">
+                    <%= if FacturaVentum.get_factura_nro(:nro_factura)==''
+                           render 'mensajes/error_mensajes', object: f.object 
+                          
+                      %>
+
                     <%= render 'factura_venta/producto'%>
                  </div> <br/>
                  <div class="abajo-factura">

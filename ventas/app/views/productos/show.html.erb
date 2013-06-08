@@ -18,14 +18,14 @@
     </thead>
     <tbody>
       <tr>
-       <td><%= procucto.codigo %></td>
-              <td><%= producto.descripcion %></td>
-              <td><%= producto.cant_minima %></td>
-              <td><%= producto.cant_optima %></td>
-              <td><%= producto.precio_unitario%></td>
-              <td><%= producto.porcentaje %></td>
-              <td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_producto_path(producto) %> &nbsp &nbsp &nbsp   
-                      <i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar",producto, :confirm => "Desea eliminar el producto "+producto.descripcion, :method => :delete %>
+       <td><%= @producto.codigo %></td>
+              <td><%= @producto.descripcion %></td>
+              <td><%= @producto.cant_minima %></td>
+              <td><%= @producto.cant_optima %></td>
+              <td><%= @producto.precio_unitario%></td>
+              <td><%= @producto.porcentaje %></td>
+              <td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_producto_path(@producto) %> &nbsp &nbsp &nbsp   
+                      <i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar",@producto, :confirm => "Desea eliminar el producto "+@producto.descripcion, :method => :delete %>
               </td>
     </tr>
      </tbody>

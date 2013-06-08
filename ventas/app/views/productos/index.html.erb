@@ -1,5 +1,5 @@
   <br/>
-  <%= form_tag clientes_path, :method => 'get' do %>
+  <%= form_tag productos_path, :method => 'get' do %>
     <div align="center">
     <h3> Lista de Productos</h3>
     </div>
@@ -7,7 +7,7 @@
      <div class="container-fluid">
       <div class="mismalinea">
         <label class="mismalinea">Filtrar:</label>
-       <input type="text" id="filtrar" placeholder="Filtrar" class="mismalinea-espacio">
+       <input type="text" id="filtrar" pszlaceholder="Filtrar" class="mismalinea-espacio">
       </div>
       <table id ="table" class="table table-bordered">
         <thead>
@@ -24,7 +24,7 @@
         <tbody>
                 <% @productos.each  do |producto| %>          
             <tr>
-              <td><%= procucto.codigo %></td>
+              <td><%= producto.codigo %></td>
               <td><%= producto.descripcion %></td>
               <td><%= producto.cant_minima %></td>
               <td><%= producto.cant_optima %></td>

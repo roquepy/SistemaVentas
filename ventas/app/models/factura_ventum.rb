@@ -6,10 +6,8 @@ class FacturaVentum < ActiveRecord::Base
     belongs_to :funcionario, :foreign_key=>"id_funcionario"
     has_many :detalle_fatura_ventum
     def  self.nro_factura()
-    	last_factura=FacturaVentum.last
-        last_factura.each do |factura| 
-          nro_factura=factura.nro_factura
-        end 
+        nro_factura=100
+    	nro_factura=FacturaVentum.select('nro_factura').find(:last) 
     	if nro_factura.blank?
     		nro_factura=100
     	    else
@@ -18,6 +16,13 @@ class FacturaVentum < ActiveRecord::Base
     	end	
     	return nro_factura
     	
+    end
+    def  self.get_factura_nro(nro_factura)
+        nro_factura=FacturaVentum.find(:all,:conditions=>['nro_factura = ? ',"%#{nro_factura}%"])
+        if nro_factura.blank?
+            nro_factura=''
+        end 
+        return nro_factura     
     end
      def  self.descuento(nrofactura)
         descuento=FacturaVentum.where('SELECT SUM(((p.precio_unitario*fd.cantidad)* fd.descuento)/100)
