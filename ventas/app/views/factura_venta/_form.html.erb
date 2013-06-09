@@ -35,11 +35,13 @@
                  </div> 
                  <div id="producto"style="display: none; ">
                     <%= if FacturaVentum.get_factura_nro(:nro_factura)==''
-                           render 'mensajes/error_mensajes', object: f.object 
+                           f.s
+                        else
+                          render 'factura_venta/producto'
                           
                       %>
 
-                    <%= render 'factura_venta/producto'%>
+                   # <%= render 'factura_venta/producto'%>
                  </div> <br/>
                  <div class="abajo-factura">
                        <%= f.label :descuento,class:"label"%>
