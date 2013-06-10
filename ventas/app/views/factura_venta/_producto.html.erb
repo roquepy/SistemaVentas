@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="span3">
-                    <%g.hidden_field :id_factura,:value=>@factura_ventum.id%>
+                    <%g.hidden_field :id_factura_venta,:value=>'1'%>
                     <%= g.label "Producto:",class:"label" %>
                     <%=g.collection_select :id_producto,Producto.find(:all),:id,:descripcion,:prompt=>"--Seleccione--",id:"select"%>
                 </div>      
