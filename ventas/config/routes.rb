@@ -19,6 +19,7 @@ Ventas::Application.routes.draw do
   resources :departamentos
   resources :paginas_estaticas
   resources :configuracions
+ 
   root to: 'sesiones#new'
 
 

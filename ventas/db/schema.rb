@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130528180011) do
+ActiveRecord::Schema.define(:version => 20130529214552) do
 
   create_table "clientes", :force => true do |t|
     t.string  "nombre",        :limit => 50, :null => false
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20130528180011) do
 
   create_table "configuracions", :force => true do |t|
     t.string "nombre_logo"
-    t.binary "logo",        :null => false
+    t.string "logo"
   end
 
   create_table "departamentos", :force => true do |t|

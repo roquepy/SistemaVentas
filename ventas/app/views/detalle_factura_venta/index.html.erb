@@ -1,21 +1,38 @@
-<h1>Listing detalle_factura_venta</h1>
-
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @detalle_factura_venta.each do |detalle_factura_ventum| %>
-  <tr>
-    <td><%= link_to 'Show', detalle_factura_ventum %></td>
-    <td><%= link_to 'Edit', edit_detalle_factura_ventum_path(detalle_factura_ventum) %></td>
-    <td><%= link_to 'Destroy', detalle_factura_ventum, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+<br/>
+  <%= form_tag detalle_factura_venta_path, :method => 'get' do %>
+  <div align="center">
+    <h4>Productos</h4>
+  </div>
+    
+     <div class="container-fluid">
+      <div class="mismalinea">
+        <label class="mismalinea">Filtrar:</label>
+       <input type="text" id="filtrar" placeholder="Filtrar" class="mismalinea-espacio">
+      </div>
+    <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+        <th>Total</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @detalle_factura_venta.each  do |detalle_factura_venta| %> 
+        <tr>
+        <td><%=@detalle_factura_venta.product.precio_unitario%></td>
+        <td><%=@detalle_factura_venta.cantidad%></td>
+        <td><%=@detalle_factura_venta.product.precio_unitario %></td>
+        <td><%=@detalle_factura_venta.cantidad*@detalle_factura_venta.product.precio_unitario %></td>
+              <td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_detalle_factura_ventum_path(@detalle_factura_venta) %> &nbsp &nbsp &nbsp   
+            <i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar",@detalle_factura_venta, :confirm => "Desea Eliminar el producto "+ @detalle_factura_venta.product.descripcion, :method => :delete %>
+        </td>
+      </tr>
+    <% end %>
+     </tbody>
+  </table>
+</div>
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'New Detalle factura ventum', new_detalle_factura_ventum_path %>
