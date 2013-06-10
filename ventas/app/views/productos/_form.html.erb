@@ -1,38 +1,32 @@
    <div class="centrar">
     <%= form_for(@producto) do |f| %>
-       <%= render 'mensajes/error_mensajes', object: f.object %>
-     
-          <h4><%= yield(:title) %></h4><br/>
-               <div class="mismalinea">
-                   <%= f.label "Codigo:",class:"mismalinea"%>
-                    <%= f.text_field :codigo,:placeholder => "Codigo",:maxlength=>"25",class:"mismalinea-espacio" %>
-            </div> 
+          <%= render 'mensajes/error_mensajes', object: f.object %>
+             <h4><%= yield(:title) %></h4><br/>
+             <div class="container">
+                <div class="row">
+                   <div class="span3 offset1 ">
+                     <%= f.label "Codigo:",class:"label"%>
+                     <%= f.text_field :codigo,:placeholder => "Ingrese Codigo",:maxlength=>"25" %>
+                     <%= f.label "Cantidad Minima:",class:"label"%>
+                     <%= f.text_field :cant_minima,:placeholder => "Cantidad Minima"%>
+                     <%= f.label "Precio Unitario:",class:"label"%>
+                     <%= f.text_field :precio_unitario,:placeholder => "Precio Unitario"%>
+                 </div> 
 
-            <div class="mismalinea-espacio-grande">
-                      <%= f.label "Descripcion:",class:"mismalinea"%>
-                    <%= f.text_field :descripcion,:placeholder => "Descripcion",class:"mismalinea-espacio"  %>
-                   </div><br/><br/><br/>
-
-               <div class="mismalinea">
-              <%= f.label "Cantidad Minima:" ,class:"mismalinea"%>
-              <%= f.text_field :cant_minima,:placeholder => "Cantidad Minima",class:"mismalinea-espacio" %>
-            </div>  
-            <div class="mismalinea-espacio-grande">
-              <%= f.label "Cantidad Optima:",class:"mismalinea"%>
-              <%= f.text_field :cant_optima,:placeholder => "Cantidad Optima",class:"mismalinea-espacio"  %>
-            </div><br/><br/><br/>
-            <div class="mismalinea">
-              <%= f.label "Precio Unitario:",class:"mismalinea"%>
-              <%= f.text_field :precio_unitario,:placeholder => "Precio Unitario" ,class:"mismalinea-espacio" %>
-            </div>
-             <div class="mismalinea-espacio-grande">
-              <%= f.label "Procentaje:",class:"mismalinea"%>
-              <%= f.text_field :porcentaje,:placeholder => "Porcentaje",class:"mismalinea-espacio"  %>
-            </div>
-                
-      </div> <br/>     
-            <div class="abajo"><br/>
-              <%= f.submit "Guardar", class: "btn btn-primary"%>
-           </div>  
+               <div class="span3 offset1">
+                    <%= f.label "Descripcion:",class:"label"%>
+                    <%= f.text_field :descripcion,:placeholder => "Ingrese Descripción"%>
+                    <%= f.label "Cantidad Optima:",class:"label"%>
+                    <%= f.text_field :cant_optima,:placeholder => "Ingrese Cantidad Óptima"%>
+                    <%= f.label "Procentaje:",class:"label"%>
+                    <%= f.text_field :porcentaje,:placeholder => "Ingrese Porcentaje de IVA"%>
+             </div>
+        </div>
+      </div>  
+</div>  
+      <div class="abajo" align="center"><br/>
+          <%= f.submit "Guardar", class: "btn btn-primary"%>
+      </div>   
   
-    <% end %><br/><br/><br/>
+    <% end %>    
+

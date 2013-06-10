@@ -21,9 +21,21 @@
 .centrar{
    margin-left:320px;
 }
+
+.centrar-guardar{
+   margin-left:20px;
+}
+
+.centrar-close{
+   margin-left:320px;
+}
+
 .centrar h4{
-	margin-left: 200px;
+	margin-left: 120px;
   font-family: Helvetica;
+  font-size: 40px;
+  font-style: oblique;
+  margin-top: 25px;
 }
 .mismalinea{
     float:left;
@@ -38,7 +50,7 @@
 }
 .abajo{
     clear: both;
-    margin-left: 140px;
+    margin-left: 15px;
 }
 .abajo-factura{
     margin-left: 20px;
