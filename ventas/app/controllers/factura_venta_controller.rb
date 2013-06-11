@@ -1,4 +1,5 @@
 class FacturaVentaController < ApplicationController
+  autocomplete :cliente, :nombre,:display_value => :display_clientes, :extra_data => [ :id, :nombre ],:full => true
   # GET /factura_venta
   # GET /factura_venta.json
   def index
@@ -83,7 +84,7 @@ class FacturaVentaController < ApplicationController
   end
  
   def detalle_factura_venta
-      @detalle_factura_venta = DetalleFacturaVentum.new
+      @detalle_factura_ventum  = DetalleFacturaVentum.new
       @detalles_factura_ventas = DetalleFacturaVentum.paginate(:page => params[:page], :per_page => 10)
   end
   def cliente_new

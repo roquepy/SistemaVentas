@@ -1,43 +1,46 @@
-<div class="centrar" >
-    <%= form_for @funcionario do |f| %>
-   		 <%= render 'mensajes/error_mensajes', object: f.object %>
-			
-			<legend>Nuevo Funcionario</legend>
-			<div class="container">
-               <div class="row">
-                   <div class="span3">
+<div class="centrar"><br/>
+    <%= form_for(@funcionario) do |f| %>
+       <%= render 'mensajes/error_mensajes', object: f.object %>
+       <legend>Nuevo Funcionario</legend>
+			 <div class="container">
+                <div class="row">
+                	<div class="span3">
 						<%= f.label "Nombres:",class:"label"%>
-						<%= f.text_field :nombres,:placeholder => "Ingrese Nombre",:maxlength=>"50" %><br/>
-						<%= f.label "Nro de Documento:",class:"label"%>
-						<%= f.text_field :num_identidad,:placeholder => "Ingrese Nº de RUC o CI",:maxlength=>"15" %><br/>
+						<%= f.text_field :nombres,:placeholder => "nombre",:maxlength=>"50" %><br/>
+						<%= f.label "Nro de doc:",class:"label"%>
+						<%= f.text_field :num_identidad,:placeholder => "num_documenhto",:maxlength=>"9" %><br/>
 						<%= f.label "Telefono:",class:"label"%>
-					    <%= f.text_field :telefono,:placeholder => "Ingrese Nº de Teléfono",:maxlength=>"15" %><br/>
-					    <%= f.label "Sexo:",class:"label"%><br/>
-						<%= f.select(:sexo, ['M', 'F' ],:prompt=>"Seleccione Sexo",id:"select")%>
-		                <%= f.label "Función:",class:"label"%>
-					    <%=f.collection_select :id_funcion,Funcion.find(:all),:id,:nombre,:prompt=>"Seleccione Función",id:"select"%>
+					    <%= f.text_field :telefono,:placeholder => "telefono",:maxlength=>"15" %><br/>
+					    <%= f.label "Sexo:",class:"label"%>
+						<%= f.select(:sexo, ['M', 'F' ],:prompt=>"--Seleccione--",id:"select")%>
+		                <%= f.label "Funcion:",class:"label"%>
+					    <%=f.collection_select :id_funcion,Funcion.find(:all),:id,:nombre,:prompt=>"--Seleccione--",id:"select"%>
 		            </div>
-		            <div class="span3">
+		            <div class="span3 offset1">
 		             	<%= f.label "Apellidos:",class:"label"%>
-						<%= f.text_field :apellidos,:placeholder => "Ingrese Apellido",:maxlength=>"50"  %><br/>
+						<%= f.text_field :apellidos,:placeholder => "apellido",:maxlength=>"50"  %><br/>
 					    <%= f.label "Direccion:",class:"label"%>
-						<%= f.text_field :direccion,:placeholder => "Ingrese Direccion",:maxlength=>"70"  %><br/>
+						<%= f.text_field :direccion,:placeholder => "direccion",:maxlength=>"70"  %><br/>
 	                    <%= f.label "Estado civil:",class:"label"%>
-						<%= f.select(:estado_civil, ['Casado', 'Soltero' ],:prompt=>"Seleccione Estado Civil")%> 
+						<%= f.select(:estado_civil, ['Casado', 'Soltero' ],:prompt=>"--Seleccione--")%> 
 			            <%= f.label "Estado Funcionario:",class:"label"%>
-			            <%=f.collection_select :id_estado_funcionario,EstadosFuncionario.find(:all),:id,:descripcion,:prompt=>"Seleccione Estado del Funcionario"%> 
-						<%= f.label "Localidad:",class:"label"%>
-				        <%=f.collection_select :id_localidad,Localidad.find(:all),:id,:nombre,:prompt=>"Seleccione Localidad"%>      
-						<a data-toggle="modal" href="#localidad" ><label>(+) Nueva Localidad </label></a>   
-			     </div>
-				</div>
-			</div>	
-			<div class="span5" align="center"><br/>
-					<%= f.submit "Guardar", class: "btn btn-primary"%>
-			</div>
-<% end %>
-</div>		    			
-		
-      <div id="localidad" class="modal hide fade in" style="display: none;  " >
-        	 <%=render 'clientes/ventana_modal'%>
-       <div><br/></br>
+			            <%=f.collection_select :id_estado_funcionario,EstadosFuncionario.find(:all),:id,:descripcion,:prompt=>"--Seleccione--"%>  
+			             <%= f.label "Localidad:",class:"label"%>
+					     <%=f.collection_select :id_localidad,Localidad.find(:all),:id,:nombre,:prompt=>"--Seleccione--"%>    
+			       		 <a data-toggle="modal" href="#localidad" ><label  class="mismalinea-espacio">Nueva Localidad </label></a> 	<br/>  
+			     </div> 
+	        </div>	
+	    </div>
+	    <div align="center">
+		            <div class="span5"><br/>                 
+				    	<%= f.submit "Guardar", class: "btn btn-primary" %>	
+				    </div>	
+				</div>    
+</div>	        	
+	           	 
+    <% end %>
+
+     <div id="localidad" class="modal hide fade in" style="display: none;  " >
+           <%= render 'funcionarios/ventana_modal'%>
+      </div><br/></br>
+     

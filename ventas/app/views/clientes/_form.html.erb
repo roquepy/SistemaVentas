@@ -1,6 +1,7 @@
   <div class="centrar" >
     <%= form_for @cliente do |f| %>
    		 <%= render 'mensajes/error_mensajes', object: f.object %>
+			
 			<legend>Nuevo Cliente</legend>
 			<div class="container">
                <div class="row">
@@ -10,19 +11,20 @@
 					    <%= f.label "Nro de Documento:",class:"label"%>
 						<%= f.text_field :num_identidad,:placeholder => "Ingrese Nº de RUC o CI",:maxlength=>"15" %>
 						<%= f.label "Telefono:",class:"label"%>
-					    <%= f.text_field :telefono,:placeholder => " Formato: (xxx) xxx xxx" ,:maxlength=>"15" %>
+					    <%= f.text_field :telefono,:placeholder => "(xxx) xxx xxx" ,:maxlength=>"15" %>
 						<%= f.label "Localidad:",class:"label"%>
-				        <%=f.collection_select :id_localidad,Localidad.find(:all),:id,:nombre,:prompt=>"Seleccione Localidad"%>      
-						<a data-toggle="modal" href="#localidad" ><label>(+) Nueva Localidad </label></a> 
+				        <%=f.collection_select :id_localidad,Localidad.find(:all),:id,:nombre,:prompt=>"--Seleccione--"%>    
+							<a data-toggle="modal" href="#localidad" ><label>(+) Nueva Localidad </label></a> 
 					</div>
-					<div class="span3 ">
-						<%= f.label "Apellido:",class:"label"%>
-					    <%= f.text_field :apellido,:placeholder => "Ingrese Apellido",:maxlength=>"50" %>
-					    <%= f.label "Direccion:",class:"label"%>
-						<%= f.text_field :direccion,:placeholder => "Ingrese Direccion",:maxlength=>"50"  %> </br>
-						<%= f.label "Sexo:",class:"label"%></br>
-						<%= f.select(:sexo, ['M', 'F' ],:prompt=>"Seleccione Sexo",id:"select")%>
-				     </div>
+
+					<div class="span3 offset1">
+					        <%= f.label "Apellido:",class:"label"%>
+					 	    <%= f.text_field :apellido,:placeholder => "Apellido",:maxlength=>"25" %>
+					 	    <%= f.label "Direccion:",class:"label"%>
+                            <%= f.text_field :direccion,:placeholder => "Direccion",:maxlength=>"50"  %>
+							<%= f.label "Sexo:",class:"label"%><br/> 
+							<%= f.select(:sexo, ['M', 'F' ],:prompt=>"--Seleccione--",id:"select")%>
+					</div>
 				</div>
 			</div>	
 			<div class="span5" align="center"><br/>
@@ -30,7 +32,10 @@
 			</div>
 <% end %>
 </div>		    			
-		
+				 
+	
+    
+
       <div id="localidad" class="modal hide fade in" style="display: none;  " >
         	 <%=render 'clientes/ventana_modal'%>
        <div><br/></br>

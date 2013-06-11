@@ -1,5 +1,4 @@
   <br/>
-  <%= form_tag funcionario_path, :method => 'get' do %>
   <div align="center">
 	<h3> Lista de Funcionarios</h3>
 	</div>
@@ -47,7 +46,5 @@
 		<%=will_paginate %>
   </div>
 	<div align="center">
-		<%= link_to '(+) Nuevo Funcionario', new_funcionario_path %>
+		<%= link_to 'Agregar Nuevo Funcionario', new_funcionario_path %>
 	</div>
-  </div>
-  <% end %>
