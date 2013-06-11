@@ -10,7 +10,13 @@
                                 <div class="heading">
                                     <h4 class="form-heading">Registrarse</h4>
                                 </div>
-                                	<%= flash[:error] = ""%>
+                                <div class="alert alert-error">
+                                    
+                                <% flash.each do |name, msg| %>
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <%= content_tag :div, msg, :id => "flash_#{name}" %>
+                                <% end %>
+                            </div>
                                 <div class="control-group">
                                     <label class="control-label" for="inputUsername">Nombre de Usuario</label>
                                     <div class="controls">
