@@ -6,28 +6,23 @@
                <div class="row">
                    <div class="span3">
 						<%= f.label "Usuario:" ,class:"label"%>
-					    <%= f.text_field :username,:placeholder => "usuario",:maxlength=>"15"%>
+					    <%= f.text_field :username,:placeholder => "Ingrese Usuario",:maxlength=>"20"%>
 					    <label class="label">Funcionario:</label>
-						  <%=f.collection_select :id_funcionario,Funcionario.find(:all),:id,:nombres,:prompt=>"--Seleccione--"%>     
-						 <a data-toggle="modal" href="#funcionario" ><label  class="mismalinea-espacio">Nuevo Funcionario </label></a> 
+						  <%=f.collection_select :id_funcionario,Funcionario.find(:all),:id,:nombres,:prompt=>"Seleccione Funcionario"%>     
+						 <a data-toggle="modal" href="#funcionario" ><label>(+)Nuevo Funcionario </label></a>
 				    </div>
-				   <div class="span3 offset1">
-						<%= f.label "Contrasena:",class:"label" %>
-					    <%= f.password_field :password,:placeholder => "contrasena",:maxlength=>"15" %><br/>
+				   <div class="span3 ">
+						<%= f.label "Contraseña:",class:"label" %>
+					    <%= f.password_field :password,:placeholder => "Ingrese Contraseña",:maxlength=>"18" %><br/>
 				   </div>	
 			    </div>   	    
            </div>
            <div class="span5" align="center"><br/>
 					<%= f.submit "Guardar", class: "btn btn-primary" %>
-			</div>
- </div>          				    			    
-						
+			</div>        				    			    				
     <% end %>
+    </div> 
 
       <div id="funcionario" class="modal hide fade in" style="display: none;  " >
           <%= render 'users/ventana_modal'%>
        </div><br/></br>
-
-	  
-
-

@@ -1,7 +1,6 @@
   <div class="centrar" >
     <%= form_for @cliente do |f| %>
    		 <%= render 'mensajes/error_mensajes', object: f.object %>
-			
 			<legend>Nuevo Cliente</legend>
 			<div class="container">
                <div class="row">
@@ -31,10 +30,7 @@
 			</div>
 <% end %>
 </div>		    			
-				 
-	
-    
-
+		
       <div id="localidad" class="modal hide fade in" style="display: none;  " >
         	 <%=render 'clientes/ventana_modal'%>
        <div><br/></br>
