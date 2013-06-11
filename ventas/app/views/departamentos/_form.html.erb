@@ -1,7 +1,7 @@
 <div class="centrar"></br>
     <%= form_for(@departamento) do |f| %>
    		<%= render 'mensajes/error_mensajes', object: f.object %>
-           <h4><%= yield(:title) %></h4><br/>
+           <legend>Nuevo Departamento</legend>
                <div class="container">
                     <div class="row">
                         <div class="span3 offset2">
@@ -10,8 +10,9 @@
 					    </div>
 				    </div>
 			    </div>	
-</div>				
-				<div class="abajo" align="center"><br/>
+			    <div class="span5" align="center"><br/>
 					<%= f.submit "Guardar", class: "btn btn-primary"%>
 				</div>	
+</div>				
+				
 	<% end %>

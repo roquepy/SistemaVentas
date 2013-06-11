@@ -13,12 +13,13 @@
 					      <div class="mismalinea">		 
 			             <label class="mismalinea">Departamento:</label>
 			             <%=f.collection_select:id_departamento,Departamento.find(:all),:id,:nombre,:prompt=>"--Seleccione--"%>  
-						    </div>	   
+						    </div>	
+
 	        	
      </div>
-       
-                <div class="modal-footer">
+     <div class="modal-footer">
                     <%= f.submit "Guardar", :class => 'btn btn-success'%>
                     <a href="#" class="btn" data-dismiss="modal">Close</a>
-                </div>
+      </div>    
+                
          <% end %>

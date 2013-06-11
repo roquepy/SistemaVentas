@@ -13,7 +13,7 @@
 */
 .footer{
    width: 1000px;
-  position: relative;
+  position: absolute;
   margin-top: -150px;
   clear: both;
    bottom: 0 !important;
@@ -89,11 +89,11 @@
       margin-right: 120px;
 }
 
-/*.homepageHero{
+.homepageHero{
   background-image: url(../images/home.jpg) no-repeat ;
   min-height: 420px;
 border-bottom: 1px solid #fff;
 position: relative;
 
-}*/
+}
 

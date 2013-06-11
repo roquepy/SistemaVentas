@@ -46,11 +46,13 @@
 					         <%= f.label "Estado Funcionario:",class:"label"%>
 			                 <%=f.collection_select :id_estado_funcionario,EstadosFuncionario.find(:all),:id,:descripcion,:prompt=>"--Seleccione--"%> 
 					     </div> 
+
 	        	
             </div>
-       
-                        <div class="modal-footer">
+            <div class="modal-footer">
                             <%= f.submit "Guardar", :class => 'btn btn-success', :controller => 'users_controller', :action =>'funcionario_create' %>
                             <a href="#" class="btn" data-dismiss="modal">Close</a>
-                        </div>
+            </div>
+       
+                       
                     <% end %>

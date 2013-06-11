@@ -1,7 +1,7 @@
 <div class="centrar"><br/>
     <%= form_for(@funcionario) do |f| %>
        <%= render 'mensajes/error_mensajes', object: f.object %>
-       <h4><%= yield(:title) %></h4><br/>
+       <legend>Nuevo Funcionario</legend>
 			 <div class="container">
                 <div class="row">
                 	<div class="span3">
@@ -31,12 +31,13 @@
 			     </div> 
 	        </div>	
 	    </div>
-</div>	        	
-	           <div align="center">
-		            <div class="abajo"><br/>                 
+	    <div align="center">
+		            <div class="span5"><br/>                 
 				    	<%= f.submit "Guardar", class: "btn btn-primary" %>	
 				    </div>	
-				</div>    	 
+				</div>    
+</div>	        	
+	           	 
     <% end %>
 
      <div id="localidad" class="modal hide fade in" style="display: none;  " >

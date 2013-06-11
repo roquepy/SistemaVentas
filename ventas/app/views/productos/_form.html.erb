@@ -1,7 +1,7 @@
    <div class="centrar">
     <%= form_for(@producto) do |f| %>
           <%= render 'mensajes/error_mensajes', object: f.object %>
-             <h4><%= yield(:title) %></h4><br/>
+             <legend>Nuevo Producto</legend>
              <div class="container">
                 <div class="row">
                   <div class="span3 offset1">
@@ -21,12 +21,13 @@
                     <%= f.text_field :porcentaje,:placeholder => "Ingrese Porcentaje de IVA",:maxlength=>"2"%>
                  </div>
                </div>
-           </div>  
+           </div> 
+           <div class="span5" align="center"><br/>
+          <%= f.submit "Guardar", class: "btn btn-primary"%>
+      </div> 
    </div>  
 
-      <div class="abajo" align="center"><br/>
-          <%= f.submit "Guardar", class: "btn btn-primary"%>
-      </div>   
+         
   
     <% end %>    
 
