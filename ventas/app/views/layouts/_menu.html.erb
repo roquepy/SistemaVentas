@@ -1,10 +1,12 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
       <nav>
         <ul class="nav pull-right">
            <% if current_user %>
              <li><%= link_to "Home" ,paginas_estaticas_path%></li>
+             <li class="divider-vertical"></li>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Cliente <b class="caret"></b>
@@ -14,6 +16,7 @@
                 <li><%= link_to "Lista de Clientes",clientes_path  %></li>
               </ul>
             </li>
+            <li class="divider-vertical"></li>
              <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Facturacion <b class="caret"></b>
@@ -23,6 +26,7 @@
                 <li><%= link_to "Lista de Facturas",funcionarios_path  %></li>
                </ul>
              </li>
+             <li class="divider-vertical"></li>
               <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                  Producto<b class="caret"></b>
@@ -32,6 +36,7 @@
                 <li><%= link_to "Lista de Productos",productos_path  %></li>
                </ul>
              </li>
+             <li class="divider-vertical"></li>
               <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Localidad<b class="caret"></b>
@@ -41,6 +46,7 @@
                 <li><%= link_to "Lista de Localidades",localidads_path  %></li>
                </ul>
              </li>
+             <li class="divider-vertical"></li>
              <li id="fat-menu" class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   Departamento<b class="caret"></b>
@@ -50,7 +56,7 @@
                   <li><%= link_to "Lista de Departamentos",departamentos_path  %></li>
                 </ul>
              </li>
-
+            <li class="divider-vertical"></li>
               <li id="fat-menu" class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   Configuracion del Sistema<b class="caret"></b>
@@ -76,7 +82,7 @@
                     
                 </ul>
              </li>
-
+              <li class="divider-vertical"></li>
                 <li class="divider"></li>
                 <li>
                   <%= link_to "Cerrar Sesion", logout_path, method: "delete" %>
@@ -88,4 +94,5 @@
       </nav>
     </div>
   </div>
+</div>
 </header>

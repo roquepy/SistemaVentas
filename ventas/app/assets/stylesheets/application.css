@@ -12,11 +12,12 @@
  *= require_tree .
 */
 .footer{
-   width: 1200px;
+   width: 1000px;
    position: absolute;
    bottom: 0 !important;
    bottom: -1px;
    text-align: center;
+margin-left: 50px;
 }
 .centrar{
    margin-left:320px;
@@ -79,5 +80,11 @@
       margin-right: 120px;
 }
 
+/*.homepageHero{
+  background-image: url(../images/home.jpg) no-repeat ;
+  min-height: 420px;
+border-bottom: 1px solid #fff;
+position: relative;
 
+}*/
 

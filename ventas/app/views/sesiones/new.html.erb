@@ -1,33 +1,44 @@
-<div class="row">
-		<%= form_tag sesiones_path do %>
-		<div class="hero-unit">
-		    <form class="form-horizontal">
-		         <fieldset>
-				    <div class="page-header">
-						 <div class="row-fluid">
-							  <div class="span1">  	
-						      </div>
-							  <div class="span10">
-								  <div class="well well-small" align="center">
-								  	<h3>LOGIN</h3>
-								 	<div class="field">
-										<%= label_tag :usuario %>
-										<%= text_field_tag :username, params[:username],:placeholder => "Ingrese su usuario"  %>
-									  </div>
-									  <div class="field">
-										<%= label_tag :contrasena %>
-										<%= password_field_tag :password %>
-									 </div>
-		                            <div class="actions"><%= submit_tag "Login", class: "btn btn-primary" %></div>
-		       
-		                           </div>	
-		                           </div>
-					          </div>
-					     </div>
-					</div>
-				</fieldset>
-			</form>	
-	    </div>
-		
-		<% end %>
-	</div>
+<div class="container">
+        	<div class="row-fluid">
+            	<div class="span12">
+            		
+            		<fieldset>
+                	<div class="span6 offset4" style="padding-top:120px;">
+                    	<div class="area">
+                    		<%= form_tag sesiones_path do %>
+                           <!-- <form class="form-horizontal">-->
+                                <div class="heading">
+                                    <h4 class="form-heading">Registrarse</h4>
+                                </div>
+                                	<%= flash[:error] = ""%>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputUsername">Nombre de Usuario</label>
+                                    <div class="controls">
+                                    	<%= text_field_tag :inputUsername, params[:inputUsername], :maxlength => 15, :placeholder => "Ingrese su usuario" %> 
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputPassword">Contrase&ntildea</label>
+                                    <div class="controls">
+                                    	<%= password_field_tag :inputPassword, params[:inputPassword], :maxlength => 18, :placeholder => "Minimo 6 caracteres"  %>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <label class="checkbox">Recordarme   |
+                                            <%= check_box_tag :remember_me, 1, params[:remember_me] %> 
+
+                                            <a href="#" class="btn btn-link"> Olvidaste tu contrase&ntildea?</a>
+                                        </label>
+                                        <%= submit_tag "Ingresar", class: "btn btn-success" %>
+                                        <button type="button" class="btn">Ayuda</button>
+                                    </div>
+                                </div>	
+                           <!-- </form>	-->
+                            <% end %>
+						</div>                           
+                    </div>
+                    </fieldset>
+                </div>
+            </div>
+</div>
