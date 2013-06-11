@@ -13,14 +13,18 @@
 */
 .footer{
    width: 1000px;
-   position: absolute;
+  position: relative;
+  margin-top: -150px;
+  clear: both;
    bottom: 0 !important;
    bottom: -1px;
    text-align: center;
-margin-left: 50px;
+    margin-left: 50px;
 }
 .centrar{
    margin-left:320px;
+   width: 530px;
+   margin-top: 50px;
 }
 
 .centrar-guardar{
