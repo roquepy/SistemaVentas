@@ -23,6 +23,7 @@ class FacturaVentaController < ApplicationController
   # GET /factura_venta/new.json
   def new
     @factura_ventum = FacturaVentum.new
+    cliente_new
     detalle_factura_venta
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +42,7 @@ class FacturaVentaController < ApplicationController
   def create
     @factura_ventum = FacturaVentum.new(params[:factura_ventum])
     detalle_factura_venta
+    cliente_new
     respond_to do |format|
       if @factura_ventum.save
         format.html { redirect_to @factura_ventum, notice: 'Factura ventum was successfully created.' }
@@ -82,7 +84,11 @@ class FacturaVentaController < ApplicationController
  
   def detalle_factura_venta
       @detalle_factura_venta = DetalleFacturaVentum.new
-      @detalles_factura_ventas = DetalleFacturaVentum.all
+      @detalles_factura_ventas = DetalleFacturaVentum.paginate(:page => params[:page], :per_page => 10)
+  end
+  def cliente_new
+      @cliente= Cliente.new
+     
   end
 
 

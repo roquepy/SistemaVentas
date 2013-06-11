@@ -24,6 +24,7 @@ group :assets do
   gem 'bootstrap-will_paginate'
   gem 'carrierwave'  
   gem 'client_side_validations'
+  gem 'rails3-jquery-autocomplete'
 end
 
 gem 'jquery-rails'

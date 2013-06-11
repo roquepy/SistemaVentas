@@ -7,7 +7,6 @@ class DetalleFacturaVentaController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @detalle_factura_venta }
-      format.js {}
     end
   end
 
@@ -26,7 +25,6 @@ class DetalleFacturaVentaController < ApplicationController
   # GET /detalle_factura_venta/new.json
   def new
     @detalle_factura_ventum = DetalleFacturaVentum.new
-    @productos=Producto.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @detalle_factura_ventum }
