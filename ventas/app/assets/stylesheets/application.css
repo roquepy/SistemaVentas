@@ -38,6 +38,11 @@ margin-left: 50px;
   font-style: oblique;
   margin-top: 25px;
 }
+
+.centrar-div-producto{
+  margin-left: 120px;
+}
+
 .mismalinea{
     float:left;
 }

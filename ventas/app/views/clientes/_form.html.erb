@@ -6,18 +6,18 @@ f   <div class="centrar" >
                <div class="row">
                    <div class="span3 ">
 				        <%= f.label "Nombre:",class:"label"%>
-					    <%= f.text_field :nombre,:id=>"txt_nombres",:placeholder => "Ingrese Nombre",:maxlength=>"25" %>
+					    <%= f.text_field :nombre,:id=>"txt_nombres",:placeholder => "Ingrese Nombre",:maxlength=>"50" %>
 					    <%= f.label "Nro de doc:",class:"label"%>
-						<%= f.text_field :num_identidad,:placeholder => "Ingrese Nº de RUC o CI",:maxlength=>"9" %>
+						<%= f.text_field :num_identidad,:placeholder => "Ingrese Nº de RUC o CI",:maxlength=>"15" %>
 						<%= f.label "Telefono:",class:"label"%>
 					    <%= f.text_field :telefono,:placeholder => " Formato: (xxx) xxx xxx" ,:maxlength=>"15" %>
 						<%= f.label "Localidad:",class:"label"%>
 				        <%=f.collection_select :id_localidad,Localidad.find(:all),:id,:nombre,:prompt=>"Seleccione Localidad"%>      
-						<a data-toggle="modal" href="#localidad" ><label>Nueva Localidad </label></a> 
+						<a data-toggle="modal" href="#localidad" ><label>(+) Nueva Localidad </label></a> 
 					</div>
 					<div class="span3 ">
 						<%= f.label "Apellido:",class:"label"%>
-					    <%= f.text_field :apellido,:placeholder => "Ingrese Apellido",:maxlength=>"25" %>
+					    <%= f.text_field :apellido,:placeholder => "Ingrese Apellido",:maxlength=>"50" %>
 					    <%= f.label "Direccion:",class:"label"%>
 						<%= f.text_field :direccion,:placeholder => "Ingrese Direccion",:maxlength=>"50"  %> </br>
 						<%= f.label "Sexo:",class:"label"%></br>

@@ -2,7 +2,7 @@
     <%= form_for@detalle_factura_venta,remote:true  do |g| %>
         <div class="container">
             <div class="row">
-                <div class="span3">
+                <div class="span3 offset1">
                     <%g.hidden_field :id_factura_venta,:value=>'1'%>
                     <%=g.hidden_field :id_factura_venta,:value=>1%>
                     <%= g.label "Producto:",class:"label" %>

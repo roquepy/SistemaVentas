@@ -1,12 +1,12 @@
-<div class="centrar-solo-un-componente"></br>
+<div class="centrar"></br>
     <%= form_for(@departamento) do |f| %>
    		<%= render 'mensajes/error_mensajes', object: f.object %>
            <h4><%= yield(:title) %></h4><br/>
                <div class="container">
                     <div class="row">
-                        <div class="span3">
-						    <%= f.label "Departamento:"%>
-						    <%= f.text_field :nombre,:placeholder => "departamento",:maxlength=>"35" %>
+                        <div class="span3 offset2">
+						    <%= f.label "Departamento:",class:"label"%>
+						    <%= f.text_field :nombre,:placeholder => "Ingrese Departamento",:maxlength=>"35" %>
 					    </div>
 				    </div>
 			    </div>	
@@ -14,4 +14,4 @@
 				<div class="abajo" align="center"><br/>
 					<%= f.submit "Guardar", class: "btn btn-primary"%>
 				</div>	
-	<% end %><br/><br/>
+	<% end %>
