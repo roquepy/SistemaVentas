@@ -1,6 +1,6 @@
 <div class="mover">
 
-    <%= form_for@factura_ventum, remote:true do |f| %>
+    <%= form_for@factura_ventum do |f| %>
        <%= render 'mensajes/error_mensajes', object: f.object %>
           <h4><%= yield(:title) %></h4><br/>
            <div class="container">
@@ -10,7 +10,6 @@
                    <%= f.text_field :nro_factura,:readonly => true,:value=>FacturaVentum.nro_factura()%><br/>
                    <%= f.label :fecha,class:"label"%><br/>
                    <%= f.text_field :fecha,:value => Date.today,:readonly => true%>
-                   
                 </div>
                 <div class="span3 offset1">
                      <%= f.label "Clientes:",class:"label"%>

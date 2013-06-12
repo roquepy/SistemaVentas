@@ -1,5 +1,4 @@
 class FacturaVentaController < ApplicationController
-  autocomplete :cliente, :nombre,:display_value => :display_clientes, :extra_data => [ :id, :nombre ],:full => true
   # GET /factura_venta
   # GET /factura_venta.json
   def index
@@ -24,6 +23,9 @@ class FacturaVentaController < ApplicationController
   # GET /factura_venta/new.json
   def new
     @factura_ventum = FacturaVentum.new
+    @detalle1 = @factura_ventum.detalle_factura_venta.build
+    @detalle2 = @factura_ventum.detalle_factura_venta.build
+    @detalle3 = @factura_ventum.detalle_factura_venta.build
     cliente_new
     detalle_factura_venta
     respond_to do |format|
