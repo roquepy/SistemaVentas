@@ -4,7 +4,6 @@ class ClientesController < ApplicationController
   def index
 
     @clientes = Cliente.paginate(:page => params[:page], :per_page => 10)
-    @clientes_nombres=Cliente.find(:all,:conditions=>['like nombre ?',"%#{params[:search]}%"])
     respond_to do |format|
 
       format.html # index.html.erb

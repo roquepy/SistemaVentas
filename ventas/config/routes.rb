@@ -1,9 +1,4 @@
 Ventas::Application.routes.draw do
-  
-
-  resources :productos
-
-  resources :detalle_factura_venta
 
   match 'logout' => 'sesiones#destroy', as: :logout
   match 'conf_edit' => 'configuracions#edit'
@@ -19,7 +14,11 @@ Ventas::Application.routes.draw do
   resources :departamentos
   resources :paginas_estaticas
   resources :configuracions
- 
+  resources :productos
+  resources :detalle_factura_venta
+  resources :factura_venta do
+    get :autocomplete_clientes_nombre, :on => :collection
+  end
   root to: 'sesiones#new'
 
 

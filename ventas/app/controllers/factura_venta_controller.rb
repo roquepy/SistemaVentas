@@ -23,6 +23,9 @@ class FacturaVentaController < ApplicationController
   # GET /factura_venta/new.json
   def new
     @factura_ventum = FacturaVentum.new
+    @detalle1 = @factura_ventum.detalle_factura_venta.build
+    @detalle2 = @factura_ventum.detalle_factura_venta.build
+    @detalle3 = @factura_ventum.detalle_factura_venta.build
     cliente_new
     detalle_factura_venta
     respond_to do |format|
@@ -83,7 +86,7 @@ class FacturaVentaController < ApplicationController
   end
  
   def detalle_factura_venta
-      @detalle_factura_venta = DetalleFacturaVentum.new
+      @detalle_factura_ventum  = DetalleFacturaVentum.new
       @detalles_factura_ventas = DetalleFacturaVentum.paginate(:page => params[:page], :per_page => 10)
   end
   def cliente_new

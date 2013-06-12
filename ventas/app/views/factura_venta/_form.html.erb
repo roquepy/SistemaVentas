@@ -1,6 +1,6 @@
 <div class="mover">
 
-    <%= form_for(@factura_ventum) do |f| %>
+    <%= form_for@factura_ventum do |f| %>
        <%= render 'mensajes/error_mensajes', object: f.object %>
           <h4><%= yield(:title) %></h4><br/>
            <div class="container">
@@ -10,10 +10,11 @@
                    <%= f.text_field :nro_factura,:readonly => true,:value=>FacturaVentum.nro_factura()%><br/>
                    <%= f.label :fecha,class:"label"%><br/>
                    <%= f.text_field :fecha,:value => Date.today,:readonly => true%>
-                   
                 </div>
                 <div class="span3 offset1">
                      <%= f.label "Clientes:",class:"label"%>
+                     <%= f.autocomplete_field :id_cliente, autocomplete_clientes_nombre_factura_venta_path,:id_element => '#id'%>
+                      <%=f.collection_select :id_cliente,Cliente.find(:all),:id,:nombre,:prompt=>"--Seleccione--",id:"select"%>
                      <%=f.collection_select :id_cliente,Cliente.find(:all),:id,:nombre,:prompt=>"--Seleccione--",id:"select"%>
                      <a data-toggle="modal" href="#cliente" ><label>Nuevo Cliente </label></a>
                       <%= f.label "Condicion de Pago:",class:"label"%>
@@ -31,15 +32,12 @@
               </div>   
                  <div align="center">
                      <div class="abajo"><br/>    
-                      <a style='cursor: pointer;' onclick="muestra_oculta('producto')" ><%= f.label "Cargar Producto"%></a>
+                      <a onclick="muestra_oculta('producto')" ><%= f.label "Cargar Producto"%></a>
                     </div>  
 
                  </div> 
-                 <div id="producto"style="display: none; ">
-
+                 <div id="producto" style="display: none; ">
                        <%= render 'factura_venta/producto'%>
-
-
                  </div> <br/>
                  <div class="abajo-factura">
                        <%= f.label :descuento,class:"label"%>
