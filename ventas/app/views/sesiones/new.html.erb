@@ -5,17 +5,15 @@
             		<fieldset>
                 	<div class="span6 offset4" style="padding-top:120px;">
                     	<div class="area">
-                    		<%= form_tag sesiones_path do %>
+                    		<%= form_tag sesiones_path, remote: true do %>
                            <!-- <form class="form-horizontal">-->
                                 <div class="heading">
                                     <h4 class="form-heading">Registrarse</h4>
                                 </div>
-                                <div class="alert alert-error">
-                                    
-                                <% flash.each do |name, msg| %>
-                                    <button type="button" class="close" data-dismiss="alert">×</button>
-                                    <%= content_tag :div, msg, :id => "flash_#{name}" %>
-                                <% end %>
+                                <div class="alert alert-error" id="alert" style="display:none;">
+                                    <!--<button type="button" class="close" data-dismiss="alert">×</button>-->
+                                    <p> Usuario y contrase&ntildea incorrecto! </p>
+                                          
                             </div>
                                 <div class="control-group">
                                     <label class="control-label" for="inputUsername">Nombre de Usuario</label>
