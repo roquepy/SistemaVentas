@@ -5,7 +5,7 @@ class Cliente < ActiveRecord::Base
   validates :nombre,:apellido,:num_identidad,:telefono, :presence => true
   validates :num_identidad, :length => { :minimum => 6, :maximum => 8}, :uniqueness => true, :format => { :with =>  /\d/}
   validates :nombre, :length => { :minimum => 3}, :format => { :with => /\A[a-zA-Z]+\z/}
-  validates :apellido, :length => { :minimum => 3}, :format => { :with => /\A[a-zA-Z]+ [\s] \z/ }
+  validates :apellido, :length => { :minimum => 3}, :format => { :with => /\A[a-zA-Z]+\z/ }
   validates :direccion, :length => { :minimum => 5, :maximum =>30}
   validates :telefono, :length => { :minimum => 6, :maximum => 13}, :format => { :with =>  /^[0-9]{2,3}-? ?[0-9]{6,7}$/ }
    has_many :factura_venta
