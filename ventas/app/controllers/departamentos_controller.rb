@@ -1,4 +1,5 @@
 class DepartamentosController < ApplicationController
+    before_filter :require_login
   # GET /departamentos
   # GET /departamentos.json
   def index

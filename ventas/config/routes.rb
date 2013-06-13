@@ -16,9 +16,6 @@ Ventas::Application.routes.draw do
   resources :configuracions
   resources :productos
   resources :detalle_factura_venta
-  resources :factura_venta do
-    get :autocomplete_clientes_nombre, :on => :collection
-  end
   root to: 'sesiones#new'
 
 

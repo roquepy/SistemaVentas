@@ -56,32 +56,34 @@
                   <li><%= link_to "Lista de Departamentos",departamentos_path  %></li>
                 </ul>
              </li>
-            <li class="divider-vertical"></li>
-              <li id="fat-menu" class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  Configuracion del Sistema<b class="caret"></b>
-                </a>
+             <% if current_user.funcionario.funcion.nombre=="administrador" %>
+                <li class="divider-vertical"></li>
+                  <li id="fat-menu" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      Configuracion del Sistema<b class="caret"></b>
+                    </a>
+                            
+                    <ul class="dropdown-menu">
+                      <li><%= link_to "Configuracion", conf_edit_path %></li>
+                       <li class="dropdown-submenu">
+                          <a tabindex="-1" href="#">Usuario</a>
+                          <ul class="dropdown-menu">
+                            <li><%= link_to "Nuevo Usuario", new_user_path %></li>
+                            <li><%= link_to "Lista de Usuario", users_path %></li>
+                          </ul>
+                        </li>
+                      <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                          <a tabindex="-1" href="#">Funcionario</a>
+                          <ul class="dropdown-menu">
+                            <li><%= link_to "Nuevo Funcionario", new_funcionario_path %></li>
+                            <li><%= link_to "Lista de Funcionario", funcionarios_path %></li>
+                          </ul>
+                        </li>
                         
-                <ul class="dropdown-menu">
-                  <li><%= link_to "Configuracion", conf_edit_path %></li>
-                   <li class="dropdown-submenu">
-                      <a tabindex="-1" href="#">Usuario</a>
-                      <ul class="dropdown-menu">
-                        <li><%= link_to "Nuevo Usuario", new_user_path %></li>
-                        <li><%= link_to "Lista de Usuario", users_path %></li>
-                      </ul>
-                    </li>
-                  <li class="divider"></li>
-                    <li class="dropdown-submenu">
-                      <a tabindex="-1" href="#">Funcionario</a>
-                      <ul class="dropdown-menu">
-                        <li><%= link_to "Nuevo Funcionario", new_funcionario_path %></li>
-                        <li><%= link_to "Lista de Funcionario", funcionarios_path %></li>
-                      </ul>
-                    </li>
-                    
-                </ul>
-             </li>
+                    </ul>
+                 </li>
+             <% end %>
               <li class="divider-vertical"></li>
                 <li class="divider"></li>
                 <li>

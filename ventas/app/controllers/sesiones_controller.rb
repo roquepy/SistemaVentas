@@ -1,5 +1,4 @@
 class SesionesController < ApplicationController
-
     def new
       flash[:error] = ""
     end

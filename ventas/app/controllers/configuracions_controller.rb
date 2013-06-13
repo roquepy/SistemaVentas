@@ -1,4 +1,5 @@
 class ConfiguracionsController < ApplicationController
+    before_filter :require_login
   # GET /configuracions
   # GET /configuracions.json
   def index

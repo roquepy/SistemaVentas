@@ -1,4 +1,5 @@
 class FuncionariosController < ApplicationController
+    before_filter :require_login
   # GET /funcionarios
   # GET /funcionarios.json
   def index

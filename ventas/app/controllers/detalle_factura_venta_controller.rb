@@ -1,4 +1,5 @@
 class DetalleFacturaVentaController < ApplicationController
+    before_filter :require_login
   # GET /detalle_factura_venta
   # GET /detalle_factura_venta.json
   def index
