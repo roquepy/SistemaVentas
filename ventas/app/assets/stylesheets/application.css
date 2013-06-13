@@ -13,7 +13,7 @@
 */
 .footer{
    width: 1000px;
-  position: relative;
+  position: absolute;
   margin-top: -150px;
   clear: both;
    bottom: 0 !important;
