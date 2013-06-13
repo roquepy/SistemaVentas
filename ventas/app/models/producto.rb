@@ -3,7 +3,7 @@ class Producto < ActiveRecord::Base
 	
   	validates :codigo, :presence => true
   	validates :codigo, :length => { :minimum =>1}, :uniqueness => true
-  	validates :descripcion, :length => { :minimum => 3},:format => { :with => /\A[+-]?\d+\Z/}
+  	validates :descripcion, :length => { :minimum => 3},:format => { :with => /\A[a-zA-Z]+\z/}
   	validates :cant_minima, :length => { :minimum => 1}
   	validates :cant_optima, :length => { :minimum => 1}
   	validates :precio_unitario, :length => { :minimum => 2}
