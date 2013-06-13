@@ -4,7 +4,8 @@ class FacturaVentum < ActiveRecord::Base
     belongs_to :condicion_de_pago, :foreign_key=>"id_condicion_pago"
     belongs_to :tipo_valor_pago, :foreign_key=>"id_tipo_valor"
     belongs_to :funcionario, :foreign_key=>"id_funcionario"
-    has_many :detalle_factura_venta
+     has_and_belongs_to_many :detalle_factura_venta,join_table: :factura_venta_detalle_factura_venta,:autosave => true
+    accepts_nested_attributes_for :detalle_factura_venta
     def  self.nro_factura()
         nro_factura=100
     	nro_factura=FacturaVentum.select('nro_factura').find(:last) 

@@ -13,9 +13,7 @@
                 </div>
                 <div class="span3 offset1">
                      <%= f.label "Clientes:",class:"label"%>
-                     <%= f.autocomplete_field :id_cliente, autocomplete_clientes_nombre_factura_venta_path,:id_element => '#id'%>
                       <%=f.collection_select :id_cliente,Cliente.find(:all),:id,:nombre,:prompt=>"--Seleccione--",id:"select"%>
-                     <%=f.collection_select :id_cliente,Cliente.find(:all),:id,:nombre,:prompt=>"--Seleccione--",id:"select"%>
                      <a data-toggle="modal" href="#cliente" ><label>Nuevo Cliente </label></a>
                       <%= f.label "Condicion de Pago:",class:"label"%>
                       <%=f.collection_select :id_condicion_pago,CondicionDePago.find(:all),:id,:nombre_condicion_de_pago,:prompt=>"--Seleccione--",id:"select"%>
@@ -37,7 +35,27 @@
 
                  </div> 
                  <div id="producto" style="display: none; ">
-                       <%= render 'factura_venta/producto'%>
+                      <div class="mover">
+                        <%= f.fields_for :detalle_factura_venta do |g| %>
+                          <div class="container">
+                            <div class="row">
+                                <div class="span3 offset1">
+                                    <%=g.hidden_field :id_factura_venta,:value=>'1'%>
+                                    <%= g.label "Producto:",class:"label" %>
+                                    <%=g.collection_select :id_producto,Producto.find(:all),:id,:descripcion,:prompt=>"--Seleccione--",id:"select"%>
+                                </div>      
+                                <div class="span3 offset1">
+                                      <%= g.label "Cantidad:",class:"label" %>
+                                      <%= g.text_field :cantidad %>
+                                </div>
+                                <div class="span3 offset1">
+                                      <%= g.label "Descuento:" ,class:"label"%>
+                                      <%= g.text_field :descuento %>
+                                 </div>       
+                             </div><br/>
+                          </div>
+                    </div> 
+                     <% end %>
                  </div> <br/>
                  <div class="abajo-factura">
                        <%= f.label :descuento,class:"label"%>

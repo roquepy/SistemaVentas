@@ -24,8 +24,6 @@ class FacturaVentaController < ApplicationController
   def new
     @factura_ventum = FacturaVentum.new
     @detalle1 = @factura_ventum.detalle_factura_venta.build
-    @detalle2 = @factura_ventum.detalle_factura_venta.build
-    @detalle3 = @factura_ventum.detalle_factura_venta.build
     cliente_new
     detalle_factura_venta
     respond_to do |format|
