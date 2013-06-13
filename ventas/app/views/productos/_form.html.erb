@@ -1,33 +1,34 @@
-   <div class="centrar">
+<div class="span8 offset2" style="margin-top:80px;">
     <%= form_for(@producto) do |f| %>
           <%= render 'mensajes/error_mensajes', object: f.object %>
              <legend>Nuevo Producto</legend>
-             <div class="container">
-                <div class="row">
-                  <div class="span3 offset1">
-                     <%= f.label "Codigo:",class:"label"%>
-                     <%= f.text_field :codigo,:placeholder => "Ingrese Codigo",:maxlength=>"6" %>
-                     <%= f.label "Cantidad Minima:",class:"label"%>
+             <div class="span8">
+
+                  <div class="span3">
+                     <%= f.label "Codigo (*)",class:"label"%>
+                     <%= f.text_field :codigo,class: "span3" , rel: "popover", datacontent: "hola",:placeholder => "Ingrese Codigo",:maxlength=>"6" %>
+                     <%= f.label "Cantidad Minima (*)",class:"label"%>
                      <%= f.text_field :cant_minima,:placeholder => "Ingrese Cantidad Minima",:maxlength=>"10"%>
-                     <%= f.label "Precio Unitario:",class:"label"%>
-                     <%= f.text_field :precio_unitario,:placeholder => "Ingrese Precio Unitario",:maxlength=>"12"%>
+                     <%= f.label "Precio Unitario (*)",class:"label"%>
+                     <%= f.text_field :precio_unitario,class: "span3",:placeholder => "Ingrese Precio Unitario",:maxlength=>"12"%>
                   </div> 
                   <div class="span3">
-                    <%= f.label "Descripcion:",class:"label"%>
-                    <%= f.text_field :descripcion,:placeholder => "Ingrese Descripción",:maxlength=>"50" %>
-                    <%= f.label "Cantidad Optima:",class:"label"%>
-                    <%= f.text_field :cant_optima,:placeholder => "Ingrese Cantidad Óptima",:maxlength=>"10"%>
-                    <%= f.label "Procentaje de IVA:",class:"label"%>
-                    <%= f.text_field :porcentaje,:placeholder => "Ingrese Porcentaje de IVA",:maxlength=>"2"%>
+                    <%= f.label "Descripcion (*)",class:"label"%>
+                    <%= f.text_field :descripcion,class: "span3",:placeholder => "Ingrese Descripción",:maxlength=>"50" %>
+                    <%= f.label "Cantidad Optima (*)",class:"label"%>
+                    <%= f.text_field :cant_optima,class: "span3",:placeholder => "Ingrese Cantidad Óptima",:maxlength=>"10"%>
+                    <%= f.label "Procentaje de IVA (*)",class:"label"%>
+                    <%= f.select(:porcentaje, ['5', '10' ], id:"select", :prompt=>"-- Seleccione el Porcentaje de IVA--" , class: "span3")%>
                  </div>
-               </div>
-           </div> 
-           <div class="span5" align="center"><br/>
-          <%= f.submit "Guardar", class: "btn btn-primary"%>
-      </div> 
-   </div>  
 
-         
-  
-    <% end %>    
+               </div>
+        
+        <div class="span2 offset3" align="center"><br/>
+            <%= f.submit "Guardar", class: "btn btn-primary"%>
+            <%= link_to "Cancelar", productos_path, class: "btn"%>
+        </div>
+
+ </div>  
+
+<% end %>    
 

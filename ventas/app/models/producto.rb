@@ -1,5 +1,6 @@
 class Producto < ActiveRecord::Base
 	attr_accessible :codigo,:descripcion, :cant_minima,:cant_optima,:precio_unitario,:porcentaje
+	
   	validates :codigo, :presence => true
   	validates :codigo, :length => { :minimum =>1}, :uniqueness => true
   	validates :descripcion, :length => { :minimum => 3},:format => { :with => /\A[+-]?\d+\Z/}

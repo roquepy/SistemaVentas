@@ -14,7 +14,7 @@ class Funcionario < ActiveRecord::Base
   validates :telefono, :length => { :minimum => 6, :maximum => 15}
 
   validates :num_identidad, :length => { :minimum => 6, :maximum => 10}, :uniqueness => true
-    validates :nombres, :length => { :minimum => 2, :maximum => 50}
+  validates :nombres, :length => { :minimum => 2, :maximum => 50}
   validates :apellidos, :length => { :minimum => 2, :maximum => 50}
   validates :direccion,  :length => { :minimum => 5, :maximum => 70 }
   validates :telefono, :length => { :minimum => 6, :maximum => 15}

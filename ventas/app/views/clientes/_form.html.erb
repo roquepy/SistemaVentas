@@ -1,6 +1,4 @@
-  
-    
-	<div class="span8 offset2" style="margin-top:80px;">	
+<div class="span8 offset2" style="margin-top:80px;">	
 			<%= form_for @cliente do |f| %>
    		 <%= render 'mensajes/error_mensajes', object: f.object %>	
 			<legend>Nuevo Cliente</legend>
@@ -19,12 +17,12 @@
 					</div>
 
 					<div class="span3 offset1">
-					        <%= f.label "Apellido  (*)",class:"label"%>
-					 	    <%= f.text_field :apellido ,class: "span3" ,:placeholder => "Apellido",:maxlength=>"25" %>
-					 	    <%= f.label "Direccion  (*)",class:"label"%>
-                            <%= f.text_field :direccion ,class: "span3" ,:placeholder => "Direccion",:maxlength=>"30"  %>
-							<%= f.label "Sexo  (*)",class:"label"%><br/> 
-							<%= f.select(:sexo, ['M', 'F' ], id:"select", :prompt=>"------ Seleccione su sexo ------" , class: "span3")%>
+					     <%= f.label "Apellido  (*)",class:"label"%>
+					 	 <%= f.text_field :apellido ,class: "span3" ,:placeholder => "Ingrese Apellido",:maxlength=>"25" %>
+					 	 <%= f.label "Direccion  (*)",class:"label"%>
+                         <%= f.text_field :direccion ,class: "span3" ,:placeholder => "Inngrese Direccion",:maxlength=>"30"  %>
+					     <%= f.label "Sexo  (*)",class:"label"%><br/> 
+						 <%= f.select(:sexo, ['M', 'F' ], id:"select", :prompt=>"------ Seleccione su sexo ------" , class: "span3")%>
 					</div>
 					
 				</div>	
