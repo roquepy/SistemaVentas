@@ -13,7 +13,7 @@
 */
 .footer{
    width: 1000px;
-  position: absolute;
+  position: relative;
   margin-top: -150px;
   clear: both;
    bottom: 0 !important;
@@ -22,7 +22,7 @@
     margin-left: 50px;
 }
 .centrar{
-   margin-left:320px;
+   margin-left:190px;
    width: 530px;
    margin-top: 50px;
 }

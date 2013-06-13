@@ -24,3 +24,7 @@ el.style.display = (el.style.display == 'none') ? 'block' : 'none'; //damos un a
 window.onload = function(){/*hace que se cargue la función lo que predetermina que div estará oculto hasta llamar a la función nuevamente*/
 muestra_oculta('contenido_a_mostrar');/* "contenido_a_mostrar" es el nombre de la etiqueta DIV que deseamos mostrar */
 }
+$('#new_client input').hover(function()
+{
+	$(this).popover('show')
+});
