@@ -13,7 +13,7 @@
                 </div>
                 <div class="span3 offset1">
                      <%= f.label "Clientes:",class:"label"%>
-                      <%=f.collection_select :id_cliente,Cliente.find(:all),:id,:nombre,:prompt=>"--Seleccione--",id:"select"%>
+                      <%= f.select :id_cliente, Cliente.find(:all).collect{|c| [c.nombre+ " " +c.apellido, c.id]}, :prompt => "--Seleccione--" %>
                      <a data-toggle="modal" href="#cliente" ><label>Nuevo Cliente </label></a>
                       <%= f.label "Condicion de Pago:",class:"label"%>
                       <%=f.collection_select :id_condicion_pago,CondicionDePago.find(:all),:id,:nombre_condicion_de_pago,:prompt=>"--Seleccione--",id:"select"%>
