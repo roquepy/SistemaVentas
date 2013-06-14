@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130613092049) do
+ActiveRecord::Schema.define(:version => 20130614092535) do
 
   create_table "clientes", :force => true do |t|
     t.string  "nombre",        :limit => 50, :null => false
@@ -60,6 +60,11 @@ ActiveRecord::Schema.define(:version => 20130613092049) do
     t.decimal "total_iva",         :precision => 10, :scale => 0, :null => false
   end
 
+  create_table "facturacabecera_facturadetalle", :id => false, :force => true do |t|
+    t.integer "factura_ventum_id"
+    t.integer "detalle_factura_ventum_id"
+  end
+
   create_table "funcionarios", :force => true do |t|
     t.string   "num_identidad"
     t.string   "nombres",               :limit => 50, :null => false
@@ -103,8 +108,6 @@ ActiveRecord::Schema.define(:version => 20130613092049) do
     t.string  "crypted_password"
     t.string  "salt"
     t.integer "id_funcionario"
-    t.boolean "es_administrador"
-    t.boolean "es_funcionario"
   end
 
 end

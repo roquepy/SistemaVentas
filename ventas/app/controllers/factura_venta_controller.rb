@@ -24,7 +24,6 @@ class FacturaVentaController < ApplicationController
   # GET /factura_venta/new.json
   def new
     @factura_ventum = FacturaVentum.new
-    1.times{ @factura_ventum.detalle_factura_venta.build }
     cliente_new
     detalle_factura_venta
     respond_to do |format|

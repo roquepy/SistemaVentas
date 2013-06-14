@@ -1,23 +1,42 @@
 class FacturaVentum < ActiveRecord::Base
-	attr_accessible :detalle_factura_venta_attributes,:id_cliente,:id_condicion_pago,:id_tipo_valor,:id_funcionario,:monto_total,:fecha,:nro_factura,:total_descuento,:total_iva5,:total_iva10,:total_iva
+	attr_accessible :id_cliente,:id_condicion_pago,:id_tipo_valor,:id_funcionario,:monto_total,:fecha,:nro_factura,:total_descuento,:total_iva5,:total_iva10,:total_iva
     belongs_to :cliente, :foreign_key=>"id_cliente"
     belongs_to :condicion_de_pago, :foreign_key=>"id_condicion_pago"
     belongs_to :tipo_valor_pago, :foreign_key=>"id_tipo_valor"
     belongs_to :funcionario, :foreign_key=>"id_funcionario"
-    has_and_belongs_to_many :detalle_factura_venta,join_table: :factura_venta,:autosave => true
-    accepts_nested_attributes_for :detalle_factura_venta
+    has_many :detalle_factura_venta
+    
+def  self.ultima_factura()
+        return FacturaVentum.find(:last)
+        
+    end
+
     def  self.nro_factura()
-        nro_factura=100
-    	nro_factura=FacturaVentum.select('nro_factura').find(:last) 
-    	if nro_factura.blank?
-    		nro_factura=100
+        factura_nro=100
+    	factura=ultima_factura
+    	if factura.blank?
+    		factura_nro=100
     	    else
-    	    	nro_factura=nro_factura+1
+    	    	factura_nro=factura.nro_factura+1
                 
     	end	
-    	return nro_factura
+    	return factura_nro
     	
     end
+    def  self.id_factura()
+        factura_id=1
+        factura=ultima_factura
+        if factura.blank?
+            factura_id=1
+            else
+                factura_id=factura.id+1
+                
+        end 
+        return factura_id
+        
+    end
+
+
     def  self.get_factura_nro(nro_factura)
         nro_factura=FacturaVentum.find(:all,:conditions=>['nro_factura = ? ',"%#{nro_factura}%"])
         if nro_factura.blank?
