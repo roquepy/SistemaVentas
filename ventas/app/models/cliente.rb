@@ -8,5 +8,5 @@ class Cliente < ActiveRecord::Base
   validates :apellido, :length => { :minimum => 3}, :format => { :with => /\A[a-zA-Z]+\z/ }
   validates :direccion, :length => { :minimum => 5}
   validates :telefono, :length => { :minimum => 6}, :format => { :with =>  /^[0-9]{2,3}-? ?[0-9]{6,7}$/ }
-   has_many :factura_venta
+  has_many :factura_venta
 end

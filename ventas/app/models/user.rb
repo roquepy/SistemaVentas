@@ -6,13 +6,6 @@ class User < ActiveRecord::Base
   validates :username, :uniqueness => { :message => "El usuario ya existe" }
   validates :password, :uniqueness => { :message => "La contrasena no disponible" }
 
-  validates :username, :length => { :minimum => 5, :maximum => 15}, :format => { :with => /\A[a-zA-Z]+\z/}
-   validates :password, :length => { :minimum => 5, :maximum => 15}
-
-  validates :username, :length => { :minimum => 6, :maximum => 20}, :format => { :with => /\A[a-zA-Z]+\z/}
-   validates :password, :length => { :minimum => 6, :maximum => 18}
-   def self.buscar(buscar,page)
-   	 User.paginate :page => page, :per_page => 2, :conditions=>['username like ? ',"%#{buscar}%"], :order => "username"
-     
-   end
+  validates :username, :length => { :minimum => 6}, :format => { :with => /\A[a-zA-Z]+\z/}
+  validates :password, :length => { :minimum => 6}
 end

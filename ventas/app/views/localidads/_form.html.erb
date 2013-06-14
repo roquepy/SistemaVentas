@@ -5,11 +5,11 @@
              <div class="span8">
 
                   <div class="span3">
-						 <%= f.label "Localidad:",class:"label"%>
-						 <%= f.text_field :nombre,:placeholder => "Ingrese Localidad",:maxlength=>"35" %>	
-	                     <%= f.label "Departamento:",class:"label"%>
-	                	 <%=f.collection_select :id_departamento,Departamento.find(:all),:id,:nombre,:prompt=>"Seleccione Departamento"%> 
-					     <a data-toggle="modal" href="#departamento" ><label>(+) Nuevo Departamento</label></a>
+						          <%= f.label "Localidad (*)",class:"label"%>
+						          <%= f.text_field :nombre,class: "span3",:placeholder => "Ingrese Localidad",:maxlength=>"35" %>	
+	                    <%= f.label "Departamento (*)",class:"label"%>
+	                	  <%=f.collection_select :id_departamento,Departamento.find(:all),:id,:nombre,:prompt=>"-- Seleccione Departamento --"%> 
+					            <a data-toggle="modal" href="#departamento" ><label>(+) Nuevo Departamento</label></a>
                   </div> 
 
                </div>
@@ -22,7 +22,7 @@
 <% end %>
 	    			
 	<div class="span2">
-      <div id="localidad" class="modal hide fade in" style="display: none;">
+      <div id="departamento" class="modal hide fade in" style="display: none;">
         	 <%=render 'localidads/ventana_modal'%>
        <div>
     </div> 
