@@ -48,7 +48,7 @@ class ClientesController < ApplicationController
 
     respond_to do |format|
       if @cliente.save
-        format.html { redirect_to @cliente, notice: 'El Cliente se ha guardado correctamente.' }
+        format.html { redirect_to @cliente, notice: 'Los datos del Cliente se han guardado correctamente.' }
         format.json { render json: @cliente, status: :created, location: @cliente }
         format.js   {}
       else
@@ -65,7 +65,7 @@ class ClientesController < ApplicationController
 
     respond_to do |format|
       if @cliente.update_attributes(params[:cliente])
-        format.html { redirect_to @cliente, notice: 'Cliente was successfully updated.' }
+        format.html { redirect_to @cliente, notice: 'Los datos del Cliente se han actualizado correctamente.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -94,9 +94,9 @@ class ClientesController < ApplicationController
       @localidad = Localidad.new(params[:funcionario])
        @departamentos=Departamento.all
       if @localidad.save
-        flash[:notice] = "Se ha guardado la localidad"
+        flash[:notice] = "La Localidad creada se ha guardado correctamente"
       else
-        flash[:notice] = "Hubo Problemas, no guardo"
+        flash[:notice] = "Se produjo inconvenientes al guardar los datos de la Localidad"
       end
   end
 end

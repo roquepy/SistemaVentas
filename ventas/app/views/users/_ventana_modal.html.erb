@@ -1,58 +1,43 @@
  <div class="modal-header">
-               <a class="close" data-dismiss="modal">×</a>
-                   <h3>Nuevo Funcionario</h3>
+      <a class="close" data-dismiss="modal">×</a>
+        <h3>Nuevo Funcionario</h3>
            </div>
-           <div class="modal-body">
+             <div class="modal-body">
                <p id="notice"><%= notice %></p>
-                    <%= form_for@funcionario,remote:true do |f| %>
-   		                <%= render 'mensajes/error_mensajes', object: f.object %>
-			            <div class="mismalinea">
-							<%= f.label "Nombres:",class:"mismalinea"%>
-							<%= f.text_field :nombres,:placeholder => "nombre" ,class:"mismalinea-espacio",:maxlength=>"50"%>
-						</div>
-						<div class="mismalinea">
-							<%= f.label "Apellidos:",class:"mismalinea"%>
-							<%= f.text_field :apellidos,:placeholder => "apellido",class:"mismalinea-espacio",:maxlength=>"50"  %>
-						</div>	<br/><br/><br/>
-						<div class="mismalinea">	
-							<%= f.label "Nro de doc:",class:"mismalinea"%>
-							<%= f.text_field :num_identidad,:placeholder => "num_documenhto",class:"mismalinea-espacio",:maxlength=>"9" %>
-						</div>	
-						<div class="mismalinea">
-						    <%= f.label "Direccion:",class:"mismalinea"%>
-							<%= f.text_field :direccion,:placeholder => "direccion",class:"mismalinea-espacio",:maxlength=>"70"  %>
-						</div><br/><br/><br/>	
-						<div class="mismalinea">
-							<%= f.label "Telefono:",class:"mismalinea"%>
-							<%= f.text_field :telefono,:placeholder => "telefono" ,class:"mismalinea-espacio",:maxlength=>"15" %>
-						</div>
-						<div class="mismalinea">	
-							<%= f.label "Estado civil:",class:"label"%>
-						    <%= f.select(:estado_civil, ['Casado', 'Soltero' ],:prompt=>"--Seleccione--")%>
-			             </div>  <br/><br/><br/> 
-		                <div class="mismalinea">
-							<%= f.label "Sexo:",class:"label"%>
-							<%= f.select(:sexo, ['M', 'F' ],:prompt=>"--Seleccione--",id:"select")%>
-			            </div> 
-			            <div class="mismalinea">   
-					        <%= f.label "Localidad:",class:"label"%>
-				            <%=f.collection_select :id_localidad,Localidad.find(:all),:id,:nombre,:prompt=>"--Seleccione--"%>     
-					    </div> <br/><br/><br/>        
-				        <div class="mismalinea">
-						    <%= f.label "Funcion:",class:"label"%>
-					        <%=f.collection_select :id_funcion,Funcion.find(:all),:id,:nombre,:prompt=>"--Seleccione--",id:"select"%>
-					     </div> 
-					     <div class="mismalinea">  
-					         <%= f.label "Estado Funcionario:",class:"label"%>
-			                 <%=f.collection_select :id_estado_funcionario,EstadosFuncionario.find(:all),:id,:descripcion,:prompt=>"--Seleccione--"%> 
-					     </div> 
+                  <%= form_for@funcionario,remote:true do |f| %>
+   		          <%= render 'mensajes/error_mensajes', object: f.object %>
+   		          <div class="span8">
+                   <div class="span3">
+						<%= f.label "Nombre (*)",class:"label"%>
+						<%= f.text_field :nombres,class: "span3",:placeholder => "Ingrese Nombre",:maxlength=>"50" %><br/>
+						<%= f.label "Nro de Documento (*)",class:"label"%>
+						<%= f.text_field :num_identidad,class: "span3",:placeholder => "Ingrese Nº de RUC o CI",:maxlength=>"9" %><br/>
+						<%= f.label "Telefono (*)",class:"label"%>
+					    <%= f.text_field :telefono,class: "span3",:placeholder => "xxx xxxxxx",:maxlength=>"15" %><br/>
+					    <%= f.label "Estado Civil (*)",class:"label"%>
+						<%= f.select(:estado_civil, ['Casado', 'Soltero', 'Viudo', 'Separado' ],:prompt=>"--Seleccione Estado Civil--")%>
+						<%= f.label "Estado Funcionario (*)",class:"label"%>
+			            <%=f.collection_select :id_estado_funcionario,EstadosFuncionario.find(:all),:id,:descripcion,:prompt=>"--Seleccione Estado del Funcionario--"%>   
+		            </div>
+		            <div class="span3">
+		             	<%= f.label "Apellido (*)",class:"label"%>
+						<%= f.text_field :apellidos,class: "span3",:placeholder => "Ingrese Apellido",:maxlength=>"50"  %><br/>
+						<%= f.label "Direccion (*)",class:"label"%>
+						<%= f.text_field :direccion,class: "span3",:placeholder => "Ingrese Direccion",:maxlength=>"70"  %><br/>
+						<%= f.label "Sexo (*)",class:"label"%>
+						<%= f.select(:sexo, ['M', 'F' ],:prompt=>"--Seleccione Sexo--",id:"select")%>
+		                <%= f.label "Funcion (*)",class:"label"%>
+					    <%=f.collection_select :id_funcion,Funcion.find(:all),:id,:nombre,:prompt=>"--Seleccione--",id:"select"%>
+					    <%= f.label "Localidad (*)",class:"label"%>
+					    <%=f.collection_select :id_localidad,Localidad.find(:all),:id,:nombre,:prompt=>"--Seleccione Localidad--"%>    
+			     </div> 
+               </div>				
+  		</div>
 
-	        	
-            </div>
-            <div class="modal-footer">
-                            <%= f.submit "Guardar", :class => 'btn btn-success', :controller => 'users_controller', :action =>'funcionario_create' %>
-                            <a href="#" class="btn" data-dismiss="modal">Close</a>
-            </div>
-       
-                       
-                    <% end %>
+  <div class="modal-footer">
+      <%= f.submit "Guardar", :class => 'btn btn-success', :controller => 'users_controller', :action =>'funcionario_create' %>
+      <a href="#" class="btn" data-dismiss="modal">Close</a>
+  </div>
+
+
+<% end %>

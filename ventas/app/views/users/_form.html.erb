@@ -8,7 +8,7 @@
 						<%= f.label "Usuario (*)" ,class:"label"%>
 					    <%= f.text_field :username,class: "span3",:placeholder => "Nuevo Usuario",:maxlength=>"15"%>
 					    <%= f.label "Funcionario (*)" ,class:"label"%>
-						<%=f.select :id_funcionario,Funcionario.find(:all).collect{|u| [u.nombres+ " " +u.apellidos, u.id]}, :prompt => "--Seleccione Funcionario--" %>     
+						<%=f.select :id_funcionario,Funcionario.find(:all).collect{|u| [u.nombres+ " " +u.apellidos, u.id]}, :prompt => "-- Seleccione Funcionario --" %>     
 						<a data-toggle="modal" href="#funcionario" ><label  class="mismalinea-espacio">(+)Nuevo Funcionario </label></a> 
                   </div> 
                    <div class="span3">
