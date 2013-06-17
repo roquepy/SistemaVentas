@@ -29,6 +29,9 @@ end
 
 gem 'jquery-rails'
 gem 'yaml_db'
+gem 'simple_audit', "~> 0.2.0"
+gem "audited-activerecord", "~> 3.0"
+gem "audited-mongo_mapper", "~> 3.0"
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

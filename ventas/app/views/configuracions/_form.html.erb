@@ -1,16 +1,40 @@
-<div class="centrar"><br/>
-	<%= form_for(@configuracion, :html => {:multipart => true}) do |f| %>
-	 <h4><%= yield(:title) %></h4><br/>
-		  <div class="mismalinea">
-				<%= f.label "Logo:",class:"mismalinea"%>
-				<%= f.file_field :logo,class:"mismalinea-espacio"  %>
-				<%= f.label :nombre_logo,class:"mismalinea"%>
-				<%= f.text_field :nombre_logo,class:"mismalinea"%>
-		  </div>
+<div class="span8 offset2" style="margin-top:80px;">	
+			<%= form_for(@configuracion, :html => {:multipart => true}) do |f| %>
+   		 <%= render 'mensajes/error_mensajes', object: f.object %>	
+			<legend>Datos de la Empresa</legend>
+			<div class="span8">
+               
+                   <div class="span3">
+				        <%= f.label "Buscar logo",class:"label"%>
+					    <%= f.file_field :logo, class: "span3" %>
+					    <%= f.label "Nombre del Logo (*)",class:"label"%>
+						<%= f.text_field :nombre_logo ,class: "span3" ,:placeholder => "Ingrese un nombre para guardar su logo",:maxlength=>"30" %>
+						<%= f.label "Nombre de la Empresa  (*)",class:"label"%>
+					    <%= f.text_field :nombre_empresa ,class: "span3" , :placeholder => "Ingrese el nombre de la empresa" ,:maxlength=>"30" %>
+						<%= f.label "Direccion de la Empresa (*)",class:"label"%>
+				        <%= f.text_field :direccion ,class: "span3" , :placeholder => "Ingrese la direccion de la empresa" ,:maxlength=>"30" %>
+				        <%= f.label "RUC  (*)",class:"label"%>
+					 	<%= f.text_field :ruc ,class: "span3" ,:placeholder => "Ingrese el RUC de la empresa",:maxlength=>"10" %>
+					 	
 
-</div>  
-         <div class="abajo"><br/>
-              <%= f.submit "Subir", class: "btn btn-primary"%>
-           </div> 
-	<% end %><br/><br/>
-
+					</div>
+					
+					<div class="span3">
+						<%= f.label "Timbrado  (*)",class:"label"%>
+                        <%= f.text_field :timbrado ,class: "span3" ,:placeholder => "Ingrese el timbrado de la empresa",:maxlength=>"10"  %>
+					    <%= f.label "Vencimiento del Timbrado (*)",class:"label"%><br/> 
+						<%= f.text_field :timbrado_vencimiento ,class: "span3" ,:placeholder => "Ingrese el vencimiento del timbrado",:maxlength=>"10"  %>
+						<%= f.label "Telefono  (*)",class:"label"%>
+                        <%= f.text_field :telefono ,class: "span3" ,:placeholder => "Ingrese el telefono de la empresa",:maxlength=>"10"  %>
+					    <%= f.label "Celular/Fax",class:"label"%><br/> 
+						<%= f.text_field :telefono_auxiliar ,class: "span3" ,:placeholder => "Ingrese el fax o telefono celular",:maxlength=>"10"  %>
+					</div>
+					
+				</div>	
+				<div class="span2 offset3" align="center"><br/>
+						<%= f.submit "Guardar", class: "btn btn-primary"%>
+						<%= link_to "Cancelar", configuracions_path, class: "btn"%>
+				</div>
+	</div>	
+<% end %> 
+     
