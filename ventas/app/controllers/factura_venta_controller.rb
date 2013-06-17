@@ -85,7 +85,7 @@ class FacturaVentaController < ApplicationController
  
   def detalle_factura_venta
       @detalle_factura_ventum  = DetalleFacturaVentum.new
-      @detalles_factura_ventas = DetalleFacturaVentum.paginate(:page => params[:page], :per_page => 10)
+      @detalles_factura_ventas = DetalleFacturaVentum.DetalleFacturaVentum.listas_productos
   end
   def cliente_new
       @cliente= Cliente.new

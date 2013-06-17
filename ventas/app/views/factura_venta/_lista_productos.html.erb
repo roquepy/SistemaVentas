@@ -17,7 +17,9 @@
 			</tr>
 		</thead>
 	  <tbody>
-	  	<% @detalles_factura_ventas.each  do |detalle_factura_venta| %>	
+	  	<% if @detalles_factura_ventas==nil
+	  	else
+	  	@detalles_factura_ventas.each  do |detalle_factura_venta| %>	
 		  	<tr>
 				<td><%=detalle_factura_venta.producto.descripcion %></td>
 				<td><%=detalle_factura_venta.cantidad%></td>
