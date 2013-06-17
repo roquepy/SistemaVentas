@@ -5,7 +5,7 @@ class CreateFuncionarios < ActiveRecord::Migration
      t.string :nombres, :limit => 25, :null => false
      t.string :apellidos,:limit => 25, :null => false
      t.string :direccion, :limit => 35,:null => false
-     t.string :telefono, :limit => 15, :null => false
+     t.string :telefono, :limit => 15, :null => true
      t.string :estado_civil, :limit => 8,:null => false
      t.timestamps :fecha
      t.string :sexo, :limit =>1,:null => false

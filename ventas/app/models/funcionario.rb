@@ -8,8 +8,8 @@ class Funcionario < ActiveRecord::Base
   validates :nombres,:apellidos,:num_identidad,:telefono, :presence => true
 
   validates :num_identidad, :length => { :minimum => 6}
-  validates :nombres, :length => { :minimum => 3},:format => { :with => /\A[a-zA-Z]+\z/}
-  validates :apellidos, :length => { :minimum => 3},:format => { :with => /\A[a-zA-Z]+\z/}
-  validates :direccion,  :length => { :minimum =>3},:format => { :with => /\A[a-zA-Z]+\z/}
-  validates :telefono, :length => { :minimum => 6}, :format => { :with =>  /^[0-9]{2,3}-? ?[0-9]{6,7}$/ }
+  validates :nombres, :length => { :minimum => 3}, :format => { :with => /\A[a-zA-Z\s]+\z/ }
+  validates :apellidos, :length => { :minimum => 3}, :format => { :with => /\A[a-zA-Z\s]+\z/ }
+  validates :direccion,  :length => { :minimum =>3}, :format => { :with => /\A[a-zA-Z\s\d\.\/]+\z/}
+  validates :telefono, :length => { :minimum => 6}, :format => { :with =>  /^[0-9]{3,4}-? ?[0-9]{5,6}$/ }
 end

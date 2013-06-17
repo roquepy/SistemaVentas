@@ -46,8 +46,8 @@ class FuncionariosController < ApplicationController
     @funcionario = Funcionario.new(params[:funcionario])
     respond_to do |format|
       if @funcionario.save
-        flash[:success] = "Se ha creado correctamente el funcionario"
-        format.html {  redirect_to @funcionario, notice: 'El funcionario se ha creado correctamente.' }
+        flash[:success] = "Los datos del funcionario se han creado correctamente"
+        format.html {  redirect_to @funcionario, notice: 'Los datos del funcionario se han creado correctamente' }
         format.json { render json: @funcionario, status: :created, location: @funcionario }
         format.js   {}
       else

@@ -45,8 +45,8 @@ class DepartamentosController < ApplicationController
     @localidades=Localidad.all
     respond_to do |format|
       if @departamento.save
-        flash.now[:alert]= "El departamento se ha guardado correctamente"
-        format.html { redirect_to @departamento, notice: 'El departamento se ha guardado correctamente' }
+        flash.now[:alert]= "Los datos del departamento se han creado correctamente"
+        format.html { redirect_to @departamento, notice: 'Los datos del Departamento se han creado correctamente' }
         format.json { render json: @departamento, status: :created, location: @departamento }
           format.js   {}
       else
@@ -63,8 +63,8 @@ class DepartamentosController < ApplicationController
 
     respond_to do |format|
       if @departamento.update_attributes(params[:departamento])
-         flash.now[:alert]= "El departamento se ha actualizado correctamente"
-        format.html { redirect_to @departamento, notice: 'El departamento se ha actualizado correctamente.' }
+         flash.now[:alert]= "Los datos del Departamento se han actualizado correctamente"
+        format.html { redirect_to @departamento, notice: 'Los datos del Departamento se han actualizado correctamente' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

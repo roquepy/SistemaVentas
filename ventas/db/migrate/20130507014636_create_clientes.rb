@@ -6,7 +6,7 @@ class CreateClientes < ActiveRecord::Migration
     t.string :num_identidad,:limit => 15,:null => false
     t.integer :id_localidad,:null => false
     t.string :direccion,:limit => 35,:null => false
-    t.string :telefono,:limit => 15,:null => false
+    t.string :telefono,:limit => 15,:null => true
     t.string :sexo,:limit => 1,:null => false
     end
   end
