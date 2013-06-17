@@ -1,13 +1,11 @@
-
 class ClientesController < ApplicationController
     before_filter :require_login
   # GET /clientes
   # GET /clientes.json
-  def index
 
+  def index
     @clientes = Cliente.paginate(:page => params[:page], :per_page => 10)
     respond_to do |format|
-
       format.html # index.html.erb
       format.json { render json: @clientes }
     end

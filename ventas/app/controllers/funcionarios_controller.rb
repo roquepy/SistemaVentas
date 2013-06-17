@@ -4,8 +4,7 @@ class FuncionariosController < ApplicationController
   # GET /funcionarios.json
   def index
      @funcionarios = Funcionario.paginate(:page => params[:page], :per_page => 10)
-
-    respond_to do |format|
+      respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @funcionarios }
     end
@@ -44,6 +43,8 @@ class FuncionariosController < ApplicationController
   # POST /funcionarios.json
   def create
     @funcionario = Funcionario.new(params[:funcionario])
+     localidad_new
+
     respond_to do |format|
       if @funcionario.save
         flash[:success] = "Los datos del funcionario se han creado correctamente"

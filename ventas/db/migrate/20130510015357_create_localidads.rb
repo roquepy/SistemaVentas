@@ -6,3 +6,5 @@ class CreateLocalidads < ActiveRecord::Migration
     end
   end
 end
+
+
