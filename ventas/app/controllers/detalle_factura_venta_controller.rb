@@ -35,6 +35,8 @@ class DetalleFacturaVentaController < ApplicationController
   # GET /detalle_factura_venta/1/edit
   def edit
     @detalle_factura_ventum = DetalleFacturaVentum.find(params[:id])
+     respond_to do |format|
+       format.js{}
   end
 
   # POST /detalle_factura_venta
@@ -62,6 +64,7 @@ class DetalleFacturaVentaController < ApplicationController
       if @detalle_factura_ventum.update_attributes(params[:detalle_factura_ventum])
         format.html { redirect_to @detalle_factura_ventum, notice: 'Detalle factura ventum was successfully updated.' }
         format.json { head :no_content }
+        format.js {}
       else
         format.html { render action: "edit" }
         format.json { render json: @detalle_factura_ventum.errors, status: :unprocessable_entity }
