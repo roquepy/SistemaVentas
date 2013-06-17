@@ -85,7 +85,7 @@ class FacturaVentaController < ApplicationController
  
   def detalle_factura_venta
       @detalle_factura_ventum  = DetalleFacturaVentum.new
-      @detalles_factura_ventas = DetalleFacturaVentum.DetalleFacturaVentum.listas_productos
+      @detalles_factura_ventas = DetalleFacturaVentum.listas_productos
   end
   def cliente_new
       @cliente= Cliente.new
