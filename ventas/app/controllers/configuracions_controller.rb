@@ -46,7 +46,6 @@ class ConfiguracionsController < ApplicationController
 
     respond_to do |format|
       if @configuracion.save
-        format.html { redirect_to @configuracion, notice: 'Los datos de la empresa se han guardado satisfactoriamente.' }
         format.json { render json: @configuracion, status: :created, location: @configuracion }
         format.js   {}
       else
@@ -63,7 +62,7 @@ end
     
     respond_to do |format|
       if @configuracion.update_attributes(params[:configuracion])
-        format.html { redirect_to @configuracion, notice: 'Se guardo existosamente los datos de la empresa' }
+        format.html { redirect_to @configuracion}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

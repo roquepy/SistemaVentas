@@ -1,5 +1,41 @@
-<p id="notice"><%= notice %></p>
+    <div align="center">
+    <h3> Datos de la Empresa</h3>
+    </div>
+    
+     <div class="container-fluid">
+      
+      <table id="table" class="table table-bordered">
+        <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Direccion</th>
+              <th>RUC</th>
+              <th>Timbrado</th>
+              <th>Timbrado Vencimiento</th>
+              <th>Telefono</th>
+              <th>Celular/Fax</th>
+              <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>          
+            <tr>
+              <td><%= @configuracion.nombre_empresa %></td>
+              <td><%= @configuracion.direccion %></td>
+              <td><%= @configuracion.ruc %></td>
+              <td><%= @configuracion.timbrado %></td>
+              <td><%= @configuracion.timbrado_vencimiento%></td>
+              <td><%= @configuracion.telefono %></td>
+              <td><%= @configuracion.telefono_auxiliar %></td>
+              <td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_configuracion_path(@configuracion)%> &nbsp &nbsp &nbsp   
+                      <i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar",@configuracion, :confirm => "Desea eliminar el cliente "+@configuracion.nombre_empresa, :method => :delete %>
+              </td>
 
+            </tr>
+                
+        </tbody>
+      </table>
+    </div>
+     <div align="center">
+      <%= link_to '(+) Nueva Empresa', conf_new_path %>
+    </div>    
 
-<%= link_to 'Edit', edit_configuracion_path(@configuracion) %> |
-<%= link_to 'Back', configuracions_path %>
