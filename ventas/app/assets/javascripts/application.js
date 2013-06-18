@@ -39,3 +39,11 @@ $(document).ready(function(){
 		onSelect: function(dateText, inst){}
 	})
 })
+
+function validar(obj) {
+txt = obj.value;
+if(parseInt(txt) != parseFloat(txt)) {
+alert('El campo de datos sólo permite almacenar números enteros');
+obj.focus();
+}
+}
