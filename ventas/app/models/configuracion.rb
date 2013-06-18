@@ -9,8 +9,5 @@ class Configuracion < ActiveRecord::Base
    validates :telefono_auxiliar, :format => { :with =>  /^[0-9]{3,4}-? ?[0-9]{5,6}$/ }
    validates :ruc, :length => { :minimum => 6}
    validates :timbrado, :length => { :minimum => 6}
-   validates :timbrado_vencimiento, :length => { :minimum => 6}, :format => { :with => /\A\d{2}(\/|-)\d{2}(\/|-)\d{4}\Z/i }
-   def nombre_logo
-      logo.to_s.split('/')[5]
-   end
+   validates :timbrado_vencimiento, :length => { :minimum => 8}, :format => { :with => /\A\d{2}(\/|-)\d{2}(\/|-)\d{4}\Z/i }
 end

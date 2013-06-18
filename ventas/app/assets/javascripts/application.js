@@ -15,7 +15,7 @@
 //= require bootstrap-modal
 //= require bootstrap-dropdown
 //= require calendar
-
+//= require jquery-ui.min
 //= require_tree .
 
 $('#new_client input').hover(function()

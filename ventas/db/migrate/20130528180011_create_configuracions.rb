@@ -9,7 +9,7 @@ class CreateConfiguracions < ActiveRecord::Migration
     	t.string :timbrado,:limit => 10,:null => false
     	t.string :telefono,:limit => 15,:null => false
     	t.string :telefono_auxiliar,:limit => 15, :null => true
-    	t.date :timbrado_vencimiento, :null => false
+    	t.string :timbrado_vencimiento, :null => false
     end
   end
 end

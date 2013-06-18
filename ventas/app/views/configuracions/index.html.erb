@@ -24,7 +24,7 @@
         <tbody>
                 <% @configuracions.each  do |c| %>          
             <tr>
-              <td><%= c.nombre %></td>
+              <td><%= c.nombre_empresa %></td>
               <td><%= c.direccion %></td>
               <td><%= c.ruc %></td>
               <td><%= c.timbrado %></td>
@@ -32,7 +32,7 @@
               <td><%= c.telefono %></td>
               <td><%= c.telefono_auxiliar %></td>
               <td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_configuracion_path(c) %> &nbsp &nbsp &nbsp   
-                      <i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar",c, :confirm => "Desea eliminar el cliente "+c.nombre, :method => :delete %>
+                      <i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar",c, :confirm => "Desea eliminar el cliente "+c.nombre_empresa, :method => :delete %>
               </td>
 
             </tr>
