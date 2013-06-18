@@ -53,11 +53,11 @@ end
   # PUT /configuracions/1
   # PUT /configuracions/1.json
   def update
-    @configuracion = Configuracion.find(1)
+    @configuracion = Configuracion.find(params[:id])
     
     respond_to do |format|
       if @configuracion.update_attributes(params[:configuracion])
-        format.html { redirect_to @configuracion, notice: 'Configuracion was successfully updated.' }
+        format.html { redirect_to @configuracion, notice: 'Se guardo existosamente los datos de la empresa' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -77,4 +77,6 @@ end
       format.json { head :no_content }
     end
   end
+
+
 end
