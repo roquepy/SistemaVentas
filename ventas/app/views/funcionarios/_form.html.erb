@@ -24,7 +24,7 @@
 						<%= f.label "Sexo (*)",class:"label"%>
 						<%= f.select(:sexo, ['M', 'F' ],:prompt=>"--Seleccione Sexo--",id:"select")%>
 		                <%= f.label "Funcion (*)",class:"label"%>
-					    <%=f.collection_select :id_funcion,Funcion.find(:all),:id,:nombre,:prompt=>"--Seleccione--",id:"select"%>
+					    <%=f.collection_select :id_funcion,Funcion.find(:all),:id,:nombre,:prompt=>"-- Seleccione Funcion --",id:"select"%>
 			             <%= f.label "Localidad (*)",class:"label"%>
 					     <%=f.collection_select :id_localidad,Localidad.find(:all),:id,:nombre,:prompt=>"--Seleccione Localidad--"%>    
 			       		 <a data-toggle="modal" href="#localidad" ><label  class="mismalinea-espacio"> (+)Nueva Localidad </label></a> 	<br/>    
