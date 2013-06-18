@@ -1,7 +1,8 @@
 # Load the rails application
 require File.expand_path('../application', __FILE__)
 Ventas::Application.configure  do
-	config.gem "calendar_date_select"
+	config.gem 'calendar_date_select'
+	config.gem 'simple_audit'
 end
 
 # Initialize the rails application
