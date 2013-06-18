@@ -8,6 +8,7 @@ class DetalleFacturaVentaController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @detalle_factura_venta }
+      format.js { }
     end
   end
 
@@ -35,8 +36,9 @@ class DetalleFacturaVentaController < ApplicationController
   # GET /detalle_factura_venta/1/edit
   def edit
     @detalle_factura_ventum = DetalleFacturaVentum.find(params[:id])
-     respond_to do |format|
-       format.js{}
+    respond_to do |format|
+       format.js {render 'edit'}
+     end
   end
 
   # POST /detalle_factura_venta
@@ -47,10 +49,18 @@ class DetalleFacturaVentaController < ApplicationController
       if @detalle_factura_ventum.save
         format.html { redirect_to @detalle_factura_ventum, notice: 'Detalle factura ventum was successfully created.' }
         format.json { render json: @detalle_factura_ventum, status: :created, location: @detalle_factura_ventum }
-        format.js {}
+        format.js {render 'create'}
       else
         format.html { render action: "new" }
         format.json { render json: @detalle_factura_ventum.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  def guardar_agregar
+    @detalle_factura_ventum= DetalleFacturaVentum.new(params[:detalle_factura_ventum])
+    respond_to do |format|
+      if @detalle_factura_ventum.save
+        format.js { render 'guardar_agregar' }
       end
     end
   end
@@ -83,4 +93,5 @@ class DetalleFacturaVentaController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

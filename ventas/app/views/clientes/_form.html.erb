@@ -12,7 +12,9 @@
 						<%= f.label "Telefono ",class:"label"%>
 					    <%= f.text_field :telefono ,class: "span3" , :placeholder => "xxx xxxxxx o xxxx xxxxx" ,:maxlength=>"15" %>
 						<%= f.label "Localidad  (*)",class:"label"%>
-				        <%=f.collection_select(:id_localidad, Localidad.find(:all), :id , :nombre,  {:prompt=>"------ Seleccione una Localidad ------"}, {class: "span3" }) %>    
+						<div id="localidades"
+				        	<%=f.collection_select(:id_localidad, Localidad.find(:all), :id , :nombre,  {:prompt=>"------ Seleccione una Localidad ------"}, {class: "span3" }) %>
+				        </div>	   
 						<a data-toggle="modal" href="#localidad" ><label>(+) Nueva Localidad </label></a> 
 					</div>
 

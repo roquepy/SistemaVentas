@@ -59,7 +59,9 @@ class FacturaVentum < ActiveRecord::Base
        if detalles_factura_ventas==nil
           else
           detalles_factura_ventas.each do |detalle_factura_venta|
+            if detalle_factura_venta.producto.porcentaje==10
              total_iva10=total_iva10+(detalle_factura_venta.producto.precio_unitario*detalle_factura_venta.cantidad)*10/100
+           end
           end
         end  
        return total_iva10
@@ -70,7 +72,9 @@ class FacturaVentum < ActiveRecord::Base
        if detalles_factura_ventas==nil
           else
           detalles_factura_ventas.each do |detalle_factura_venta|
-             total_iva5=total_iva5+(detalle_factura_venta.producto.precio_unitario*detalle_factura_venta.cantidad)*5/100
+            if detalle_factura_venta.producto.porcentaje==5
+                total_iva5=total_iva5+(detalle_factura_venta.producto.precio_unitario*detalle_factura_venta.cantidad)*5/100
+            end
           end
         end  
        return total_iva5

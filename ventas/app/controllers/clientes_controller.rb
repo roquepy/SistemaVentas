@@ -48,7 +48,7 @@ class ClientesController < ApplicationController
       if @cliente.save
         format.html { redirect_to @cliente, notice: 'Los datos del Cliente se han creado correctamente.' }
         format.json { render json: @cliente, status: :created, location: @cliente }
-        format.js   {}
+        format.js   {render 'create'}
       else
         format.html { render action: "new" }
         format.json { render json: @cliente.errors, status: :unprocessable_entity }

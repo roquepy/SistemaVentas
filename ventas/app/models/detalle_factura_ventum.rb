@@ -10,7 +10,8 @@ class DetalleFacturaVentum < ActiveRecord::Base
 	   	   else
 	   	   	  factura_id=ultima_factura.id
 	          detalle_factura=DetalleFacturaVentum.find(:last,:conditions=>['id_factura_venta = ? ',factura_id])  
-	          if detalle_factura.blank?  
+	          if detalle_factura.blank? 
+                 productos=DetalleFacturaVentum.find(:all,:conditions=>['id_factura_venta = ? ',factura_id+1]) 
 	             else
                  productos=DetalleFacturaVentum.find(:all,:conditions=>['id_factura_venta = ? ',factura_id+1])
             end
