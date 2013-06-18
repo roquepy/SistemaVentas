@@ -1,3 +1,17 @@
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#guardar_agregar').on("click", function() {
+             window.alert("Hola")
+             $.ajax({
+                    url: $(this).attr('ajax_path'),
+                    async: true,
+                    dataType: 'script'
+                    });
+                    return false;
+         });
+    });
+</script>
 <div class="modal-header">
     <a class="close" data-dismiss="modal">×</a>
         <h3>Producto</h3>
@@ -25,23 +39,8 @@
 </div>         
     <div class="modal-footer">
          <%= f.submit "Guardar", :class => 'btn btn-success'%>
-         <div id="guardar_agregar">
-            <%= link_to 'Guardar y Agregar', '#', :id => "guardar_agregar",  :class => 'btn btn-success',:ajax_path => guardar_agregar_detalle_factura_venta_path %>
-            
-        </div>
+         <%= link_to 'Guardar y Agregar', '#', :id => "guardar_agregar",  :class => 'btn btn-success',:ajax_path => guardar_agregar_detalle_factura_venta_path %>
          <a href="#" class="btn" data-dismiss="modal">Cerrar</a>
     </div>        
         <% end %><br/><br/>
 
-        <script type="text/javascript">
-           $(document).ready(function () {
-            $('#guardar_agregar').on("click", function() {
-                $.ajax({
-                url: $(this).attr('ajax_path'),
-                async: true,
-                dataType: 'script'
-                });
-                return false;
-            });
-          });
-</script>

@@ -4,8 +4,6 @@
   <title>Ventas</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "bootstrap-select" %>
-  <%= javascript_include_tag "bootstrap-select.min" %>
   <%= csrf_meta_tags %>
   <script type="text/javascript">
     $(document).ready(function() {
@@ -15,7 +13,6 @@
           sortable: true,
           condensed: true
         });
-       $('.selectpicker').selectpicker('selectAll');
 
        var buscarEnTabla = function() {
         var table = $('#table');
