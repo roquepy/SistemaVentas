@@ -3,7 +3,7 @@ class ConfiguracionsController < ApplicationController
   # GET /configuracions
   # GET /configuracions.json
   def index
-    @configuracions = Configuracion.all
+    @configuracions = Configuracion.paginate(:page => params[:page], :per_page => 10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -35,7 +35,7 @@ class ConfiguracionsController < ApplicationController
 
   # GET /configuracions/1/edit
   def edit
-    @configuracion = Configuracion.find(1)
+    @configuracion = Configuracion.find(params[:id] )
 
   end
 
@@ -43,10 +43,16 @@ class ConfiguracionsController < ApplicationController
   # POST /configuracions.json
   def create
     @configuracion = Configuracion.new(params[:configuracion]) 
-   if @configuracion.save
-       redirect_to(@configuracion, :notice => '')
-       else
-           render :action => "new"
+
+    respond_to do |format|
+      if @configuracion.save
+        format.html { redirect_to @configuracion, notice: 'Los datos de la empresa se han guardado satisfactoriamente.' }
+        format.json { render json: @configuracion, status: :created, location: @configuracion }
+        format.js   {}
+      else
+        format.html { render action: "new" }
+        format.json { render json: @configuracion.errors, status: :unprocessable_entity }
+      end
     end
 end
 

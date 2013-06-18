@@ -27,7 +27,7 @@ group :assets do
   gem 'rails3-jquery-autocomplete'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', "2.1.4"
 gem 'yaml_db'
 gem 'calendar_date_select'
 gem 'simple_audit', "~> 0.2.0"

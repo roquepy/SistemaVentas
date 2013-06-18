@@ -8,11 +8,11 @@
 				        <%= f.label "Buscar logo",class:"label"%>
 					    <%= f.file_field :logo, class: "span3" %>
 					    <%= f.label "Nombre del Logo (*)",class:"label"%>
-						<%= f.text_field :nombre_logo ,class: "span3" ,:placeholder => "Ingrese un nombre para su logo",:maxlength=>"30", :value => "" %>
+						<%= f.text_field :nombre_logo ,class: "span3" ,:placeholder => "Ingrese un nombre para su logo",:maxlength=>"30" %>
 						<%= f.label "Nombre de la Empresa  (*)",class:"label"%>
-					    <%= f.text_field :nombre_empresa ,class: "span3" , :placeholder => "Ingrese el nombre de la empresa" ,:maxlength=>"30" %>
+					    <%= f.text_field :nombre_empresa ,class: "span3" , :placeholder => "Ingrese el nombre de la empresa" ,:maxlength=>"35" %>
 						<%= f.label "Direccion de la Empresa (*)",class:"label"%>
-				        <%= f.text_field :direccion ,class: "span3" , :placeholder => "Ingrese la direccion de la empresa" ,:maxlength=>"30" %>
+				        <%= f.text_field :direccion ,class: "span3" , :placeholder => "Ingrese la direccion de la empresa" ,:maxlength=>"40" %>
 				        <%= f.label "RUC  (*)",class:"label"%>
 					 	<%= f.text_field :ruc ,class: "span3" ,:placeholder => "Ingrese el RUC de la empresa",:maxlength=>"10" %>
 					 	
@@ -25,9 +25,9 @@
 					    <%= f.label "Vencimiento del Timbrado (*)",class:"label"%><br/> 
 						<%= f.text_field :timbrado_vencimiento ,:id => "timbrado", class: "span3" ,:placeholder => "Ingrese el vencimiento del timbrado",:maxlength=>"10"  %>
 						<%= f.label "Telefono  (*)",class:"label"%>
-                        <%= f.text_field :telefono ,class: "span3" , :placeholder => "Ingrese el telefono de la empresa",:maxlength=>"10"  %>
+                        <%= f.text_field :telefono ,class: "span3" , :placeholder => "Ingrese el telefono de la empresa",:maxlength=>"11"  %>
 					    <%= f.label "Celular/Fax",class:"label"%><br/> 
-						<%= f.text_field :telefono_auxiliar ,class: "span3" , :placeholder => "Ingrese el fax o telefono celular",:maxlength=>"10"  %>
+						<%= f.text_field :telefono_auxiliar ,class: "span3" , :placeholder => "Ingrese el fax o telefono celular",:maxlength=>"11"  %>
 					</div>
 					
 				</div>	

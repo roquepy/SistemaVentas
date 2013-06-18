@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require calendar
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
