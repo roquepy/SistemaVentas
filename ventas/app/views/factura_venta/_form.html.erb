@@ -2,55 +2,72 @@
 
     <%= form_for@factura_ventum do |f| %>
        <%= render 'mensajes/error_mensajes', object: f.object %>
-          <h4><%= yield(:title) %></h4><br/>
+          <legend class="span10">Nueva Factura </legend><br/>
            <div class="container">
-              <div class="row">
-                <div class="span3">
-                   <%= f.label :Nro_de_Factura,class:"label"%>
-                   <%= f.text_field :nro_factura,:readonly => true,:value=>FacturaVentum.nro_factura()%><br/>
-                   <%= f.label :fecha,class:"label"%><br/>
-                   <%= f.text_field :fecha,:value => Date.today,:readonly => true%>
+              <div class= "span11" id="cabecera">
+                <!--<div class="row">-->
+                  <div class="span2" style="margin-top:30px;">
+                     <%= f.label :Nro_de_Factura,class:"label"%>
+                     <%= f.text_field :nro_factura,:readonly => true,:value=>FacturaVentum.nro_factura()%><br/>
+                     <%= f.label :fecha,class:"label"%><br/>
+                     <%= f.text_field :fecha,:value => Date.today,:readonly => true%>
+                  </div>
+                  <div class="span2 offset1" style="margin-top:30px; margin-right:20px;">
+                       <%= f.label "Clientes:",class:"label"%>
+                        <%= f.select :id_cliente, Cliente.find(:all).collect{|c| [c.nombre+ " " +c.apellido, c.id]}, :prompt => "--Seleccione--" %>
+                       <a data-toggle="modal" href="#cliente" ><label>(+)Nuevo Cliente </label></a>
+                        <%= f.label "Condicion de Pago:",class:"label"%>
+                        <%=f.collection_select :id_condicion_pago,CondicionDePago.find(:all),:id,:nombre_condicion_de_pago,:prompt=>"--Seleccione--",id:"select"%>
+                  </div>   
+                  <div class="span2 offset1" style="margin-top:30px;">
+                     <%= f.label "Funcionario:",class:"label"%>
+                     <%= f.label current_user.funcionario.nombres+" " + current_user.funcionario.apellidos %> 
+                     <%= f.hidden_field :id_funcionario,:value =>current_user.funcionario.id,:readonly => true %> 
+                      <%= f.label "Tipo de Valor:",class:"label"%>
+                      <%=f.collection_select :id_tipo_valor,TipoValorPago.find(:all),:id,:descripcion,:prompt=>"--Seleccione--",id:"select"%>
+                  </div> <br/> <br/>
                 </div>
-                <div class="span3 offset1">
-                     <%= f.label "Clientes:",class:"label"%>
-                      <%= f.select :id_cliente, Cliente.find(:all).collect{|c| [c.nombre+ " " +c.apellido, c.id]}, :prompt => "--Seleccione--" %>
-                     <a data-toggle="modal" href="#cliente" ><label>(+)Nuevo Cliente </label></a>
-                      <%= f.label "Condicion de Pago:",class:"label"%>
-                      <%=f.collection_select :id_condicion_pago,CondicionDePago.find(:all),:id,:nombre_condicion_de_pago,:prompt=>"--Seleccione--",id:"select"%>
-                </div>   
-                <div class="span3 offset2">
-                   <%= f.label "Funcionario:",class:"label"%>
-                   <%= f.label current_user.funcionario.nombres+" " + current_user.funcionario.apellidos %> 
-                   <%= f.hidden_field :id_funcionario,:value =>current_user.funcionario.id,:readonly => true %> 
-                    <%= f.label "Tipo de Valor:",class:"label"%>
-                    <%=f.collection_select :id_tipo_valor,TipoValorPago.find(:all),:id,:descripcion,:prompt=>"--Seleccione--",id:"select"%>
-                </div> <br/> <br/>
+                <div class="span11">
                 <div id="lista_productos">
                   <%=render 'factura_venta/lista_productos'%>
                 </div>   
-              </div>   
+              </div>  
+              <div class = "span11"> 
                  <div align="center">
                      <div class="abajo"><br/>    
                         <a data-toggle="modal" href="#producto" ><label>(+) Cargar Producto </label></a> 
                     </div>  
 
                  </div> 
-                 <div class="abajo-factura">
+              </div>
+                 <div class="span11" id="cabecera" style="margin-left:0px;">
+                    <div class="span2 offset8">
                        <%= f.label :descuento,class:"label"%>
                        <%= f.text_field :total_descuento ,:value => FacturaVentum.descuento(),:readonly => true %>  
-                       <%= f.label :Total_Iva_5,class:"label"%>
-                       <%= f.text_field :total_iva5,:value => FacturaVentum.factura_total_iva5(),:readonly => true %>
+                    </div>
+                    <div class="span10 offset1">
+                       <div class="span2 offset" style="margin-left:100px;">
+                          <%= f.label :Total_Iva_5,class:"label"%>
+                          <%= f.text_field :total_iva5,:value => FacturaVentum.factura_total_iva5(),:readonly => true %>
+                        </div>
+                        <div class="span2 offset1">
                        <%= f.label :Total_Iva_10,class:"label"%>
                        <%= f.text_field :total_iva10,:value => FacturaVentum.factura_total_iva10(),:readonly => true %>
+                      </div>
+                       <div class="span2 offset1">
                        <%= f.label :Total_Iva,class:"label"%>
                        <%= f.text_field :total_iva,:value => FacturaVentum.factura_total_iva(),:readonly => true %> 
+                       </div>
+                    </div>
+                    <div class="span2 offset8">
                        <%= f.label "Total:",class:"label"%>
                        <%= f.text_field :monto_total,:value => FacturaVentum.factura_monto_total(),:readonly => true %> 
+                    </div>
                  </div>        
               
          
   </div>                
-          <div class="abajo"><br/>
+          <div class="span2 offset9"><br/>
                 <%= f.submit "Guardar", class: "btn btn-primary"%>
           </div> 
         </div>    

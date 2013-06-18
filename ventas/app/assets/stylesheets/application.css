@@ -124,3 +124,15 @@ position: relative;
     margin-left: 6px;
     text-decoration: line-through;
   }  
+
+  #cabecera{
+  border: none;
+  box-shadow: 3px rgba(0,0,0,.1);
+  border: 1px solid #CCC;
+  padding-left: 10px;
+  paddind-bottom: 30px;
+  border-radius: 3px;
+  margin-bottom:20px;
+  padding-top: 10px;
+  background-color: white;
+}
