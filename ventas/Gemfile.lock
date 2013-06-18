@@ -40,6 +40,7 @@ GEM
       will_paginate
     bson (1.9.0)
     builder (3.0.4)
+    calendar_date_select (1.16.4)
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -138,6 +139,7 @@ DEPENDENCIES
   audited-activerecord (~> 3.0)
   audited-mongo_mapper (~> 3.0)
   bootstrap-will_paginate
+  calendar_date_select
   carrierwave
   client_side_validations
   coffee-rails (~> 3.2.1)
