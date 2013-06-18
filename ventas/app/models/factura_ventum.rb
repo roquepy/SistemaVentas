@@ -79,6 +79,17 @@ class FacturaVentum < ActiveRecord::Base
         end  
        return total_iva5
     end
+     def  self.factura_monto_total()
+       monto_total=0.00
+       detalles_factura_ventas=DetalleFacturaVentum.listas_productos
+       if detalles_factura_ventas==nil
+          else
+          detalles_factura_ventas.each do |detalle_factura_venta|
+                monto_total=monto_total+(detalle_factura_venta.producto.precio_unitario*detalle_factura_venta.cantidad)
+          end
+        end  
+       return monto_total-descuento
+    end
 
 
 end

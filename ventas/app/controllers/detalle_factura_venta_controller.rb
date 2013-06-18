@@ -57,7 +57,7 @@ class DetalleFacturaVentaController < ApplicationController
     end
   end
   def guardar_agregar
-    @detalle_factura_ventum= DetalleFacturaVentum.new(params[:detalle_factura_ventum])
+    @detalle_factura_ventum = DetalleFacturaVentum.new(params[:id_factura],params[:producto_id],params[:cant],params[:desc])
     respond_to do |format|
       if @detalle_factura_ventum.save
         format.js { render 'guardar_agregar' }

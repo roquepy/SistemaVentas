@@ -1,21 +1,46 @@
-<h1>Listing factura_venta</h1>
-
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @factura_venta.each do |factura_ventum| %>
-  <tr>
-    <td><%= link_to 'Show', factura_ventum %></td>
-    <td><%= link_to 'Edit', edit_factura_ventum_path(factura_ventum) %></td>
-    <td><%= link_to 'Destroy', factura_ventum, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Factura ventum', new_factura_ventum_path %>
+ <br/>
+    <div align="center">
+    <h3> Lista de Clientes</h3>
+    </div>
+    
+     <div class="container-fluid">
+      <div class="mismalinea">
+        <label class="mismalinea">Filtrar:</label>
+       <input type="text" id="filtrar" placeholder="Filtrar" class="mismalinea-espacio">
+      </div>
+      <table id="table" class="table table-bordered">
+        <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Fecha</th>
+              <th>Nro Factura</th>
+              <th>Iva 5%</th>
+              <th>Iva 10%</th>
+              <th>Descuento</th>
+              <th>Total</th>
+              <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @facturas_ventas .each  do |f| %>          
+            <tr>
+              <td><%= f.cliente.nombre %></td>
+              <td><%= f.fecha%></td>
+              <td><%= f.nro_factura %></td>
+              <td><%= f.total_iva5 %></td>
+              <td><%= f.total_iva10 %></td>
+              <td><%= f.descuento %></td>
+              <td><%= f.monto_total %></td>
+              <td><i class="icon-edit" title="anular"></i><%= link_to "anular"%> &nbsp &nbsp &nbsp   
+                  <i class="icon-remove-sign" title="ver"></i><%= link_to "ver"%>
+              </td>
+            </tr>
+                <% end %>
+                
+        </tbody>
+      </table>
+          <%=will_paginate %> 
+    </div>
+     <div align="center">
+      <%= link_to '(+) Nueva Factura', new_factura_venta_path %>
+    </div>    

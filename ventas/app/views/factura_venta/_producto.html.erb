@@ -2,9 +2,13 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('#guardar_agregar').on("click", function() {
-             window.alert("Hola")
+            var _id_factura = $("#id_factura").val();
+            var _producto_id = $("#producto_id").val();
+            var _desc = $("#desc").val();
+            var _cant = $("#cant").val();
              $.ajax({
                     url: $(this).attr('ajax_path'),
+                    data: { "id_factura": _id_factura,"producto":_producto,"desc":_desc,"cant":_cant},
                     async: true,
                     dataType: 'script'
                     });
@@ -25,14 +29,14 @@
                 <div class="row">
                     <div class="span3">
                         <%=f.hidden_field :id_factura_venta,:value=>FacturaVentum.id_factura()%>
-                        <%=f.label "Producto:",class:"label" %>
-                        <%=f.collection_select :id_producto,Producto.find(:all),:id,:descripcion,:prompt=>"--Seleccione--",id:"select"%>
+                        <%=f.label "Producto:",class:"label"%>
+                        <%=f.collection_select :id_producto,Producto.find(:all),:id,:descripcion,:prompt=>"--Seleccione--"%>
                          <%= f.label "Descuento:" ,class:"label"%>
                         <%= f.text_field :descuento %>
                     </div>      
                     <div class="span3">
-                        <%= f.label "Cantidad:",class:"label" %>
-                        <%= f.text_field :cantidad %>
+                        <%= f.label "Cantidad:",class:"label"%>
+                        <%= f.text_field :cantidad%>
                     </div>       
                 </div>
             </div>

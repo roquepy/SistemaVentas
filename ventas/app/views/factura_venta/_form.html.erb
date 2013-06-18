@@ -19,8 +19,9 @@
                       <%=f.collection_select :id_condicion_pago,CondicionDePago.find(:all),:id,:nombre_condicion_de_pago,:prompt=>"--Seleccione--",id:"select"%>
                 </div>   
                 <div class="span3 offset2">
-                   <%= f.label :funcionario,class:"label"%>
-                   <%= f.text_field :id_funcionario,:value =>current_user.funcionario.id,:readonly => true %> 
+                   <%= f.label "Funcionario:",class:"label"%>
+                   <%= f.label current_user.funcionario.nombres+" " + current_user.funcionario.apellidos %> 
+                   <%= f.hidden_field :id_funcionario,:value =>current_user.funcionario.id,:readonly => true %> 
                     <%= f.label "Tipo de Valor:",class:"label"%>
                     <%=f.collection_select :id_tipo_valor,TipoValorPago.find(:all),:id,:descripcion,:prompt=>"--Seleccione--",id:"select"%>
                 </div> <br/> <br/>
@@ -43,6 +44,8 @@
                        <%= f.text_field :total_iva10,:value => FacturaVentum.factura_total_iva10(),:readonly => true %>
                        <%= f.label :Total_Iva,class:"label"%>
                        <%= f.text_field :total_iva,:value => FacturaVentum.factura_total_iva(),:readonly => true %> 
+                       <%= f.label "Total:",class:"label"%>
+                       <%= f.text_field :monto_total,:value => FacturaVentum.factura_monto_total(),:readonly => true %> 
                  </div>        
               
          

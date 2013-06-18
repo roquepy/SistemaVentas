@@ -3,7 +3,7 @@ class FacturaVentaController < ApplicationController
   # GET /factura_venta
   # GET /factura_venta.json
   def index
-    @factura_venta = FacturaVentum.all
+    @facturas_ventas = FacturaVentum.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @factura_venta }
