@@ -2,13 +2,21 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('#guardar_agregar').on("click", function() {
-            var _id_factura = $("#id_factura").val();
-            var _producto_id = $("#producto_id").val();
-            var _desc = $("#desc").val();
-            var _cant = $("#cant").val();
+             var _guardar = ''
              $.ajax({
                     url: $(this).attr('ajax_path'),
-                    data: { "id_factura": _id_factura,"producto":_producto,"desc":_desc,"cant":_cant},
+                    data: {"guardar":_guardar},
+                    async: true,
+                    dataType: 'script'
+                    });
+                    return false;
+         });
+
+         $('#guardar').on("click", function() {
+            var _guardar = 'guardar'
+             $.ajax({
+                    url: $(this).attr('ajax_path'),
+                    data: { "guardar": _guardar,"guardar_agregar":_guardar_agregar},
                     async: true,
                     dataType: 'script'
                     });
@@ -23,7 +31,7 @@
 
 <div class="modal-body">
   <p id="notice"><%= notice %></p>
-        <%= form_for @detalle_factura_ventum,:remote=>true do |f| %>
+        <%= form_for@detalle_factura_ventum do |f| %>
         <%= render 'mensajes/error_mensajes', object: f.object %>
             <div class="container">
                 <div class="row">
@@ -42,8 +50,8 @@
             </div>
 </div>         
     <div class="modal-footer">
-         <%= f.submit "Guardar", :class => 'btn btn-success'%>
-         <%= link_to 'Guardar y Agregar', '#', :id => "guardar_agregar",  :class => 'btn btn-success',:ajax_path => guardar_agregar_detalle_factura_venta_path %>
+         <%= f.submit "Guardar", :class => 'btn btn-success', :id => "guardar",  :class => 'btn btn-success',:ajax_path => new_detalle_factura_ventum_path%>
+         <%= f.submit 'Guardar y Agregar', :id => "guardar_agregar",  :class => 'btn btn-success',:ajax_path => new_detalle_factura_ventum_path %>
          <a href="#" class="btn" data-dismiss="modal">Cerrar</a>
     </div>        
         <% end %><br/><br/>

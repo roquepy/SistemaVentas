@@ -15,12 +15,7 @@ Ventas::Application.routes.draw do
   resources :paginas_estaticas
   resources :configuracions
   resources :productos
-  resources :detalle_factura_venta do
-    collection do
-      get :guardar_agregar
-    end
-
-  end
+  resources :detalle_factura_venta 
   root to: 'sesiones#new'
 
 
