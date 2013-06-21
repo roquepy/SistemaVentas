@@ -1,22 +1,27 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#guardar_agregar').on("click", function() {
-             var _guardar = ''
+        $('#guardar').on("click", function() {
+             var _id_factura_venta= $("#id_factura_venta").val();
+             var _id_producto = 1
+             var _cantidad = $("#cantidad").val();
+             var _descuento = $("#descuento").val();
              $.ajax({
                     url: $(this).attr('ajax_path'),
-                    data: {"guardar":_guardar},
+                    data: {"id_factura_venta":_id_factura_venta,"id_producto":_id_producto,"cantidad":_cantidad,"descuento":_descuento},
                     async: true,
                     dataType: 'script'
                     });
                     return false;
          });
-
-         $('#guardar').on("click", function() {
-            var _guardar = 'guardar'
+        $('#guardar_agregar').on("click", function() {
+             var _id_factura_venta= $("#id_factura_venta").val();
+             var _id_producto = 1
+             var _cantidad = $("#cantidad").val();
+             var _descuento = $("#descuento").val();
              $.ajax({
                     url: $(this).attr('ajax_path'),
-                    data: { "guardar": _guardar,"guardar_agregar":_guardar_agregar},
+                    data: {"id_factura_venta":_id_factura_venta,"id_producto":_id_producto,"cantidad":_cantidad,"descuento":_descuento},
                     async: true,
                     dataType: 'script'
                     });
@@ -31,28 +36,25 @@
 
 <div class="modal-body">
   <p id="notice"><%= notice %></p>
-        <%= form_for@detalle_factura_ventum do |f| %>
-        <%= render 'mensajes/error_mensajes', object: f.object %>
             <div class="container">
                 <div class="row">
                     <div class="span3">
-                        <%=f.hidden_field :id_factura_venta,:value=>FacturaVentum.id_factura()%>
-                        <%=f.label "Producto:",class:"label"%>
-                        <%=f.collection_select :id_producto,Producto.find(:all),:id,:descripcion,:prompt=>"--Seleccione--"%>
-                         <%= f.label "Descuento:" ,class:"label"%>
-                        <%= f.text_field :descuento %>
+                        <%=hidden_field_tag :id_factura_venta,params[:id_factura_venta],:value=>FacturaVentum.id_factura()%>
+                        <label class="label">Producto:</label>
+                        <%=select :id_producto,params[:id_producto],Producto.find(:all).collect{|p| [p.descripcion, p.id]},:prompt=>"--Seleccione--"%>
+                        <label class="label">Descuento:</label>
+                        <%= text_field_tag :descuento,params[:descuento] %>
                     </div>      
                     <div class="span3">
-                        <%= f.label "Cantidad:",class:"label"%>
-                        <%= f.text_field :cantidad%>
+                        <label class="label">Cantidad:</label>
+                        <%=text_field_tag :cantidad,params[:cantidad]%>
                     </div>       
                 </div>
             </div>
 </div>         
     <div class="modal-footer">
-         <%= f.submit "Guardar", :class => 'btn btn-success', :id => "guardar",  :class => 'btn btn-success',:ajax_path => new_detalle_factura_ventum_path%>
-         <%= f.submit 'Guardar y Agregar', :id => "guardar_agregar",  :class => 'btn btn-success',:ajax_path => new_detalle_factura_ventum_path %>
+         <%= link_to "Guardar", "#", :id => "guardar",  :class => 'btn btn-success',:ajax_path => guardar_detalle_factura_venta_path%>
+         <%= link_to 'Guardar y Agregar', "#", :id => "guardar_agregar",  :class => 'btn btn-success',:ajax_path => guardar_agregar_detalle_factura_venta_path %>
          <a href="#" class="btn" data-dismiss="modal">Cerrar</a>
-    </div>        
-        <% end %><br/><br/>
+    </div>            
 

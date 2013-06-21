@@ -44,21 +44,32 @@ class DetalleFacturaVentaController < ApplicationController
   # POST /detalle_factura_venta
   # POST /detalle_factura_venta.json
   def create
-    @detalle_factura_ventum = DetalleFacturaVentum.new(params[:detalle_factura_ventum])
-    
+  end
+  def guardar
+    @detalle_factura_ventum = DetalleFacturaVentum.new(:id_factura_venta=>params[:id_factura_venta],:id_producto=>params[:id_producto],:cantidad=>params[:cantidad],:descuento=>params[:descuento])
     respond_to do |format|
       if @detalle_factura_ventum.save
-        if params[:guardar]=='guardar'
            format.js {render 'guardar'}
-           else
-           format.js {render 'guardar_agregar'}
-        end   
       else
         format.html { render action: "new" }
         format.json { render json: @detalle_factura_ventum.errors, status: :unprocessable_entity }
       end
     end
   end
+    def guardar_agregar
+    @detalle_factura_ventum = DetalleFacturaVentum.new(:id_factura_venta=>params[:id_factura_venta],:id_producto=>params[:id_producto],:cantidad=>params[:cantidad],:descuento=>params[:descuento])
+
+    respond_to do |format|
+      if @detalle_factura_ventum.save
+           format.js {render 'guardar_agregar'}
+      else
+        format.html { render action: "new" }
+        format.json { render json: @detalle_factura_ventum.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # 
   # PUT /detalle_factura_venta/1
   # PUT /detalle_factura_venta/1.json
   def update
