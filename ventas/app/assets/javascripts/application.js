@@ -22,3 +22,13 @@ $('#new_client input').hover(function()
 {
 	$(this).popover('show')
 });
+
+
+// Función para validar Nº Enteros:
+function validar(obj) {
+txt = obj.value;
+if(parseInt(txt) != parseFloat(txt)) {
+alert('El campo de datos sólo permite almacenar números enteros');
+obj.focus();
+}
+}
