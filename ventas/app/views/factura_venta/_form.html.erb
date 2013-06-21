@@ -14,17 +14,17 @@
                   </div>
                   <div class="span2 offset1" style="margin-top:30px; margin-right:20px;">
                        <%= f.label "Clientes:",class:"label"%>
-                        <%= f.select :id_cliente, Cliente.find(:all).collect{|c| [c.nombre+ " " +c.apellido, c.id]}, :prompt => "--Seleccione--" %>
+                        <%= f.select :id_cliente, Cliente.find(:all).collect{|c| [c.nombre+ " " +c.apellido, c.id]}, :prompt => "---- Seleccione Cliente ----" %>
                        <a data-toggle="modal" href="#cliente" ><label>(+)Nuevo Cliente </label></a>
                         <%= f.label "Condicion de Pago:",class:"label"%>
-                        <%=f.collection_select :id_condicion_pago,CondicionDePago.find(:all),:id,:nombre_condicion_de_pago,:prompt=>"--Seleccione--",id:"select"%>
+                        <%=f.collection_select :id_condicion_pago,CondicionDePago.find(:all),:id,:nombre_condicion_de_pago,:prompt=>"-- Seleccione Condición de Pago --",id:"select"%>
                   </div>   
                   <div class="span2 offset1" style="margin-top:30px;">
                      <%= f.label "Funcionario:",class:"label"%>
                      <%= f.label current_user.funcionario.nombres+" " + current_user.funcionario.apellidos %> 
                      <%= f.hidden_field :id_funcionario,:value =>current_user.funcionario.id,:readonly => true %> 
                       <%= f.label "Tipo de Valor:",class:"label"%>
-                      <%=f.collection_select :id_tipo_valor,TipoValorPago.find(:all),:id,:descripcion,:prompt=>"--Seleccione--",id:"select"%>
+                      <%=f.collection_select :id_tipo_valor,TipoValorPago.find(:all),:id,:descripcion,:prompt=>"-- Seleccione Tipo de Valor --",id:"select"%>
                   </div> <br/> <br/>
                 </div>
                 <div class="span11">
@@ -79,6 +79,3 @@
          <div id="cliente" class="modal hide fade in" style="display: none; " >
            <%=render 'factura_venta/ventana_modal'%>
          <div>
-         
-        
-               

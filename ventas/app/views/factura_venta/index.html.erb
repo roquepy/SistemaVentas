@@ -1,6 +1,6 @@
  <br/>
     <div align="center">
-    <h3> Lista de Clientes</h3>
+    <h3> Lista de Facturas</h3>
     </div>
     
      <div class="container-fluid">
@@ -22,7 +22,7 @@
             </tr>
         </thead>
         <tbody>
-            <% @facturas_ventas .each  do |f| %>          
+            <% @facturas_ventas.each  do |f| %>          
             <tr>
               <td><%= f.cliente.nombre %></td>
               <td><%= f.fecha%></td>
@@ -39,8 +39,12 @@
                 
         </tbody>
       </table>
-          <%=will_paginate %> 
+          <%=will_paginate @facturas_ventas%> 
     </div>
      <div align="center">
-      <%= link_to '(+) Nueva Factura', new_factura_venta_path %>
+      <%= link_to '(+) Nueva Factura', new_factura_ventum_path %>
     </div>    
+
+
+
+

@@ -1,5 +1,42 @@
-<p id="notice"><%= notice %></p>
+<br/>
+    <div align="center">
+    <h3> Factura Agregada</h3>
+    </div>
+    
+     <div class="container-fluid">
+      <table id="table" class="table table-bordered">
+        <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Fecha</th>
+              <th>Nro Factura</th>
+              <th>Iva 5%</th>
+              <th>Iva 10%</th>
+              <th>Descuento</th>
+              <th>Total</th>
+              <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>        
+            <tr>
+              <td><%= @factura_ventum.cliente.nombre %></td>
+              <td><%= @factura_ventum.fecha%></td>
+              <td><%= @factura_ventum.nro_factura %></td>
+              <td><%= @factura_ventum.total_iva5 %></td>
+              <td><%= @factura_ventum.total_iva10 %></td>
+              <td><%= @factura_ventum.total_descuento %></td>
+              <td><%= @factura_ventum.monto_total %></td>
+              <td><i class="icon-remove-sign" title="anular"></i><%= link_to "anular"%> &nbsp &nbsp &nbsp   
+                  <i class="" title="ver"></i><%= link_to "ver"%>
+              </td>
+            </tr>         
+        </tbody>
+      </table>
+    </div>
+     <div align="center">
+      <%= link_to '(+) Nueva Factura', new_factura_ventum_path %>
+    </div> 
 
 
-<%= link_to 'Edit', edit_factura_ventum_path(@factura_ventum) %> |
-<%= link_to 'Back', factura_venta_path %>
+
+

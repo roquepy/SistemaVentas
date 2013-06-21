@@ -11,6 +11,7 @@ class CreateFacturaVenta < ActiveRecord::Migration
        t.decimal :total_iva5,  :null => false
        t.decimal :total_iva10,  :null => false
        t.decimal :total_iva,  :null => false
+       t.decimal :monto_total,  :null => false
     end
   end
 end
