@@ -1,3 +1,4 @@
+require 'custom_logger'
 class DepartamentosController < ApplicationController
     before_filter :require_login
   # GET /departamentos
@@ -47,6 +48,7 @@ class DepartamentosController < ApplicationController
       if @departamento.save
         flash.now[:alert]= "Los datos del departamento se han creado correctamente"
         format.html { redirect_to @departamento, notice: 'Los datos del Departamento se han creado correctamente' }
+        CustomLogger.info("Nuevo Departamento:#{@departamento.nombre.inspect} .Usuario Responsable:#{current_user.funcionario.full_name.inspect}, #{Time.now}")
         format.json { render json: @departamento, status: :created, location: @departamento }
           format.js   {}
       else
@@ -60,28 +62,41 @@ class DepartamentosController < ApplicationController
   # PUT /departamentos/1.json
   def update
     @departamento = Departamento.find(params[:id])
-
+    departamento_antiguo= @departamento.nombre
     respond_to do |format|
       if @departamento.update_attributes(params[:departamento])
-         flash.now[:alert]= "Los datos del Departamento se han actualizado correctamente"
+        departamento_nuevo= @departamento.nombre
+        CustomLogger.info("Dato antes de realizar la Actualizacion: Departamento: #{departamento_antiguo.inspect} .El Dato Actualizado por el Usuario: #{current_user.funcionario.full_name.inspect} es: Departamento: #{departamento_nuevo.inspect} , Fecha y Hora: #{Time.now}")
         format.html { redirect_to @departamento, notice: 'Los datos del Departamento se han actualizado correctamente' }
         format.json { head :no_content }
       else
+        @departamentos = Departamento.find(:all)
         format.html { render action: "edit" }
         format.json { render json: @departamento.errors, status: :unprocessable_entity }
       end
     end
   end
 
+
   # DELETE /departamentos/1
   # DELETE /departamentos/1.json
+# DELETE /cities/1
+  # DELETE /cities/1.json
+
   def destroy
     @departamento = Departamento.find(params[:id])
-    @departamento.destroy
-
-    respond_to do |format|
-      format.html { redirect_to departamentos_url }
+    begin
+     @departamento.destroy
+     notice= "El departamento ha sido eliminado"
+     CustomLogger.info("El Departamento:#{@departamento.nombre.inspect} ha sido eliminado. Usuario Responsable: #{current_user.funcionario.full_name.inspect} , Fecha y Hora: #{Time.now}")
+      rescue
+      notice= "El departamento no puede ser eliminado"
+      CustomLogger.info("Error al eliminar el Departamento:#{@departamento.nombre.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect} , Fecha y Hora: #{Time.now}")
+      ensure
+      respond_to do |format|
+      format.html { redirect_to departamentos_url}
       format.json { head :no_content }
     end
   end
+end
 end

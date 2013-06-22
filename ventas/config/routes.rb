@@ -1,5 +1,6 @@
 Ventas::Application.routes.draw do
 
+
   match 'logout' => 'sesiones#destroy', as: :logout
   match 'conf_new' => 'configuracions#new'
   get 'login' => 'sesiones#new', as: :login
@@ -15,14 +16,14 @@ Ventas::Application.routes.draw do
   resources :paginas_estaticas
   resources :configuracions
   resources :productos
-  resources :detalle_factura_venta do 
-    collection do
-      get :guardar
-    end
-    collection do
-      get :guardar_agregar
+  resources :detalle_factura_venta
+
+  resources :auditorias do
+    member do
+      post :index
     end
   end
+ 
   root to: 'sesiones#new'
 
 
