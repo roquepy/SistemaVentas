@@ -15,7 +15,6 @@ class DepartamentosController < ApplicationController
   # GET /departamentos/1.json
   def show
     @departamento = Departamento.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @departamento }
@@ -46,12 +45,12 @@ class DepartamentosController < ApplicationController
     @localidades=Localidad.all
     respond_to do |format|
       if @departamento.save
-        flash.now[:alert]= "Los datos del departamento se han creado correctamente"
         format.html { redirect_to @departamento, notice: 'Los datos del Departamento se han creado correctamente' }
-        CustomLogger.info("Nuevo Departamento:#{@departamento.nombre.inspect} .Usuario Responsable:#{current_user.funcionario.full_name.inspect}, #{Time.now}")
+        CustomLogger.info("Se ha creado un nuevo Departamento:#{@departamento.nombre.inspect} .Usuario Responsable:#{current_user.funcionario.full_name.inspect}, Fecha y Hora: #{Time.now}")
         format.json { render json: @departamento, status: :created, location: @departamento }
           format.js   {}
       else
+
         format.html { render action: "new" }
         format.json { render json: @departamento.errors, status: :unprocessable_entity }
       end
@@ -66,7 +65,7 @@ class DepartamentosController < ApplicationController
     respond_to do |format|
       if @departamento.update_attributes(params[:departamento])
         departamento_nuevo= @departamento.nombre
-        CustomLogger.info("Dato antes de realizar la Actualizacion: Departamento: #{departamento_antiguo.inspect} .El Dato Actualizado por el Usuario: #{current_user.funcionario.full_name.inspect} es: Departamento: #{departamento_nuevo.inspect} , Fecha y Hora: #{Time.now}")
+        CustomLogger.info("Dato antes de realizar la Actualizacion: Departamento: #{departamento_antiguo.inspect} .Usuario Responsable: #{current_user.funcionario.full_name.inspect} ; Nuevos Datos: Departamento: #{departamento_nuevo.inspect} , Fecha y Hora: #{Time.now}")
         format.html { redirect_to @departamento, notice: 'Los datos del Departamento se han actualizado correctamente' }
         format.json { head :no_content }
       else
@@ -80,9 +79,6 @@ class DepartamentosController < ApplicationController
 
   # DELETE /departamentos/1
   # DELETE /departamentos/1.json
-# DELETE /cities/1
-  # DELETE /cities/1.json
-
   def destroy
     @departamento = Departamento.find(params[:id])
     begin
@@ -91,7 +87,7 @@ class DepartamentosController < ApplicationController
      CustomLogger.info("El Departamento:#{@departamento.nombre.inspect} ha sido eliminado. Usuario Responsable: #{current_user.funcionario.full_name.inspect} , Fecha y Hora: #{Time.now}")
       rescue
       notice= "El departamento no puede ser eliminado"
-      CustomLogger.info("Error al eliminar el Departamento:#{@departamento.nombre.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect} , Fecha y Hora: #{Time.now}")
+      CustomLogger.info("Error al intentar eliminar el Departamento:#{@departamento.nombre.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect} , Fecha y Hora: #{Time.now}")
       ensure
       respond_to do |format|
       format.html { redirect_to departamentos_url}

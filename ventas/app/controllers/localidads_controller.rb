@@ -1,3 +1,4 @@
+require 'custom_logger'
 class LocalidadsController < ApplicationController
     before_filter :require_login
   # GET /localidads
@@ -45,7 +46,8 @@ class LocalidadsController < ApplicationController
      departamento_new
     respond_to do |format|
       if @localidad.save
-        format.html { redirect_to @localidad, notice: 'Los datos de la Localidad se han guardado correctamente' }
+        format.html { redirect_to @localidad, notice: 'Los datos de la Localidad se han creado correctamente' }
+        CustomLogger.info("Se ha creado una nueva Localidad:#{@localidad.nombre.inspect} perteneciente al departamento de: #{@localidad.departamento.nombre.inspect} .Usuario Responsable:#{current_user.funcionario.full_name.inspect}, Fecha y Hora: #{Time.now}")
         format.json { render json: @localidad, status: :created, location: @localidad }
         format.js{}
       else
@@ -59,9 +61,13 @@ class LocalidadsController < ApplicationController
   # PUT /localidads/1.json
   def update
     @localidad = Localidad.find(params[:id])
-
+    localidad_antigua= @localidad.nombre
+    departamento_antiguo= @localidad.departamento.nombre
     respond_to do |format|
       if @localidad.update_attributes(params[:localidad])
+        localidad_nueva= @localidad.nombre
+        departamento_nuevo= @localidad.departamento.nombre
+        CustomLogger.info("Datos antes de realizar la Actualizacion: Localidad: #{localidad_antigua.inspect} y Departamento: #{departamento_antiguo.inspect} .Usuario Responsable: #{current_user.funcionario.full_name.inspect} ; Nuevos Datos: Localidad: #{localidad_nueva.inspect} y Departamento: #{departamento_nuevo.inspect} , Fecha y Hora: #{Time.now}")
         format.html { redirect_to @localidad, notice: 'Los datos de la Localidad se han actualizado correctamente' }
         format.json { head :no_content }
       else
@@ -75,12 +81,19 @@ class LocalidadsController < ApplicationController
   # DELETE /localidads/1.json
   def destroy
     @localidad = Localidad.find(params[:id])
+    begin
     @localidad.destroy
-
-    respond_to do |format|
+    notice= "El departamento ha sido eliminado"
+    CustomLogger.info("La Localidad: #{@localidad.nombre.inspect} y el Departamento:#{@localidad.departamento.nombre.inspect} han sido eliminados. Usuario Responsable: #{current_user.funcionario.full_name.inspect} , Fecha y Hora: #{Time.now}")
+    rescue
+    notice= "La localidad y el departamento no pueden ser eliminados"
+    CustomLogger.info(" Error al intentar eliminar la Localidad: #{@localidad.nombre.inspect} y el Departamento:#{@localidad.departamento.nombre.inspect} ha sido eliminados. Usuario Responsable: #{current_user.funcionario.full_name.inspect} , Fecha y Hora: #{Time.now}")
+    ensure
+      respond_to do |format|
       format.html { redirect_to localidads_url }
       format.json { head :no_content }
     end
+  end
   end
   def departamento_new
       @departamento= Departamento.new
