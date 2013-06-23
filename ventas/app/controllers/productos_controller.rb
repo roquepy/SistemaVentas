@@ -41,26 +41,6 @@ class ProductosController < ApplicationController
     @producto = Producto.find(params[:id])
   end
 
-
-
-  # POST /localidads
-  # POST /localidads.json
-  def create
-    @localidad = Localidad.new(params[:localidad])
-     departamento_new
-    respond_to do |format|
-      if @localidad.save
-        format.html { redirect_to @localidad, notice: 'Los datos de la Localidad se han creado correctamente' }
-        CustomLogger.info("Se ha creado una nueva Localidad:#{@localidad.nombre.inspect} perteneciente al departamento de: #{@localidad.departamento.nombre.inspect} .Usuario Responsable:#{current_user.funcionario.full_name.inspect}, Fecha y Hora: #{Time.now}")
-        format.json { render json: @localidad, status: :created, location: @localidad }
-        format.js{}
-      else
-        format.html { render action: "new" }
-        format.json { render json: @localidad.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # POST /productos
   # POST /productos.json
   def create
