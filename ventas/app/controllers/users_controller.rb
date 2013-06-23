@@ -1,3 +1,6 @@
+#Clase requerida para obtener la Auditoria del ABM
+require 'custom_logger'
+
 class UsersController < ApplicationController
     before_filter :require_login
   def index
