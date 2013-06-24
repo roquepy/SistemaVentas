@@ -50,7 +50,6 @@ class DepartamentosController < ApplicationController
         format.json { render json: @departamento, status: :created, location: @departamento }
           format.js   {}
       else
-
         format.html { render action: "new" }
         format.json { render json: @departamento.errors, status: :unprocessable_entity }
       end

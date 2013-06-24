@@ -15,12 +15,17 @@ class UsersController < ApplicationController
     funcionario_new
   end
 
+
+
+ # POST /users
+  # POST /users.json
   def create
     @user = User.new(params[:user])
     funcionario_new
      respond_to do |format|
         if @user.save
-          format.html { redirect_to @user, notice: 'El usuario se ha creado correctamente.' }
+          format.html { redirect_to @user, notice: 'Los datos del  usuario se han creado correctamente.' }
+          CustomLogger.info("Se ha creado un nuevo Usuario. Datos: Usuario:#{@user.username.inspect},Nueva Contrasena pertenecientes al Funcionario:#{@user.funcionario.nombres.inspect} .Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
           format.json { render json: @user, status: :created, location: @user }
           format.js   {}
         else
@@ -28,6 +33,7 @@ class UsersController < ApplicationController
         end
        end
    end
+
   def edit
     @user = User.find(params[:id])
     funcionario_new
@@ -35,9 +41,14 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(params[:user])
-      flash[:success] = "Profile updated"
-      #sign_in @user
+    usuario_antiguo= @user.username
+    funcionario_antiguo= @user.funcionario.nombres
+      if @user.update_attributes(params[:user])
+           usuario_nuevo= @user.username
+           funcionario_nuevo= @user.funcionario.nombres
+           CustomLogger.info("Datos antes de realizar la Actualizacion del Usuario: Usuario: #{usuario_antiguo.inspect}, Contrasena Original y Funcionario:#{funcionario_antiguo.inspect}.Usuario Responsable: #{current_user.funcionario.full_name.inspect}.Nuevos Datos: Usuario:#{usuario_nuevo.inspect}, Contrasena Nueva y Funcionario:#{funcionario_nuevo.inspect}. Fecha y Hora: #{Time.now}")
+           flash[:success] = "Profile updated"
+           #sign_in @user
       redirect_to @user
     else
       render 'edit'
@@ -47,15 +58,25 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
+  
+  #DELETE /users/1
+  # DELETE /users/1.json
   def destroy
     @user = User.find(params[:id])
+    begin
     @user.destroy
-
-    respond_to do |format|
+    notice= "Los datos del Usuario han sido eliminados"
+    CustomLogger.info("Han sido eliminado los siguientes datos del Usuario: Usuario:#{@user.username.inspect},Contrasena, pertenecientes al Funcionario:#{@user.funcionario.nombres.inspect} . Usuario Responsable: #{current_user.funcionario.full_name.inspect} , Fecha y Hora: #{Time.now}")
+    rescue
+    notice= "Los datos del Usuario no se pueden eliminar"
+    CustomLogger.info("Error al intentar eliminar los siguientes datos del Usuario: Usuario:#{@user.username.inspect},Contrasena, pertenecientes al Funcionario:#{@user.funcionario.nombres.inspect} . Usuario Responsable: #{current_user.funcionario.full_name.inspect} , Fecha y Hora: #{Time.now}")
+    ensure
+      respond_to do |format|
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
   end
+end
 
    def funcionario_new
       @funcionario = Funcionario.new
