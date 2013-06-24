@@ -1,46 +1,44 @@
+<div class="span13">
 <fieldset>
     <legend>
       Log de Auditoria
     </legend>
     <%= form_tag :action => 'index', :controller => 'auditorias', :method => :post do%>
-      <div class="span5">
-          <div>
-            <li>
-              <%= label_tag :from, 'From' %>
-              <%= text_field_tag :from, '', id: :from, :size => '20'%>
-            </li>     
-          </div>
+      <div class="span1" align="center">
+          <%= label_tag :from, 'Desde:' %>
       </div>
-      <div class="span5">
-          <div>
-            <li>
-              <%= label_tag :to, "To" %>
-              <%= text_field_tag :to, '', id: :to, :size => '20'%>
-            </li> 
-          </div>
+      <div class="span3">
+          <%= text_field_tag :from, '', id: :from, :size => '20'%>  
+      </div>
+      <div class="span1">
+          <%= label_tag :to, "Hasta:" %>
+      </div>
+      <div class="span3">
+          <%= text_field_tag :to, '', id: :to, :size => '20'%>
       </div>
     <% end %>
   </fieldset>
 
-<div class="row">
+<div class="span12">
   <table id="my-table" class="table table-bordered">
       <thead class="table-title">  
       <tr>
-        <th>Fecha</th>
-        <th>Nivel</th>
-        <th>Log</th>
+        <th class="span3">Fecha</th>
+        <th class="span1">Nivel</th>
+        <th class="span8">Log</th>
       </tr>
     </thead>
     <tbody>
       <tr>
       <% @objects.each do |array| %>
-          <td>  <%= array[1] %> </td>
-          <td>  <%= array[2] %>  </td>
-          <td>  <%= array[3] %>  </td>
+          <td class="span3">  <%= array[1] %> </td>
+          <td class="span1">  <%= array[2] %>  </td>
+          <td class="span8">  <%= array[3] %>  </td>
         </tr>
       <% end %>
     </tbody>
   </table>
+</div>
 </div>
 
 <script>
@@ -59,7 +57,7 @@
     });
     // place holder para fechas
     $("input#from,input#to").attr({
-      'placeholder':'(dd-mm-aaaa)...',
+      'placeholder':'dd/mm/aaaa',
       'size':'12',
       'maxlength':'12'
     });
