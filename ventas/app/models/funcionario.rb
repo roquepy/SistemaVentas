@@ -6,7 +6,6 @@ class Funcionario < ActiveRecord::Base
   has_many :users
   has_many :factura_venta
   validates :nombres,:apellidos,:num_identidad,:telefono, :presence => true
-
   validates :num_identidad, :length => { :minimum => 6}, :uniqueness => true, :format => { :with => /\d\-|\d\./}
   validates :nombres, :length => { :minimum => 3}, :format => { :with => /\A[a-zA-Z\s]+\z/ }
   validates :apellidos, :length => { :minimum => 3}, :format => { :with => /\A[a-zA-Z\s]+\z/ }
