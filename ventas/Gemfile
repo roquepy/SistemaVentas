@@ -16,17 +16,20 @@ group :assets do
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
-  gem 'foreigner'
+  
   gem 'uglifier', '>= 1.0.3'
-  gem 'twitter-bootstrap-rails'
-  gem 'sorcery'
-  gem 'will_paginate'
-  gem 'bootstrap-will_paginate'
-  gem 'carrierwave'  
-  gem 'client_side_validations'
-  gem 'rails3-jquery-autocomplete'
 end
 
+gem 'foreigner'
+gem 'twitter-bootstrap-rails'
+gem 'sorcery'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+gem 'carrierwave'  
+gem 'client_side_validations'
+gem 'rails3-jquery-autocomplete'
+gem 'prawn'
+gem "prawnto_2", :require => "prawnto"
 gem 'jquery-rails', "2.1.4"
 gem 'yaml_db'
 gem 'calendar_date_select'
