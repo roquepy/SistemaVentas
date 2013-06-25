@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nro_libro_caja: 1
+  fecha_inicio: MyString
+  fecha_fin: MyString
+  saldo_inicial: 1
+  saldo_final: 1
+
+two:
+  nro_libro_caja: 1
+  fecha_inicio: MyString
+  fecha_fin: MyString
+  saldo_inicial: 1
+  saldo_final: 1

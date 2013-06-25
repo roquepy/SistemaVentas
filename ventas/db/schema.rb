@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130618171037) do
+ActiveRecord::Schema.define(:version => 20130625003422) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id"
@@ -61,12 +61,36 @@ ActiveRecord::Schema.define(:version => 20130618171037) do
     t.string "nombre", :limit => 35, :null => false
   end
 
+  create_table "depositos", :force => true do |t|
+    t.string   "nombre"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "detalle_factura_venta", :force => true do |t|
     t.integer "id_factura_venta", :null => false
     t.integer "id_producto",      :null => false
     t.integer "cantidad",         :null => false
     t.integer "descuento"
   end
+
+  create_table "detalles_libros_cajas", :force => true do |t|
+    t.integer  "id_libro_caja"
+    t.integer  "id_funcionario"
+    t.integer  "id_tipo_documento"
+    t.integer  "nro_asiento"
+    t.string   "fecha"
+    t.string   "descripcion"
+    t.integer  "ingreso"
+    t.integer  "egreso"
+    t.integer  "nro_documento"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "detalles_libros_cajas", ["id_funcionario"], :name => "detalles_libros_cajas_id_funcionario_fk"
+  add_index "detalles_libros_cajas", ["id_libro_caja"], :name => "detalles_libros_cajas_id_libro_caja_fk"
+  add_index "detalles_libros_cajas", ["id_tipo_documento"], :name => "detalles_libros_cajas_id_tipo_documento_fk"
 
   create_table "estados_funcionarios", :force => true do |t|
     t.string "descripcion", :limit => 15, :null => false
@@ -83,7 +107,13 @@ ActiveRecord::Schema.define(:version => 20130618171037) do
     t.decimal "total_iva5",        :precision => 10, :scale => 0, :null => false
     t.decimal "total_iva10",       :precision => 10, :scale => 0, :null => false
     t.decimal "total_iva",         :precision => 10, :scale => 0, :null => false
+    t.decimal "monto_total",       :precision => 10, :scale => 0
   end
+
+  add_index "factura_venta", ["id_cliente"], :name => "factura_venta_id_cliente_fk"
+  add_index "factura_venta", ["id_condicion_pago"], :name => "factura_venta_id_condicion_pago_fk"
+  add_index "factura_venta", ["id_funcionario"], :name => "factura_venta_id_funcionario_fk"
+  add_index "factura_venta", ["id_tipo_valor"], :name => "factura_venta_id_tipo_valor_fk"
 
   create_table "funcionarios", :force => true do |t|
     t.string   "num_identidad",         :limit => 15, :null => false
@@ -100,14 +130,30 @@ ActiveRecord::Schema.define(:version => 20130618171037) do
     t.integer  "id_funcion",                          :null => false
   end
 
+  add_index "funcionarios", ["id_estado_funcionario"], :name => "funcionarios_id_estado_funcionario_fk"
+  add_index "funcionarios", ["id_funcion"], :name => "funcionarios_id_funcion_fk"
+  add_index "funcionarios", ["id_localidad"], :name => "funcionarios_id_localidad_fk"
+
   create_table "funcions", :force => true do |t|
     t.string "nombre", :limit => 30, :null => false
+  end
+
+  create_table "libros_cajas", :force => true do |t|
+    t.integer  "nro_libro_caja"
+    t.string   "fecha_inicio"
+    t.string   "fecha_fin"
+    t.integer  "saldo_inicial"
+    t.integer  "saldo_final"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "localidads", :force => true do |t|
     t.string  "nombre",          :limit => 35, :null => false
     t.integer "id_departamento",               :null => false
   end
+
+  add_index "localidads", ["id_departamento"], :name => "localidads_id_departamento_fk"
 
   create_table "productos", :force => true do |t|
     t.integer "codigo",          :limit => 8,                                 :null => false
@@ -118,8 +164,24 @@ ActiveRecord::Schema.define(:version => 20130618171037) do
     t.integer "porcentaje",      :limit => 2,                                 :null => false
   end
 
+  create_table "stock", :force => true do |t|
+    t.integer  "id_deposito"
+    t.integer  "id_producto"
+    t.integer  "cantidad"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "stock", ["id_deposito"], :name => "stock_id_deposito_fk"
+
   create_table "tipo_valor_pagos", :force => true do |t|
     t.string "descripcion", :limit => 50, :null => false
+  end
+
+  create_table "tipos_documentos", :force => true do |t|
+    t.string   "descripcion"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -130,6 +192,27 @@ ActiveRecord::Schema.define(:version => 20130618171037) do
     t.integer "id_funcionario"
   end
 
+  add_index "users", ["id_funcionario"], :name => "users_id_funcionario_fk"
+
   add_foreign_key "clientes", "localidads", :name => "clientes_id_localidad_fk", :column => "id_localidad"
+
+  add_foreign_key "detalles_libros_cajas", "funcionarios", :name => "detalles_libros_cajas_id_funcionario_fk", :column => "id_funcionario"
+  add_foreign_key "detalles_libros_cajas", "libros_cajas", :name => "detalles_libros_cajas_id_libro_caja_fk", :column => "id_libro_caja"
+  add_foreign_key "detalles_libros_cajas", "tipos_documentos", :name => "detalles_libros_cajas_id_tipo_documento_fk", :column => "id_tipo_documento"
+
+  add_foreign_key "factura_venta", "clientes", :name => "factura_venta_id_cliente_fk", :column => "id_cliente"
+  add_foreign_key "factura_venta", "condicion_de_pagos", :name => "factura_venta_id_condicion_pago_fk", :column => "id_condicion_pago"
+  add_foreign_key "factura_venta", "funcionarios", :name => "factura_venta_id_funcionario_fk", :column => "id_funcionario"
+  add_foreign_key "factura_venta", "tipo_valor_pagos", :name => "factura_venta_id_tipo_valor_fk", :column => "id_tipo_valor"
+
+  add_foreign_key "funcionarios", "estados_funcionarios", :name => "funcionarios_id_estado_funcionario_fk", :column => "id_estado_funcionario"
+  add_foreign_key "funcionarios", "funcions", :name => "funcionarios_id_funcion_fk", :column => "id_funcion"
+  add_foreign_key "funcionarios", "localidads", :name => "funcionarios_id_localidad_fk", :column => "id_localidad"
+
+  add_foreign_key "localidads", "departamentos", :name => "localidads_id_departamento_fk", :column => "id_departamento"
+
+  add_foreign_key "stock", "depositos", :name => "stock_id_deposito_fk", :column => "id_deposito"
+
+  add_foreign_key "users", "funcionarios", :name => "users_id_funcionario_fk", :column => "id_funcionario"
 
 end

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id_libro_caja: 1
+  id_funcionario: 1
+  id_tipo_documento: 1
+  nro_asiento: 1
+  fecha: MyString
+  descripcion: MyString
+  ingreso: 1
+  egreso: 1
+  nro_documento: 1
+
+two:
+  id_libro_caja: 1
+  id_funcionario: 1
+  id_tipo_documento: 1
+  nro_asiento: 1
+  fecha: MyString
+  descripcion: MyString
+  ingreso: 1
+  egreso: 1
+  nro_documento: 1

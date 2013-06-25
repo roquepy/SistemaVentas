@@ -6,7 +6,11 @@
 #   inflect.plural /^(ox)$/i, '\1en'
 #   inflect.singular /^(ox)en/i, '\1'
   inflect.irregular 'facturacabecera_facturadetalle', 'facturacabecera_facturadetalle'
-  inflect.irregular 'stock_producto', 'stock_productos'
+  inflect.irregular 'stock', 'stock'
+  inflect.irregular 'deposito', 'depositos'
+  inflect.irregular 'libro_caja', 'libros_cajas'
+  inflect.irregular 'detalle_libro_caja', 'detalles_libros_cajas'
+  inflect.irregular 'tipo_documento', 'tipos_documentos'
 #   inflect.uncountable %w( fish sheep )
 end
 #
