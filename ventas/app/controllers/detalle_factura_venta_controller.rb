@@ -1,5 +1,6 @@
 class DetalleFacturaVentaController < ApplicationController
     before_filter :require_login
+    autocomplete :producto, :descripcion,:extra_data => [:id], :full => true
   # GET /detalle_factura_venta
   # GET /detalle_factura_venta.json
   def index
@@ -37,8 +38,8 @@ class DetalleFacturaVentaController < ApplicationController
   def edit
     @detalle_factura_ventum = DetalleFacturaVentum.find(params[:id])
     respond_to do |format|
-       format.js {render 'edit'}
-     end
+      format.js {render 'edit'}
+    end
   end
 
   # POST /detalle_factura_venta
@@ -78,7 +79,7 @@ class DetalleFacturaVentaController < ApplicationController
       if @detalle_factura_ventum.update_attributes(params[:detalle_factura_ventum])
         format.html { redirect_to @detalle_factura_ventum, notice: 'Detalle factura ventum was successfully updated.' }
         format.json { head :no_content }
-        format.js {}
+        format.js {render 'edit'}
       else
         format.html { render action: "edit" }
         format.json { render json: @detalle_factura_ventum.errors, status: :unprocessable_entity }

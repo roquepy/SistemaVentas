@@ -8,4 +8,4 @@ en:
       invalid: "El dato que intenta ingresar no es inválido"
       too_long: "Supera la longitud de datos a ingresar permitido(Máximo:%{count} caracteres)"
       too_short: "No alcanza la longitud de datos mínima requerida (Mínimo:%{count} caracteres)"
-      unique: "El campo que desea ingresar ya existe"
+      taken: "El campo que desea ingresar ya existe"

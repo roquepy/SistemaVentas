@@ -16,7 +16,17 @@ Ventas::Application.routes.draw do
   resources :paginas_estaticas
   resources :configuracions
   resources :productos
-  resources :detalle_factura_venta
+  resources :detalle_factura_venta do
+    collection do
+      get :guardar
+    end
+    collection do
+      get :guardar_agregar
+    end
+    collection do
+       get :autocomplete_producto_descripcion
+    end
+  end  
 
   resources :auditorias do
     member do

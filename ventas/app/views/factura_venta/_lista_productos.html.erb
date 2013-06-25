@@ -39,7 +39,7 @@
 					<td><%=detalle_factura_venta.cantidad%></td>
 					<td><%=detalle_factura_venta.producto.precio_unitario %></td>
 					<td><%=detalle_factura_venta.cantidad*detalle_factura_venta.producto.precio_unitario %></td>
-		            <td><i class="icon-edit" title="editar"></i><%= link_to "editar", '#', :id => "editar",:ajax_path => edit_detalle_factura_ventum_path(detalle_factura_venta)%> &nbsp &nbsp &nbsp   
+		            <td><i class="icon-edit" title="editar"></i><%=link_to "editar", "#", :id => "editar",:ajax_path => edit_detalle_factura_ventum_path(detalle_factura_venta)%> &nbsp &nbsp &nbsp   
 					    <i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar",detalle_factura_venta, :confirm => "Desea Eliminar el producto "+ detalle_factura_venta.producto.descripcion, :method => :delete %>
 					</td>
 				</tr>
@@ -50,6 +50,4 @@
   </table>
 </div>
 <% end %>
-<div id="producto" class="modal hide fade in" style="display: none;">
-          <%=render 'factura_venta/producto'%>
- <div>
+

@@ -7,6 +7,5 @@ class Producto < ActiveRecord::Base
   	validates :cant_optima, :length => { :minimum => 1}
   	validates :precio_unitario, :length => { :minimum => 2}
     validates :porcentaje, :length => { :minimum => 1}
-	  
     has_many :detalle_factura_venta
 end

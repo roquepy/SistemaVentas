@@ -3,7 +3,7 @@
     $(document).ready(function () {
         $('#guardar').on("click", function() {
              var _id_factura_venta= $("#id_factura_venta").val();
-             var _id_producto = 1
+             var _id_producto = $("#id_producto").val();
              var _cantidad = $("#cantidad").val();
              var _descuento = $("#descuento").val();
              $.ajax({
@@ -16,7 +16,7 @@
          });
         $('#guardar_agregar').on("click", function() {
              var _id_factura_venta= $("#id_factura_venta").val();
-             var _id_producto = 1
+             var _id_producto = $("#id_producto").val();
              var _cantidad = $("#cantidad").val();
              var _descuento = $("#descuento").val();
              $.ajax({
@@ -41,7 +41,7 @@
                     <div class="span3">
                         <%=hidden_field_tag :id_factura_venta,params[:id_factura_venta],:value=>FacturaVentum.id_factura()%>
                         <label class="label">Producto:</label>
-                        <%=select :id_producto,params[:id_producto],Producto.find(:all).collect{|p| [p.descripcion, p.id]},:prompt=>"--Seleccione--"%>
+                        <%= autocomplete_field_tag :id_producto,params[:id_producto], autocomplete_producto_descripcion_detalle_factura_venta_path,:id_element=> "#id"%>
                         <label class="label">Descuento:</label>
                         <%= text_field_tag :descuento,params[:descuento] %>
                     </div>      
