@@ -34,7 +34,7 @@ class DepartamentosController < ApplicationController
 
   # GET /departamentos/1/edit
   def edit
-    @departamento = Departamento.find(params[:id])
+     @departamento = Departamento.find(params[:id])
      @localidades=Localidad.all
   end
 

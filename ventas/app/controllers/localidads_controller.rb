@@ -61,6 +61,7 @@ class LocalidadsController < ApplicationController
   # PUT /localidads/1.json
   def update
     @localidad = Localidad.find(params[:id])
+    departamento_new
     localidad_antigua= @localidad.nombre
     departamento_antiguo= @localidad.departamento.nombre
     respond_to do |format|

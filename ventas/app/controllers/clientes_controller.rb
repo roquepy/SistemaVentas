@@ -2,7 +2,12 @@
 require 'custom_logger'
 
 class ClientesController < ApplicationController
+  #
+  # Antes de hacer cualquier cosa con este controler,
+  # se verifica si hay permiso para el usuario logueado
+  #
     before_filter :require_login
+
   # GET /clientes
   # GET /clientes.json
 
@@ -46,6 +51,7 @@ class ClientesController < ApplicationController
   def create
     @cliente = Cliente.new(params[:cliente])
     localidad_new
+
     respond_to do |format|
       if @cliente.save
         format.html { redirect_to @cliente, notice: 'Los datos del Cliente se han creado correctamente.'}
@@ -54,6 +60,7 @@ class ClientesController < ApplicationController
         format.js   {render 'create'}
       else
         format.html { render action: "new" }
+        CustomLogger.info("Error al intentar Crear un Nuevo Cliente. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         format.json { render json: @cliente.errors, status: :unprocessable_entity }
       end
     end
@@ -112,15 +119,15 @@ class ClientesController < ApplicationController
   def localidad_new
       @localidad= Localidad.new
       @departamentos=Departamento.all
-     
   end
+
   def funcionario_create
       @localidad = Localidad.new(params[:funcionario])
        @departamentos=Departamento.all
       if @localidad.save
-        flash[:notice] = "La Localidad creada se ha guardado correctamente"
+        flash[:notice] = "Los datos de la localidad se han creado correctamente."
       else
-        flash[:notice] = "Se produjo inconvenientes al guardar los datos de la Localidad"
+        flash[:notice] = "Se produjo inconvenientes al crear los datos de la Localidad"
       end
   end
 
