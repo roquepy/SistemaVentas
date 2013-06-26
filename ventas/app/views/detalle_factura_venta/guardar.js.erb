@@ -1,3 +1,4 @@
 
 $("#producto").hide();
 $('.modal-backdrop').remove();
+$("#lista_productos").html("<%= escape_javascript( render 'factura_venta/lista_productos') %>");

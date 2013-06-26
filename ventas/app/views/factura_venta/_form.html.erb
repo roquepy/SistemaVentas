@@ -33,13 +33,16 @@
                 </div>   
               </div>  
               <div class = "span11"> 
-                 <div align="center">
+                  <div align="center">
                      <div class="abajo"><br/>    
-                        <a data-toggle="modal" href="#producto" ><label>(+) Cargar Producto </label></a> 
-                    </div>  
-
+                       <a style='cursor: pointer;' onclick="muestra_oculta('producto')">Cargar Producto</a>
+                  </div>  
+                  <div id="producto" style="display: none;">
+                      <%=render 'factura_venta/producto'%>
+                  </div>
+                  <div id="editar_producto" style="display: none;">
+                      <%=render 'factura_venta/editar_producto'%>
                  </div> 
-              </div>
                  <div class="span11" id="cabecera" style="margin-left:0px;">
                     <div class="span2 offset8">
                        <%= f.label :descuento,class:"label"%>
@@ -73,9 +76,7 @@
         </div>    
          
         <% end %> 
-        <div id="producto" class="modal hide fade in" style="display: none;">
-            <%=render 'factura_venta/producto'%>
-          <div>
+        
         <div id="editar_producto" class="modal hide fade in" style="display: none; " >
            <%=render 'factura_venta/editar_producto'%>
          <div>  

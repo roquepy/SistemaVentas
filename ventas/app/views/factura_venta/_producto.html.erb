@@ -3,7 +3,7 @@
     $(document).ready(function () {
         $('#guardar').on("click", function() {
              var _id_factura_venta= $("#id_factura_venta").val();
-             var _id_producto = $("#id_producto").val();
+             var _id_producto =1
              var _cantidad = $("#cantidad").val();
              var _descuento = $("#descuento").val();
              $.ajax({
@@ -16,7 +16,7 @@
          });
         $('#guardar_agregar').on("click", function() {
              var _id_factura_venta= $("#id_factura_venta").val();
-             var _id_producto = $("#id_producto").val();
+             var _id_producto = 1
              var _cantidad = $("#cantidad").val();
              var _descuento = $("#descuento").val();
              $.ajax({
@@ -29,32 +29,24 @@
          });
     });
 </script>
-<div class="modal-header">
-    <a class="close" data-dismiss="modal">×</a>
-        <h3>Producto</h3>
-</div>
-
-<div class="modal-body">
-  <p id="notice"><%= notice %></p>
-            <div class="container">
-                <div class="row">
-                    <div class="span3">
-                        <%=hidden_field_tag :id_factura_venta,params[:id_factura_venta],:value=>FacturaVentum.id_factura()%>
-                        <label class="label">Producto:</label>
-                        <%= autocomplete_field_tag :id_producto,params[:id_producto], autocomplete_producto_descripcion_detalle_factura_venta_path,:id_element=> "#id"%>
-                        <label class="label">Descuento:</label>
-                        <%= text_field_tag :descuento,params[:descuento] %>
-                    </div>      
-                    <div class="span3">
-                        <label class="label">Cantidad:</label>
-                        <%=text_field_tag :cantidad,params[:cantidad]%>
-                    </div>       
-                </div>
+       <div class="container"><br/>
+                <%=hidden_field_tag :id_factura_venta,params[:id_factura_venta],:value=>FacturaVentum.id_factura()%>
+            <div class="span3 " >
+                <label class="label">Producto:</label>
+                 <%= autocomplete_field_tag :id_producto,params[:id_producto], autocomplete_producto_descripcion_detalle_factura_venta_path%>
             </div>
-</div>         
-    <div class="modal-footer">
-         <%= link_to "Guardar", "#", :id => "guardar",  :class => 'btn btn-success',:ajax_path => guardar_detalle_factura_venta_path%>
-         <%= link_to 'Guardar y Agregar', "#", :id => "guardar_agregar",  :class => 'btn btn-success',:ajax_path => guardar_agregar_detalle_factura_venta_path %>
-         <a href="#" class="btn" data-dismiss="modal">Cerrar</a>
-    </div>            
+            <div class="span3 offset1">
+               <label class="label">Cantidad:</label>
+               <%=text_field_tag :cantidad,params[:cantidad]%>
+             </div>
+            <div class="span3 offset1" >
+                <label class="label">Descuento:</label>
+                 <%= text_field_tag :descuento,params[:descuento] %>
+            </div> 
+                        
+            <div class="span3 offset4" align="center"><br/><br/>
+                <%= link_to "Guardar", "#", :id => "guardar",  :class => 'btn btn-success',:ajax_path => guardar_detalle_factura_venta_path%>
+                <%= link_to 'Guardar y Agregar', "#", :id => "guardar_agregar",  :class => 'btn btn-success',:ajax_path => guardar_agregar_detalle_factura_venta_path %>
+            </div>  
+        </div>  <br/><br/>               
 

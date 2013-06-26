@@ -1,6 +1,6 @@
 class DetalleFacturaVentaController < ApplicationController
     before_filter :require_login
-    autocomplete :producto, :descripcion,:extra_data => [:id], :full => true
+    autocomplete :producto, :descripcion,:full => true
   # GET /detalle_factura_venta
   # GET /detalle_factura_venta.json
   def index
@@ -28,6 +28,7 @@ class DetalleFacturaVentaController < ApplicationController
   # GET /detalle_factura_venta/new.json
   def new
     @detalle_factura_ventum = DetalleFacturaVentum.new
+    @detalles_factura_ventas = DetalleFacturaVentum.listas_productos
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @detalle_factura_ventum }
@@ -37,6 +38,7 @@ class DetalleFacturaVentaController < ApplicationController
   # GET /detalle_factura_venta/1/edit
   def edit
     @detalle_factura_ventum = DetalleFacturaVentum.find(params[:id])
+    @detalles_factura_ventas = DetalleFacturaVentum.listas_productos
     respond_to do |format|
       format.js {render 'edit'}
     end
@@ -50,6 +52,7 @@ class DetalleFacturaVentaController < ApplicationController
     @detalle_factura_ventum = DetalleFacturaVentum.new(:id_factura_venta=>params[:id_factura_venta],:id_producto=>params[:id_producto],:cantidad=>params[:cantidad],:descuento=>params[:descuento])
     respond_to do |format|
       if @detalle_factura_ventum.save
+        @detalles_factura_ventas = DetalleFacturaVentum.listas_productos
            format.js {render 'guardar'}
       else
         format.html { render action: "new" }
@@ -59,9 +62,9 @@ class DetalleFacturaVentaController < ApplicationController
   end
     def guardar_agregar
     @detalle_factura_ventum = DetalleFacturaVentum.new(:id_factura_venta=>params[:id_factura_venta],:id_producto=>params[:id_producto],:cantidad=>params[:cantidad],:descuento=>params[:descuento])
-
     respond_to do |format|
       if @detalle_factura_ventum.save
+        @detalles_factura_ventas = DetalleFacturaVentum.listas_productos
            format.js {render 'guardar_agregar'}
       else
         format.html { render action: "new" }
