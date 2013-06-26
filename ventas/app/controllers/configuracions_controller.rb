@@ -51,7 +51,7 @@ class ConfiguracionsController < ApplicationController
         format.js   {}
       else
         format.html { render action: "new" }
-         CustomLogger.info("Error al intentar Crear una Nueva Configuracion para la Empresa. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
+         CustomLogger.error("Error al intentar Crear una Nueva Configuracion para la Empresa. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         format.json { render json: @configuracion.errors, status: :unprocessable_entity }
       end
     end
@@ -87,7 +87,7 @@ end
          format.json { head :no_content }
       else
         @configuracion = Configuracion.find(:all)
-        CustomLogger.info("Error al intentar realizar la Actualizacion de los siguientes datos de la Configuracion de la Empresa: Logo: #{logo_antiguo.inspect} , Nombre del Logo:#{nombre_logo_antiguo.inspect}, Nombre de la Empresa: #{nombre_empresa_antiguo.inspect}, Direccion:#{direccion_antigua.inspect}, RUC:#{ruc_antiguo.inspect}, Timbrado:#{timbrado_antiguo.inspect}, Fecha de Vencimiento de Timbrado:#{timbrado_vencimiento_antiguo.inspect}, Telefono: #{telefono_antiguo.inspect}, Telefono Auxiliar:#{telefono_auxiliar_antiguo.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
+        CustomLogger.error("Error al intentar realizar la Actualizacion de los siguientes datos de la Configuracion de la Empresa: Logo: #{logo_antiguo.inspect} , Nombre del Logo:#{nombre_logo_antiguo.inspect}, Nombre de la Empresa: #{nombre_empresa_antiguo.inspect}, Direccion:#{direccion_antigua.inspect}, RUC:#{ruc_antiguo.inspect}, Timbrado:#{timbrado_antiguo.inspect}, Fecha de Vencimiento de Timbrado:#{timbrado_vencimiento_antiguo.inspect}, Telefono: #{telefono_antiguo.inspect}, Telefono Auxiliar:#{telefono_auxiliar_antiguo.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         format.html { render action: "edit" }
         format.json { render json: @configuracion.errors, status: :unprocessable_entity }
       end
@@ -104,7 +104,7 @@ end
       CustomLogger.info("Han sido eliminados los siguientes datos de la Configuracion de la Empresa: Logo: #{@configuracion.logo.inspect} , Nombre del Logo:#{@configuracion.nombre_logo.inspect}, Nombre de la Empresa: #{@configuracion.nombre_empresa.inspect}, Direccion:#{@configuracion.direccion.inspect}, RUC:#{@configuracion.ruc.inspect}, Timbrado:#{@configuracion.timbrado.inspect}, Fecha de Vencimiento de Timbrado:#{@configuracion.timbrado_vencimiento.inspect}, Telefono: #{@configuracion.telefono.inspect}, Telefono Auxiliar:#{@configuracion.telefono_auxiliar.inspect}. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
     rescue
       notice= "Los datos de la Configuracion de la Empresa no pueden ser eliminados"
-      CustomLogger.info("No se pudo eliminar los siguientes datos de la Configuracion de la Empresa: Logo: #{@configuracion.logo.inspect} , Nombre del Logo:#{@configuracion.nombre_logo.inspect}, Nombre de la Empresa: #{@configuracion.nombre_empresa.inspect}, Direccion:#{@configuracion.direccion.inspect}, RUC:#{@configuracion.ruc.inspect}, Timbrado:#{@configuracion.timbrado.inspect}, Fecha de Vencimiento de Timbrado:#{@configuracion.timbrado_vencimiento.inspect}, Telefono: #{@configuracion.telefono.inspect}, Telefono Auxiliar:#{@configuracion.telefono_auxiliar.inspect}. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
+      CustomLogger.error("No se pudo eliminar los siguientes datos de la Configuracion de la Empresa: Logo: #{@configuracion.logo.inspect} , Nombre del Logo:#{@configuracion.nombre_logo.inspect}, Nombre de la Empresa: #{@configuracion.nombre_empresa.inspect}, Direccion:#{@configuracion.direccion.inspect}, RUC:#{@configuracion.ruc.inspect}, Timbrado:#{@configuracion.timbrado.inspect}, Fecha de Vencimiento de Timbrado:#{@configuracion.timbrado_vencimiento.inspect}, Telefono: #{@configuracion.telefono.inspect}, Telefono Auxiliar:#{@configuracion.telefono_auxiliar.inspect}. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
     ensure
       respond_to do |format|
       format.html { redirect_to configuracions_url }

@@ -32,7 +32,7 @@ class UsersController < ApplicationController
           format.js   {}
         else
           format.html { render action: "new" }
-          CustomLogger.info("Error al intentar Crear un Nuevo Usuario. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
+          CustomLogger.error("Error al intentar Crear un Nuevo Usuario. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
           format.json { render json: @user.errors, status: :unprocessable_entity }
         end
        end
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
            flash[:success] = "Profile updated"
            redirect_to @user
     else
-        CustomLogger.info("Error al intentar realizar actualizacion de los siguientes datos del Usuario: #{usuario_antiguo.inspect}, Contrasena Original y Funcionario:#{funcionario_antiguo.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
+        CustomLogger.error("Error al intentar realizar actualizacion de los siguientes datos del Usuario: #{usuario_antiguo.inspect}, Contrasena Original y Funcionario:#{funcionario_antiguo.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         render action: "edit" 
     end
   end
@@ -74,7 +74,7 @@ class UsersController < ApplicationController
     CustomLogger.info("Han sido eliminado los siguientes datos del Usuario: Usuario:#{@user.username.inspect},Contrasena, pertenecientes al Funcionario:#{@user.funcionario.nombres.inspect} . Usuario Responsable: #{current_user.funcionario.full_name.inspect} , Fecha y Hora: #{Time.now}")
     rescue
     notice= "Los datos del Usuario no se pueden eliminar"
-    CustomLogger.info("Error al intentar eliminar los siguientes datos del Usuario: Usuario:#{@user.username.inspect},Contrasena, pertenecientes al Funcionario:#{@user.funcionario.nombres.inspect} . Usuario Responsable: #{current_user.funcionario.full_name.inspect} , Fecha y Hora: #{Time.now}")
+    CustomLogger.error("Error al intentar eliminar los siguientes datos del Usuario: Usuario:#{@user.username.inspect},Contrasena, pertenecientes al Funcionario:#{@user.funcionario.nombres.inspect} . Usuario Responsable: #{current_user.funcionario.full_name.inspect} , Fecha y Hora: #{Time.now}")
     ensure
       respond_to do |format|
       format.html { redirect_to users_url }

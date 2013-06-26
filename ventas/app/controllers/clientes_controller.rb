@@ -61,7 +61,7 @@ class ClientesController < ApplicationController
         format.js   {render 'create'}
       else
         format.html { render action: "new" }
-        CustomLogger.info("Error al intentar Crear un Nuevo Cliente. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
+        CustomLogger.error("Error al intentar Crear un Nuevo Cliente. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         format.json { render json: @cliente.errors, status: :unprocessable_entity }
       end
     end
@@ -94,7 +94,7 @@ class ClientesController < ApplicationController
         format.html { redirect_to @cliente, notice: 'Los datos del Cliente se han actualizado correctamente.' }
         format.json { head :no_content }
       else
-        CustomLogger.info("Error al intentar realizar actualizacion de los siguientes datos del Cliente: Nombre: #{nombre_antiguo.inspect}, Apellido:#{apellido_antiguo.inspect}, Nro de RUC o CI: #{num_doc_antiguo.inspect}, Direccion: #{direccion_antigua.inspect}, Sexo:#{sexo_antiguo.inspect}, Localidad:#{localidad_antigua.inspect} .Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
+        CustomLogger.error("Error al intentar realizar actualizacion de los siguientes datos del Cliente: Nombre: #{nombre_antiguo.inspect}, Apellido:#{apellido_antiguo.inspect}, Nro de RUC o CI: #{num_doc_antiguo.inspect}, Direccion: #{direccion_antigua.inspect}, Sexo:#{sexo_antiguo.inspect}, Localidad:#{localidad_antigua.inspect} .Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         format.html { render action: "edit" }
         format.json { render json: @cliente.errors, status: :unprocessable_entity }
       end
@@ -111,7 +111,7 @@ class ClientesController < ApplicationController
       CustomLogger.info("Han sido eliminados los siguientes datos del Cliente: Nombre:#{@cliente.nombre.inspect}, Apellido:#{@cliente.apellido.inspect}, Nro de CI o RUC: #{@cliente.num_identidad.inspect}, Direccion:#{@cliente.direccion.inspect}, Telefono:#{@cliente.telefono.inspect}, Sexo:#{@cliente.sexo.inspect} y Localidad:#{@cliente.localidad.nombre}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
     rescue
       notice= "Los datos del Cliente no pueden ser eliminados"
-      CustomLogger.info("No se pudo eliminar los siguientes datos del Cliente: Nombre: #{@cliente.nombre.inspect}, Apellido:#{@cliente.apellido.inspect}, Nro de CI o RUC: #{@cliente.num_identidad.inspect}, Direccion:#{@cliente.direccion.inspect}, Telefono:#{@cliente.telefono.inspect}, Sexo:#{@cliente.sexo.inspect} y Localidad:#{@cliente.localidad.nombre}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
+      CustomLogger.error("No se pudo eliminar los siguientes datos del Cliente: Nombre: #{@cliente.nombre.inspect}, Apellido:#{@cliente.apellido.inspect}, Nro de CI o RUC: #{@cliente.num_identidad.inspect}, Direccion:#{@cliente.direccion.inspect}, Telefono:#{@cliente.telefono.inspect}, Sexo:#{@cliente.sexo.inspect} y Localidad:#{@cliente.localidad.nombre}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
     ensure
       respond_to do |format|
       format.html { redirect_to clientes_url }

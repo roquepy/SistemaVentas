@@ -53,7 +53,7 @@ class ProductosController < ApplicationController
         format.json { render json: @producto, status: :created, location: @producto }
       else
         format.html { render action: "new" }
-        CustomLogger.info("Error al intentar Crear un Nuevo Producto. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
+        CustomLogger.error("Error al intentar Crear un Nuevo Producto. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         format.json { render json: @producto.errors, status: :unprocessable_entity }
       end
     end
@@ -82,7 +82,7 @@ class ProductosController < ApplicationController
         format.json { head :no_content }
       else
         @producto = Producto.find(:all)
-        CustomLogger.info("Error al intentar realizar la Actualizacion de los siguientes datos del Producto: Codigo: #{codigo_antiguo.inspect}, Descripcion:#{descripcion_antigua.inspect}, Cantidad Minima: #{cant_minima_antigua.inspect}, Cantidad Optima: #{cant_optima_antigua.inspect}, Precio Unitario:#{precio_unitario_antiguo.inspect}, Porcentaje IVA:#{porcentaje_iva_antiguo.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
+        CustomLogger.error("Error al intentar realizar la Actualizacion de los siguientes datos del Producto: Codigo: #{codigo_antiguo.inspect}, Descripcion:#{descripcion_antigua.inspect}, Cantidad Minima: #{cant_minima_antigua.inspect}, Cantidad Optima: #{cant_optima_antigua.inspect}, Precio Unitario:#{precio_unitario_antiguo.inspect}, Porcentaje IVA:#{porcentaje_iva_antiguo.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         format.html { render action: "edit" }
         format.json { render json: @producto.errors, status: :unprocessable_entity }
       end
@@ -99,7 +99,7 @@ class ProductosController < ApplicationController
       CustomLogger.info("Han sido eliminados los siguientes datos del Producto: Codigo:#{@producto.codigo.inspect}, Descripcion:#{@producto.descripcion}, Cantidad Minima:#{@producto.cant_minima.inspect}, Cantidad Optima:#{@producto.cant_optima.inspect}, Precio Unitario:#{@producto.precio_unitario.inspect} y Porcentaje IVA:#{@producto.porcentaje.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
     rescue
       notice= "Los datos del producto no pueden ser elimindados"
-      CustomLogger.info("No se pudo eliminar los siguientes datos del Producto: Codigo:#{@producto.codigo.inspect}, Descripcion:#{@producto.descripcion}, Cantidad Minima:#{@producto.cant_minima.inspect}, Cantidad Optima:#{@producto.cant_optima.inspect}, Precio Unitario:#{@producto.precio_unitario.inspect} y Porcentaje IVA:#{@producto.porcentaje.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
+      CustomLogger.error("No se pudo eliminar los siguientes datos del Producto: Codigo:#{@producto.codigo.inspect}, Descripcion:#{@producto.descripcion}, Cantidad Minima:#{@producto.cant_minima.inspect}, Cantidad Optima:#{@producto.cant_optima.inspect}, Precio Unitario:#{@producto.precio_unitario.inspect} y Porcentaje IVA:#{@producto.porcentaje.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
     ensure
       respond_to do |format|
       format.html { redirect_to productos_url }

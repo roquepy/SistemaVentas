@@ -56,6 +56,7 @@ class FuncionariosController < ApplicationController
         format.js   {}
       else
         format.html { render action: "new" }
+        CustomLogger.error("Error al intentar Crear un Nuevo Funcionario. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         format.json { render json: @funcionario.errors, status: :unprocessable_entity }
       end
     end
@@ -93,6 +94,7 @@ class FuncionariosController < ApplicationController
             format.html { redirect_to @funcionario, notice: 'Funcionario was successfully updated.' }
             format.json { head :no_content }
        else
+        CustomLogger.error("Error al intentar realizar la Actualizacion de los siguientes datos del Funcionario: Nombre: #{nombre_antiguo.inspect}, Apellido:#{apellido_antiguo.inspect}, Num de CI o RUC:#{num_identidad_antiguo.inspect}, Direccion:#{direccion_antigua.inspect}, Telefono:#{telefono_antiguo.inspect}, Estado Civil:#{estado_civil_antiguo.inspect}, Sexo:#{sexo_antiguo.inspect}, Localidad:#{localidad_antigua.inspect}, Estado del Funcionario:#{estado_funcionario_antiguo.inspect}, Funcion:#{funcion_antiguo.inspect} .Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         format.html { render action: "edit" }
         format.json { render json: @funcionario.errors, status: :unprocessable_entity }
       end
@@ -109,7 +111,7 @@ class FuncionariosController < ApplicationController
     CustomLogger.info("Han sido eliminados los siguientes datos del Funcionario:Nombre:#{@funcionario.nombres.inspect}, Apellido:#{@funcionario.apellidos.inspect}, Nro de RUC o CI:#{@funcionario._num_identidad.inspect}, Direccion:#{@funcionario.direccion.inspect}, Telefono:#{@funcionario.telefono.inspect}, Estado Civil:#{@funcionario.estado_civil.inspect}, Sexo:#{@funcionario.sexo.inspect}, Localidad:#{@funcionario.localidad.nombre.inspect}, Estado del Funcionario:#{@funcionario.estados_funcionario.descripcion.inspect}, Funcion:#{@funcionario.funcion.nombre.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
     rescue
     notice= "No pueden eliminarse lo datos de Funcionario"
-    CustomLogger.info("Error al intentar eliminar los siguientes datos del Funcionario:Nombre:#{@funcionario.nombres.inspect}, Apellido:#{@funcionario.apellidos.inspect}, Nro de RUC o CI:#{@funcionario._num_identidad.inspect}, Direccion:#{@funcionario.direccion.inspect}, Telefono:#{@funcionario.telefono.inspect}, Estado Civil:#{@funcionario.estado_civil.inspect}, Sexo:#{@funcionario.sexo.inspect}, Localidad:#{@funcionario.localidad.nombre.inspect}, Estado del Funcionario:#{@funcionario.estados_funcionario.descripcion.inspect}, Funcion:#{@funcionario.funcion.nombre.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
+    CustomLogger.error("Error al intentar eliminar los siguientes datos del Funcionario:Nombre:#{@funcionario.nombres.inspect}, Apellido:#{@funcionario.apellidos.inspect}, Nro de RUC o CI:#{@funcionario._num_identidad.inspect}, Direccion:#{@funcionario.direccion.inspect}, Telefono:#{@funcionario.telefono.inspect}, Estado Civil:#{@funcionario.estado_civil.inspect}, Sexo:#{@funcionario.sexo.inspect}, Localidad:#{@funcionario.localidad.nombre.inspect}, Estado del Funcionario:#{@funcionario.estados_funcionario.descripcion.inspect}, Funcion:#{@funcionario.funcion.nombre.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
     ensure
       respond_to do |format|
       format.html { redirect_to funcionarios_url }

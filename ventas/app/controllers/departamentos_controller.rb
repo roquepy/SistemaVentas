@@ -56,7 +56,7 @@ class DepartamentosController < ApplicationController
           format.js   {}
       else
         format.html { render action: "new"}
-         CustomLogger.info("Error al intentar Crear un Nuevo Departamento. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
+        CustomLogger.error("Error al intentar Crear un Nuevo Departamento. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         format.json { render json: @departamento.errors, status: :unprocessable_entity }
       end
     end
@@ -75,7 +75,7 @@ class DepartamentosController < ApplicationController
         format.json { head :no_content }
       else
         @departamentos = Departamento.find(:all)
-        CustomLogger.info("Error al intentar realizar la actualizacion del siguiente Departamento: #{departamento_antiguo.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
+        CustomLogger.error("Error al intentar realizar la actualizacion del siguiente Departamento: #{departamento_antiguo.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         format.html { render action: "edit" }
         format.json { render json: @departamento.errors, status: :unprocessable_entity }
       end
@@ -93,7 +93,7 @@ class DepartamentosController < ApplicationController
      CustomLogger.info("El Departamento:#{@departamento.nombre.inspect} ha sido eliminado. Usuario Responsable: #{current_user.funcionario.full_name.inspect} , Fecha y Hora: #{Time.now}")
       rescue
       notice= "El departamento no puede ser eliminado"
-      CustomLogger.info("Error al intentar eliminar el Departamento:#{@departamento.nombre.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect} , Fecha y Hora: #{Time.now}")
+      CustomLogger.error("Error al intentar eliminar el Departamento:#{@departamento.nombre.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect} , Fecha y Hora: #{Time.now}")
       ensure
       respond_to do |format|
       format.html { redirect_to departamentos_url}
