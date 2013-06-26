@@ -17,7 +17,7 @@
               <th>Cantidad Minima</th>
               <th>Cantidad Optima</th>
               <th>Precio Unitario</th>
-              <th>Porcentaje</th>
+              <th>IVA</th>
               <th>Acciones</th>
             </tr>
         </thead>
@@ -29,7 +29,7 @@
               <td><%= producto.cant_minima %></td>
               <td><%= producto.cant_optima %></td>
               <td><%= producto.precio_unitario%></td>
-              <td><%= producto.porcentaje %></td>
+              <td><%= producto.porcentaje %> %</td>
               <td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_producto_path(producto) %> &nbsp &nbsp &nbsp   
                       <i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar",producto, :confirm => "Desea eliminar el producto "+producto.descripcion, :method => :delete %>
               </td>
@@ -42,6 +42,9 @@
           <%=will_paginate @productos%> 
     </div>
      <div align="center">
-      <%= link_to '(+) Nuevo Producto', new_producto_path %>
+      <i class="icon-plus-sign" title="editar"></i>&nbsp<%= link_to 'Nuevo Producto', new_producto_path %>&nbsp&nbsp
+      <h8> | </h8>&nbsp&nbsp
+      <i class="icon-file" title="editar"></i>&nbsp<%= link_to 'Ver en PDF', productos_path(:format => 'pdf')%>
+
     </div>    
 <% end %>

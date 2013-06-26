@@ -11,6 +11,7 @@ class ProductosController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @productos }
+      format.pdf { render :layout => false }
     end
   end
 
