@@ -1,33 +1,24 @@
-<div class="modal-header">
-    <a class="close" data-dismiss="modal">×</a>
-        <h3>Producto</h3>
-</div>
-
-<div class="modal-body">
-  <p id="notice"><%= notice %></p>
-            <div class="container">
-                <div class="row">
-                    <%= form_for @detalle_factura_ventum,:remote=>true do |f| %>
-                        <%= render 'mensajes/error_mensajes', object: f.object %>
-                            <div class="span3">
-                                <%= f.hidden_field :id_factura_venta%>
-                                <label class="label">Producto:</label>
-                                <%= f.hidden_field :id_producto%>
-                                <%= f.text_field :value=>Producto.obtenerProducto(:id_producto),:disabled=>true %>
-                                <label class="label">Descuento:</label>
-                                <%= f.text_field :descuento %>
-                            </div>      
-                            <div class="span3">
-                                <label class="label">Cantidad:</label>
-                                <%=f.text_field :cantidad%>
-                            </div>       
-                </div>
-            </div>
-            
-</div>         
-    <div class="modal-footer">
-         <%= f.submit "Guardar", :class => 'btn btn-success' %>
-         <a href="#" class="btn" data-dismiss="modal">Cerrar</a>
+ <div class="container"><br/>
+    <%= form_for @detalle_factura_ventum,:remote=>true do |f| %>
+        <%= render 'mensajes/error_mensajes', object: f.object %>
+            <%= f.hidden_field :id_factura_venta%>
+                <div class="span3">
+                    <label class="label">Producto:</label>
+                    <%= f.hidden_field :id_producto%>
+                    <%= f.text_field " " ,:value=>Producto.obtenerProducto(1),:disabled=>true %>
+                </div>  
+                <div class="span3 offset1">
+                    <label class="label">Cantidad:</label>
+                    <%=f.text_field :cantidad%>
+                </div> 
+                <div class="span3 offset1">  
+                    <label class="label">Descuento:</label>
+                    <%= f.text_field :descuento %>
+                </div>      
+                                
+ </div>
+    <div class="span3 offset4" align="center"><br/><br/>
+        <%= f.submit "Guardar", :class => 'btn btn-success' %>
     </div> 
-    <% end %>           
+            <% end %>           
 

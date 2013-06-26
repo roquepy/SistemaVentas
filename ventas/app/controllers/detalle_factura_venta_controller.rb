@@ -38,14 +38,14 @@ class DetalleFacturaVentaController < ApplicationController
   # GET /detalle_factura_venta/1/edit
   def edit
     @detalle_factura_ventum = DetalleFacturaVentum.find(params[:id])
-    @detalles_factura_ventas = DetalleFacturaVentum.listas_productos
-    respond_to do |format|
-      format.js {render 'edit'}
-    end
   end
 
+
   # POST /detalle_factura_venta
+
   # POST /detalle_factura_venta.json
+
+
   def create
   end
   def guardar

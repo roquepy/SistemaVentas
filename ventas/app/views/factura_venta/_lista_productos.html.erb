@@ -1,12 +1,13 @@
-  
-
 <script type="text/javascript">
     $(document).ready(function () {
         $('#editar').on("click", function() {
+        	_id= $("#id").val();
              $.ajax({
 
                     url: $(this).attr('ajax_path'),
+                    data: {"id":_id},
                     async: true,
+
                     dataType: 'script'
                     });
                     return false;
@@ -23,6 +24,7 @@
     <table class="table table-bordered" >
 		<thead>
 			<tr>
+				<th>id</th>
 				<th>Producto</th>
 				<th>Cantidad</th>
 				<th>Precio</th>
@@ -35,11 +37,12 @@
 	  	else
 		  	@detalles_factura_ventas.each  do |detalle_factura_venta| %>	
 			  	<tr>
+			  		<td><%= detalle_factura_venta.id %></td>
 					<td><%=detalle_factura_venta.producto.descripcion %></td>
 					<td><%=detalle_factura_venta.cantidad%></td>
 					<td><%=detalle_factura_venta.producto.precio_unitario %></td>
 					<td><%=detalle_factura_venta.cantidad*detalle_factura_venta.producto.precio_unitario %></td>
-		            <td><i class="icon-edit" title="editar"></i><%=link_to "editar", "#", :id => "editar",:ajax_path => edit_detalle_factura_ventum_path(detalle_factura_venta)%> &nbsp &nbsp &nbsp   
+		            <td><i class="icon-edit" title="editar"></i><%=link_to "editar",edit_detalle_factura_ventum_path(detalle_factura_venta),:onclick=>"muestra_oculta('editar_producto')"%> &nbsp &nbsp &nbsp   
 					    <i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar",detalle_factura_venta, :confirm => "Desea Eliminar el producto "+ detalle_factura_venta.producto.descripcion, :method => :delete %>
 					</td>
 				</tr>
