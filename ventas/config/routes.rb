@@ -11,7 +11,6 @@ Ventas::Application.routes.draw do
   resources :sesiones
   resources :localidads
   resources :factura_venta
-  resources :detalles_factura_venta
   resources :departamentos
   resources :paginas_estaticas
   resources :configuracions

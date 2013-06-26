@@ -1,30 +1,44 @@
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('#editar').on("click", function() {
-        	_id= $("#id").val();
-             $.ajax({
+    $(document).ready(function() {
+        $("table").tablecloth({
+          theme: "stats",
+          striped: true,
+          sortable: true,
+          condensed: true
+        });
 
-                    url: $(this).attr('ajax_path'),
-                    data: {"id":_id},
-                    async: true,
-
-                    dataType: 'script'
-                    });
-                    return false;
-         });
+       var buscarEnTabla = function() {
+        var table = $('#table');
+        var value = this.value;
+        table.find('tr').each(function(index, row) {
+            var allCells = $(row).find('td');
+            if(allCells.length > 0) {
+                var found = false;
+                allCells.each(function(index, td) {
+                    var regExp = new RegExp(value, 'i');
+                    if(regExp.test($(td).text())) {
+                        found = true;
+                        return false;
+                    }
+                });
+                if (found == true) $(row).show();
+                else $(row).hide();
+            }
+        });
+    };
+     
+    $(function(){
+        $('#filtrar').keyup(buscarEnTabla);
     });
-</script>
+ });
+    
+  </script>
   <%= form_tag detalle_factura_venta_path,:method => 'get' do %>
 		
 	   <div class="container-fluid">
-	   	<div class="mismalinea">
-	   		<label class="mismalinea">Filtrar:</label>
-		   <input type="text" id="filtrar" placeholder="Filtrar" class="mismalinea-espacio">
-	    </div>
     <table class="table table-bordered" >
 		<thead>
 			<tr>
-				<th>id</th>
 				<th>Producto</th>
 				<th>Cantidad</th>
 				<th>Precio</th>
@@ -37,13 +51,12 @@
 	  	else
 		  	@detalles_factura_ventas.each  do |detalle_factura_venta| %>	
 			  	<tr>
-			  		<td><%= detalle_factura_venta.id %></td>
 					<td><%=detalle_factura_venta.producto.descripcion %></td>
 					<td><%=detalle_factura_venta.cantidad%></td>
 					<td><%=detalle_factura_venta.producto.precio_unitario %></td>
 					<td><%=detalle_factura_venta.cantidad*detalle_factura_venta.producto.precio_unitario %></td>
-		            <td><i class="icon-edit" title="editar"></i><%=link_to "editar",edit_detalle_factura_ventum_path(detalle_factura_venta),:onclick=>"muestra_oculta('editar_producto')"%> &nbsp &nbsp &nbsp   
-					    <i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar",detalle_factura_venta, :confirm => "Desea Eliminar el producto "+ detalle_factura_venta.producto.descripcion, :method => :delete %>
+		            <td><i class="icon-edit" title="editar"></i><%=link_to "editar",edit_detalle_factura_ventum_path(detalle_factura_venta),:onclick=>"muestra_oculta('editar_producto')",:remote=>true%> &nbsp &nbsp &nbsp   
+					    <i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar",detalle_factura_venta, :confirm => "Desea Eliminar el producto "+ detalle_factura_venta.producto.descripcion, :remote => true,:method => :delete %>
 					</td>
 				</tr>
 			<% end %>
