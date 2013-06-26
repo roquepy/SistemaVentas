@@ -21,8 +21,8 @@
 					<tr>
 						<td><%= localidad.nombre %></td>
 			            <td><%= localidad.departamento.nombre %></td>
-						<td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_localidad_path(localidad) %> &nbsp &nbsp &nbsp   
-						    		<i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar",localidad, :confirm => "Desea eliminar la localidad "+localidad.nombre, :method => :delete %>
+						<td><i class="icon-edit" title="editar"></i><%= link_to "Editar", edit_localidad_path(localidad) %> &nbsp &nbsp &nbsp   
+						    		<i class="icon-remove-sign" title="borrar"></i><%= link_to "Borrar",localidad, :confirm => "Desea eliminar la siguiente localidad:"+localidad.nombre, :method => :delete %>
 						</td>
 					</tr>
 	            <% end %>

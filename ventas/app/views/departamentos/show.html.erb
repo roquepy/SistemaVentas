@@ -14,8 +14,8 @@
 	  <tbody>
 	  	<tr>
 			<td><%= @departamento.nombre %></td>
-            <td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_departamento_path(@departamento) %> &nbsp &nbsp &nbsp   
-			    <i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar",@departamento, :confirm => "Desea Eliminar el departamento "+ @departamento.nombre, :method => :delete %>
+            <td><i class="icon-edit" title="editar"></i><%= link_to "Editar", edit_departamento_path(@departamento) %> &nbsp &nbsp &nbsp   
+			    <i class="icon-remove-sign" title="borrar"></i><%= link_to "Borrar",@departamento, :confirm => "Desea Eliminar el siguiente departamento: "+ @departamento.nombre, :method => :delete %>
 			</td>
 		</tr>
 	   </tbody>

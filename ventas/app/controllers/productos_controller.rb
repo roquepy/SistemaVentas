@@ -53,6 +53,7 @@ class ProductosController < ApplicationController
         format.json { render json: @producto, status: :created, location: @producto }
       else
         format.html { render action: "new" }
+        CustomLogger.info("Error al intentar Crear un Nuevo Producto. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         format.json { render json: @producto.errors, status: :unprocessable_entity }
       end
     end
@@ -80,6 +81,8 @@ class ProductosController < ApplicationController
         format.html { redirect_to @producto, notice: 'Los datos del producto se han actualizado correctamente' }
         format.json { head :no_content }
       else
+        @producto = Producto.find(:all)
+        CustomLogger.info("Error al intentar realizar la Actualizacion de los siguientes datos del Producto: Codigo: #{codigo_antiguo.inspect}, Descripcion:#{descripcion_antigua.inspect}, Cantidad Minima: #{cant_minima_antigua.inspect}, Cantidad Optima: #{cant_optima_antigua.inspect}, Precio Unitario:#{precio_unitario_antiguo.inspect}, Porcentaje IVA:#{porcentaje_iva_antiguo.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         format.html { render action: "edit" }
         format.json { render json: @producto.errors, status: :unprocessable_entity }
       end

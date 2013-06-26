@@ -1,6 +1,11 @@
 require 'custom_logger'
 class DepartamentosController < ApplicationController
+  #
+  # Antes de hacer cualquier cosa con este controler,
+  # se verifica si hay permiso para el usuario logueado
+  #
     before_filter :require_login
+
   # GET /departamentos
   # GET /departamentos.json
   def index
@@ -50,7 +55,8 @@ class DepartamentosController < ApplicationController
         format.json { render json: @departamento, status: :created, location: @departamento }
           format.js   {}
       else
-        format.html { render action: "new" }
+        format.html { render action: "new"}
+         CustomLogger.info("Error al intentar Crear un Nuevo Departamento. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         format.json { render json: @departamento.errors, status: :unprocessable_entity }
       end
     end
@@ -69,6 +75,7 @@ class DepartamentosController < ApplicationController
         format.json { head :no_content }
       else
         @departamentos = Departamento.find(:all)
+        CustomLogger.info("Error al intentar realizar la actualizacion del siguiente Departamento: #{departamento_antiguo.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         format.html { render action: "edit" }
         format.json { render json: @departamento.errors, status: :unprocessable_entity }
       end

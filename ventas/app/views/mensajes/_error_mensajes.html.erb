@@ -2,6 +2,7 @@
     <div class="span7">
 		<% if object.errors.any? %>
 		  <div class="alert alert-block">
+		  	<Strong>Atencion! </Strong>
 		    El formulario contiene <%= pluralize(object.errors.count, "error") %>.
 		  </div>
 		<% end %>	

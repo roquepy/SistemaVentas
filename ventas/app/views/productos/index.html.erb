@@ -30,8 +30,8 @@
               <td><%= producto.cant_optima %></td>
               <td><%= producto.precio_unitario%></td>
               <td><%= producto.porcentaje %> %</td>
-              <td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_producto_path(producto) %> &nbsp &nbsp &nbsp   
-                      <i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar",producto, :confirm => "Desea eliminar el producto "+producto.descripcion, :method => :delete %>
+              <td><i class="icon-edit" title="editar"></i><%= link_to "Editar", edit_producto_path(producto) %> &nbsp &nbsp &nbsp   
+                      <i class="icon-remove-sign" title="borrar"></i><%= link_to "Borrar",producto, :confirm => "Desea eliminar el producto "+producto.descripcion, :method => :delete %>
               </td>
 
             </tr>

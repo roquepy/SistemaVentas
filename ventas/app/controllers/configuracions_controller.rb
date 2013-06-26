@@ -3,11 +3,11 @@ require 'custom_logger'
 
 class ConfiguracionsController < ApplicationController
     before_filter :require_login
+
   # GET /configuracions
   # GET /configuracions.json
   def index
     @configuracions = Configuracion.paginate(:page => params[:page], :per_page => 10)
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @configuracions }
@@ -18,7 +18,6 @@ class ConfiguracionsController < ApplicationController
   # GET /configuracions/1.json
   def show
     @configuracion = Configuracion.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @configuracion }
@@ -29,7 +28,6 @@ class ConfiguracionsController < ApplicationController
   # GET /configuracions/new.json
   def new
     @configuracion = Configuracion.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @configuracion }
@@ -53,6 +51,7 @@ class ConfiguracionsController < ApplicationController
         format.js   {}
       else
         format.html { render action: "new" }
+         CustomLogger.info("Error al intentar Crear una Nueva Configuracion para la Empresa. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         format.json { render json: @configuracion.errors, status: :unprocessable_entity }
       end
     end

@@ -8,7 +8,7 @@
 						          <%= f.label "Localidad (*)",class:"label"%>
 						          <%= f.text_field :nombre,class: "span3",:placeholder => "Ingrese Localidad",:maxlength=>"35" %>	
 	                    <%= f.label "Departamento (*)",class:"label"%>
-	                	  <%=f.collection_select :id_departamento,Departamento.find(:all),:id,:nombre,:prompt=>"-- Seleccione Departamento --"%> 
+	                	  <%=f.collection_select :id_departamento,Departamento.find(:all),:id,:nombre%> 
 					            <a data-toggle="modal" href="#departamento" ><label>(+) Nuevo Departamento</label></a>
                   </div> 
 
