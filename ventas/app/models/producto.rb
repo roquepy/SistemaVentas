@@ -1,7 +1,7 @@
 class Producto < ActiveRecord::Base
 	attr_accessible :codigo,:descripcion, :cant_minima,:cant_optima,:precio_unitario,:porcentaje
 	
-  	validates :codigo, :presence => true,:length => { :minimum =>1},:uniqueness => true
+  	validates :codigo, :presence => true,:length => { :minimum =>1},:uniqueness =>{:message => "Este codigo ya esta siendo usado"}
   	validates :descripcion, :length => { :minimum => 3}, :format => { :with => /\A[a-zA-Z\s\d\/]+\z/}
   	validates :cant_minima, :length => { :minimum => 1}, numericality: {greater_than_or_equal_to:1}
     validates :cant_minima, :length => { :minimum => 1}, numericality: {less_than: :cant_optima}

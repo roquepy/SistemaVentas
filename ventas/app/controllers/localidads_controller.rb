@@ -77,7 +77,6 @@ class LocalidadsController < ApplicationController
         format.html { redirect_to @localidad, notice: 'Los datos de la Localidad se han actualizado correctamente' }
         format.json { head :no_content }
       else
-        @localidad = Localidad.find(:all)
         CustomLogger.info("Error al intentar realizar la Actualizacion de los siguientes datos de Localidad: Localidad: #{localidad_antigua.inspect} y Departamento: #{departamento_antiguo.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         format.html { render action: "edit" }
         format.json { render json: @localidad.errors, status: :unprocessable_entity }

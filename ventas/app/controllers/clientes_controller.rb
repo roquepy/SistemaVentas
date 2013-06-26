@@ -16,6 +16,7 @@ class ClientesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @clientes }
+      format.pdf{render :layout => false}
     end
   end
 
@@ -26,7 +27,7 @@ class ClientesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @cliente }
-    end
+  end
   end 
 
   # GET /clientes/new
@@ -93,7 +94,6 @@ class ClientesController < ApplicationController
         format.html { redirect_to @cliente, notice: 'Los datos del Cliente se han actualizado correctamente.' }
         format.json { head :no_content }
       else
-        @clientes = Cliente.find(:all)
         CustomLogger.info("Error al intentar realizar actualizacion de los siguientes datos del Cliente: Nombre: #{nombre_antiguo.inspect}, Apellido:#{apellido_antiguo.inspect}, Nro de RUC o CI: #{num_doc_antiguo.inspect}, Direccion: #{direccion_antigua.inspect}, Sexo:#{sexo_antiguo.inspect}, Localidad:#{localidad_antigua.inspect} .Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         format.html { render action: "edit" }
         format.json { render json: @cliente.errors, status: :unprocessable_entity }

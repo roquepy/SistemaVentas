@@ -86,6 +86,8 @@ end
          format.html { redirect_to @configuracion}
          format.json { head :no_content }
       else
+        @configuracion = Configuracion.find(:all)
+        CustomLogger.info("Error al intentar realizar la Actualizacion de los siguientes datos de la Configuracion de la Empresa: Logo: #{logo_antiguo.inspect} , Nombre del Logo:#{nombre_logo_antiguo.inspect}, Nombre de la Empresa: #{nombre_empresa_antiguo.inspect}, Direccion:#{direccion_antigua.inspect}, RUC:#{ruc_antiguo.inspect}, Timbrado:#{timbrado_antiguo.inspect}, Fecha de Vencimiento de Timbrado:#{timbrado_vencimiento_antiguo.inspect}, Telefono: #{telefono_antiguo.inspect}, Telefono Auxiliar:#{telefono_auxiliar_antiguo.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         format.html { render action: "edit" }
         format.json { render json: @configuracion.errors, status: :unprocessable_entity }
       end

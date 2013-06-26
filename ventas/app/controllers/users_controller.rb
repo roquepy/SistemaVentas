@@ -3,6 +3,7 @@ require 'custom_logger'
 
 class UsersController < ApplicationController
     before_filter :require_login
+
   def index
     @users =User.paginate(:page => params[:page], :per_page => 10)
     respond_to do |format|
@@ -10,6 +11,7 @@ class UsersController < ApplicationController
       format.json { render json: @users }
     end
   end
+
   def new
     @user = User.new
     funcionario_new
@@ -29,7 +31,9 @@ class UsersController < ApplicationController
           format.json { render json: @user, status: :created, location: @user }
           format.js   {}
         else
-           format.html { render action: "new" }
+          format.html { render action: "new" }
+          CustomLogger.info("Error al intentar Crear un Nuevo Usuario. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
+          format.json { render json: @user.errors, status: :unprocessable_entity }
         end
        end
    end
@@ -41,6 +45,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    funcionario_new
     usuario_antiguo= @user.username
     funcionario_antiguo= @user.funcionario.nombres
       if @user.update_attributes(params[:user])
@@ -48,10 +53,10 @@ class UsersController < ApplicationController
            funcionario_nuevo= @user.funcionario.nombres
            CustomLogger.info("Datos antes de realizar la Actualizacion del Usuario: Usuario: #{usuario_antiguo.inspect}, Contrasena Original y Funcionario:#{funcionario_antiguo.inspect}.Usuario Responsable: #{current_user.funcionario.full_name.inspect}.Nuevos Datos: Usuario:#{usuario_nuevo.inspect}, Contrasena Nueva y Funcionario:#{funcionario_nuevo.inspect}. Fecha y Hora: #{Time.now}")
            flash[:success] = "Profile updated"
-           #sign_in @user
-      redirect_to @user
+           redirect_to @user
     else
-      render 'edit'
+        CustomLogger.info("Error al intentar realizar actualizacion de los siguientes datos del Usuario: #{usuario_antiguo.inspect}, Contrasena Original y Funcionario:#{funcionario_antiguo.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
+        render action: "edit" 
     end
   end
 
