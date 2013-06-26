@@ -27,14 +27,6 @@ clientes:
     - Avenida Uruguay
     - 021 202455
     - F
-  - - 5
-    - Gonzalo
-    - Maciel
-    - '789658474555665'
-    - 1
-    - Avenida Ucrania
-    - 071 202433
-    - M
   - - 6
     - Pedro
     - Gonzalez
@@ -58,6 +50,14 @@ clientes:
     - 10
     - Calle Cinco
     - 074 202456
+    - M
+  - - 9
+    - Pedro
+    - Perez
+    - 4.546.837
+    - 4
+    - Calle Cordillera casi Contrera
+    - (021) 568459
     - M
 
 ---
@@ -91,7 +91,7 @@ configuracions:
     - Autoservicio Virgen del Rosario
     - Calle Virgen del Rosario esquina Parana
     - 0746 21545
-    - 0746 21546
+    - 0746 21548
     - 80001456-9
     - '17845236'
     - 14/04/2014
@@ -128,26 +128,6 @@ departamentos:
     - Cordillera
   - - 13
     - Alto Parana
-
----
-detalle_factura_venta:
-  columns:
-  - id
-  - id_factura_venta
-  - id_producto
-  - cantidad
-  - descuento
-  records: 
-  - - 1
-    - 1
-    - 3
-    - 12
-    - 5
-  - - 2
-    - 1
-    - 3
-    - 12
-    - 5
 
 ---
 estados_funcionarios:
@@ -211,7 +191,7 @@ funcions:
   - nombre
   records: 
   - - 1
-    - administrador
+    - Administrador/a
   - - 2
     - funcionario
 
@@ -276,8 +256,8 @@ localidads:
   - - 21
     - Kenedy
     - 1
-  - - 22
-    - lopeee
+  - - 23
+    - Edelira
     - 1
 
 ---
