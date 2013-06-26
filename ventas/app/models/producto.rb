@@ -8,4 +8,9 @@ class Producto < ActiveRecord::Base
   	validates :precio_unitario, :length => { :minimum => 2}
     validates :porcentaje, :length => { :minimum => 1}
     has_many :detalle_factura_venta
+
+    def self.obtenerProducto(id_producto)
+    	producto=Producto.find(:all,:conditions=>['id = ? ',id_producto])  
+    	return producto.descripcion
+    end
 end
