@@ -1,10 +1,9 @@
   <br/>
   <%= form_tag localidads_path, :method => 'get' do %>
-  <div class="span8 offset2">
   <div align="center">
 	<h3> Lista de Localidades</h3>
 	</div>
-   
+   <div class="container-fluid">
    	   <div class="mismalinea">
 	   		<label class="mismalinea">Filtrar:</label>
 		   <input type="text" id="filtrar" placeholder="Filtrar" class="mismalinea-espacio">
@@ -30,9 +29,8 @@
 			</tbody>
 		</table>
 		<%=will_paginate %>
-		<div align="center">
-		<i class="icon-plus-sign"></i>&nbsp<%= link_to 'Nueva Localidad', new_localidad_path %>
   </div>
-  </div>
-   		
+   <div align="center">
+		<%= link_to '(+) Nueva Localidad', new_localidad_path %>
+  </div>		
   <% end %>

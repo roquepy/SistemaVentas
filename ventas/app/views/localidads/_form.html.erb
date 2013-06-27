@@ -4,12 +4,12 @@
              <legend>Nueva Localidad</legend>
              <div class="span8">
 
-                  <div class="span2">
+                  <div class="span3">
 						          <%= f.label "Localidad (*)",class:"label"%>
 						          <%= f.text_field :nombre,class: "span3",:placeholder => "Ingrese Localidad",:maxlength=>"35" %>	
 	                    <%= f.label "Departamento (*)",class:"label"%>
-	                	   <div id="collectiondepartamento"> <%=render 'select_departamentos'%></div>
-					            <i class="icon-plus-sign"></i>&nbsp<a data-toggle="modal" href="#departamento" > Nuevo Departamento</a>
+	                	  <%=f.collection_select :id_departamento,Departamento.find(:all),:id,:nombre%> 
+					            <a data-toggle="modal" href="#departamento" ><label>(+) Nuevo Departamento</label></a>
                   </div> 
 
                </div>

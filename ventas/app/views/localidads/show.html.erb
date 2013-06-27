@@ -1,10 +1,9 @@
 <br/>
 <% provide(:title, @localidad.nombre) %>
-<div class="span8 offset2">
-	<div align="center">
-		<h3>Datos de la Localidad </h3><br/>
-	</div>
-
+<div align="center">
+	<h3>Datos de la Localidad </h3><br/>
+</div>
+<div class="container-fluid">
     <table class="table table-bordered">
 		<thead>
 			<tr>
@@ -23,12 +22,9 @@
 		</tr>
 	   </tbody>
   </table>
-  <div align="center">
-     <i class="icon-plus-sign"></i>&nbsp<%= link_to 'Nueva Localidad', new_localidad_path %>&nbsp&nbsp
-     <h8> | </h8>&nbsp&nbsp
-     <i class="icon-list-alt"></i>&nbsp<%= link_to 'Volver a la Lista', localidads_path %>
-   </div>
   </div>
-  
+  <div align="center">
+     <%= link_to '(+) Nueva Localidad', new_localidad_path %>
+   </div>
 
    
