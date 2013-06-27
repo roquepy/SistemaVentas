@@ -14,9 +14,9 @@
 					    <%= f.label "Estado Civil (*)",class:"label"%>
 						<%= f.select(:estado_civil, ['Casado', 'Soltero', 'Viudo', 'Separado' ],:prompt=>"--Seleccione Estado Civil--")%>
 						<%= f.label "Estado Funcionario (*)",class:"label"%>
-			            <%=f.collection_select :id_estado_funcionario,EstadosFuncionario.find(:all),:id,:descripcion,:prompt=>"--Seleccione Estado del Funcionario--"%>   
+			            <%=f.collection_select(:id_estado_funcionario, EstadosFuncionario.find(:all), :id, :descripcion, {:prompt=>"--Seleccione Estado del Funcionario--"}, {class: "span3"})%>   
 		            </div>
-		            <div class="span3">
+		            <div class="span2">
 		             	<%= f.label "Apellido (*)",class:"label"%>
 						<%= f.text_field :apellidos,class: "span3",:placeholder => "Ingrese Apellido",:maxlength=>"25"  %><br/>
 						<%= f.label "Direccion (*)",class:"label"%>
@@ -24,13 +24,13 @@
 						<%= f.label "Sexo (*)",class:"label"%>
 						<%= f.select(:sexo, ['M', 'F' ],:prompt=>"--Seleccione Sexo--",id:"select")%>
 		                <%= f.label "Funcion (*)",class:"label"%>
-					    <%=f.collection_select :id_funcion,Funcion.find(:all),:id,:nombre,:prompt=>"-- Seleccione Funcion --",id:"select"%>
+					    <%=f.collection_select(:id_funcion, Funcion.find(:all), :id, :nombre, {:prompt=>"-- Seleccione Funcion --"}, {class: "span3"} )%>
 			             <%= f.label "Localidad (*)",class:"label"%>
-					     <%=f.collection_select :id_localidad,Localidad.find(:all),:id,:nombre,:prompt=>"--Seleccione Localidad--"%>    
-			       		 <a data-toggle="modal" href="#localidad" ><label  class="mismalinea-espacio"> (+)Nueva Localidad </label></a> 	<br/>    
+					     <div id="collectionlocalidad"> <%=render 'select_localidades'%></div>   
+			       		 <i class="icon-plus-sign"></i>&nbsp<a data-toggle="modal" href="#localidad" >Nueva Localidad</a> 	<br/>    
 			     </div> 
 </div>	
-				<div class="span2 offset3" align="center"><br/>
+				<div class="span2 offset2" align="center"><br/>
 						<%= f.submit "Guardar", class: "btn btn-primary"%>
 						<%= link_to "Cancelar", funcionarios_path, class: "btn"%>
 				</div>
