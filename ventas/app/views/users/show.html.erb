@@ -1,15 +1,15 @@
  <br/>
 <% provide(:title, @user.username) %>
-<div align="center">
-	<h3>Datos del Usuario </h3><br/>
-</div>
-<div class="container-fluid">
+<div class="span6 offset3">
+	<div align="center">
+		<h3>Datos del Usuario </h3><br/>
+	</div>
+
     <table class="table table-bordered">
 		<thead>
 			<tr>
 				<th>Funcionario</th>
-				<th>Username</th>
-				<th>Password</th>
+				<th>Usuario</th>
 				<th>Acciones</th>
 			</tr>
 		</thead>
@@ -17,15 +17,17 @@
 	  	<tr>
 	  		<td><%= @user.funcionario.nombres%></td>
 			<td><%= @user.username %></td>
-			<td><%= @user.password %></td>
             <td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_user_path(@user) %> &nbsp &nbsp &nbsp   
 			    <i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar", @user, :confirm => "Desea eliminar el usuario "+ @user.username, :method => :delete %>
 			</td>
 		</tr>
 	   </tbody>
   </table>
-  </div>
-  <div align="center">
- 		<%= link_to '(+)Nuevo Usuario', new_user_path %>
- <div>		
+  	<div align="center">
+ 		<i class="icon-plus-sign"></i>&nbsp<%= link_to 'Nuevo Usuario', new_user_path %>&nbsp&nbsp
+ 		<h8> | </h8>&nbsp&nbsp
+    	<i class="icon-list-alt"></i>&nbsp<%= link_to 'Volver a la Lista', users_path %>
+	<div>	
+</div>
+  	
    

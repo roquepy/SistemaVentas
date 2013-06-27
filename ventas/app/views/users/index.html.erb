@@ -1,9 +1,9 @@
   <br/>
+ <div class="span6 offset3">
   <div align="center">
 	<h3> Lista de Usuarios</h3>
 	</div>
- <div class="page-header">
-	   <div class="container-fluid">
+
 	   	<div class="mismalinea">
 	   		<label class="mismalinea">Filtrar:</label>
 		   <input type="text" id="filtrar" placeholder="Filtrar" class="mismalinea-espacio">
@@ -13,7 +13,6 @@
 						<tr>
 							<th>Funcionario</th>
 							<th>Usuario</th>
-							<th>Contraseña</th>
 							<th>Acciones</th>
 						</tr>
 				</thead>
@@ -22,7 +21,6 @@
 						<tr>
 							<td><%= user.funcionario.nombres %></td>
 							<td><%= user.username %></td>
-							<td><%= user.password%></td>
 							
 							<td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_user_path(user) %> &nbsp &nbsp &nbsp   
 							    		<i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar", user, :confirm => "Desea eliminar el usuario "+ user.username, :method => :delete %>
@@ -32,9 +30,10 @@
 				</tbody>
 			</table>
 			<%=will_paginate %>
+		<div class="span2 offset2">
+		  	<i class="icon-plus-sign"></i>&nbsp<%= link_to "Nuevo Usuario", new_user_path %>
+		</div>
 	  </div>
-	  <div align="center">
-	  	<p><%= link_to "(+)Nuevo Usuario", new_user_path %></p>
-	  </div>
+	  
   </div>
 
