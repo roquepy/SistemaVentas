@@ -1,9 +1,10 @@
 <br/>
 <% provide(:title, @departamento.nombre) %>
-<div align="center">
-	<h3>Datos del Departamento </h3><br/>
-</div>
-<div class="container-fluid">
+<div class="span4 offset4">
+	<div align="center">
+		<h3>Datos del Departamento </h3><br/>
+	</div>
+
     <table class="table table-bordered">
 		<thead>
 			<tr>
@@ -20,9 +21,12 @@
 		</tr>
 	   </tbody>
   </table>
-  </div>
   <div align="center">
-     <%= link_to '(+) Nuevo Departamento', new_departamento_path %>
-   </div>
+     <i class="icon-plus-sign"></i>&nbsp<%= link_to 'Nuevo Departamento', new_departamento_path %>&nbsp&nbsp
+     <h8> | </h8>&nbsp&nbsp
+     <i class="icon-list-alt"></i>&nbsp<%= link_to 'Volver a la Lista', departamentos_path %>
+  </div>
+</div>
+  
 
    
