@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625003422) do
+ActiveRecord::Schema.define(:version => 20130627003017) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id"
@@ -73,6 +73,9 @@ ActiveRecord::Schema.define(:version => 20130625003422) do
     t.integer "cantidad",         :null => false
     t.integer "descuento"
   end
+
+  add_index "detalle_factura_venta", ["id_factura_venta"], :name => "detalle_factura_venta_id_factura_venta_fk"
+  add_index "detalle_factura_venta", ["id_producto"], :name => "detalle_factura_venta_id_producto_fk"
 
   create_table "detalles_libros_cajas", :force => true do |t|
     t.integer  "id_libro_caja"
@@ -173,6 +176,7 @@ ActiveRecord::Schema.define(:version => 20130625003422) do
   end
 
   add_index "stock", ["id_deposito"], :name => "stock_id_deposito_fk"
+  add_index "stock", ["id_producto"], :name => "stock_id_producto_fk"
 
   create_table "tipo_valor_pagos", :force => true do |t|
     t.string "descripcion", :limit => 50, :null => false
@@ -196,6 +200,9 @@ ActiveRecord::Schema.define(:version => 20130625003422) do
 
   add_foreign_key "clientes", "localidads", :name => "clientes_id_localidad_fk", :column => "id_localidad"
 
+  add_foreign_key "detalle_factura_venta", "factura_venta", :name => "detalle_factura_venta_id_factura_venta_fk", :column => "id_factura_venta"
+  add_foreign_key "detalle_factura_venta", "productos", :name => "detalle_factura_venta_id_producto_fk", :column => "id_producto"
+
   add_foreign_key "detalles_libros_cajas", "funcionarios", :name => "detalles_libros_cajas_id_funcionario_fk", :column => "id_funcionario"
   add_foreign_key "detalles_libros_cajas", "libros_cajas", :name => "detalles_libros_cajas_id_libro_caja_fk", :column => "id_libro_caja"
   add_foreign_key "detalles_libros_cajas", "tipos_documentos", :name => "detalles_libros_cajas_id_tipo_documento_fk", :column => "id_tipo_documento"
@@ -212,6 +219,7 @@ ActiveRecord::Schema.define(:version => 20130625003422) do
   add_foreign_key "localidads", "departamentos", :name => "localidads_id_departamento_fk", :column => "id_departamento"
 
   add_foreign_key "stock", "depositos", :name => "stock_id_deposito_fk", :column => "id_deposito"
+  add_foreign_key "stock", "productos", :name => "stock_id_producto_fk", :column => "id_producto"
 
   add_foreign_key "users", "funcionarios", :name => "users_id_funcionario_fk", :column => "id_funcionario"
 
