@@ -1,1 +1,1 @@
-<%=collection_select("user", :id_funcionario, Funcionario.find(:all),:id, :nombres, {:prompt => "-- Seleccione Funcionario --"}, {class: "span3"} )%> 
+<%=collection_select("user", :id_funcionario, Funcionario.find(:all),:id, :nombres, {}, {class: "span3"} )%> 

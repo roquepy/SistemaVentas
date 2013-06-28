@@ -11,23 +11,23 @@
 						<%= f.text_field :num_identidad,class: "span3",:placeholder => "Ingrese Nº de RUC o CI",:maxlength=>"15" %><br/>
 						<%= f.label "Telefono",class:"label"%>
 					    <%= f.text_field :telefono,class: "span3",:placeholder => "xxx xxxxxx o xxxx xxxxx",:maxlength=>"15" %><br/>
-					    <%= f.label "Estado Civil (*)",class:"label"%>
-						<%= f.select(:estado_civil, ['Casado', 'Soltero', 'Viudo', 'Separado' ],:prompt=>"--Seleccione Estado Civil--")%>
 						<%= f.label "Estado Funcionario (*)",class:"label"%>
-			            <%=f.collection_select(:id_estado_funcionario, EstadosFuncionario.find(:all), :id, :descripcion, {:prompt=>"--Seleccione Estado del Funcionario--"}, {class: "span3"})%>   
+			            <%=f.collection_select(:id_estado_funcionario, EstadosFuncionario.find(:all), :id, :descripcion, {}, {class: "span3"})%>   
+			             <%= f.label "Localidad (*)",class:"label"%>
+					     <div id="collectionlocalidad"> <%=render 'select_localidades'%></div>   
+			       		 <i class="icon-plus-sign"></i>&nbsp<a data-toggle="modal" href="#localidad" >Nueva Localidad</a> 	<br/>   
 		            </div>
 		            <div class="span2">
 		             	<%= f.label "Apellido (*)",class:"label"%>
 						<%= f.text_field :apellidos,class: "span3",:placeholder => "Ingrese Apellido",:maxlength=>"25"  %><br/>
 						<%= f.label "Direccion (*)",class:"label"%>
 						<%= f.text_field :direccion,class: "span3",:placeholder => "Ingrese Direccion",:maxlength=>"35"  %><br/>
+  						<%= f.label "Funcion (*)",class:"label"%>
+					    <%=f.collection_select(:id_funcion, Funcion.find(:all), :id, :nombre, {}, {class: "span3"} )%>
+						<%= f.label "Estado Civil (*)",class:"label"%>
+						<%= f.select(:estado_civil, ['Casado', 'Soltero', 'Viudo', 'Separado' ])%>
 						<%= f.label "Sexo (*)",class:"label"%>
-						<%= f.select(:sexo, ['M', 'F' ],:prompt=>"--Seleccione Sexo--",id:"select")%>
-		                <%= f.label "Funcion (*)",class:"label"%>
-					    <%=f.collection_select(:id_funcion, Funcion.find(:all), :id, :nombre, {:prompt=>"-- Seleccione Funcion --"}, {class: "span3"} )%>
-			             <%= f.label "Localidad (*)",class:"label"%>
-					     <div id="collectionlocalidad"> <%=render 'select_localidades'%></div>   
-			       		 <i class="icon-plus-sign"></i>&nbsp<a data-toggle="modal" href="#localidad" >Nueva Localidad</a> 	<br/>    
+						<%= f.select(:sexo, ['M', 'F' ],id:"select")%>
 			     </div> 
 </div>	
 				<div class="span2 offset2" align="center"><br/>
