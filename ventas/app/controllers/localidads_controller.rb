@@ -56,7 +56,7 @@ class LocalidadsController < ApplicationController
         format.js{}
       else
         format.html { render action: "new" }
-        CustomLogger.info("Error al intentar Crear una Nueva Localidad. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
+        CustomLogger.error("Error al intentar Crear una Nueva Localidad. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         format.json { render json: @localidad.errors, status: :unprocessable_entity }
       end
     end
@@ -77,7 +77,7 @@ class LocalidadsController < ApplicationController
         format.html { redirect_to @localidad, notice: 'Los datos de la Localidad se han actualizado correctamente' }
         format.json { head :no_content }
       else
-        CustomLogger.info("Error al intentar realizar la Actualizacion de los siguientes datos de Localidad: Localidad: #{localidad_antigua.inspect} y Departamento: #{departamento_antiguo.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
+        CustomLogger.error("Error al intentar realizar la Actualizacion de los siguientes datos de Localidad: Localidad: #{localidad_antigua.inspect} y Departamento: #{departamento_antiguo.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         format.html { render action: "edit" }
         format.json { render json: @localidad.errors, status: :unprocessable_entity }
       end
@@ -94,7 +94,7 @@ class LocalidadsController < ApplicationController
     CustomLogger.info("La Localidad: #{@localidad.nombre.inspect} y el Departamento:#{@localidad.departamento.nombre.inspect} han sido eliminados. Usuario Responsable: #{current_user.funcionario.full_name.inspect} , Fecha y Hora: #{Time.now}")
     rescue
     notice= "Los datos de la Localidad no pueden ser eliminados"
-    CustomLogger.info(" Error al intentar eliminar la Localidad: #{@localidad.nombre.inspect} y el Departamento:#{@localidad.departamento.nombre.inspect} ha sido eliminados. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
+    CustomLogger.error(" Error al intentar eliminar la Localidad: #{@localidad.nombre.inspect} y el Departamento:#{@localidad.departamento.nombre.inspect} ha sido eliminados. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
     ensure
       respond_to do |format|
       format.html { redirect_to localidads_url }
