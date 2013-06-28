@@ -8,23 +8,23 @@
                 <!--<div class="row">-->
                   <div class="span2" style="margin-top:30px;">
                      <%= f.label :Nro_de_Factura,class:"label"%>
-                     <%= f.text_field :nro_factura,:readonly => true,:value=>FacturaVentum.nro_factura()%><br/>
+                     <%= f.text_field :nro_factura,:readonly => true,:value=>FacturaVentum.actual_nro_factura()%><br/>
                      <%= f.label :fecha,class:"label"%><br/>
                      <%= f.text_field :fecha,:value => Date.today,:readonly => true%>
                   </div>
                   <div class="span2 offset1" style="margin-top:30px; margin-right:20px;">
                        <%= f.label "Clientes:",class:"label"%>
-                        <%= f.select :id_cliente, Cliente.find(:all).collect{|c| [c.nombre+ " " +c.apellido, c.id]}, :prompt => "---- Seleccione Cliente ----" %>
+                        <%= f.select :id_cliente, Cliente.find(:all).collect{|c| [c.nombre+ " " +c.apellido, c.id]} %>
                        <a data-toggle="modal" href="#cliente" ><label>(+)Nuevo Cliente </label></a>
                         <%= f.label "Condicion de Pago:",class:"label"%>
-                        <%=f.collection_select :id_condicion_pago,CondicionDePago.find(:all),:id,:nombre_condicion_de_pago,:prompt=>"-- Seleccione Condición de Pago --",id:"select"%>
+                        <%=f.collection_select :id_condicion_pago,CondicionDePago.find(:all),:id,:nombre_condicion_de_pago,id:"select",:selected => 1,:disabled => true%>
                   </div>   
                   <div class="span2 offset1" style="margin-top:30px;">
                      <%= f.label "Funcionario:",class:"label"%>
                      <%= f.label current_user.funcionario.nombres+" " + current_user.funcionario.apellidos %> 
                      <%= f.hidden_field :id_funcionario,:value =>current_user.funcionario.id,:readonly => true %> 
                       <%= f.label "Tipo de Valor:",class:"label"%>
-                      <%=f.collection_select :id_tipo_valor,TipoValorPago.find(:all),:id,:descripcion,:prompt=>"-- Seleccione Tipo de Valor --",id:"select"%>
+                      <%=f.collection_select :id_tipo_valor,TipoValorPago.find(:all),:id,:descripcion,:selected => 1,:disabled => true,id:"select"%>
                   </div> 
                 </div>
                 <div class="span11">
@@ -71,7 +71,7 @@
          
   </div>                
           <div class="span2 offset9"><br/>
-                <%= f.submit "Guardar", class: "btn btn-primary"%>
+                <%= f.submit "Guardar", class: "btn btn-primary",:action=>'update'%>
           </div> 
         </div>    
          

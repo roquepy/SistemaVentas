@@ -1,6 +1,6 @@
 class DetalleFacturaVentaController < ApplicationController
     before_filter :require_login
-    autocomplete :producto, :descripcion,:full => true
+    autocomplete :producto, :descripcion, :extra_data => [:id],:full => true
   # GET /detalle_factura_venta
   # GET /detalle_factura_venta.json
   def index
@@ -38,6 +38,7 @@ class DetalleFacturaVentaController < ApplicationController
   # GET /detalle_factura_venta/1/edit
   def edit
     @detalle_factura_ventum = DetalleFacturaVentum.find(params[:id])
+    @producto=@detalle_factura_ventum.producto.descripcion
   end
 
 
@@ -49,27 +50,39 @@ class DetalleFacturaVentaController < ApplicationController
   def create
   end
   def guardar
-    @detalle_factura_ventum = DetalleFacturaVentum.new(:id_factura_venta=>params[:id_factura_venta],:id_producto=>params[:id_producto],:cantidad=>params[:cantidad],:descuento=>params[:descuento])
-    respond_to do |format|
-      if @detalle_factura_ventum.save
-        @detalles_factura_ventas = DetalleFacturaVentum.listas_productos
-           format.js {render 'guardar'}
-      else
-        format.html { render action: "new" }
-        format.json { render json: @detalle_factura_ventum.errors, status: :unprocessable_entity }
-      end
+    if FacturaVentum.actual_nro_factura()==100 || FacturaVentum.factura_id(FacturaVentum.actual_nro_factura())==""
+      @factura_ventum = FacturaVentum.new(:id_cliente=>Cliente.cliente_id(),:id_condicion_pago=>1,:id_tipo_valor=>1,:id_funcionario=>1,:monto_total=>0.0,:fecha=>Date.today,:nro_factura=>FacturaVentum.nro_factura(),:total_descuento=>0.0,:total_iva5=>0.0,:total_iva10=>0.0,:total_iva=>0.0)
+      @factura_ventum.save
     end
+        ultima_factura=FacturaVentum.ultima_factura
+        _id_factura=ultima_factura.id
+        @detalle_factura_ventum = DetalleFacturaVentum.new(:id_factura_venta=>_id_factura,:id_producto=>params[:id_producto],:cantidad=>params[:cantidad],:descuento=>params[:descuento])
+        respond_to do |format|
+          if @detalle_factura_ventum.save
+            @detalles_factura_ventas = DetalleFacturaVentum.listas_productos
+               format.js {render 'guardar'}
+          else
+            format.html { render action: "new" }
+            format.json { render json: @detalle_factura_ventum.errors, status: :unprocessable_entity }
+          end
+        end
+      
   end
-    def guardar_agregar
-    @detalle_factura_ventum = DetalleFacturaVentum.new(:id_factura_venta=>params[:id_factura_venta],:id_producto=>params[:id_producto],:cantidad=>params[:cantidad],:descuento=>params[:descuento])
-    respond_to do |format|
-      if @detalle_factura_ventum.save
-        @detalles_factura_ventas = DetalleFacturaVentum.listas_productos
-           format.js {render 'guardar_agregar'}
+  def guardar_agregar
+    if FacturaVentum.nro_factura()==FacturaVentum.ultima_factura().nro_factura
+      @factura_ventum = FacturaVentum.new(params[:factura_ventum])
+      @factura_ventum.save
       else
-        format.html { render action: "new" }
-        format.json { render json: @detalle_factura_ventum.errors, status: :unprocessable_entity }
-      end
+        @detalle_factura_ventum = DetalleFacturaVentum.new(:id_factura_venta=>params[:id_factura_venta],:id_producto=>params[:id_producto],:cantidad=>params[:cantidad],:descuento=>params[:descuento])
+        respond_to do |format|
+          if @detalle_factura_ventum.save
+            @detalles_factura_ventas = DetalleFacturaVentum.listas_productos
+               format.js {render 'guardar_agregar'}
+          else
+            format.html { render action: "new" }
+            format.json { render json: @detalle_factura_ventum.errors, status: :unprocessable_entity }
+          end
+        end
     end
   end
 

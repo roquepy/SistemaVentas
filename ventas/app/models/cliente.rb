@@ -11,5 +11,9 @@ class Cliente < ActiveRecord::Base
   validates :telefono, :length => { :minimum => 6},  :format => { :with => /^\d{3,4}\s\d{5,6}$/ }
 
   has_many :factura_venta
+  def self.cliente_id()
+  	 cliente=Cliente.find(:first)
+  	 return cliente.id
+  end
 
 end

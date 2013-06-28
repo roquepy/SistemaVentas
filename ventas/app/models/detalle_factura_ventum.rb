@@ -12,16 +12,15 @@ class DetalleFacturaVentum < ActiveRecord::Base
    end
     def  self.listas_productos()
    	   productos=nil
-   	   ultima_factura=FacturaVentum.ultima_factura
-   	   if ultima_factura.blank?
-   	   
+   	   id_factura=FacturaVentum.factura_id(FacturaVentum.actual_nro_factura)
+   	   if id_factura.blank?
+   	         
 	   	   else
-	   	   	  factura_id=ultima_factura.id
-	          detalle_factura=DetalleFacturaVentum.find(:last,:conditions=>['id_factura_venta = ? ',factura_id])  
+	          detalle_factura=DetalleFacturaVentum.find(:last,:conditions=>['id_factura_venta = ? ',id_factura])  
 	          if detalle_factura.blank? 
-                 productos=DetalleFacturaVentum.find(:all,:conditions=>['id_factura_venta = ? ',factura_id+1]) 
+                 productos=DetalleFacturaVentum.find(:all,:conditions=>['id_factura_venta = ? ',id_factura]) 
 	             else
-                 productos=DetalleFacturaVentum.find(:all,:conditions=>['id_factura_venta = ? ',factura_id+1])
+                 productos=DetalleFacturaVentum.find(:all,:conditions=>['id_factura_venta = ? ',id_factura])
             end
    	   end
        return productos

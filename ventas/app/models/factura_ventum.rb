@@ -10,7 +10,7 @@ class FacturaVentum < ActiveRecord::Base
         return FacturaVentum.find(:last)
     end
 
-    def  self.nro_factura()
+    def  self.aumentar_nro_factura()
         factura_nro=100
     	factura=ultima_factura
     	if factura.blank?
@@ -22,19 +22,31 @@ class FacturaVentum < ActiveRecord::Base
     	return factura_nro
     	
     end
-    def  self.id_factura()
-        factura_id=1
+      def  self.actual_nro_factura()
+        factura_nro=100
         factura=ultima_factura
         if factura.blank?
-            factura_id=1
-            else
-                factura_id=factura.id+1
-                
+           factura_nro=100
+           else
+              factura_nro=factura.nro_factura
         end 
-        return factura_id
+      return factura_nro
+      
+    end
+    def  self.id_factura()
+        id_factura=ultima_factura.id
+        return id_factura
         
     end
-
+    def self.factura_id(nro_factura)
+      factura=FacturaVentum.find(:last,:conditions=>['nro_factura = ? ',nro_factura])
+      if factura.blank?
+        factura_id=""
+        else
+        factura_id=factura.id
+      end
+      return factura_id
+    end
     def  self.descuento()
        descuento=0.00
        detalles_factura_ventas=DetalleFacturaVentum.listas_productos
