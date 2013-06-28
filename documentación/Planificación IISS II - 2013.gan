@@ -102,7 +102,7 @@ Desarrollado por :
             <task id="89" name="T10.1. Elaboración de la Gestión de Calidad" color="#8cb6ce" meeting="false" start="2013-04-26" duration="1" complete="0" priority="1" expand="true"/>
             <task id="90" name="T10.2. Elaboración de la Gestión de Configuración." color="#8cb6ce" meeting="false" start="2013-04-26" duration="1" complete="0" priority="1" expand="true"/>
         </task>
-        <task id="18" name="IMPLEMENTACION" color="#8cb6ce" meeting="false" start="2013-04-24" duration="50" complete="0" priority="1" expand="true">
+        <task id="18" name="IMPLEMENTACION" color="#8cb6ce" meeting="false" start="2013-04-24" duration="39" complete="0" priority="1" expand="true">
             <depend id="48" type="2" difference="0" hardness="Strong"/>
             <task id="94" name="T11. GESTION DE BASE DE DATOS" color="#8cb6ce" meeting="false" start="2013-04-24" duration="3" complete="0" priority="1" expand="false">
                 <task id="95" name="T11.1 Modelar/diseñar la base de datos" color="#8cb6ce" meeting="false" start="2013-04-24" duration="2" complete="0" priority="1" expand="true">
@@ -110,8 +110,8 @@ Desarrollado por :
                 </task>
                 <task id="96" name="T11.2. Crear la base de datos fisica" color="#8cb6ce" meeting="false" start="2013-04-26" duration="1" complete="0" priority="1" expand="true"/>
             </task>
-            <task id="22" name="DESARROLLO" color="#8cb6ce" meeting="false" start="2013-04-28" duration="46" complete="0" priority="1" expand="true">
-                <task id="59" name="T12. LOGIN/LOGOUT  - PAGINA PRINCIPAL" color="#8cb6ce" meeting="false" start="2013-04-28" duration="5" complete="0" priority="1" expand="true">
+            <task id="22" name="DESARROLLO" color="#8cb6ce" meeting="false" start="2013-04-28" duration="35" complete="0" priority="1" expand="true">
+                <task id="59" name="T12. LOGIN/LOGOUT  - PAGINA PRINCIPAL" color="#8cb6ce" meeting="false" start="2013-04-28" duration="5" complete="0" priority="1" expand="false">
                     <depend id="25" type="2" difference="0" hardness="Strong"/>
                     <depend id="29" type="2" difference="0" hardness="Strong"/>
                     <depend id="33" type="2" difference="0" hardness="Strong"/>
@@ -130,7 +130,7 @@ Desarrollado por :
                     </task>
                     <task id="61" name="T12.4. Testeo de las las subtareas T12.2 y T12.3" color="#8cb6ce" meeting="false" start="2013-05-01" duration="2" complete="0" priority="1" expand="true"/>
                 </task>
-                <task id="29" name="T13. FUNCIONARIOS" color="#8cb6ce" meeting="false" start="2013-05-05" duration="4" complete="0" priority="1" expand="true">
+                <task id="29" name="T13. FUNCIONARIOS" color="#8cb6ce" meeting="false" start="2013-05-05" duration="4" complete="0" priority="1" expand="false">
                     <depend id="25" type="2" difference="0" hardness="Strong"/>
                     <depend id="37" type="2" difference="0" hardness="Strong"/>
                     <depend id="73" type="2" difference="0" hardness="Strong"/>
@@ -148,13 +148,13 @@ Desarrollado por :
                     </task>
                     <task id="32" name="T13.4. Pruebas y Soluciones de Errores" color="#8cb6ce" meeting="false" start="2013-05-08" duration="1" complete="0" priority="1" expand="true"/>
                 </task>
-                <task id="112" name="T14. USUARIOS" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true">
+                <task id="112" name="T14. USUARIOS" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="false">
                     <task id="113" name="T14.1. UI de Usuarios" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                     <task id="114" name="T14.2. ABM de Usuarios" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                     <task id="115" name="T14.3. Lista de Usuarios" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                     <task id="116" name="T14.4. Pruebas y Soluciones de Errores" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                 </task>
-                <task id="33" name="T15. CLIENTES" color="#8cb6ce" meeting="false" start="2013-05-06" duration="6" complete="0" priority="1" expand="true">
+                <task id="33" name="T15. CLIENTES" color="#8cb6ce" meeting="false" start="2013-05-06" duration="5" complete="0" priority="1" expand="false">
                     <depend id="25" type="2" difference="0" hardness="Strong"/>
                     <depend id="37" type="2" difference="0" hardness="Strong"/>
                     <depend id="73" type="2" difference="0" hardness="Strong"/>
@@ -172,73 +172,78 @@ Desarrollado por :
                     </task>
                     <task id="36" name="T15.4.Pruebas y Soluciones de Errores" color="#8cb6ce" meeting="false" start="2013-05-10" duration="2" complete="0" priority="1" expand="true"/>
                 </task>
-                <task id="97" name="T16. PRODUCTOS" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true">
+                <task id="97" name="T16. PRODUCTOS" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="false">
                     <task id="98" name="T16.1. UI de Nuevo Producto" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                     <task id="99" name="T16.2. ABM de Nuevo Producto" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                     <task id="100" name="T16.3. Lista de Productos" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                     <task id="101" name="T16.4. Pruebas y Soluciones de Errores." color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                 </task>
-                <task id="102" name="T17. LOCALIDADES" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true">
+                <task id="102" name="T17. LOCALIDADES" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="false">
                     <task id="103" name="T17.1. UI de Nueva Localidad" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                     <task id="104" name="T17.2. ABM de Nueva Localidad" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                     <task id="105" name="T17.3. Lista de Localidades" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                     <task id="106" name="T17.4. Pruebas y Soluciones de Errores" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                 </task>
-                <task id="107" name="T18. DEPARTAMENTOS" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true">
+                <task id="107" name="T18. DEPARTAMENTOS" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="false">
                     <task id="108" name="T18.1. UI de  Nuevo Departamento." color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                     <task id="109" name="T18.2. ABM de Nuevo Departamento" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                     <task id="110" name="T18.3. Lista de Departamentos" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                     <task id="111" name="T18.4. Pruebas y Soluciones de Errores." color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                 </task>
-                <task id="25" name="T19. FACTURA DE VENTAS" color="#8cb6ce" meeting="false" start="2013-05-20" duration="17" complete="0" priority="1" expand="true">
+                <task id="25" name="T19. FACTURA DE VENTAS" color="#8cb6ce" meeting="false" start="2013-05-16" duration="11" complete="0" priority="1" expand="false">
                     <depend id="37" type="2" difference="0" hardness="Strong"/>
                     <depend id="43" type="2" difference="0" hardness="Strong"/>
                     <depend id="73" type="2" difference="0" hardness="Strong"/>
                     <depend id="93" type="2" difference="0" hardness="Strong"/>
-                    <task id="26" name="T19.1. UI de Factura de Venta" color="#8cb6ce" meeting="false" start="2013-05-20" duration="3" complete="0" priority="1" expand="true">
+                    <task id="26" name="T19.1. UI de Factura de Venta" color="#8cb6ce" meeting="false" start="2013-05-18" duration="3" complete="0" priority="1" expand="true">
                         <depend id="27" type="2" difference="0" hardness="Strong"/>
                     </task>
-                    <task id="27" name="T19.2.ABM de Factura de Venta" color="#8cb6ce" meeting="false" start="2013-05-23" duration="7" complete="0" priority="1" expand="true">
+                    <task id="27" name="T19.2.ABM de Factura de Venta" color="#8cb6ce" meeting="false" start="2013-05-16" duration="7" complete="0" priority="1" expand="true">
                         <depend id="28" type="2" difference="0" hardness="Strong"/>
                         <depend id="62" type="2" difference="0" hardness="Strong"/>
                         <depend id="74" type="2" difference="0" hardness="Strong"/>
                     </task>
-                    <task id="62" name="T19.3. Lista de Facturas de Ventas" color="#8cb6ce" meeting="false" start="2013-05-30" duration="2" complete="0" priority="1" expand="true">
+                    <task id="62" name="T19.3. Lista de Facturas de Ventas" color="#8cb6ce" meeting="false" start="2013-05-23" duration="2" complete="0" priority="1" expand="true">
                         <depend id="28" type="2" difference="0" hardness="Strong"/>
                     </task>
-                    <task id="74" name="T19.4. Diseño de Impresion de Factura de Ventas" color="#8cb6ce" meeting="false" start="2013-05-30" duration="5" complete="0" priority="1" expand="true">
+                    <task id="74" name="T19.4. Diseño de Impresion de Factura de Ventas" color="#8cb6ce" meeting="false" start="2013-05-20" duration="5" complete="0" priority="1" expand="true">
                         <depend id="28" type="2" difference="0" hardness="Strong"/>
                     </task>
-                    <task id="28" name="T19.5. Pruebas y Soluciones de Errores" color="#8cb6ce" meeting="false" start="2013-06-04" duration="2" complete="0" priority="1" expand="true"/>
+                    <task id="28" name="T19.5. Pruebas y Soluciones de Errores" color="#8cb6ce" meeting="false" start="2013-05-25" duration="2" complete="0" priority="1" expand="true"/>
                 </task>
-                <task id="43" name="T20. REPORTES" color="#8cb6ce" meeting="false" start="2013-06-06" duration="2" complete="0" priority="1" expand="true">
-                    <task id="44" name="T20.1. Reportes de Ventas" color="#8cb6ce" meeting="false" start="2013-06-06" duration="2" complete="0" priority="1" expand="true"/>
+                <task id="43" name="T20. REPORTES" color="#8cb6ce" meeting="false" start="2013-05-27" duration="2" complete="0" priority="1" expand="false">
+                    <task id="44" name="T20.1. Reportes de Ventas" color="#8cb6ce" meeting="false" start="2013-05-27" duration="2" complete="0" priority="1" expand="true"/>
                 </task>
-                <task id="37" name="T21. CONFIGURACIONES DEL SISTEMA" color="#8cb6ce" meeting="false" start="2013-06-09" duration="4" complete="0" priority="1" expand="true">
-                    <task id="73" name="T21.1. Otras Configuraciones de la Empresa" color="#8cb6ce" meeting="false" start="2013-06-09" duration="2" complete="0" priority="1" expand="true">
+                <task id="37" name="T21. CONFIGURACIONES DEL SISTEMA" color="#8cb6ce" meeting="false" start="2013-05-27" duration="4" complete="0" priority="1" expand="false">
+                    <task id="73" name="T21.1. Confuguracion de Datos de la Empresa" color="#8cb6ce" meeting="false" start="2013-05-27" duration="2" complete="0" priority="1" expand="true">
                         <depend id="40" type="2" difference="0" hardness="Strong"/>
                     </task>
-                    <task id="93" name="T21.2. Auditoria" color="#8cb6ce" meeting="false" start="2013-06-09" duration="2" complete="0" priority="1" expand="true">
+                    <task id="93" name="T21.2. Auditoria" color="#8cb6ce" meeting="false" start="2013-05-27" duration="2" complete="0" priority="1" expand="true">
                         <depend id="40" type="2" difference="0" hardness="Strong"/>
                     </task>
-                    <task id="40" name="T21.3. Pruebas y Soluciones de Errores" color="#8cb6ce" meeting="false" start="2013-06-11" duration="2" complete="0" priority="1" expand="true"/>
+                    <task id="40" name="T21.3. Pruebas y Soluciones de Errores" color="#8cb6ce" meeting="false" start="2013-05-29" duration="2" complete="0" priority="1" expand="true"/>
                 </task>
-                <task id="41" name="T22. GESTIÓN DE SEGURIDAD" color="#8cb6ce" meeting="false" start="2013-06-09" duration="3" complete="0" priority="1" expand="true">
-                    <task id="42" name="T22.1. Programación de permisos" color="#8cb6ce" meeting="false" start="2013-06-09" duration="3" complete="0" priority="1" expand="true"/>
+                <task id="41" name="T22. GESTIÓN DE SEGURIDAD" color="#8cb6ce" meeting="false" start="2013-05-03" duration="18" complete="0" priority="1" expand="false">
+                    <task id="42" name="T22.1. Programación de permisos" color="#8cb6ce" meeting="false" start="2013-05-03" duration="3" complete="0" priority="1" expand="true"/>
+                    <task id="118" name="T22.2. Testeo de la Programacion de Permisos" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
+                </task>
+                <task id="117" name="T23. AYUDA/ MANUAL DE USUARIOS" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="false">
+                    <task id="119" name="T23.1. Elaboracion del Manual de Usuarios." color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
+                    <task id="120" name="T23.2. Testeo/ Revision del Manual de Usuarios" color="#8cb6ce" meeting="false" start="2013-05-20" duration="1" complete="0" priority="1" expand="true"/>
                 </task>
             </task>
         </task>
-        <task id="48" name="T23.REVISIONES Y  PRUEBAS GENERALES" color="#8cb6ce" meeting="false" start="2013-04-26" duration="53" complete="0" priority="1" expand="true">
-            <task id="49" name="T19.1. Diseños de pruebas y revisiones" color="#8cb6ce" meeting="false" start="2013-04-26" duration="3" complete="0" priority="1" expand="true">
+        <task id="48" name="T23.REVISIONES Y  PRUEBAS GENERALES" color="#8cb6ce" meeting="false" start="2013-06-02" duration="49" complete="0" priority="1" expand="true">
+            <task id="49" name="T19.1. Diseños de pruebas y revisiones" color="#8cb6ce" meeting="false" start="2013-06-11" duration="3" complete="0" priority="1" expand="true">
                 <depend id="50" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="50" name="T19.2. Creación de Casos de Pruebas y Revisiones" color="#8cb6ce" meeting="false" start="2013-04-26" duration="4" complete="0" priority="1" expand="true">
+            <task id="50" name="T19.2. Creación de Casos de Pruebas y Revisiones" color="#8cb6ce" meeting="false" start="2013-06-14" duration="4" complete="0" priority="1" expand="true">
                 <depend id="51" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="51" name="T19.3. Aplicación de las Pruebas y Revisiones" color="#8cb6ce" meeting="false" start="2013-04-30" duration="46" complete="0" priority="1" expand="true">
+            <task id="51" name="T19.3. Aplicación de las Pruebas y Revisiones" color="#8cb6ce" meeting="false" start="2013-06-02" duration="46" complete="0" priority="1" expand="true">
                 <depend id="52" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="52" name="T19.4. Solución de Bugs" color="#8cb6ce" meeting="false" start="2013-06-15" duration="3" complete="0" priority="1" expand="true"/>
+            <task id="52" name="T19.4. Solución de Bugs" color="#8cb6ce" meeting="false" start="2013-07-18" duration="3" complete="0" priority="1" expand="true"/>
         </task>
     </tasks>
     <resources>
@@ -248,24 +253,24 @@ Desarrollado por :
     </resources>
     <allocations>
         <allocation task-id="0" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
-        <allocation task-id="0" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="0" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="0" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="53" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
-        <allocation task-id="53" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="53" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="53" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="54" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="1" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="1" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="2" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
-        <allocation task-id="2" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="2" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="2" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="3" resource-id="0" function="Default:1" responsible="false" load="100.0"/>
         <allocation task-id="5" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
-        <allocation task-id="5" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="5" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="5" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="8" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
-        <allocation task-id="8" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="8" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="8" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="9" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="11" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="55" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
@@ -273,37 +278,37 @@ Desarrollado por :
         <allocation task-id="13" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="12" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="14" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
-        <allocation task-id="14" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="14" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="14" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="16" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="56" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="17" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="15" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
-        <allocation task-id="81" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="81" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
-        <allocation task-id="82" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="81" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="82" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="82" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="79" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="83" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="84" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
-        <allocation task-id="84" resource-id="0" function="Default:1" responsible="false" load="100.0"/>
         <allocation task-id="84" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="84" resource-id="0" function="Default:1" responsible="false" load="100.0"/>
         <allocation task-id="18" resource-id="2" function="Default:1" responsible="false" load="100.0"/>
-        <allocation task-id="18" resource-id="0" function="Default:1" responsible="false" load="100.0"/>
         <allocation task-id="18" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="18" resource-id="0" function="Default:1" responsible="false" load="100.0"/>
         <allocation task-id="94" resource-id="2" function="Default:1" responsible="false" load="100.0"/>
-        <allocation task-id="94" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="94" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
-        <allocation task-id="95" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="94" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="95" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="95" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="96" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="22" resource-id="2" function="Default:1" responsible="false" load="100.0"/>
-        <allocation task-id="22" resource-id="0" function="Default:1" responsible="false" load="100.0"/>
         <allocation task-id="22" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="22" resource-id="0" function="Default:1" responsible="false" load="100.0"/>
         <allocation task-id="59" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="60" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
-        <allocation task-id="60" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="60" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="60" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="24" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="23" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="23" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
@@ -313,49 +318,49 @@ Desarrollado por :
         <allocation task-id="31" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="66" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="32" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
-        <allocation task-id="33" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="33" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="33" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="34" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="35" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="68" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
-        <allocation task-id="36" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="36" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="36" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="25" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
-        <allocation task-id="25" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="25" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="25" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="26" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="27" resource-id="2" function="Default:1" responsible="false" load="100.0"/>
         <allocation task-id="27" resource-id="0" function="Default:1" responsible="false" load="100.0"/>
         <allocation task-id="62" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="74" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="28" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
-        <allocation task-id="28" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="28" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="28" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="43" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
-        <allocation task-id="43" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="43" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="43" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="44" resource-id="2" function="Default:1" responsible="false" load="100.0"/>
-        <allocation task-id="44" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="44" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
-        <allocation task-id="37" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="44" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="37" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="37" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="73" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="93" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
-        <allocation task-id="40" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="40" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="40" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="41" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="42" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="48" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
-        <allocation task-id="48" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="48" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="48" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="49" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="50" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="51" resource-id="2" function="Default:1" responsible="false" load="100.0"/>
-        <allocation task-id="51" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="51" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="51" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="52" resource-id="2" function="Default:1" responsible="false" load="100.0"/>
-        <allocation task-id="52" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="52" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="52" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
     </allocations>
     <vacations/>
     <taskdisplaycolumns>
