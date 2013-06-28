@@ -42,7 +42,9 @@
           <%=will_paginate @facturas_ventas%> 
     </div>
      <div align="center">
-      <%= link_to '(+) Nueva Factura', new_factura_ventum_path %>
+      <i class="icon-plus-sign"></i>&nbsp<%= link_to 'Cargar Nueva Factura', new_factura_ventum_path %>
+      <h8> | </h8>&nbsp&nbsp
+      <i class="icon-file"></i>&nbsp<%= link_to 'Ver en PDF', factura_venta_path(:format => 'pdf')%>
     </div>    
 
 

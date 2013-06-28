@@ -4,9 +4,19 @@ class FacturaVentaController < ApplicationController
   # GET /factura_venta.json
   def index
     @facturas_ventas = FacturaVentum.paginate(:page => params[:page], :per_page => 10)
+    @empresa= Configuracion.find(:first)
+    @nombreempresa = @empresa.nombre_empresa
+    @logo = @empresa.logo
+    @ruc = @empresa.ruc
+    @timbrado = @empresa.timbrado
+    @vencimiento = @empresa.timbrado_vencimiento
+    @direccion = @empresa.direccion
+    @telefono = @empresa.telefono
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @factura_venta }
+      format.pdf{render :layout => false}
     end
   end
 
@@ -17,6 +27,7 @@ class FacturaVentaController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @factura_ventum }
+      format.pdf{render :layout => false}
     end
   end
 

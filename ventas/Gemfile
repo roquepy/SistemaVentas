@@ -28,7 +28,7 @@ gem 'bootstrap-will_paginate'
 gem 'carrierwave'  
 gem 'client_side_validations'
 gem 'rails3-jquery-autocomplete'
-gem 'prawn'
+gem 'prawn',  git: 'https://github.com/prawnpdf/prawn.git'
 gem "prawnto_2", :require => "prawnto"
 gem 'jquery-rails', "2.1.4"
 gem 'yaml_db'
