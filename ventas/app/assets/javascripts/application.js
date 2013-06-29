@@ -33,6 +33,7 @@ alert('El campo de datos sólo permite almacenar números enteros');
 obj.focus();
 }
 }
+
 function muestra_oculta(id){
 	if (document.getElementById){ //se obtiene el id
 		var el = document.getElementById(id); //se define la variable "el" igual a nuestro div

@@ -31,8 +31,8 @@
 	                        <td><%= cliente.telefono%></td>
 				            <td><%= cliente.sexo %></td>
 				            <td><%= cliente.localidad.nombre %></td>
-							<td><i class="icon-edit" title="editar"></i><%= link_to "ditar", edit_cliente_path(cliente) %> &nbsp &nbsp &nbsp   
-							    		<i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar", cliente, :confirm => "Desea eliminar el cliente: "+cliente.nombre, :method => :delete %>
+							<td><i class="icon-edit" title="editar"></i><%= link_to "Editar", edit_cliente_path(cliente) %> &nbsp &nbsp &nbsp   
+							    		<i class="icon-remove-sign" title="borrar"></i><%= link_to "Borrar", cliente, :confirm => "Desea eliminar el cliente: "+cliente.nombre, :method => :delete %>
 							</td>
 						</tr>
 		            <% end %>
