@@ -3,6 +3,7 @@ class FacturaVentaController < ApplicationController
   # GET /factura_venta
   # GET /factura_venta.json
   def index
+
     @facturas_ventas = FacturaVentum.paginate(:page => params[:page], :per_page => 10)
     @empresa= Configuracion.find(:first)
     @nombreempresa = @empresa.nombre_empresa
@@ -69,8 +70,8 @@ class FacturaVentaController < ApplicationController
   # PUT /factura_venta/1
   # PUT /factura_venta/1.json
   def update
-    @factura_ventum = FacturaVentum.find(params[:id])
-
+    @factura=FacturaVentum.find(:last)
+    @factura_ventum = FacturaVentum.find(@factura.id)
     respond_to do |format|
       if @factura_ventum.update_attributes(params[:factura_ventum])
         format.html { redirect_to @factura_ventum, notice: 'Factura ventum was successfully updated.' }

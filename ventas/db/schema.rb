@@ -13,30 +13,14 @@
 
 ActiveRecord::Schema.define(:version => 20130627003017) do
 
-  create_table "audits", :force => true do |t|
-    t.integer  "auditable_id"
-    t.string   "auditable_type"
-    t.integer  "user_id"
-    t.string   "user_type"
-    t.string   "username"
-    t.string   "action"
-    t.text     "change_log"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
-
-  add_index "audits", ["auditable_id", "auditable_type"], :name => "auditable_index"
-  add_index "audits", ["created_at"], :name => "index_audits_on_created_at"
-  add_index "audits", ["user_id", "user_type"], :name => "user_index"
-
   create_table "clientes", :force => true do |t|
-    t.string  "nombre",        :limit => 50, :null => false
-    t.string  "apellido",      :limit => 50, :null => false
+    t.string  "nombre",        :limit => 25, :null => false
+    t.string  "apellido",      :limit => 25, :null => false
     t.string  "num_identidad", :limit => 15, :null => false
     t.integer "id_localidad",                :null => false
-    t.string  "direccion",     :limit => 70, :null => false
-    t.string  "telefono",      :limit => 15, :null => false
-    t.string  "sexo",          :limit => 15, :null => false
+    t.string  "direccion",     :limit => 35, :null => false
+    t.string  "telefono",      :limit => 15
+    t.string  "sexo",          :limit => 1,  :null => false
   end
 
   add_index "clientes", ["id_localidad"], :name => "clientes_id_localidad_fk"
@@ -45,13 +29,19 @@ ActiveRecord::Schema.define(:version => 20130627003017) do
     t.string "nombre_condicion_de_pago", :limit => 15, :null => false
   end
 
-  create_table "configuracions", :id => false, :force => true do |t|
-    t.integer "id",   :null => false
-    t.string  "logo"
+  create_table "configuracions", :force => true do |t|
+    t.string "nombre_logo",          :limit => 20, :null => false
+    t.string "nombre_empresa",       :limit => 30, :null => false
+    t.string "direccion",            :limit => 30, :null => false
+    t.string "ruc",                  :limit => 10, :null => false
+    t.string "timbrado",             :limit => 10, :null => false
+    t.string "telefono",             :limit => 15, :null => false
+    t.string "telefono_auxiliar",    :limit => 15
+    t.string "timbrado_vencimiento",               :null => false
   end
 
   create_table "departamentos", :force => true do |t|
-    t.string "nombre", :limit => 30, :null => false
+    t.string "nombre", :limit => 35, :null => false
   end
 
   create_table "depositos", :force => true do |t|
@@ -112,15 +102,15 @@ ActiveRecord::Schema.define(:version => 20130627003017) do
   add_index "factura_venta", ["id_tipo_valor"], :name => "factura_venta_id_tipo_valor_fk"
 
   create_table "funcionarios", :force => true do |t|
-    t.string   "num_identidad"
-    t.string   "nombres",               :limit => 50, :null => false
-    t.string   "apellidos",             :limit => 50, :null => false
-    t.string   "direccion",             :limit => 70
-    t.string   "telefono",              :limit => 10, :null => false
-    t.string   "estado_civil",          :limit => 10, :null => false
+    t.string   "num_identidad",         :limit => 15, :null => false
+    t.string   "nombres",               :limit => 25, :null => false
+    t.string   "apellidos",             :limit => 25, :null => false
+    t.string   "direccion",             :limit => 35, :null => false
+    t.string   "telefono",              :limit => 15
+    t.string   "estado_civil",          :limit => 8,  :null => false
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
-    t.string   "sexo",                  :limit => 15, :null => false
+    t.string   "sexo",                  :limit => 1,  :null => false
     t.integer  "id_localidad",                        :null => false
     t.integer  "id_estado_funcionario",               :null => false
     t.integer  "id_funcion",                          :null => false
@@ -145,19 +135,19 @@ ActiveRecord::Schema.define(:version => 20130627003017) do
   end
 
   create_table "localidads", :force => true do |t|
-    t.string  "nombre",          :limit => 30, :null => false
+    t.string  "nombre",          :limit => 35, :null => false
     t.integer "id_departamento",               :null => false
   end
 
   add_index "localidads", ["id_departamento"], :name => "localidads_id_departamento_fk"
 
   create_table "productos", :force => true do |t|
-    t.integer "codigo",                                                       :null => false
-    t.string  "descripcion",     :limit => 50,                                :null => false
-    t.integer "cant_minima",                                                  :null => false
-    t.integer "cant_optima",                                                  :null => false
-    t.decimal "precio_unitario",               :precision => 10, :scale => 0, :null => false
-    t.integer "porcentaje",                                                   :null => false
+    t.integer "codigo",          :limit => 8,  :null => false
+    t.string  "descripcion",     :limit => 30, :null => false
+    t.integer "cant_minima",                   :null => false
+    t.integer "cant_optima",                   :null => false
+    t.integer "precio_unitario",               :null => false
+    t.integer "porcentaje",      :limit => 2,  :null => false
   end
 
   create_table "stock", :force => true do |t|

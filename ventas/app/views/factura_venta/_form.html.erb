@@ -71,7 +71,8 @@
          
   </div>                
           <div class="span2 offset9"><br/>
-                <%= f.submit "Guardar", class: "btn btn-primary",:action=>'update'%>
+                <%= f.submit "Guardar", class: "btn btn-primary",:method=>:update%>
+                <%= link_to "Cancelar", :method=>:delete, class: "btn"%>
           </div> 
         </div>    
          
