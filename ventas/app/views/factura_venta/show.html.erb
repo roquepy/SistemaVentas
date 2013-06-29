@@ -26,7 +26,7 @@
               <td><%= @factura_ventum.total_iva10 %></td>
               <td><%= @factura_ventum.total_descuento %></td>
               <td><%= @factura_ventum.monto_total %></td>
-              <td><i class="icon-remove-sign" title="anular"></i>&nbsp <%= link_to "anular"%> &nbsp &nbsp &nbsp   
+              <td><i class="icon-remove-sign" title="anular"></i><%= link_to "anular",@factura_ventum, :confirm => "Desea anular la factura nro "+ @factura_ventum.nro_factura.to_s,:method => :delete %> &nbsp &nbsp &nbsp   
                   <i class="icon-file" title="ver"></i></i>&nbsp <%= link_to "ver"%>
               </td>
             </tr>         

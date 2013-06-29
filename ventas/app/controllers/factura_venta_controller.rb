@@ -53,18 +53,7 @@ class FacturaVentaController < ApplicationController
   # POST /factura_venta
   # POST /factura_venta.json
   def create
-    @factura_ventum = FacturaVentum.new(params[:factura_ventum])
-    detalle_factura_venta
-    cliente_new
-    respond_to do |format|
-      if @factura_ventum.save
-        format.html { redirect_to @factura_ventum, notice: 'Factura ventum was successfully created.' }
-        format.json { render json: @factura_ventum, status: :created, location: @factura_ventum }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @factura_ventum.errors, status: :unprocessable_entity }
-      end
-    end
+     update
   end
 
   # PUT /factura_venta/1
@@ -86,8 +75,13 @@ class FacturaVentaController < ApplicationController
   # DELETE /factura_venta/1
   # DELETE /factura_venta/1.json
   def destroy
-    @factura_ventum = FacturaVentum.find(params[:id])
-    @factura_ventum.destroy
+     @factura_ventum = FacturaVentum.find(params[:id])
+     @factura_ventum.monto_total
+     @detalles_factura_ventas = DetalleFacturaVentum.find(:all,:conditions=>['id_factura_venta = ? ',@factura_ventum.id])
+     @detalles_factura_ventas.each  do |detalle_factura_venta|
+          detalle_factura_venta.destroy
+     end     
+     @factura_ventum.destroy
 
     respond_to do |format|
       format.html { redirect_to factura_venta_url }

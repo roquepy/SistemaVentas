@@ -39,6 +39,9 @@ class DetalleFacturaVentaController < ApplicationController
   def edit
     @detalle_factura_ventum = DetalleFacturaVentum.find(params[:id])
     @producto=@detalle_factura_ventum.producto.descripcion
+    @cantidad=@detalle_factura_ventum.cantidad
+    @descuento=@detalle_factura_ventum.descuento
+
   end
 
 
@@ -92,7 +95,7 @@ class DetalleFacturaVentaController < ApplicationController
   def update
     @detalle_factura_ventum = DetalleFacturaVentum.find(params[:id])
     respond_to do |format|
-      if @detalle_factura_ventum.update_attributes(params[:detalle_factura_ventum])
+      if @detalle_factura_ventum.update_attributes(:id_factura_venta=>params[:id_factura_venta],:id_producto=>params[:id_producto],:cantidad=>params[:cantidad],:descuento=>params[:descuento])
         @detalles_factura_ventas = DetalleFacturaVentum.listas_productos
         format.html { redirect_to @detalle_factura_ventum, notice: 'Detalle factura ventum was successfully updated.' }
         format.json { head :no_content }
@@ -102,6 +105,9 @@ class DetalleFacturaVentaController < ApplicationController
         format.json { render json: @detalle_factura_ventum.errors, status: :unprocessable_entity }
       end
     end
+  end
+  def actualizar
+      update
   end
 
   # DELETE /detalle_factura_venta/1

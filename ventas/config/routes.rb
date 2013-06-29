@@ -26,6 +26,9 @@ Ventas::Application.routes.draw do
     collection do
        get :autocomplete_producto_descripcion
     end
+    collection do
+      get :actualizar
+    end
   end  
 
   resources :auditorias do
