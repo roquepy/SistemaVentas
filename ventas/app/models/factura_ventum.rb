@@ -34,7 +34,12 @@ class FacturaVentum < ActiveRecord::Base
       
     end
     def  self.id_factura()
-        id_factura=ultima_factura.id
+        factura=ultima_factura
+        if factura.blank?
+          id_factura=""
+          else
+             id_factura=factura.id
+        end
         return id_factura
         
     end

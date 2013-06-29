@@ -51,7 +51,7 @@ class DetalleFacturaVentaController < ApplicationController
   end
   def guardar
     if FacturaVentum.actual_nro_factura()==100 || FacturaVentum.factura_id(FacturaVentum.actual_nro_factura())==""
-      @factura_ventum = FacturaVentum.new(:id_cliente=>Cliente.cliente_id(),:id_condicion_pago=>1,:id_tipo_valor=>1,:id_funcionario=>1,:monto_total=>0.0,:fecha=>Date.today,:nro_factura=>FacturaVentum.nro_factura(),:total_descuento=>0.0,:total_iva5=>0.0,:total_iva10=>0.0,:total_iva=>0.0)
+      @factura_ventum = FacturaVentum.new(:id_cliente=>Cliente.cliente_id(),:id_condicion_pago=>1,:id_tipo_valor=>1,:id_funcionario=>Funcionario.funcionario_id(),:monto_total=>0.0,:fecha=>Date.today,:nro_factura=>FacturaVentum.actual_nro_factura(),:total_descuento=>0.0,:total_iva5=>0.0,:total_iva10=>0.0,:total_iva=>0.0)
       @factura_ventum.save
     end
         ultima_factura=FacturaVentum.ultima_factura

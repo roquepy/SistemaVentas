@@ -15,4 +15,8 @@ class Funcionario < ActiveRecord::Base
   def full_name
    self.nombres.capitalize + ' ' + self.apellidos.capitalize
   end
+  def self.funcionario_id()
+     funcionario=Funcionario.find(:first)
+     return funcionario.id
+  end
 end
