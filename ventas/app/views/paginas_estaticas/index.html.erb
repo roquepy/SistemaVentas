@@ -1,15 +1,24 @@
 <% provide(:title, 'Home') %>
-<div class="hero-unit">
-<div class="homepageHero">
-  <h3>Bienvenidos al Sistema de Ventas!</h3>
-  <p>
-  	<br/>
-  	<br/>
-    Te damos la bienvenida a este sistema<br/>
-    en el cual podras realizar las operaciones <br/>
-    basicas de un sistema de facturacion. <br/><br/>
-<br/>
-  </p>
-  <%= link_to "Ayuda", helps_path, class: "btn"%>
-</div>
+<div class="">
+	<div class="" id="home">
+  		<div class="span5 offset2">
+	 		<h1 id="welcome">
+	 			Bienvenidos
+	 			<br/>
+	 			Sistema de Facturaci&oacuten
+	 		</h1>
+	  		<h2 id="subwelcome">
+	  			El sistema de Facturaci&oacuten tiene por objetivo 
+	  			<br/>
+	  			brindarle flexibilidad y facilidad para realizar  
+	  			<br/>
+	  			su gesti&oacuten de venta y facturaci&oacuten.
+	  		</h2>
+	  		<div class="span3" id="helpbox" align="center">
+	  			<p> Aprende como utilizar el sistema </p>
+	  			<%= link_to "Ayuda", helps_path, class: "btnhelp" %>
+	  		</div>
+  		</div>
+  		
+	</div>
 </div>

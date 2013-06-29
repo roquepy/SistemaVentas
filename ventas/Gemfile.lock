@@ -170,7 +170,7 @@ DEPENDENCIES
   client_side_validations
   coffee-rails (~> 3.2.1)
   foreigner
-  jquery-rails (= 2.1.4)
+  jquery-rails (~> 2.1)
   mysql2
   prawn!
   prawnto_2

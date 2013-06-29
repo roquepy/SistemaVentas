@@ -30,7 +30,7 @@ gem 'client_side_validations'
 gem 'rails3-jquery-autocomplete'
 gem 'prawn',  git: 'https://github.com/prawnpdf/prawn.git'
 gem "prawnto_2", :require => "prawnto"
-gem 'jquery-rails', "2.1.4"
+gem 'jquery-rails', "~> 2.1"
 gem 'yaml_db'
 gem 'calendar_date_select'
 gem 'simple_audit', "~> 0.2.0"
