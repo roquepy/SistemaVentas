@@ -1,4 +1,4 @@
-  <br/>
+ <br/>
  <div class="span6 offset3">
   <div align="center">
 	<h3> Lista de Usuarios</h3>
@@ -23,7 +23,7 @@
 							<td><%= user.username %></td>
 							
 							<td><i class="icon-edit" title="editar"></i><%= link_to "Editar", edit_user_path(user) %> &nbsp &nbsp &nbsp   
-							    		<i class="icon-remove-sign" title="borrar"></i><%= link_to "Borrar", user, :confirm => "Desea eliminar el usuario "+ user.username, :method => :delete %>
+							    		<i class="icon-remove-sign" title="borrar"></i><%= link_to "Borrar", user, :confirm => "Desea eliminar el usuario "+ user.username, :method => :delete%>
 							</td>
 						</tr>
 		            <% end %>
@@ -35,5 +35,4 @@
 		</div>
 	  </div>
 	  
-  </div>
-
+  </div> 

@@ -1,3 +1,5 @@
+  <label id="alert-destroy" class="alert alert-error span8 offset2" style="display: none; margin-top:10px;"></label>
+
   <br/>
   <%= form_tag departamentos_path, :method => 'get' do %>
   <div class="span4 offset4">
@@ -22,7 +24,7 @@
 							<td><%= departamento.nombre %></td>
 
 							<td><i class="icon-edit" title="editar"></i><%= link_to "Editar", edit_departamento_path(departamento) %> &nbsp &nbsp &nbsp   
-							    		<i class="icon-remove-sign" title="borrar"></i><%= link_to "Borrar",departamento, :confirm => "Desea eliminar el departamento "+departamento.nombre, :method => :delete %>
+							    		<i class="icon-remove-sign" title="borrar"></i><%= link_to "Borrar",departamento, :confirm => "Desea eliminar el departamento "+departamento.nombre, :method => :delete, remote: true %>
 							</td>
 						</tr>
 		            <% end %>
@@ -34,4 +36,12 @@
 			<i class="icon-plus-sign"></i>&nbsp<%= link_to 'Nuevo Departamento', new_departamento_path %>
 	  </div>
 </div>
-<% end %>	  		
+<% end %>	
+
+<!-- SCRIPT ALERTA DE BORRADO -->
+<script type="text/javascript">
+	function cerrar(){
+		$("#alert-destroy").hide();
+
+	}
+</script>  		

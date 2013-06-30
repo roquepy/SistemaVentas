@@ -94,11 +94,11 @@ class LocalidadsController < ApplicationController
     CustomLogger.info("La Localidad: #{@localidad.nombre.inspect} y el Departamento:#{@localidad.departamento.nombre.inspect} han sido eliminados. Usuario Responsable: #{current_user.funcionario.full_name.inspect} , Fecha y Hora: #{Time.now}")
     rescue
     notice= "Los datos de la Localidad no pueden ser eliminados"
+
     CustomLogger.error(" Error al intentar eliminar la Localidad: #{@localidad.nombre.inspect} y el Departamento:#{@localidad.departamento.nombre.inspect} ha sido eliminados. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
     ensure
       respond_to do |format|
-      format.html { redirect_to localidads_url }
-      format.json { head :no_content }
+      format.js
     end
   end
   end

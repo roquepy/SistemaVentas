@@ -117,8 +117,7 @@ class FuncionariosController < ApplicationController
     CustomLogger.error("Error al intentar eliminar los siguientes datos del Funcionario:Nombre:#{@funcionario.nombres.inspect}, Apellido:#{@funcionario.apellidos.inspect}, Nro de RUC o CI:#{@funcionario._num_identidad.inspect}, Direccion:#{@funcionario.direccion.inspect}, Telefono:#{@funcionario.telefono.inspect}, Estado Civil:#{@funcionario.estado_civil.inspect}, Sexo:#{@funcionario.sexo.inspect}, Localidad:#{@funcionario.localidad.nombre.inspect}, Estado del Funcionario:#{@funcionario.estados_funcionario.descripcion.inspect}, Funcion:#{@funcionario.funcion.nombre.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
     ensure
       respond_to do |format|
-      format.html { redirect_to funcionarios_url }
-      format.json { head :no_content }
+      format.js
     end
   end
   end

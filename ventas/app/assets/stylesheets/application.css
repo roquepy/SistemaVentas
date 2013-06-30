@@ -108,6 +108,50 @@
   width: 1349px;
   margin-top: -10px;
 }
+
+/* DIALOGOS */
+#dialog{
+  position: absolute;
+  top: 150px;
+  width: 100%;
+}
+
+#dialog-wrapper{
+  border: 10px solid rgba(150, 150, 150, 0.7);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -mox-border-radius: 10px;
+  margin: 0 auto;
+  width: 500px;
+}
+
+#dialog h1{
+  background-color: #f60;
+  border: 1px solid #c30;
+  border-bottom: 0;
+  color: white;  
+  padding: 5px 10px;
+}
+
+#dialog-content{
+  background-color: white;
+  border: 1px solid #666;
+  border-width: 0 1px 1px;
+  padding: 10px;
+}
+
+#dialog-content p{
+  margin-bottom: 10px;
+}
+
+#dialog-footer{
+  background: #ccc;
+  border: 1px solid #666;
+  border-top: 0;
+  padding: 10px;
+  text-align: right;  
+}
+
 .centrar{
    margin-left:190px;
    width: 530px;

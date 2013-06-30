@@ -96,8 +96,7 @@ class DepartamentosController < ApplicationController
       CustomLogger.error("Error al intentar eliminar el Departamento:#{@departamento.nombre.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect} , Fecha y Hora: #{Time.now}")
       ensure
       respond_to do |format|
-      format.html { redirect_to departamentos_url}
-      format.json { head :no_content }
+      format.js
     end
   end
 end

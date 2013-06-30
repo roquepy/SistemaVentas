@@ -1,3 +1,5 @@
+  <label id="alert-destroy" class="alert alert-error span8 offset2" style="display: none; margin-top:10px;"></label>
+
   <br/>
   <%= form_tag localidads_path, :method => 'get' do %>
   <div class="span8 offset2">
@@ -23,7 +25,7 @@
 						<td><%= localidad.nombre %></td>
 			            <td><%= localidad.departamento.nombre %></td>
 						<td><i class="icon-edit" title="editar"></i><%= link_to "Editar", edit_localidad_path(localidad) %> &nbsp &nbsp &nbsp   
-						    		<i class="icon-remove-sign" title="borrar"></i><%= link_to "Borrar",localidad, :confirm => "Desea eliminar la siguiente localidad:"+localidad.nombre, :method => :delete %>
+						    		<i class="icon-remove-sign" title="borrar"></i><%= link_to "Borrar",localidad, :confirm => "Desea eliminar la siguiente localidad:"+localidad.nombre, :method => :delete, remote: true %>
 						</td>
 					</tr>
 	            <% end %>
@@ -36,3 +38,9 @@
   </div>
    		
   <% end %>
+<script type="text/javascript">
+	function cerrar(){
+		$("#alert-destroy").hide();
+
+	}
+</script>
