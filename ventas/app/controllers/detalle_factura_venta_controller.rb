@@ -62,6 +62,9 @@ class DetalleFacturaVentaController < ApplicationController
         @detalle_factura_ventum = DetalleFacturaVentum.new(:id_factura_venta=>_id_factura,:id_producto=>params[:id_producto],:cantidad=>params[:cantidad],:descuento=>params[:descuento])
         respond_to do |format|
           if @detalle_factura_ventum.save
+             @stock=Stock.where("id_producto=?",@detalle_factura_ventum.id_producto)
+            @stock=Stock.find(@stock.id)
+            @stock.update_attributes(:cantidad=>@stock.cantidad+@detalle_factura_ventum.cantidad)
             @detalles_factura_ventas = DetalleFacturaVentum.listas_productos
                format.js {render 'guardar'}
           else
@@ -80,6 +83,9 @@ class DetalleFacturaVentaController < ApplicationController
         @detalle_factura_ventum = DetalleFacturaVentum.new(:id_factura_venta=>params[:id_factura_venta],:id_producto=>params[:id_producto],:cantidad=>params[:cantidad],:descuento=>params[:descuento])
         respond_to do |format|
           if @detalle_factura_ventum.save
+            @stock=Stock.where("id_producto=?",@detalle_factura_ventum.id_producto)
+            @stock=Stock.find(@stock.id)
+            @stock.update_attributes(:cantidad=>@stock.cantidad+@detalle_factura_ventum.cantidad)
             @detalles_factura_ventas = DetalleFacturaVentum.listas_productos
                format.js {render 'guardar_agregar'}
           else
@@ -95,8 +101,19 @@ class DetalleFacturaVentaController < ApplicationController
   # PUT /detalle_factura_venta/1.json
   def update
     @detalle_factura_ventum = DetalleFacturaVentum.find(params[:id])
+     @stock=Stock.where("id_producto=?",@detalle_factura_ventum.id_producto)
+    @stock=Stock.find(@stock.id)
+    if  @detalle_factura_ventum.cantidad<params[:cantidad]
+       @stock.update_attributes(:cantidad=>@stock.cantidad+@detalle_factura_ventum.cantidad)
+       else
+      @stock.update_attributes(:cantidad=>@stock.cantidad+@detalle_factura_ventum.cantidad)
+    end
+    @stock=Stock.where("id_producto=?",@detalle_factura_ventum.id_producto)
+    @stock=Stock.find(@stock.id)
+    @stock.update_attributes(:cantidad=>@stock.cantidad+@detalle_factura_ventum.cantidad)
     respond_to do |format|
       if @detalle_factura_ventum.update_attributes(:id_factura_venta=>params[:id_factura_venta],:id_producto=>params[:id_producto],:cantidad=>params[:cantidad],:descuento=>params[:descuento])
+        
         @detalles_factura_ventas = DetalleFacturaVentum.listas_productos
         format.html { redirect_to @detalle_factura_ventum, notice: 'Detalle factura ventum was successfully updated.' }
         format.json { head :no_content }
@@ -115,6 +132,9 @@ class DetalleFacturaVentaController < ApplicationController
   # DELETE /detalle_factura_venta/1.json
   def destroy
     @detalle_factura_ventum = DetalleFacturaVentum.find(params[:id])
+    @stock=Stock.where("id_producto=?",@detalle_factura_ventum.id_producto)
+    @stock=Stock.find(@stock.id)
+    @stock.update_attributes(:cantidad=>@stock.cantidad-@detalle_factura_ventum.cantidad)
     @detalle_factura_ventum.destroy
     respond_to do |format|
       @detalles_factura_ventas = DetalleFacturaVentum.listas_productos

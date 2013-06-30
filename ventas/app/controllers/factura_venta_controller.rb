@@ -63,6 +63,10 @@ class FacturaVentaController < ApplicationController
     @factura_ventum = FacturaVentum.find(@factura.id)
     respond_to do |format|
       if @factura_ventum.update_attributes(params[:factura_ventum])
+        @libro_caja=LibroCaja.find(:first)
+        @tipo_documento=TipoDocumento.find(:first)
+        @detalle_libro_caja=DetalleLibroCaja.new(:id_libro_caja=>@libro_caja.id,:id_funcionario=>@factura_ventum.id_funcionario,:id_tipo_documento=>@tipo_documento.id,:nro_asiento=>1,:fecha=>Date.today,:descripcion=>"Ventas de Mercaderias",:ingreso=>1,:egreso=>0,:nro_documento=>@factura_ventum.nro_factura)
+        @detalle_libro_caja.save
         format.html { redirect_to @factura_ventum, notice: 'Factura ventum was successfully updated.' }
         format.json { head :no_content }
       else

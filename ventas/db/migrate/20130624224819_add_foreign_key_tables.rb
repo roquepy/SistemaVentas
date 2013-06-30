@@ -10,5 +10,7 @@ class AddForeignKeyTables < ActiveRecord::Migration
   	add_foreign_key(:factura_venta, :condicion_de_pagos, column: 'id_condicion_pago')
   	add_foreign_key(:factura_venta, :tipo_valor_pagos, column: 'id_tipo_valor')
   	add_foreign_key(:factura_venta, :funcionarios, column: 'id_funcionario')
+    add_foreign_key(:detalles_libros_cajas, :libros_cajas, column: 'id_libro_caja')
+    add_foreign_key(:detalles_libros_cajas, :tipos_documentos, column: 'id_tipo_documento')
   end
 end
