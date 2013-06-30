@@ -11,54 +11,30 @@ clientes:
   - telefono
   - sexo
   records: 
-  - - 3
-    - Diana
-    - Lopez
-    - '3700169'
-    - 1
-    - Avenida Japon
-    - 071 202600
-    - F
-  - - 4
-    - Elizabeth
-    - Fleitas
-    - '4125634'
-    - 2
-    - Avenida Uruguay
-    - 021 202455
-    - F
-  - - 6
-    - Pedro
-    - Gonzalez
-    - '3789123'
-    - 1
-    - Barrio San Pedro
-    - 071 256935
-    - M
-  - - 7
-    - Leticia
-    - Garay
-    - '3456258'
-    - 7
-    - Calle Colon
-    - 073 202145
-    - F
-  - - 8
-    - Gabriel
-    - Lopez
-    - '4369456'
-    - 10
-    - Calle Cinco
-    - 074 202456
-    - M
-  - - 9
-    - Pedro
+  - - 10
+    - Micaela
     - Perez
-    - 4.546.837
-    - 4
-    - Calle Cordillera casi Contrera
-    - (021) 568459
-    - M
+    - 4.780.192
+    - 2
+    - Calle Quiteria
+    - 0985 807175
+    - F
+  - - 12
+    - ! 'Diana '
+    - ! 'Lopez Maciel '
+    - 3.700.169
+    - 27
+    - Calle Parana c/ Virgen del Rosario
+    - 0743 20176
+    - F
+  - - 13
+    - Claudia Romina
+    - Ferreira
+    - 4.125.635
+    - 27
+    - Calle Lomas Valentinas e/ Colon
+    - 0743 20145
+    - F
 
 ---
 condicion_de_pagos:
@@ -67,9 +43,7 @@ condicion_de_pagos:
   - nombre_condicion_de_pago
   records: 
   - - 1
-    - contado
-  - - 2
-    - credito
+    - Contado
 
 ---
 configuracions:
@@ -87,9 +61,9 @@ configuracions:
   records: 
   - - 1
     - Logo empresa
-    - logobitsbrains.png
+    - twitter-music.jpg
     - Autoservicio Virgen del Rosario
-    - Calle Virgen del Rosario esquina Parana
+    - Calle Virgen del Rosario e/ Parana
     - 0746 21545
     - 0746 21548
     - 80001456-9
@@ -110,24 +84,73 @@ departamentos:
     - Caaguazu
   - - 4
     - Misiones
-  - - 5
-    - Boqueron
-  - - 6
-    - Concepcion
   - - 7
     - Canindeyu
   - - 8
     - Cordillera
-  - - 9
-    - Paraguari
   - - 10
     - Amambay
   - - 11
     - Guaira
-  - - 12
-    - Cordillera
   - - 13
     - Alto Parana
+  - - 14
+    - Boqueron
+  - - 15
+    - Gral. Aquino
+
+---
+depositos:
+  columns:
+  - id
+  - nombre
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - Depósito Central
+    - 
+    - 
+
+---
+detalle_factura_venta:
+  columns:
+  - id
+  - id_factura_venta
+  - id_producto
+  - cantidad
+  - descuento
+  records: 
+  - - 1
+    - 1
+    - 1
+    - 2
+    - 50
+  - - 2
+    - 2
+    - 1
+    - 1
+    - 25
+  - - 5
+    - 2
+    - 1
+    - 13
+    - 25
+  - - 6
+    - 4
+    - 1
+    - 10
+    - 25
+  - - 9
+    - 4
+    - 1
+    - 2
+    - 21
+  - - 10
+    - 5
+    - 1
+    - 8
+    - 100
 
 ---
 estados_funcionarios:
@@ -139,6 +162,71 @@ estados_funcionarios:
     - Activo
   - - 2
     - Inactivo
+
+---
+factura_venta:
+  columns:
+  - id
+  - fecha
+  - id_cliente
+  - id_condicion_pago
+  - id_tipo_valor
+  - id_funcionario
+  - nro_factura
+  - total_descuento
+  - total_iva5
+  - total_iva10
+  - total_iva
+  - monto_total
+  records: 
+  - - 1
+    - 2013-06-29
+    - 10
+    - 1
+    - 1
+    - 1
+    - 100
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+  - - 2
+    - 2013-06-30
+    - 10
+    - 1
+    - 1
+    - 2
+    - 100
+    - 187.0
+    - 37.0
+    - 0.0
+    - 37.0
+    - 564.0
+  - - 4
+    - 2013-06-30
+    - 10
+    - 1
+    - 1
+    - 2
+    - 102
+    - 1877.0
+    - 375.0
+    - 0.0
+    - 375.0
+    - 5633.0
+  - - 5
+    - 2013-06-30
+    - 10
+    - 1
+    - 1
+    - 2
+    - 103
+    - 6008.0
+    - 300.0
+    - 0.0
+    - 300.0
+    - 0.0
 
 ---
 funcionarios:
@@ -159,29 +247,42 @@ funcionarios:
   records: 
   - - 1
     - 4.546.837
-    - Diego
-    - ! 'Rodriguez '
-    - BarrioSantaMaria
-    - ! '(985) 281 '
-    - Casado
-    - 2013-05-29 20:40:58.000000000 Z
-    - 2013-05-29 20:40:58.000000000 Z
-    - F
-    - 1
-    - 1
-    - 2
-  - - 2
-    - 1.111.111
-    - Administrador
-    - del Sistema
-    - ! 'Encarnación '
-    - (0971) 119
+    - Diego Ramon
+    - Rodriguez Figueredo
+    - Barrio Santa Maria
+    - 0985 28181
     - Soltero
     - 2013-05-29 20:40:58.000000000 Z
+    - 2013-06-30 00:46:43.000000000 Z
+    - M
+    - 1
+    - 1
+    - 1
+  - - 2
+    - 3.700.170
+    - Lizza Lorena
+    - Lopez Maciel
+    - Calle 5 c/ Avenida Ucrania
+    - 0971 11950
+    - Soltero
     - 2013-05-29 20:40:58.000000000 Z
+    - 2013-06-30 00:43:42.000000000 Z
     - F
     - 1
-    - 2
+    - 1
+    - 1
+  - - 4
+    - 4.451.123
+    - David
+    - Gonzalez
+    - Calle Estacion c/ Parana
+    - 021 252624
+    - Soltero
+    - 2013-06-29 23:50:14.000000000 Z
+    - 2013-06-30 01:10:30.000000000 Z
+    - M
+    - 1
+    - 1
     - 1
 
 ---
@@ -193,7 +294,7 @@ funcions:
   - - 1
     - Administrador/a
   - - 2
-    - funcionario
+    - Empleado/a
 
 ---
 localidads:
@@ -238,26 +339,29 @@ localidads:
   - - 13
     - Edelira
     - 1
-  - - 14
-    - Quiindy
-    - 9
-  - - 15
-    - Acahay
-    - 9
-  - - 16
-    - Pirayu
-    - 9
-  - - 17
-    - Yabebyry
-    - 4
-  - - 18
-    - Santiago
-    - 4
   - - 21
     - Kenedy
     - 1
-  - - 23
-    - Edelira
+  - - 24
+    - Yegros
+    - 1
+  - - 25
+    - Paraguari
+    - 2
+  - - 27
+    - General Artigas
+    - 1
+  - - 28
+    - Leandro Oviedo
+    - 1
+  - - 29
+    - Yegros
+    - 1
+  - - 30
+    - Isla Alta
+    - 1
+  - - 31
+    - Loma Clavel
     - 1
 
 ---
@@ -271,6 +375,13 @@ productos:
   - precio_unitario
   - porcentaje
   records: 
+  - - 1
+    - 25
+    - Nescafe 350 gr.
+    - 12
+    - 24
+    - 751.0
+    - 5
   - - 2
     - 1
     - Leche
@@ -299,13 +410,41 @@ productos:
     - 100
     - 8500.0
     - 5
+
+---
+stock:
+  columns:
+  - id
+  - id_deposito
+  - id_producto
+  - cantidad
+  - created_at
+  - updated_at
+  records: 
+  - - 5
+    - 1
+    - 1
+    - 23
+    - 2013-06-30 00:00:00.000000000 Z
+    - 2013-06-30 00:00:00.000000000 Z
   - - 6
-    - 5
-    - Huevo
-    - 24
-    - 150
-    - 450.0
-    - 5
+    - 1
+    - 2
+    - 80
+    - 2013-06-30 00:00:00.000000000 Z
+    - 2013-06-30 00:00:00.000000000 Z
+  - - 7
+    - 1
+    - 3
+    - 70
+    - 2013-06-30 00:00:00.000000000 Z
+    - 2013-06-30 00:00:00.000000000 Z
+  - - 8
+    - 1
+    - 4
+    - 70
+    - 2013-06-30 00:00:00.000000000 Z
+    - 2013-06-30 00:00:00.000000000 Z
 
 ---
 tipo_valor_pagos:
@@ -314,9 +453,7 @@ tipo_valor_pagos:
   - descripcion
   records: 
   - - 1
-    - guaranies
-  - - 2
-    - dolares
+    - Guaraníes (Gs.)
 
 ---
 users:
@@ -328,15 +465,15 @@ users:
   - salt
   - id_funcionario
   records: 
-  - - 2
-    - administrador
-    - 
-    - $2a$10$iSFG63vopS57MO.TZMBK6.lLbaGidKoUS46hNKj4o/jFflFk/.x96
-    - N6swqAVdMUtgobfeH6PD
-    - 2
   - - 3
     - lizzalorena
     - 
     - $2a$10$sWydGm3Vlsm7Au18LCaXZurauymFMcJaeMRnXTZdym1Tc46Z21oYi
     - MqUJXXDUmUyVPNpCjvhz
+    - 2
+  - - 4
+    - adminsistema
+    - 
+    - $2a$10$aLo4rypuuQdWb8QjyPIWJu1kdx7Phw/tVBZBSBOj.fLtHtl25MrZm
+    - UKm1RwxdDbzJHdy5Cj4S
     - 2
