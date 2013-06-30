@@ -4,31 +4,45 @@
     <div class="container">
       <nav>
         <ul class="nav pull-right">
-           <% if current_user %>
-             <li><%= link_to "Home" ,paginas_estaticas_path%></li>
-             <li class="divider-vertical"></li>
+            <% if current_user %>
+            <li><%= link_to '<i class="icon-home"></i> Inicio'.html_safe ,paginas_estaticas_path%></li> 
+            <li class="divider-vertical"></li>
             <li id="fat-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Cliente <b class="caret"></b>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="width:100px;" align="center">
+                <i class="icon-user"></i>Cliente <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to "Nuevo Cliente", new_cliente_path %></li>
-                <li><%= link_to "Lista de Clientes",clientes_path  %></li>
+                  <li><%= link_to "Nuevo Cliente", new_cliente_path %></li>
+                  <li><%= link_to "Lista de Clientes",clientes_path  %></li>
+                  <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#">Localidad</a>
+                    <ul class="dropdown-menu">
+                      <li><%= link_to "Nueva Localidad", new_localidad_path %></li>
+                      <li><%= link_to "Lista de Localidades",localidads_path  %></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#">Departamento</a>
+                    <ul class="dropdown-menu">
+                      <li><%= link_to "Nuevo Departamento", new_departamento_path %></li>
+                      <li><%= link_to "Lista de Departamentos",departamentos_path  %></li>
+                    </ul>
+                  </li>
               </ul>
             </li>
             <li class="divider-vertical"></li>
-             <li id="fat-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Facturacion <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Nueva Factura", new_factura_ventum_path %></li>
-                <li><%= link_to "Lista de Facturas",factura_venta_path  %></li>
-               </ul>
-             </li>
-             <li class="divider-vertical"></li>
               <li id="fat-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-shopping-cart"></i>
+                  Facturacion <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Nueva Factura", new_factura_ventum_path %></li>
+                  <li><%= link_to "Lista de Facturas",factura_venta_path  %></li>
+                 </ul>
+              </li>
+            <li class="divider-vertical"></li>
+              <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-barcode"></i>
                  Producto<b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
@@ -36,30 +50,10 @@
                 <li><%= link_to "Lista de Productos",productos_path  %></li>
                </ul>
              </li>
-             <li class="divider-vertical"></li>
-              <li id="fat-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Localidad<b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Nueva Localidad", new_localidad_path %></li>
-                <li><%= link_to "Lista de Localidades",localidads_path  %></li>
-               </ul>
-             </li>
-             <li class="divider-vertical"></li>
-             <li id="fat-menu" class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  Departamento<b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><%= link_to "Nuevo Departamento", new_departamento_path %></li>
-                  <li><%= link_to "Lista de Departamentos",departamentos_path  %></li>
-                </ul>
-             </li>
              <% if current_user.funcionario.funcion.nombre=="Administrador/a" %>
                 <li class="divider-vertical"></li>
                   <li id="fat-menu" class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-wrench"></i>
                       Configuracion del Sistema<b class="caret"></b>
                     </a>
                             
@@ -71,7 +65,7 @@
                             <li><%= link_to "Ver Datos", configuracions_path %></li>
                           </ul>
                         </li>
-                       <li class="divider"></li>
+                       
                        <li class="dropdown-submenu">
                           <a tabindex="-1" href="#">Usuario</a>
                           <ul class="dropdown-menu">
@@ -79,7 +73,7 @@
                             <li><%= link_to "Lista de Usuario", users_path %></li>
                           </ul>
                         </li>
-                      <li class="divider"></li>
+                      
                         <li class="dropdown-submenu">
                           <a tabindex="-1" href="#">Funcionario</a>
                           <ul class="dropdown-menu">
@@ -87,7 +81,7 @@
                             <li><%= link_to "Lista de Funcionario", funcionarios_path %></li>
                           </ul>
                         </li>
-                        <li class="divider"></li>
+                        
                         <li class="dropdown-submenu">
                           <a tabindex="-1" href="#">Auditoria</a>
                           <ul class="dropdown-menu">
@@ -101,7 +95,7 @@
               <li class="divider-vertical"></li>
                 <li class="divider"></li>
                 <li>
-                  <%= link_to "Cerrar Sesion", logout_path, method: "delete" %>
+                  <%= link_to '<i class="icon-off"></i> Cerrar Sesion'.html_safe, logout_path, method: "delete" %>
                 </li>
                           
           <% else %>

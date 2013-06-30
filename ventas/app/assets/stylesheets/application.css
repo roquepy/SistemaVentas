@@ -50,6 +50,32 @@
   font-size: 18px;
 }
 
+#column{
+  margin-top: 20px;
+  padding-bottom: 40px;
+  padding-top: 10px;
+  min-height: 128px;
+  min-width: 988px;
+  color: #666;
+  font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.contentHeadline{
+  font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+  font-size: 22px;
+  color: #444;
+  line-height: 28px;
+}
+
+#column1{
+  padding-right: 9px;
+  background: url(../images/vertical-gradient-sprite.png) right -1px no-repeat;
+}
+#column1{
+  padding-right: 9px;
+}
 .btnhelp{
   line-height: 1.4545em;
   text-shadow: 0 -1px #00629c !important; 
@@ -79,7 +105,7 @@
 #home{
   background-image: url("../images/home.jpg");
   height: 420px;
-  width: 1600px;
+  width: 1349px;
   margin-top: -10px;
 }
 .centrar{
