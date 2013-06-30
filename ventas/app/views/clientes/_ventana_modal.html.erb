@@ -5,9 +5,7 @@
 
 <div class="modal-body">
          <p id="error" class="error"></p>
-         <%= form_for@localidad, remote: true do |f| %>
-         <%= render 'mensajes/error_mensajes', object: f.object %>
-
+         <%= form_for@localidad, :remote => true do |f| %>
         <div class="span1">
             <%= f.label "Localidad (*)",class:"label"%>
             <%= f.text_field :nombre,class: "span3",:placeholder => "Ingrese Nueva Localidad",:maxlength=>"35" %> 

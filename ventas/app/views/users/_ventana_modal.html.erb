@@ -5,7 +5,6 @@
              <div class="modal-body">
                <p id="notice"><%= notice %></p>
                   <%= form_for@funcionario,remote:true do |f| %>
-   		          <%= render 'mensajes/error_mensajes', object: f.object %>
    		          <div class="span8">
                    <div class="span3">
 						<%= f.label "Nombre (*)",class:"label"%>

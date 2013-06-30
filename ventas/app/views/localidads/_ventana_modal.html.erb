@@ -6,8 +6,6 @@
 <div class="modal-body">
     <p id="notice"><%= notice %></p>
         <%= form_for@departamento, remote:true do |f| %>
-   		      <%= render 'mensajes/error_mensajes', object: f.object %>
-
             <div class="span3">
   						<%= f.label "Departamento:",class:"label"%>
   						<%= f.text_field :nombre,class: "span3" ,:placeholder => "Ingrese Nuevo Departamento",:maxlength=>"35" %>
