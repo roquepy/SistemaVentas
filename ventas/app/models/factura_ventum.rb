@@ -23,12 +23,16 @@ class FacturaVentum < ActiveRecord::Base
     	
     end
       def  self.actual_nro_factura()
-        factura_nro=100
+         factura_nro=100
         factura=ultima_factura
         if factura.blank?
            factura_nro=100
            else
-              factura_nro=factura.nro_factura
+              if (factura.monto_total==0.0)
+                factura_nro=factura.nro_factura
+                else
+                   factura_nro=factura.nro_factura+1
+              end    
         end 
       return factura_nro
       
