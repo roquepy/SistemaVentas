@@ -63,12 +63,14 @@ class ProductosController < ApplicationController
   # PUT /productos/1.json
   def update
     @producto = Producto.find(params[:id])
+
     codigo_antiguo= @producto.codigo
     descripcion_antigua= @producto.descripcion
     cant_minima_antigua= @producto.cant_minima
     cant_optima_antigua= @producto.cant_optima
     precio_unitario_antiguo= @producto.precio_unitario
     porcentaje_iva_antiguo= @producto.porcentaje
+    
     respond_to do |format|
       if @producto.update_attributes(params[:producto])
         codigo_nuevo= @producto.codigo

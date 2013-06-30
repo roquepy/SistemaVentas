@@ -67,6 +67,8 @@ class FuncionariosController < ApplicationController
   # PUT /funcionarios/1.json
   def update
     @funcionario = Funcionario.find(params[:id])
+    localidad_new
+
     nombre_antiguo= @funcionario.nombres
     apellido_antiguo= @funcionario.apellidos
     num_identidad_antiguo= @funcionario.num_identidad
@@ -77,6 +79,7 @@ class FuncionariosController < ApplicationController
     localidad_antigua= @funcionario.localidad.nombre
     estado_funcionario_antiguo= @funcionario.estados_funcionario.descripcion
     funcion_antiguo= @funcionario.funcion.nombre 
+    
     respond_to do |format|
       if @funcionario.update_attributes(params[:funcionario])
             nombre_nuevo= @funcionario.nombres

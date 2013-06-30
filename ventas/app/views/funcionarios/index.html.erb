@@ -36,8 +36,8 @@
 			             <td><%= funcionario.localidad.nombre %></td>
 			             <td><%= funcionario.estados_funcionario.descripcion %></td>
 			             <td><%= funcionario.funcion.nombre %></td>
-						<td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_funcionario_path(funcionario) %> &nbsp &nbsp &nbsp   
-						    		<i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar", funcionario, :confirm => "Desea eliminar el funcionario "+funcionario.nombres, :method => :delete %>
+						<td><i class="icon-edit" title="editar"></i><%= link_to "Editar", edit_funcionario_path(funcionario) %> &nbsp &nbsp &nbsp   
+						    		<i class="icon-remove-sign" title="borrar"></i><%= link_to "Borrar", funcionario, :confirm => "Desea eliminar el funcionario "+funcionario.nombres, :method => :delete %>
 						</td>
 					</tr>
 	            <% end %>

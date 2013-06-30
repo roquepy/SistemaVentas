@@ -28,8 +28,9 @@
 						<%= f.select(:estado_civil, ['Casado', 'Soltero', 'Viudo', 'Separado' ])%>
 						<%= f.label "Sexo (*)",class:"label"%>
 						<%= f.select(:sexo, ['M', 'F' ],id:"select")%>
-			     </div> 
-</div>	
+					</div>
+					
+				</div>	
 				<div class="span2 offset2" align="center"><br/>
 						<%= f.submit "Guardar", class: "btn btn-primary"%>
 						<%= link_to "Cancelar", funcionarios_path, class: "btn"%>
@@ -42,5 +43,6 @@
         	 <%=render 'funcionarios/ventana_modal'%>
        <div>
     </div> 
+
      
      

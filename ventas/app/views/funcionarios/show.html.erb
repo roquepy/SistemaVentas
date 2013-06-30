@@ -32,15 +32,15 @@
 			<td><%= @funcionario.localidad.nombre %></td>
 			<td><%= @funcionario.estados_funcionario.descripcion %></td>
 			<td><%= @funcionario.funcion.nombre %></td>
-            <td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_funcionario_path(@funcionario) %> &nbsp &nbsp &nbsp   
-			    <i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar", @funcionario, :confirm => "Desea Eliminar el funcionario "+ @funcionario.nombres, :method => :delete %>
+            <td><i class="icon-edit" title="editar"></i><%= link_to "Editar", edit_funcionario_path(@funcionario) %> &nbsp &nbsp &nbsp   
+			    <i class="icon-remove-sign" title="borrar"></i><%= link_to "Borrar", @funcionario, :confirm => "Desea Eliminar el funcionario "+ @funcionario.nombres, :method => :delete %>
 			</td>
 		</tr>
 	   </tbody>
   </table>
   </div>
   <div align="center">
-   	<i class="icon-plus-sign"></i>&nbsp<%= link_to '(+)Nuevo Funcionario', new_funcionario_path %>&nbsp&nbsp
+   	<i class="icon-plus-sign"></i>&nbsp<%= link_to 'Nuevo Funcionario', new_funcionario_path %>&nbsp&nbsp
    	<h8> | </h8>&nbsp&nbsp
     <i class="icon-list-alt"></i>&nbsp<%= link_to 'Volver a la Lista', funcionarios_path %>
   </div>
