@@ -4,7 +4,7 @@ class Cliente < ActiveRecord::Base
   belongs_to :localidad, :foreign_key=>"id_localidad"
 
   validates :nombre,:apellido,:num_identidad,:telefono, :presence => true
-  validates :num_identidad, :length => { :minimum => 6},:uniqueness =>{:message => "Este Nro. de CI o RUC ya se encuentra registrado en el sistema"}, :format => { :with => /\d\-|\d\.|\d/}
+  validates :num_identidad, :length => { :minimum => 6},:uniqueness =>{:message => "El cliente con este Nro de Documento ya se encuentra registrado"}, :format => { :with => /\d\-|\d\./}
   validates :nombre, :length => { :minimum => 3}, :format => { :with => /\A[a-zA-Z\s]+\z/}
   validates :apellido, :length => { :minimum => 3}, :format => { :with => /\A[a-zA-Z\s]+\z/}
   validates :direccion, :length => { :minimum => 5}, :format => { :with => /\A[a-zA-Z\s\d\.\/]+\z/}
