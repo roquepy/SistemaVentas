@@ -1,0 +1,25 @@
+
+ <%= form_for@factura_ventum do |f| %>
+ <div class="span2 offset8">
+    <label class="label">descuento:</label>
+      <%= f.text_field(:total_descuento ,:value => FacturaVentum.descuento(),:readonly => true)%>  
+  </div>
+ <div class="span10 offset1">
+   <div class="span2 offset" style="margin-left:100px;">
+   <label class="label">total iva 5:</label>
+      <%= f.text_field(:total_iva5,:value => FacturaVentum.factura_total_iva5(),:readonly => true )%>
+    </div>
+   <div class="span2 offset1">
+      <label class="label">total iva 10:</label>
+      <%= f.text_field(:total_iva10,:value => FacturaVentum.factura_total_iva10(),:readonly => true) %>
+   </div>
+   <div class="span2 offset1">
+     <label class="label">total iva:</label>
+     <%= f.text_field(:total_iva,:value => FacturaVentum.factura_total_iva(),:readonly => true )%> 
+   </div>
+  </div>
+   <div class="span2 offset8">
+    <label class="label">total:</label>                      
+     <%= f.text_field(:monto_total,:value => FacturaVentum.factura_monto_total(),:readonly => true) %> 
+  </div>
+  <%end%>

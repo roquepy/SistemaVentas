@@ -6,12 +6,16 @@ Ventas::Application.routes.draw do
   match 'conf_new' => 'configuracions#new'
   get 'login' => 'sesiones#new', as: :login
   get "signup" => "users#new", :as => "signup"
-  resources :clientes
+  resources :clientes 
   resources :funcionarios
   resources :users
   resources :sesiones
   resources :localidads
-  resources :factura_venta
+  resources :factura_venta do
+    collection do
+       get :autocomplete_cliente_nombre
+    end
+  end
   resources :departamentos
   resources :paginas_estaticas
   resources :configuracions
@@ -29,6 +33,7 @@ Ventas::Application.routes.draw do
     collection do
       get :actualizar
     end
+
   end  
 
   resources :auditorias do

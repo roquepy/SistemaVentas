@@ -15,5 +15,8 @@ class Cliente < ActiveRecord::Base
   	 cliente=Cliente.find(:first)
   	 return cliente.id
   end
+  def cliente_nombre
+    "#{self.nombre}"
+    end
 
 end
