@@ -6,7 +6,7 @@ class Funcionario < ActiveRecord::Base
   has_many :users
   has_many :factura_venta
   validates :nombres,:apellidos,:num_identidad,:telefono, :presence => true
-  validates :num_identidad, :length => { :minimum => 6}, :uniqueness => true, :format => { :with => /\d\-|\d\./}
+  validates :num_identidad, :length => { :minimum => 6}, :uniqueness => {:message => "El funcionario con este Nro de Documento ya se encuentra registrado"}, :format => { :with => /\d\-|\d/}
   validates :nombres, :length => { :minimum => 3}, :format => { :with => /\A[a-zA-Z\s]+\z/ }
   validates :apellidos, :length => { :minimum => 3}, :format => { :with => /\A[a-zA-Z\s]+\z/ }
   validates :direccion,  :length => { :minimum =>3}, :format => { :with => /\A[a-zA-Z\s\d\.\/]+\z/}
