@@ -11,7 +11,7 @@ class Producto < ActiveRecord::Base
   	validates :precio_unitario, :length => { :minimum => 2}, numericality: {greater_than_or_equal_to:1}
     validates :porcentaje, :length => { :minimum => 1}
     has_many :detalle_factura_venta
-
+    has_many :stock
     def self.obtenerProducto(id_producto)
       descripcion=" "
     	    producto=Producto.find(:first,:conditions=>['id = ? ',id_producto]) 
@@ -22,5 +22,9 @@ class Producto < ActiveRecord::Base
           
       	return descripcion
     end
+
+    def producto_descripcion
+    "#{self.descripcion}"
+  end
 
 end

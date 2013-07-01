@@ -83,10 +83,9 @@ class FacturaVentaController < ApplicationController
      @factura_ventum.monto_total
      @detalles_factura_ventas = DetalleFacturaVentum.find(:all,:conditions=>['id_factura_venta = ? ',@factura_ventum.id])
      @detalles_factura_ventas.each  do |detalle_factura_venta|
-          detalle_factura_venta.destroy
+     detalle_factura_venta.destroy
      end     
      @factura_ventum.destroy
-
     respond_to do |format|
       format.html { redirect_to factura_venta_url }
       format.json { head :no_content }

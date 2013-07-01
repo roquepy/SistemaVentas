@@ -6,7 +6,7 @@ class CreateFacturaVenta < ActiveRecord::Migration
        t.integer :id_condicion_pago,  :null => false
        t.integer :id_tipo_valor,  :null => false
        t.integer :id_funcionario,  :null => false
-       t.integer :nro_factura,  :null => false
+       t.integer :nro_factura,  :null => false,:identity
        t.decimal :total_descuento,  :null => false
        t.decimal :total_iva5,  :null => false
        t.decimal :total_iva10,  :null => false

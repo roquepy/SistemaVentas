@@ -14,39 +14,29 @@
                     });
                     return false;
          });
-        $('#guardar_agregar').on("click", function() {
-             var _id_factura_venta= $("#id_factura_venta").val();
-             var _id_producto = 1
-             var _cantidad = $("#cantidad").val();
-             var _descuento = $("#descuento").val();
-             $.ajax({
-                    url: $(this).attr('ajax_path'),
-                    data: {"id_factura_venta":_id_factura_venta,"id_producto":_id_producto,"cantidad":_cantidad,"descuento":_descuento},
-                    async: true,
-                    dataType: 'script'
-                    });
-                    return false;
-         });
+        
     });
 </script>
        <div class="container"><br/>
-                <%=hidden_field_tag :id_factura_venta,params[:id_factura_venta],:value=>FacturaVentum.id_factura()%>
+          <%= form_for @detalle_factura_ventum,:remote=>true do |f| %>
+            <%= render 'mensajes/error_mensajes', object: f.object %>  
+                <%= f.hidden_field :id_factura_venta,:value=>FacturaVentum.id_factura()%>
             <div class="span3 " >
                 <label class="label">Producto:</label>
-                 <%= autocomplete_field_tag :id_producto,params[:id_producto], autocomplete_producto_descripcion_detalle_factura_venta_path%>
+                 <%= f.autocomplete_field :id_producto, autocomplete_producto_descripcion_detalle_factura_venta_path,:value=>@descripcion%>
             </div>
             <div class="span3 offset1">
                <label class="label">Cantidad:</label>
-               <%=text_field_tag :cantidad,params[:cantidad]%>
+               <%=f.text_field :cantidad%>
              </div>
             <div class="span3 offset1" >
                 <label class="label">Descuento:</label>
-                 <%= text_field_tag :descuento,params[:descuento] %>
+                 <%= f.text_field :descuento %>
             </div> 
                         
             <div class="span3 offset4" align="center"><br/><br/>
-                <%= link_to "Guardar", "#", :id => "guardar",  :class => 'btn btn-success',:ajax_path => guardar_detalle_factura_venta_path%>
-                <%= link_to 'Guardar y Agregar', "#", :id => "guardar_agregar",  :class => 'btn btn-success',:ajax_path => guardar_agregar_detalle_factura_venta_path %>
+                <%= f.submit "Guardar", :class => 'btn btn-success'%>
             </div>  
-        </div>  <br/><br/>               
+        </div>  <br/><br/>  
+        <%end%>             
 
