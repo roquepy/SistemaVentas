@@ -26,8 +26,8 @@
               <td><%= @configuracion.timbrado_vencimiento%></td>
               <td><%= @configuracion.telefono %></td>
               <td><%= @configuracion.telefono_auxiliar %></td>
-              <td><i class="icon-edit" title="editar"></i><%= link_to "editar", edit_configuracion_path(@configuracion)%> &nbsp &nbsp &nbsp   
-                      <i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar",@configuracion, :confirm => "Desea eliminar el cliente "+@configuracion.nombre_empresa, :method => :delete %>
+              <td><i class="icon-edit" title="editar"></i><%= link_to "Editar", edit_configuracion_path(@configuracion)%> &nbsp &nbsp &nbsp   
+                      
               </td>
 
             </tr>

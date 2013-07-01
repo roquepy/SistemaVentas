@@ -25,7 +25,7 @@
               <td><%= @producto.precio_unitario%></td>
               <td><%= @producto.porcentaje %></td>
               <td><i class="icon-edit" title="editar"></i><%= link_to "Editar", edit_producto_path(@producto) %> &nbsp &nbsp &nbsp   
-                      <i class="icon-remove-sign" title="borrar"></i><%= link_to "Borrar",@producto, :confirm => "Desea eliminar el producto "+@producto.descripcion, :method => :delete %>
+                  
         </td>
       </tr>
     </tbody>
@@ -35,7 +35,7 @@
   <div class="span3 offset5">
      <i class="icon-plus-sign" title="editar"></i>&nbsp<%= link_to 'Nuevo Producto', new_producto_path %>&nbsp&nbsp
      <h8> | </h8>&nbsp&nbsp
-     <i class="icon-list-alt"></i>&nbsp<%= link_to 'Volver a la Lista', productos_path %>
+     <i class="icon-list-alt"></i>&nbsp<%= link_to 'Ir a la Lista', productos_path %>
    </div>
 
  

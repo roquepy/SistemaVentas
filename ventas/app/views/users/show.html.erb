@@ -18,7 +18,6 @@
 	  		<td><%= @user.funcionario.nombres%></td>
 			<td><%= @user.username %></td>
             <td><i class="icon-edit" title="editar"></i><%= link_to "Editar", edit_user_path(@user) %> &nbsp &nbsp &nbsp   
-			    <i class="icon-remove-sign" title="borrar"></i><%= link_to "Borrar", @user, :confirm => "Desea eliminar el usuario "+ @user.username, :method => :delete %>
 			</td>
 		</tr>
 	   </tbody>
@@ -26,7 +25,7 @@
   	<div align="center">
  		<i class="icon-plus-sign"></i>&nbsp<%= link_to 'Nuevo Usuario', new_user_path %>&nbsp&nbsp
  		<h8> | </h8>&nbsp&nbsp
-    	<i class="icon-list-alt"></i>&nbsp<%= link_to 'Volver a la Lista', users_path %>
+    	<i class="icon-list-alt"></i>&nbsp<%= link_to 'Ir a la Lista', users_path %>
 	<div>	
 </div>
   	
