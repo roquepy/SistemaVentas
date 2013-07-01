@@ -5,12 +5,11 @@ class Funcionario < ActiveRecord::Base
   belongs_to :funcion, :foreign_key=>"id_funcion"
   has_many :users
   has_many :factura_venta
-  validates :nombres,:apellidos,:num_identidad,:telefono, :presence => true
-  validates :num_identidad, :length => { :minimum => 6}, :uniqueness => {:message => "El funcionario con este Nro de Documento ya se encuentra registrado"}, :format => { :with => /\d\-|\d/}
-  validates :nombres, :length => { :minimum => 3}, :format => { :with => /\A[a-zA-Z\s]+\z/ }
-  validates :apellidos, :length => { :minimum => 3}, :format => { :with => /\A[a-zA-Z\s]+\z/ }
-  validates :direccion,  :length => { :minimum =>3}, :format => { :with => /\A[a-zA-Z\s\d\.\/]+\z/}
-  validates :telefono, :length => { :minimum => 6}, :format => { :with =>  /^[0-9]{3,4}-? ?[0-9]{5,6}$/ }
+  validates :num_identidad,presence: true, :length => { :minimum => 6}, :uniqueness => {:message => "El funcionario con este Nro de Documento ya se encuentra registrado"}, :format => { :with => /\d\-|\d\./}
+  validates :nombres, presence: true,:length => { :minimum => 3}, :format => { :with => /\A[a-zA-Z\s]+\z/ }
+  validates :apellidos,presence: true, :length => { :minimum => 3}, :format => { :with => /\A[a-zA-Z\s]+\z/ }
+  validates :direccion,presence: true,  :length => { :minimum =>3}, :format => { :with => /\A[a-zA-Z\s\d\.\/]+\z/}
+  validates :telefono,presence: true, :length => { :minimum => 6}, :format => { :with =>  /^[0-9]{3,4}-? ?[0-9]{5,6}$/ }
 
   def full_name
    self.nombres.capitalize + ' ' + self.apellidos.capitalize
