@@ -1,7 +1,6 @@
 class DetalleFacturaVentaController < ApplicationController
     before_filter :require_login
-    autocomplete :producto, :descripcion, :extra_data => [:descripcion] ,:display_value => :producto_descripcion
-
+    autocomplete :producto, :descripcion, :extra_data => [:id,:descripcion] ,:display_value => :producto_descripcion
   # GET /detalle_factura_venta
   # GET /detalle_factura_venta.json
   def index

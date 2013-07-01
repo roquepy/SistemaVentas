@@ -3,7 +3,7 @@
     $(document).ready(function () {
         $('#guardar').on("click", function() {
              var _id_factura_venta= $("#id_factura_venta").val();
-             var _id_producto=1
+             var _id_producto=$("#id_producto").val();
              var _cantidad = $("#cantidad").val();
              var _descuento = $("#descuento").val();
              $.ajax({
@@ -23,7 +23,7 @@
                 <%= f.hidden_field :id_factura_venta,:value=>FacturaVentum.id_factura()%>
             <div class="span3 " >
                 <label class="label">Producto:</label>
-                 <%= f.autocomplete_field :id_producto, autocomplete_producto_descripcion_detalle_factura_venta_path,:value=>@descripcion%>
+                 <%= f.autocomplete_field :id_producto, autocomplete_producto_descripcion_detalle_factura_venta_path,:value=>@descripcion,:id_element => '#id'%>
             </div>
             <div class="span3 offset1">
                <label class="label">Cantidad:</label>
