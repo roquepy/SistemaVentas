@@ -1,4 +1,6 @@
- <br/>
+<label id="alert-destroy" class="alert alert-error span8 offset2" style="display: none; margin-top:10px;"></label>
+
+ <br/><br/><br/>
 	  <div align="center">
 		<h3> Lista de Clientes</h3>
 		</div>
@@ -32,7 +34,7 @@
 				            <td><%= cliente.sexo %></td>
 				            <td><%= cliente.localidad.nombre %></td>
 							<td><i class="icon-edit" title="editar"></i><%= link_to "Editar", edit_cliente_path(cliente) %> &nbsp &nbsp &nbsp   
-							    		<i class="icon-remove-sign" title="borrar"></i><%= link_to "Borrar", cliente, :confirm => "Desea eliminar el cliente: "+cliente.nombre, :method => :delete %>
+							    		<i class="icon-remove-sign" title="borrar"></i><%= link_to "Borrar", cliente, :confirm => "Desea eliminar el cliente: "+cliente.nombre, :method => :delete, remote: true %>
 							</td>
 						</tr>
 		            <% end %>
@@ -46,3 +48,11 @@
 			<h8> | </h8>&nbsp&nbsp
 			<i class="icon-file" title="editar"></i>&nbsp<%= link_to 'Ver en PDF', clientes_path(:format => 'pdf')%>
 	  </div>		
+
+	  <!-- SCRIPT ALERTA DE BORRADO -->
+<script type="text/javascript">
+	function cerrar(){
+		$("#alert-destroy").hide();
+
+	}
+</script>

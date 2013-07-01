@@ -114,8 +114,7 @@ class ClientesController < ApplicationController
       CustomLogger.error("No se pudo eliminar los siguientes datos del Cliente: Nombre: #{@cliente.nombre.inspect}, Apellido:#{@cliente.apellido.inspect}, Nro de CI o RUC: #{@cliente.num_identidad.inspect}, Direccion:#{@cliente.direccion.inspect}, Telefono:#{@cliente.telefono.inspect}, Sexo:#{@cliente.sexo.inspect} y Localidad:#{@cliente.localidad.nombre}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
     ensure
       respond_to do |format|
-      format.html { redirect_to clientes_url }
-      format.json { head :no_content }
+      format.js
     end
   end
   end
