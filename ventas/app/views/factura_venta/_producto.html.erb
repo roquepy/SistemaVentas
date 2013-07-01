@@ -1,19 +1,6 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#guardar').on("click", function() {
-             var _id_factura_venta= $("#id_factura_venta").val();
-             var _id_producto=$("#id_producto").val();
-             var _cantidad = $("#cantidad").val();
-             var _descuento = $("#descuento").val();
-             $.ajax({
-                    url: $(this).attr('ajax_path'),
-                    data: {"id_factura_venta":_id_factura_venta,"id_producto":_id_producto,"cantidad":_cantidad,"descuento":_descuento},
-                    async: true,
-                    dataType: 'script'
-                    });
-                    return false;
-         });
         
     });
 </script>
@@ -23,7 +10,9 @@
                 <%= f.hidden_field :id_factura_venta,:value=>FacturaVentum.id_factura()%>
             <div class="span3 " >
                 <label class="label">Producto:</label>
-                 <%= f.autocomplete_field :id_producto, autocomplete_producto_descripcion_detalle_factura_venta_path,:value=>@descripcion,:id_element => '#id'%>
+                 <%= f.autocomplete_field :id_producto, autocomplete_producto_descripcion_detalle_factura_venta_path,:value=>@descripcion,:id_element=>"#producto_id"%>
+                 <%= f.hidden_field :id_producto,id:"producto_id"%>
+
             </div>
             <div class="span3 offset1">
                <label class="label">Cantidad:</label>

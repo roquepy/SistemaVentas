@@ -14,17 +14,23 @@ class Producto < ActiveRecord::Base
     has_many :stock
     def self.obtenerProducto(id_producto)
       descripcion=" "
-    	    producto=Producto.find(:first,:conditions=>['id = ? ',id_producto]) 
+          producto=Producto.find(:first,:conditions=>['id = ? ',id_producto]) 
           if producto.blank?
             else
               descripcion=producto.descripcion 
           end
           
-      	return descripcion
+        return descripcion
     end
 
     def producto_descripcion
     "#{self.descripcion}"
-  end
+    end
+    def self.precio(id)
+      producto=Producto.find(:first,:conditions=>['id = ? ',id])
+      return producto.descripcion
+    end
+
+
 
 end

@@ -1,5 +1,6 @@
 class FacturaVentaController < ApplicationController
     before_filter :require_login
+    autocomplete :cliente, :nombre,:extra_data => [:id,:nombre],:display_value => :cliente_nombre
   # GET /factura_venta
   # GET /factura_venta.json
   def index
@@ -100,6 +101,5 @@ class FacturaVentaController < ApplicationController
       @cliente= Cliente.new
      
   end
-
 
 end
