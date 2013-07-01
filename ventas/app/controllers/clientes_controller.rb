@@ -105,9 +105,12 @@ class ClientesController < ApplicationController
   # DELETE /clientes/1.json
   def destroy
     @cliente = Cliente.find(params[:id])
+    @destruyo = false
     begin
-    @cliente.destroy
-    notice= "Los datos del Cliente han sido eliminados"
+      if @cliente.destroy
+         @destruyo = true
+      end
+      notice= "Los datos del Cliente han sido eliminados"
       CustomLogger.info("Han sido eliminados los siguientes datos del Cliente: Nombre:#{@cliente.nombre.inspect}, Apellido:#{@cliente.apellido.inspect}, Nro de CI o RUC: #{@cliente.num_identidad.inspect}, Direccion:#{@cliente.direccion.inspect}, Telefono:#{@cliente.telefono.inspect}, Sexo:#{@cliente.sexo.inspect} y Localidad:#{@cliente.localidad.nombre}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
     rescue
       notice= "Los datos del Cliente no pueden ser eliminados"
@@ -116,7 +119,7 @@ class ClientesController < ApplicationController
       respond_to do |format|
       format.js
     end
-  end
+    end
   end
 
   def localidad_new

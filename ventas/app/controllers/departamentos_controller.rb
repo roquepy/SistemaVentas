@@ -87,8 +87,11 @@ class DepartamentosController < ApplicationController
   # DELETE /departamentos/1.json
   def destroy
     @departamento = Departamento.find(params[:id])
+    @destruyo = false
     begin
-     @departamento.destroy
+      if @departamento.destroy
+        @destruyo = true
+      end
      notice= "El departamento ha sido eliminado"
      CustomLogger.info("El Departamento:#{@departamento.nombre.inspect} ha sido eliminado. Usuario Responsable: #{current_user.funcionario.full_name.inspect} , Fecha y Hora: #{Time.now}")
       rescue

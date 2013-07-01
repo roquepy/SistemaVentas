@@ -1,2 +1,8 @@
-$('#alert-destroy').html('<strong> ALERTA. </strong> No se puede eliminar, el dato est&aacute siendo utilizado. <button type="button" class="close" data-dismiss="alert" onClick="cerrar();">&times;</button>');
-$('#alert-destroy').show();
+<% if @destruyo %>
+	$('#alert-success').html('<strong> EXITO. </strong> El dato se ha borrado correctamente <button type="button" class="close" data-dismiss="alert" onClick="cerrar();">&times;</button>');
+	$('#alert-success').show();
+	location.reload(true);
+<% else %>
+	$('#alert-destroy').html('<strong> ALERTA. </strong> No se puede eliminar, el dato est&aacute siendo utilizado. <button type="button" class="close" data-dismiss="alert" onClick="cerrar();">&times;</button>');
+	$('#alert-destroy').show();
+<% end %>

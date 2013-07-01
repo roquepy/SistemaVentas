@@ -88,8 +88,11 @@ class LocalidadsController < ApplicationController
   # DELETE /localidads/1.json
   def destroy
     @localidad = Localidad.find(params[:id])
+    @destruyo = false
     begin
-    @localidad.destroy
+    if @localidad.destroy
+      @destruyo = true
+    end
     notice= "Los datos de la Localidad han sido eliminados"
     CustomLogger.info("La Localidad: #{@localidad.nombre.inspect} y el Departamento:#{@localidad.departamento.nombre.inspect} han sido eliminados. Usuario Responsable: #{current_user.funcionario.full_name.inspect} , Fecha y Hora: #{Time.now}")
     rescue

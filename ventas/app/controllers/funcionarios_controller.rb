@@ -108,8 +108,11 @@ class FuncionariosController < ApplicationController
   # DELETE /funcionarios/1.json
   def destroy
     @funcionario = Funcionario.find(params[:id])
+    @destruyo = false
     begin
-    @funcionario.destroy
+    if @funcionario.destroy
+      @destruyo = true
+    end
     notice= "Los datos de Funcionario han sido eliminados"
     CustomLogger.info("Han sido eliminados los siguientes datos del Funcionario:Nombre:#{@funcionario.nombres.inspect}, Apellido:#{@funcionario.apellidos.inspect}, Nro de RUC o CI:#{@funcionario._num_identidad.inspect}, Direccion:#{@funcionario.direccion.inspect}, Telefono:#{@funcionario.telefono.inspect}, Estado Civil:#{@funcionario.estado_civil.inspect}, Sexo:#{@funcionario.sexo.inspect}, Localidad:#{@funcionario.localidad.nombre.inspect}, Estado del Funcionario:#{@funcionario.estados_funcionario.descripcion.inspect}, Funcion:#{@funcionario.funcion.nombre.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
     rescue
