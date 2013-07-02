@@ -1,28 +1,78 @@
-pdf.text "Listado de Clientes", :size => 20, :style => :bold, :align => :center
-pdf.stroke_horizontal_rule
-pdf.move_down(10)
-pdf.text "Autoservicio Virgen del Rosario", :size => 10, :style => :bold, :align => :center
-pdf.text "Calle Virgen del Rosario esquina Paraná | Gral. Artigas, Itapúa, Paraguay.", :size => 9, :style => :italic, :align => :center
-pdf.text "Teléfono: 0743 20164", :size => 9, :style => :italic, :align => :center
-pdf.move_down(60) 
-pdf.text "Cantidad de Clientes Activos: #{@clientes.size}", :size => 10, :style => :italic
-pdf.move_down(20)  
-items = [ ["<b>Nombre</b>", "<b>Apellido</b>", "<b>RUC/Nro CI</b>", "<b>Dirección</b>", "<b>Localidad</b>", "<b>Telefóno</b>"]  ]
-items += @clientes.map do |item|  
-  [  
-        item.nombre,  
-        item.apellido,
-        item.num_identidad,
-        item.direccion,
-        item.localidad.nombre,
-        item.telefono
-  ]  
+ require 'rubygems'
+ require 'prawn'
+
+pdf.move_down(10) 
+
+logo = @logo
+  initial_y = pdf.cursor
+  initialmove_y = 5
+  address_x = 35
+  invoice_header_x = 325
+  lineheight_y = 12
+  font_size = 9
+
+  pdf.move_down initialmove_y
+
+  # Add the font style and size
+  pdf.font "Helvetica"
+  pdf.font_size font_size
+
+  #start with EON Media Group
+  pdf.text_box "LISTADO DE CLIENTES", :size => 15, :style => :bold_italic, :at => [address_x,  pdf.cursor]
+  pdf.move_down lineheight_y
+  pdf.move_down(5) 
+  pdf.stroke_horizontal_rule
+  pdf.move_down(5) 
+  pdf.text_box @nombreempresa, :size => 12, :style => :bold_italic, :at => [address_x,  pdf.cursor]
+  pdf.move_down lineheight_y
+  pdf.text_box @direccion, :at => [address_x,  pdf.cursor]
+  pdf.move_down lineheight_y
+  pdf.text_box "Tel: "+@telefono, :at => [address_x,  pdf.cursor]
+  pdf.move_down lineheight_y
+
+  last_measured_y = pdf.cursor
+  pdf.move_cursor_to pdf.bounds.height
+
+  pdf.image logo, :width => 165, :heigth => 100, :position => :right
+
+  pdf.move_cursor_to last_measured_y
+
+  # client address
+  pdf.move_down 65
+  last_measured_y = pdf.cursor
+
+  pdf.move_down 45
+
+  invoice_services_data = [ 
+    ["Nombre(s)", "Apellido(s)", "RUC/N° CI", "Dirección", "Localidad", "Telefóno"]
+  ]
+  invoice_services_data += @clientes.map do |item|  
+    [  
+          item.nombre,  
+          item.apellido,
+          item.num_identidad,
+          item.direccion,
+          item.localidad.nombre,
+          item.telefono
+    ] 
+
 end  
 
-pdf.table(items, 
-          :header => true,         
-          :row_colors => ["F0F0F0"],
-          :cell_style => { :inline_format => true, :font => "Times-Roman", :font_style => :italic })
-  
-  
-pdf.move_down(10) 
+  pdf.table(invoice_services_data, :width => pdf.bounds.width) do
+    style(row(1..-1).columns(0..-1), :padding => [4, 5, 4, 5], :borders => [:bottom], :border_color => 'dddddd')
+    style(row(0), :background_color => 'e9e9e9', :border_color => 'dddddd', :font_style => :bold)
+    style(row(0).columns(0..-1), :borders => [:top, :bottom])
+    style(row(0).columns(0), :borders => [:top, :left, :bottom])
+    style(row(0).columns(-1), :borders => [:top, :left, :bottom])
+    style(row(-1), :border_width => 2)
+    style(column(2..-1), :align => :left)
+    style(columns(0), :width => 90)
+    style(columns(1), :width => 90)
+    style(columns(2), :width => 65)
+    style(columns(3), :width => 165)
+    style(columns(4), :width => 65)
+    style(columns(5), :width => 65)
+
+  end
+
+  pdf.move_down 1
