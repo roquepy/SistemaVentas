@@ -1,3 +1,6 @@
+<label id="alert-destroy" class="alert alert-error span8 offset2" style="display: none; margin-top:10px;"></label>
+<label id="alert-success" class="alert alert-success span8 offset2" style="display: none; margin-top:10px;"></label>
+
   <br/>
   <%= form_tag productos_path, :method => 'get' do %>
     <div class="span5 offset5">
@@ -33,7 +36,7 @@
               <td><%= producto.precio_unitario%></td>
               <td><%= producto.porcentaje%>% </td>
               <td><i class="icon-edit" title="editar"></i><%= link_to "Editar", edit_producto_path(producto) %> &nbsp &nbsp &nbsp   
-                      <i class="icon-remove-sign" title="borrar"></i><%= link_to "Borrar",producto, :confirm => "Desea eliminar el producto "+producto.descripcion, :method => :delete %>
+                      <i class="icon-remove-sign" title="borrar"></i><%= link_to "Borrar",producto, :confirm => "Desea eliminar el producto "+producto.descripcion, :method => :delete, remote: true %>
               </td>
 
             </tr>
@@ -51,3 +54,11 @@
 
     </div>    
 <% end %>
+
+    <!-- SCRIPT ALERTA DE BORRADO -->
+<script type="text/javascript">
+  function cerrar(){
+    $("#alert-destroy").hide();
+
+  }
+</script>

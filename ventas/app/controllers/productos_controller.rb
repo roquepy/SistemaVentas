@@ -98,8 +98,11 @@ class ProductosController < ApplicationController
   # DELETE /productos/1.json
   def destroy
     @producto = Producto.find(params[:id])
+    @destruyo = false
     begin
-      @producto.destroy
+      if @producto.destroy
+         @destruyo = true
+      end
       notice= "Los datos del Producto han sido eliminados"
       CustomLogger.info("Han sido eliminados los siguientes datos del Producto: Codigo:#{@producto.codigo.inspect}, Descripcion:#{@producto.descripcion}, Cantidad Minima:#{@producto.cant_minima.inspect}, Cantidad Optima:#{@producto.cant_optima.inspect}, Precio Unitario:#{@producto.precio_unitario.inspect} y Porcentaje IVA:#{@producto.porcentaje.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
     rescue
@@ -107,8 +110,7 @@ class ProductosController < ApplicationController
       CustomLogger.error("No se pudo eliminar los siguientes datos del Producto: Codigo:#{@producto.codigo.inspect}, Descripcion:#{@producto.descripcion}, Cantidad Minima:#{@producto.cant_minima.inspect}, Cantidad Optima:#{@producto.cant_optima.inspect}, Precio Unitario:#{@producto.precio_unitario.inspect} y Porcentaje IVA:#{@producto.porcentaje.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
     ensure
       respond_to do |format|
-      format.html { redirect_to productos_url }
-      format.json { head :no_content }
+      format.js
     end
   end
 end
