@@ -7,7 +7,7 @@ class Configuracion < ActiveRecord::Base
    validates :direccion,presence: true, :length => { :minimum => 5}, :format => { :with => /\A[a-zA-Z\s\d\.\/]+\z/}
    validates :telefono,presence: true, :length => { :minimum => 6},:format => { :with => /^\d{3,4}\s\d{5,6}$/ }
    validates :telefono_auxiliar,presence: true, :length => { :minimum => 6}, :format => { :with => /^\d{3,4}\s\d{5,6}$/ }
-   validates :ruc, presence: true,:length => { :minimum => 6}, :format => { :with => /\d\-|\d\.|\d/}
+   validates :ruc, presence: true,:length => { :minimum => 6}, :format => { :with => /\d\-/}
    validates :timbrado,presence: true, :length => { :minimum => 6}, :format => { :with => /\d/}
    validates :timbrado_vencimiento,presence: true, :length => { :minimum => 8}, :format => { :with => /\A\d{2}(\/|-)\d{2}(\/|-)\d{4}\Z/i }
 end
