@@ -7,7 +7,11 @@ class ProductosController < ApplicationController
   # GET /productos.json
   def index
     @productos = Producto.paginate(:page => params[:page], :per_page => 10)
-
+    @empresa= Configuracion.find(:first)
+    @nombreempresa = @empresa.nombre_empresa
+    @logo = @empresa.logo
+    @direccion = @empresa.direccion
+    @telefono = @empresa.telefono
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @productos }
