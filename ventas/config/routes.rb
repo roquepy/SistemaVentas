@@ -6,7 +6,7 @@ Ventas::Application.routes.draw do
   match 'conf_new' => 'configuracions#new'
   get 'login' => 'sesiones#new', as: :login
   get "signup" => "users#new", :as => "signup"
-  get "factura_venta" => "factura_venta#factura_venta"
+  
   resources :clientes 
   resources :funcionarios
   resources :users
