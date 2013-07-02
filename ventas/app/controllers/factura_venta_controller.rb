@@ -88,7 +88,7 @@ class FacturaVentaController < ApplicationController
      end     
      @factura_ventum.destroy
     respond_to do |format|
-      format.html { redirect_to factura_venta_url }
+      format.html { render "" }
       format.json { head :no_content }
     end
   end
@@ -100,6 +100,9 @@ class FacturaVentaController < ApplicationController
   def cliente_new
       @cliente= Cliente.new
      
+  end
+  def eliminar_factura
+    
   end
 
 end

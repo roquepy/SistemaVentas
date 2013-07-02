@@ -6,6 +6,7 @@ Ventas::Application.routes.draw do
   match 'conf_new' => 'configuracions#new'
   get 'login' => 'sesiones#new', as: :login
   get "signup" => "users#new", :as => "signup"
+  get "factura_venta" => "factura_venta#factura_venta"
   resources :clientes 
   resources :funcionarios
   resources :users
@@ -15,18 +16,15 @@ Ventas::Application.routes.draw do
     collection do
        get :autocomplete_cliente_nombre
     end
+    collection do
+      get :eliminar_factura
+    end
   end
   resources :departamentos
   resources :paginas_estaticas
   resources :configuracions
   resources :productos
   resources :detalle_factura_venta do
-    collection do
-      get :guardar
-    end
-    collection do
-      get :guardar_agregar
-    end
     collection do
        get :autocomplete_producto_descripcion
     end

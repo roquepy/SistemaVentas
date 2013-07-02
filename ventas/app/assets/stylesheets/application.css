@@ -256,7 +256,7 @@ position: relative;
     text-decoration: line-through;
   }  
 
-  #cabecera{
+  #cabecera ,#totales{
     border: none;
     box-shadow: 3px rgba(0,0,0,.1);
     border: 1px solid #CCC;

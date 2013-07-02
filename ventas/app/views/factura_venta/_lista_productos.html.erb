@@ -27,9 +27,6 @@
         });
     };
      
-    $(function(){
-        $('#filtrar').keyup(buscarEnTabla);
-    });
  });
     
   </script>
@@ -42,6 +39,7 @@
 				<th>Producto</th>
 				<th>Cantidad</th>
 				<th>Precio</th>
+        <th>Descuento</th>
 				<th>Total</th>
 				<th>Acciones</th>
 			</tr>
@@ -54,7 +52,8 @@
 					<td><%=detalle_factura_venta.producto.descripcion %></td>
 					<td><%=detalle_factura_venta.cantidad%></td>
 					<td><%=detalle_factura_venta.producto.precio_unitario %></td>
-					<td><%=detalle_factura_venta.cantidad*detalle_factura_venta.producto.precio_unitario %></td>
+          <td><%=(detalle_factura_venta.producto.precio_unitario*detalle_factura_venta.cantidad*detalle_factura_venta.descuento)/100 %></td>
+					<td><%=detalle_factura_venta.cantidad*detalle_factura_venta.producto.precio_unitario-((detalle_factura_venta.producto.precio_unitario*detalle_factura_venta.cantidad*detalle_factura_venta.descuento)/100) %></td>
 		            <td><i class="icon-edit" title="editar"></i><%=link_to "editar",edit_detalle_factura_ventum_path(detalle_factura_venta),:onclick=>"muestra_oculta('producto')",:remote=>true%> &nbsp &nbsp &nbsp   
 					    <i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar",detalle_factura_venta, :confirm => "Desea Eliminar el producto "+ detalle_factura_venta.producto.descripcion, :remote => true,:method => :delete %>
 					</td>

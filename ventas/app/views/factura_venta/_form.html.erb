@@ -37,20 +37,20 @@
                   <div align="center">
                      <div class="abajo"><br/>    
                        <a style='cursor: pointer;' onclick="muestra_oculta('producto')">Cargar Producto</a>
-                  </div>  
+                      </div>  
                   <div id="producto" style="display: none;">
                       <%=render 'factura_venta/producto'%>
                   </div>
-                 <div class="span11" id="cabecera" style="margin-left:0px;"><br/> <br/>
-                          <%=render 'factura_venta/totales_ivas'%>
-                 </div>        
+                    <div class="span11" id="totales" style="margin-left:0px;"><br/> <br/>
+                                <%=render 'factura_venta/totales_ivas'%>
+                       </div>        
               
          
-  </div>                
-          <div class="span2 offset9"><br/>
-                <%= f.submit "Guardar", class: "btn btn-primary"%>
-                <%= link_to "Cancelar",class: "btn",:method=>:delete%>
-          </div> 
+                   </div>                
+                <div class="span2 offset9"><br/>
+                      <%= f.submit "Guardar", class: "btn btn-primary"%>
+                      <%= link_to "Cancelar", factura_venta_path, class: "btn"%>
+                </div> 
         </div>    
          
         <% end %>

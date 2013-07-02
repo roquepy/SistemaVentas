@@ -1,31 +1,28 @@
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        
-    });
-</script>
-       <div class="container"><br/>
-          <%= form_for @detalle_factura_ventum,:remote=>true do |f| %>
-            <%= render 'mensajes/error_mensajes', object: f.object %>  
-                <%= f.hidden_field :id_factura_venta,:value=>FacturaVentum.id_factura()%>
+<div class="container"><br/>
+          <%= form_for(@detalle_factura_ventum,:remote=>true) do |g| %>
+            <%= render 'mensajes/error_mensajes', object: g.object %>  
+                <%= g.hidden_field :id_factura_venta,:value=>FacturaVentum.id_factura()%>
             <div class="span3 " >
                 <label class="label">Producto:</label>
-                 <%= f.autocomplete_field :id_producto, autocomplete_producto_descripcion_detalle_factura_venta_path,:value=>@descripcion,:id_element=>"#producto_id"%>
-                 <%= f.hidden_field :id_producto,id:"producto_id"%>
+                 <%= g.autocomplete_field :id_producto, autocomplete_producto_descripcion_detalle_factura_venta_path,:value=>@descripcion,:id_element=>"#producto_id"%>
+                 <%= g.hidden_field :id_producto,id:"producto_id"%>
 
             </div>
             <div class="span3 offset1">
                <label class="label">Cantidad:</label>
-               <%=f.text_field :cantidad%>
+               <%=g.text_field :cantidad%>
              </div>
             <div class="span3 offset1" >
                 <label class="label">Descuento:</label>
-                 <%= f.text_field :descuento %>
+                 <%= g.text_field :descuento %>
             </div> 
                         
             <div class="span3 offset4" align="center"><br/><br/>
-                <%= f.submit "Guardar", :class => 'btn btn-success'%>
+                <%= g.submit "Guardar", :class => 'btn btn-success'%>
             </div>  
-        </div>  <br/><br/>  
-        <%end%>             
-
+      
+        <%end%>
+          </div>  <br/><br/>               
+<script type="text/javascript">
+</script>

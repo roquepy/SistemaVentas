@@ -9,7 +9,6 @@ class DetalleFacturaVentaController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @detalle_factura_venta }
-      format.js { }
     end
   end
 
@@ -42,6 +41,10 @@ class DetalleFacturaVentaController < ApplicationController
     @producto=@detalle_factura_ventum.producto
     @id_producto=@producto.id
     @descripcion=@producto.descripcion
+    respond_to do |format|
+      format.js {render 'edit'}
+      
+    end
  
   end
 
@@ -52,10 +55,7 @@ class DetalleFacturaVentaController < ApplicationController
 
 
   def create
-    guardar
-  end
-  def guardar
-    if  FacturaVentum.factura_id(FacturaVentum.actual_nro_factura())==""
+  if  FacturaVentum.factura_id(FacturaVentum.actual_nro_factura())==""
       @factura_ventum = FacturaVentum.new(:id_cliente=>Cliente.cliente_id(),:id_condicion_pago=>1,:id_tipo_valor=>1,:id_funcionario=>Funcionario.funcionario_id(),:monto_total=>0.0,:fecha=>Date.today,:nro_factura=>FacturaVentum.actual_nro_factura(),:total_descuento=>0.0,:total_iva5=>0.0,:total_iva10=>0.0,:total_iva=>0.0)
       @factura_ventum.save
     end
@@ -72,27 +72,6 @@ class DetalleFacturaVentaController < ApplicationController
             format.json { render json: @detalle_factura_ventum.errors, status: :unprocessable_entity }
           end
         end
-      
-      
-  end
-  def guardar_agregar
-    if FacturaVentum.factura_id(FacturaVentum.actual_nro_factura())==""
-      @factura_ventum = FacturaVentum.new(params[:factura_ventum])
-      @factura_ventum.save
-      else
-        @detalle_factura_ventum = DetalleFacturaVentum.new(:id_factura_venta=>params[:id_factura_venta],:id_producto=>params[:id_producto],:cantidad=>params[:cantidad],:descuento=>params[:descuento])
-        respond_to do |format|
-          if @detalle_factura_ventum.save
-            @stock=Stock.find(:first ,:conditions=>['id_producto = ? ',@detalle_factura_ventum.id_producto])
-            @stock.update_attributes(:cantidad=>@stock.cantidad-@detalle_factura_ventum.cantidad)
-            @detalles_factura_ventas = DetalleFacturaVentum.listas_productos
-               format.js {render 'guardar_agregar'}
-          else
-            format.html { render action: "new" }
-            format.json { render json: @detalle_factura_ventum.errors, status: :unprocessable_entity }
-          end
-        end
-    end
   end
 
   # 
@@ -101,13 +80,16 @@ class DetalleFacturaVentaController < ApplicationController
   def update
     @detalle_factura_ventum = DetalleFacturaVentum.find(params[:id])
     @stock=Stock.find(:first ,:conditions=>['id_producto = ? ',@detalle_factura_ventum.id_producto])
-    @diferencia=@detalle_factura_ventum.cantidad-params[:cantidad].to_i
-    @stock.update_attributes(:cantidad=>@stock.cantidad+@diferencia)
+    @cantidad_anterior=@detalle_factura_ventum.cantidad
+    
      respond_to do |format|
       if @detalle_factura_ventum.update_attributes(params[:detalle_factura_ventum])
-        
+        @cantidad_actual=@detalle_factura_ventum.cantidad
+        @diferencia=@cantidad_anterior-@cantidad_actual
+        @stock.update_attributes(:cantidad=>@stock.cantidad+@diferencia)
         @detalles_factura_ventas = DetalleFacturaVentum.listas_productos
-        format.json { head :no_content }
+         format.html { redirect_to detalle_factura_venta_url }
+      format.json { head :no_content }
         format.js {render 'update'}
       else
         format.html { render action: "edit" }
@@ -128,9 +110,9 @@ class DetalleFacturaVentaController < ApplicationController
     @stock.update_attributes(:cantidad=>@stock.cantidad+@detalle_factura_ventum.cantidad)
     @detalle_factura_ventum.destroy
     respond_to do |format|
-      @detalles_factura_ventas = DetalleFacturaVentum.listas_productos
       format.html { redirect_to detalle_factura_venta_url }
       format.json { head :no_content }
+      @detalles_factura_ventas = DetalleFacturaVentum.listas_productos
       format.js{render 'delete'}
     end
   end
