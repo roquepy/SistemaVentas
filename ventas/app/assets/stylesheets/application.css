@@ -109,6 +109,9 @@
   margin-top: -10px;
 }
 
+.iva{
+  font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
 /* DIALOGOS */
 #dialog{
   position: absolute;
@@ -261,9 +264,24 @@ position: relative;
     box-shadow: 3px rgba(0,0,0,.1);
     border: 1px solid #CCC;
     padding-left: 10px;
-    padding-bottom: 30px;
+    padding-bottom: 5px;
     border-radius: 3px;
-    margin-bottom:20px;
+    margin-bottom:5px;
     padding-top: 10px;
     background-color: white;
+}
+
+#productmodal{
+  text-shadow: 0 1px 0 #fff;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 5px 10px 5px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-left: -5px;
+  color: #666;
+  font-size: 18px;
+  margin-left:0px; width:1060px;
+  margin-bottom: 10px;
 }

@@ -1,23 +1,33 @@
 
- <div class="span2 offset8">
-    <label class="label">descuento:</label>
+ <div class="span2 offset6 iva" style="font-size: 12px;" align="right">
+    <strong>Descuento (Gs): </strong>
+  </div>
+  <div class="span2">
       <%= text_field_tag(:total_descuento,params[:monto_total],:value => FacturaVentum.descuento(),:readonly => true)%>  
   </div>
- <div class="span10 offset1">
-   <div class="span2 offset" style="margin-left:100px;">
-   <label class="label">total iva 5:</label>
+ <div class="span10" style="font-size: 12px;">
+    <div class="span2 iva" style="margin-left:-20px;">
+      <strong>Total IVA 5%:</strong>
+    </div>
+    <div class="span2" style="margin-left:-30px;">
       <%= text_field_tag(:total_iva5,params[:monto_total],:value => FacturaVentum.factura_total_iva5(),:readonly => true )%>
     </div>
-   <div class="span2 offset1">
-      <label class="label">total iva 10:</label>
+    <div class="span2 iva">
+      <strong>Total IVA 10%:</strong>
+    </div>
+    <div class="span2" style="margin-left:-30px;">
       <%= text_field_tag(:total_iva10,params[:monto_total],:value => FacturaVentum.factura_total_iva10(),:readonly => true) %>
-   </div>
-   <div class="span2 offset1">
-     <label class="label">total iva:</label>
+    </div>
+    <div class="span2 iva" >
+      <strong>Total IVA:</strong>
+    </div>
+    <div class="span2" style="margin-left:-30px;">
      <%= text_field_tag(:total_iva,params[:monto_total],:value => FacturaVentum.factura_total_iva(),:readonly => true )%> 
    </div>
   </div>
-   <div class="span2 offset8">
-    <label class="label">total:</label>                      
+  <div class="span2 offset6 iva" style="font-size: 12px; " align="right">
+    <strong>TOTAL (Gs):</strong>
+  </div>
+  <div class="span2" style="margin-left:30px;">
      <%= text_field_tag(:monto_total,params[:monto_total],:value => FacturaVentum.factura_monto_total(),:readonly => true) %> 
   </div>

@@ -1,28 +1,28 @@
 
-<div class="container"><br/>
+<div class="span11" id="productmodal">
           <%= form_for(@detalle_factura_ventum,:remote=>true) do |g| %>
             <%= render 'mensajes/error_mensajes', object: g.object %>  
                 <%= g.hidden_field :id_factura_venta,:value=>FacturaVentum.id_factura()%>
-            <div class="span3 " >
+            <div class="span2" >
                 <label class="label">Producto:</label>
                  <%= g.autocomplete_field :id_producto, autocomplete_producto_descripcion_detalle_factura_venta_path,:value=>@descripcion,:id_element=>"#producto_id"%>
                  <%= g.hidden_field :id_producto,id:"producto_id"%>
 
             </div>
-            <div class="span3 offset1">
+            <div class="span1 offset1">
                <label class="label">Cantidad:</label>
-               <%=g.text_field :cantidad%>
+               <%=g.text_field :cantidad, class: "span2"%>
              </div>
-            <div class="span3 offset1" >
+            <div class="span2 offset1" >
                 <label class="label">Descuento:</label>
-                 <%= g.text_field :descuento %>
+                 <%= g.text_field :descuento, class: "span2"%>
             </div> 
                         
-            <div class="span3 offset4" align="center"><br/><br/>
+            <div class="span1 offset1" align="center" style="margin-top:25px;">
                 <%= g.submit "Guardar", :class => 'btn btn-success'%>
             </div>  
       
         <%end%>
-          </div>  <br/><br/>               
+          </div>               
 <script type="text/javascript">
 </script>
