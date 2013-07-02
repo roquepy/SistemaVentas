@@ -64,6 +64,7 @@ class FacturaVentaController < ApplicationController
     @factura_ventum = FacturaVentum.find(@factura.id)
     respond_to do |format|
       if @factura_ventum.update_attributes(params[:factura_ventum])
+        @factura_ventum.update_attributes(:total_descuento=>params[:total_descuento],:total_iva5=>params[:total_iva5],:total_iva10=>params[:total_iva10],:total_iva=>params[:total_iva],:monto_total=>params[:monto_total])
         @libro_caja=LibroCaja.find(:first)
         @tipo_documento=TipoDocumento.find(:first)
         @detalle_libro_caja=DetalleLibroCaja.new(:id_libro_caja=>@libro_caja.id,:id_funcionario=>@factura_ventum.id_funcionario,:id_tipo_documento=>@tipo_documento.id,:nro_asiento=>1,:fecha=>Date.today,:descripcion=>"Ventas de Mercaderias",:ingreso=>1,:egreso=>0,:nro_documento=>@factura_ventum.nro_factura)

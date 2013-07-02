@@ -1,3 +1,6 @@
+
+
+
 <div class="mover">
 
     <%= form_for@factura_ventum do |f| %>
@@ -18,14 +21,14 @@
                         <%= f.hidden_field :id_cliente,id:"cliente_id"%>
                       <a data-toggle="modal" href="#cliente" > <i class="icon-plus-sign"></i></a>
                         <%= f.label "Condicion de Pago:",class:"label"%>
-                        <%=f.collection_select :id_condicion_pago,CondicionDePago.find(:all),:id,:nombre_condicion_de_pago,id:"select",:selected => 1,:disabled => true%>
+                        <%=f.collection_select :id_condicion_pago,CondicionDePago.find(:all),:id,:nombre_condicion_de_pago,id:"select",:selected => 1%>
                   </div>   
                   <div class="span3 " style="margin-top:10px;">
                      <%= f.label "Funcionario:",class:"label"%>
                      <%= f.label current_user.funcionario.nombres+" " + current_user.funcionario.apellidos %> 
                      <%= f.hidden_field :id_funcionario,:value =>current_user.funcionario.id,:readonly => true %> 
                       <%= f.label "Tipo de Valor:",class:"label"%>
-                      <%=f.collection_select :id_tipo_valor,TipoValorPago.find(:all),:id,:descripcion,:selected => 1,:disabled => true,id:"select"%>
+                      <%=f.collection_select :id_tipo_valor,TipoValorPago.find(:all),:id,:descripcion,:selected => 1 %>
                   </div> 
                 </div> 
               <div class="span10">

@@ -19,6 +19,7 @@ Ventas::Application.routes.draw do
     collection do
       get :eliminar_factura
     end
+
   end
   resources :departamentos
   resources :paginas_estaticas
@@ -30,6 +31,9 @@ Ventas::Application.routes.draw do
     end
     collection do
       get :actualizar
+    end
+      collection do
+      get :guardar_o_actualizar
     end
 
   end  

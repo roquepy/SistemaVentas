@@ -1,3 +1,6 @@
 $("#producto").hide();
+$("#descripcion").val("");
+$("#cantidad").val("");
+ $("#descuento").val("");
 $("#lista_productos").html("<%= escape_javascript( render 'factura_venta/lista_productos') %>");
 $("#totales").html("<%= escape_javascript( render 'factura_venta/totales_ivas') %>");

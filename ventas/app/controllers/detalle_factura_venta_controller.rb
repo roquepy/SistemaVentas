@@ -37,10 +37,11 @@ class DetalleFacturaVentaController < ApplicationController
   # GET /detalle_factura_venta/1/edit
   def edit
     @detalle_factura_ventum = DetalleFacturaVentum.find(params[:id])
-    @id_detalle_factura=@detalle_factura_ventum.id
-    @producto=@detalle_factura_ventum.producto
-    @id_producto=@producto.id
-    @descripcion=@producto.descripcion
+    @id=@detalle_factura_ventum.id
+     @producto_id=@detalle_factura_ventum.producto.id
+    @producto=@detalle_factura_ventum.producto.descripcion
+    @cantidad=@detalle_factura_ventum.cantidad
+    @descuento=@detalle_factura_ventum.descuento
     respond_to do |format|
       format.js {render 'edit'}
       
@@ -59,7 +60,7 @@ class DetalleFacturaVentaController < ApplicationController
       @factura_ventum = FacturaVentum.new(:id_cliente=>Cliente.cliente_id(),:id_condicion_pago=>1,:id_tipo_valor=>1,:id_funcionario=>Funcionario.funcionario_id(),:monto_total=>0.0,:fecha=>Date.today,:nro_factura=>FacturaVentum.actual_nro_factura(),:total_descuento=>0.0,:total_iva5=>0.0,:total_iva10=>0.0,:total_iva=>0.0)
       @factura_ventum.save
     end
-        @detalle_factura_ventum = DetalleFacturaVentum.new(params[:detalle_factura_ventum])
+        @detalle_factura_ventum = DetalleFacturaVentum.new(:id_factura_venta=>params[:id_factura_venta],:id_producto=>params[:id_producto],:cantidad=>params[:cantidad],:descuento=>params[:descuento])
         respond_to do |format|
           if @detalle_factura_ventum.save
               @stock=Stock.find(:first ,:conditions=>['id_producto = ? ',@detalle_factura_ventum.id_producto])
@@ -83,7 +84,7 @@ class DetalleFacturaVentaController < ApplicationController
     @cantidad_anterior=@detalle_factura_ventum.cantidad
     
      respond_to do |format|
-      if @detalle_factura_ventum.update_attributes(params[:detalle_factura_ventum])
+      if @detalle_factura_ventum.update_attributes(:id_factura_venta=>params[:id_factura_venta],:id_producto=>params[:id_producto],:cantidad=>params[:cantidad],:descuento=>params[:descuento])
         @cantidad_actual=@detalle_factura_ventum.cantidad
         @diferencia=@cantidad_anterior-@cantidad_actual
         @stock.update_attributes(:cantidad=>@stock.cantidad+@diferencia)
@@ -115,5 +116,13 @@ class DetalleFacturaVentaController < ApplicationController
       @detalles_factura_ventas = DetalleFacturaVentum.listas_productos
       format.js{render 'delete'}
     end
+  end
+   def guardar_o_actualizar
+      id=params[:id]
+        if id.blank?
+           create
+         else
+          update
+         end
   end
 end
