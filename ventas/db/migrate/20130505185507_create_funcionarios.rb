@@ -1,7 +1,7 @@
 class CreateFuncionarios < ActiveRecord::Migration
   def change
     create_table :funcionarios do |t|
-     t.string :num_identidad,:limit => 15,:null => false
+     t.string :num_identidad,:limit => 10,:null => false
      t.string :nombres, :limit => 25, :null => false
      t.string :apellidos,:limit => 25, :null => false
      t.string :direccion, :limit => 35,:null => false

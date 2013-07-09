@@ -5,7 +5,7 @@ class FacturaVentum < ActiveRecord::Base
     belongs_to :tipo_valor_pago, :foreign_key=>"id_tipo_valor"
     belongs_to :funcionario, :foreign_key=>"id_funcionario"
     has_many :detalle_factura_venta
-    
+
     def  self.ultima_factura()
         return FacturaVentum.find(:last)
     end

@@ -1,3 +1,6 @@
+#Requerido para obtener la Auditoria del ABM Producto:
+require 'custom_logger'
+
 class DetalleFacturaVentaController < ApplicationController
     before_filter :require_login
     autocomplete :producto, :descripcion, :extra_data => [:id,:descripcion] ,:display_value => :producto_descripcion
@@ -63,6 +66,7 @@ class DetalleFacturaVentaController < ApplicationController
         @detalle_factura_ventum = DetalleFacturaVentum.new(:id_factura_venta=>params[:id_factura_venta],:id_producto=>params[:id_producto],:cantidad=>params[:cantidad],:descuento=>params[:descuento])
         respond_to do |format|
           if @detalle_factura_ventum.save
+             CustomLogger.info("Se ha creado un Nuevo Detalle de Factura: Nro de Factura: #{@detalle_factura_ventum.factura_ventum.nro_factura.inspect}, Nombre del Producto: #{@detalle_factura_ventum.producto.descripcion.inspect}, Cantidad: #{@detalle_factura_ventum.cantidad.inspect}, Descuento: #{@detalle_factura_ventum.descuento.inspect}. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
               @stock=Stock.find(:first ,:conditions=>['id_producto = ? ',@detalle_factura_ventum.id_producto])
              @stock=Stock.find(@stock.id)
              @stock.update_attributes(:cantidad=>@stock.cantidad-@detalle_factura_ventum.cantidad)
@@ -70,6 +74,7 @@ class DetalleFacturaVentaController < ApplicationController
              format.js {render 'guardar'}
           else
             format.html { render action: "new" }
+             CustomLogger.error("Error al intentar Crear un Nuevo Detalle de Factura. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
             format.json { render json: @detalle_factura_ventum.errors, status: :unprocessable_entity }
           end
         end

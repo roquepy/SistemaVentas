@@ -38,20 +38,20 @@
   pdf.move_down 65
   last_measured_y = pdf.cursor
 
-  pdf.text_box "Client Business Name", :at => [address_x,  pdf.cursor]
+  pdf.text_box @cliente.nombre, :at => [address_x,  pdf.cursor]
   pdf.move_down lineheight_y
-  pdf.text_box "Client Contact Name", :at => [address_x,  pdf.cursor]
+   pdf.text_box @cliente.num_identidad, :at => [address_x,  pdf.cursor]
   pdf.move_down lineheight_y
-  pdf.text_box "4321 Some Street Suite 1000", :at => [address_x,  pdf.cursor]
+   pdf.text_box @cliente.direccion, :at => [address_x,  pdf.cursor]
   pdf.move_down lineheight_y
-  pdf.text_box "Some City, ST 12345", :at => [address_x,  pdf.cursor]
+ pdf.text_box @cliente.telefono, :at => [address_x,  pdf.cursor]
 
   pdf.move_cursor_to last_measured_y
 
   invoice_header_data = [ 
-    ["Invoice #", "001"],
-    ["Invoice Date", "December 1, 2011"],
-    ["Amount Due", "$3,200.00 USD"]
+    ["Factura #", @factura_venta.nro_factura],
+    ["Fecha: ", @factura_venta.fecha],
+    ["Total (Gs): ", @factura_venta.monto_total]
   ]
 
   pdf.table(invoice_header_data, :position => invoice_header_x, :width => 215) do
@@ -65,10 +65,19 @@
   pdf.move_down 45
 
   invoice_services_data = [ 
-    ["Item", "Description", "Unit Cost", "Quantity", "Line Total"],
-    ["Service Name", "Service Description", "320.00", "10", "$3,200.00"],
-    [" ", " ", " ", " ", " "]
+    ["Codigo", "Descripcion", "Precio Unitario", "Cantidad", "Descuento", "Total Parcial"],
   ]
+invoice_services_data +=  @detalles_factura_venta.map do |item|  
+    [ 
+      item.producto.codigo,
+      item.producto.descripcion,
+      item.producto.precio_unitario,
+      item.cantidad,
+      item.cantidad*item.producto.precio_unitario*item.descuento/100,
+      (item.cantidad*item.producto.precio_unitario)-(item.cantidad*item.producto.precio_unitario*item.descuento/100)
+   ] 
+
+end  
 
   pdf.table(invoice_services_data, :width => pdf.bounds.width) do
     style(row(1..-1).columns(0..-1), :padding => [4, 5, 4, 5], :borders => [:bottom], :border_color => 'dddddd')
@@ -78,16 +87,20 @@
     style(row(0).columns(-1), :borders => [:top, :right, :bottom])
     style(row(-1), :border_width => 2)
     style(column(2..-1), :align => :right)
-    style(columns(0), :width => 75)
-    style(columns(1), :width => 275)
+    style(columns(0), :width => 60)
+    style(columns(1), :width => 210)
+    style(columns(2), :width => 50)
+    style(columns(3), :width => 70)
+    style(columns(4), :width => 70)
+    style(columns(5), :width => 80)
   end
 
   pdf.move_down 1
 
   invoice_services_totals_data = [ 
-    ["Total", "$3,200.00"],
-    ["Amount Paid", "-0.00"],
-    ["Amount Due", "$3,200.00 USD"]
+   ["Total IVA (Gs)",@factura_venta.total_iva],
+    ["Total Descuento (Gs)", @factura_venta.total_descuento],
+     ["Total (Gs)", @factura_venta.monto_total]
   ]
 
   pdf.table(invoice_services_totals_data, :position => invoice_header_x, :width => 215) do
@@ -101,21 +114,9 @@
 
   pdf.move_down 25
 
-  invoice_terms_data = [ 
-    ["Terms"],
-    ["Payable upon receipt"]
-  ]
-
-  pdf.table(invoice_terms_data, :width => 275) do
-    style(row(0..-1).columns(0..-1), :padding => [1, 0, 1, 0], :borders => [])
-    style(row(0).columns(0), :font_style => :bold)
-  end
-
-  pdf.move_down 15
 
   invoice_notes_data = [ 
-    ["Notes"],
-    ["Thank you for doing business with Your Business Name"]
+    ["Gracias por su Preferencia."]
   ]
 
   pdf.table(invoice_notes_data, :width => 275) do

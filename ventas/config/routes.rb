@@ -16,6 +16,9 @@ Ventas::Application.routes.draw do
     collection do
        get :autocomplete_cliente_nombre
     end
+     member do
+       get :view
+    end
     collection do
       get :eliminar_factura
     end

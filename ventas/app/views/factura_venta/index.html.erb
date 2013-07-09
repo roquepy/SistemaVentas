@@ -22,20 +22,23 @@
             </tr>
         </thead>
         <tbody>
-            <% @facturas_ventas.each  do |f| %>          
-            <tr>
-              <td><%= f.cliente.nombre %></td>
-              <td><%= f.fecha%></td>
-              <td><%= f.nro_factura %></td>
-              <td><%= f.total_iva5 %></td>
-              <td><%= f.total_iva10 %></td>
-              <td><%= f.total_descuento %></td>
-              <td><%= f.monto_total %></td>
-              <td><i class="icon-remove-sign" title="anular"></i><%= link_to "anular"%> &nbsp &nbsp &nbsp   
-                  <i class="icon-file" title="ver"></i></i><%= link_to "ver"%>
-              </td>
-            </tr>
+            <% @facturas_ventas.each  do |f| %>
+              <% if f.monto_total==0.0 %>
+                 <% else %>         
+                  <tr>
+                    <td><%= f.cliente.nombre %></td>
+                    <td><%= f.fecha%></td>
+                    <td><%= f.nro_factura %></td>
+                    <td><%= f.total_iva5 %></td>
+                    <td><%= f.total_iva10 %></td>
+                    <td><%= f.total_descuento %></td>
+                    <td><%= f.monto_total %></td>
+                    <td><i class="icon-remove-sign" title="anular">&nbsp</i><%= link_to "Anular"%> &nbsp &nbsp &nbsp   
+                        <i class="icon-file" title="ver"></i></i>&nbsp<%= link_to "Ver",view_factura_ventum_path(f,:format => 'pdf') %>
+                    </td>
+                  </tr>
                 <% end %>
+            <% end %>
                 
         </tbody>
       </table>
@@ -43,6 +46,4 @@
     </div>
      <div align="center">
       <i class="icon-plus-sign"></i>&nbsp<%= link_to 'Cargar Nueva Factura', new_factura_ventum_path %>
-      <h8> | </h8>&nbsp&nbsp
-      <i class="icon-file"></i>&nbsp<%= link_to 'Ver en PDF', factura_venta_path(:format => 'pdf')%>
     </div>    
