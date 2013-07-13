@@ -1,5 +1,5 @@
 <div class="span8 offset2" style="margin-top:80px;">	
-		<%= form_for @cliente do |f| %>
+		<%= form_for @cliente, :validate => true do |f| %>
    		 <%= render 'mensajes/error_mensajes', object: f.object %>	
 			<legend>Nuevo Cliente</legend>
 			<div class="span8">

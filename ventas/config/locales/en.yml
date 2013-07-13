@@ -12,4 +12,6 @@ en:
       less_than: "La Cantidad Mínima tiene que ser menor que: %{count}"
       greater_than: "La Cantidad Optima tiene que ser mayor que: %{count}"
       greater_than_or_equal_to: "No puede ingresar números negativos o cero"
+      numericality: "El campo de datos tiene que ser un numero"
+
 

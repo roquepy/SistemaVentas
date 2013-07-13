@@ -3,7 +3,7 @@
 
 <div class="mover">
 
-    <%= form_for@factura_ventum do |f| %>
+    <%= form_for@factura_ventum, :validate => true do |f| %>
        <%= render 'mensajes/error_mensajes', object: f.object %>
           <legend class="span10">Nueva Factura </legend><br/>
            <div class="container">

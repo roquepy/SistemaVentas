@@ -1,5 +1,5 @@
 <div class="span8 offset3" style="margin-top:80px;">	
-			<%= form_for(@configuracion, :remote => true) do |f| %>
+			<%= form_for(@configuracion, :validate => true, :remote => true) do |f| %>
    		 <%= render 'mensajes/error_mensajes', object: f.object %>	
 			<legend>Datos de la Empresa</legend>
 			<div class="span8">

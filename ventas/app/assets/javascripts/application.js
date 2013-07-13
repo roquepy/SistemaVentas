@@ -17,16 +17,9 @@
 //= require calendar
 //= require jquery-ui.min
 //= require autocomplete-rails
+//= require rails.validations
 //= require_tree .
 
-// Función para validar Nº Enteros:
-function validar(obj) {
-	txt = obj.value;
-	if(parseInt(txt) != parseFloat(txt)) {
-		alert('El campo de datos sólo permite almacenar números enteros');
-		obj.focus();
-	}
-}
 
 function muestra_oculta(id){
 	if (document.getElementById){ //se obtiene el id
