@@ -130,4 +130,15 @@ class DetalleFacturaVentaController < ApplicationController
           update
          end
   end
+  def precio_producto
+    if params[:id_producto].blank?
+      else
+      @producto=Producto.find(:first ,:conditions=>['id = ? ',params[:id_producto]])
+      @precio=@producto.precio_unitario
+      respond_to do |format|
+        format.js{render 'precio_producto'}
+      end
+
+    end
+  end
 end

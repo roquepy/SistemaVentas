@@ -38,7 +38,10 @@ Ventas::Application.routes.draw do
       collection do
       get :guardar_o_actualizar
     end
-
+    collection do
+      get :precio_producto
+    end
+    
   end  
 
   resources :auditorias do

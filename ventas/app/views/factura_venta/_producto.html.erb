@@ -15,14 +15,11 @@
                     });
                     return false;
          });
-        $('#guardar_agregar').on("click", function() {
-             var _id_factura_venta= $("#id_factura_venta").val();
+        $('#cantidad').on("click", function() {
              var _id_producto = $("#id_producto").val();
-             var _cantidad = $("#cantidad").val();
-             var _descuento = $("#descuento").val();
              $.ajax({
                     url: $(this).attr('ajax_path'),
-                    data: {"id_factura_venta":_id_factura_venta,"id_producto":_id_producto,"cantidad":_cantidad,"descuento":_descuento},
+                    data: {"id_producto":_id_producto},
                     async: true,
                     dataType: 'script'
                     });
@@ -36,11 +33,14 @@
             <div class="span2 " >
                 <label class="label">Producto:</label>
                  <%= autocomplete_field_tag :descripcion,params[:descripcion], autocomplete_producto_descripcion_detalle_factura_venta_path,:id_element=>"#id_producto",:value=>@producto,:id=>"descripcion"%>
+                 <div id="precio_producto" style="display: none; ">
+                      <%=render 'detalle_factura_venta/precio_producto'%>
+                </div>
                  <%=hidden_field_tag :id_producto,params[:id_producto],:id=>"id_producto",:value=>@producto_id%>
             </div>
             <div class="span1 offset1">
                <label class="label">Cantidad:</label>
-               <%=text_field_tag :cantidad,params[:cantidad],:value=>@cantidad, class: "span2",:id=>"cantidad"%>
+               <%=text_field_tag :cantidad,params[:cantidad],:value=>@cantidad, class: "span2",:id=>"cantidad",:ajax_path => precio_producto_detalle_factura_venta_path%>
           </div>
             <div class="span2 offset1" >
                 <label class="label">Descuento:</label>
