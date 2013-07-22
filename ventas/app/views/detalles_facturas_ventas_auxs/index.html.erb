@@ -1,0 +1,21 @@
+<h1>Listing detalles_facturas_ventas_auxs</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @detalles_facturas_ventas_auxs.each do |detalle_factura_venta_aux| %>
+  <tr>
+    <td><%= link_to 'Show', detalle_factura_venta_aux %></td>
+    <td><%= link_to 'Edit', edit_detalle_factura_venta_aux_path(detalle_factura_venta_aux) %></td>
+    <td><%= link_to 'Destroy', detalle_factura_venta_aux, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Detalle factura venta aux', new_detalle_factura_venta_aux_path %>

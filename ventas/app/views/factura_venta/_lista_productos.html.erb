@@ -30,38 +30,38 @@
  });
     
   </script>
-  <%= form_tag detalle_factura_venta_path,:method => 'get' do %>
-		
-	   <div class="container-fluid">
+  <%= form_tag detalles_facturas_ventas_auxs_path,:method => 'get' do %>
+    
+     <div class="container-fluid">
     <table class="table table-bordered" >
-		<thead>
-			<tr>
-				<th>Producto</th>
-				<th>Cantidad</th>
-				<th>Precio</th>
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
         <th>Descuento</th>
-				<th>Total</th>
-				<th>Acciones</th>
-			</tr>
-		</thead>
-	  <tbody>
-	  	<% if @detalles_factura_ventas==nil
-	  	else
-		  	@detalles_factura_ventas.each  do |detalle_factura_venta| %>	
-			  	<tr>
-					<td><%=detalle_factura_venta.producto.descripcion %></td>
-					<td><%=detalle_factura_venta.cantidad%></td>
-					<td><%=detalle_factura_venta.producto.precio_unitario %></td>
-          <td><%=(detalle_factura_venta.producto.precio_unitario*detalle_factura_venta.cantidad*detalle_factura_venta.descuento)/100 %></td>
-					<td><%=detalle_factura_venta.cantidad*detalle_factura_venta.producto.precio_unitario-((detalle_factura_venta.producto.precio_unitario*detalle_factura_venta.cantidad*detalle_factura_venta.descuento)/100) %></td>
-		            <td><i class="icon-edit" title="editar"></i><%=link_to "editar",edit_detalle_factura_ventum_path(detalle_factura_venta),:onclick=>"muestra_oculta('producto')",:remote=>true%> &nbsp &nbsp &nbsp   
-					    <i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar",detalle_factura_venta, :confirm => "Desea Eliminar el producto "+ detalle_factura_venta.producto.descripcion, :remote => true,:method => :delete %>
-					</td>
-				</tr>
-			<% end %>
-		<% end %>
+        <th>Total</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @detalles_factura_ventas==nil
+      else
+        @detalles_factura_ventas.each  do |detalle_factura_venta_aux| %>  
+          <tr>
+          <td><%=detalle_factura_venta_aux.producto.descripcion %></td>
+          <td><%=detalle_factura_venta_aux.cantidad%></td>
+          <td><%=detalle_factura_venta_aux.producto.precio_unitario %></td>
+          <td><%=(detalle_factura_venta_aux.producto.precio_unitario*detalle_factura_venta_aux.cantidad*detalle_factura_venta_aux.descuento)/100 %></td>
+          <td><%=detalle_factura_venta_aux.cantidad*detalle_factura_venta_aux.producto.precio_unitario-((detalle_factura_venta_aux.producto.precio_unitario*detalle_factura_venta_aux.cantidad*detalle_factura_venta_aux.descuento)/100) %></td>
+                <td><i class="icon-edit" title="editar"></i><%=link_to "editar",edit_detalle_factura_venta_aux_path(detalle_factura_venta_aux),:onclick=>"muestra_oculta('producto')",:remote=>true%> &nbsp &nbsp &nbsp   
+              <i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar",detalle_factura_venta_aux, :confirm => "Desea Eliminar el producto "+ detalle_factura_venta_aux.producto.descripcion, :remote => true,:method => :delete %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
 
-	   </tbody>
+     </tbody>
   </table>
 </div>
 <% end %>

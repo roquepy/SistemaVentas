@@ -1,5 +1,21 @@
 Ventas::Application.routes.draw do
 
+  resources :detalles_facturas_ventas_auxs do
+     collection do
+       get :autocomplete_producto_descripcion
+    end
+    collection do
+      get :actualizar
+    end
+      collection do
+      get :guardar_o_actualizar
+    end
+    collection do
+      get :precio_producto
+    end
+    
+  end
+
   resources :helps
   
   match 'logout' => 'sesiones#destroy', as: :logout
@@ -28,21 +44,7 @@ Ventas::Application.routes.draw do
   resources :paginas_estaticas
   resources :configuracions
   resources :productos
-  resources :detalle_factura_venta do
-    collection do
-       get :autocomplete_producto_descripcion
-    end
-    collection do
-      get :actualizar
-    end
-      collection do
-      get :guardar_o_actualizar
-    end
-    collection do
-      get :precio_producto
-    end
-    
-  end  
+  resources :detalle_factura_venta  
 
   resources :auditorias do
     member do

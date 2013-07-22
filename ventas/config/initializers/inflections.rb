@@ -11,6 +11,7 @@
   inflect.irregular 'libro_caja', 'libros_cajas'
   inflect.irregular 'detalle_libro_caja', 'detalles_libros_cajas'
   inflect.irregular 'tipo_documento', 'tipos_documentos'
+  inflect.irregular 'detalle_factura_venta_aux', 'detalles_facturas_ventas_auxs'
 #   inflect.uncountable %w( fish sheep )
 end
 #

@@ -58,7 +58,7 @@ class FacturaVentum < ActiveRecord::Base
     end
     def  self.descuento()
        descuento=0.00
-       detalles_factura_ventas=DetalleFacturaVentum.listas_productos
+       detalles_factura_ventas=DetalleFacturaVentaAux.listas_productos
        if detalles_factura_ventas==nil
           else
           detalles_factura_ventas.each do |detalle_factura_venta|
@@ -76,7 +76,7 @@ class FacturaVentum < ActiveRecord::Base
 
      def  self.factura_total_iva10()
        total_iva10=0.00
-       detalles_factura_ventas=DetalleFacturaVentum.listas_productos
+       detalles_factura_ventas=DetalleFacturaVentaAux.listas_productos
        if detalles_factura_ventas==nil
           else
           detalles_factura_ventas.each do |detalle_factura_venta|
@@ -89,7 +89,7 @@ class FacturaVentum < ActiveRecord::Base
     end
     def  self.factura_total_iva5()
        total_iva5=0.00
-       detalles_factura_ventas=DetalleFacturaVentum.listas_productos
+       detalles_factura_ventas=DetalleFacturaVentaAux.listas_productos
        if detalles_factura_ventas==nil
           else
           detalles_factura_ventas.each do |detalle_factura_venta|
@@ -102,7 +102,7 @@ class FacturaVentum < ActiveRecord::Base
     end
      def  self.factura_monto_total()
        monto_total=0.00
-       detalles_factura_ventas=DetalleFacturaVentum.listas_productos
+       detalles_factura_ventas=DetalleFacturaVentaAux.listas_productos
        if detalles_factura_ventas==nil
           else
           detalles_factura_ventas.each do |detalle_factura_venta|

@@ -34,7 +34,8 @@ class FacturaVentaController < ApplicationController
   def new
     @factura_ventum = FacturaVentum.new
     cliente_new
-    detalle_factura_venta
+    destroy_detalle_factura_venta_aux
+    detalle_factura_venta_aux
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @factura_ventum }
@@ -44,13 +45,36 @@ class FacturaVentaController < ApplicationController
   # GET /factura_venta/1/edit
   def edit
     @factura_ventum = FacturaVentum.find(params[:id])
-    detalle_factura_venta
+    detalle_factura_venta_aux
   end
 
   # POST /factura_venta
   # POST /factura_venta.json
   def create
-     update
+     @factura_ventum = FacturaVentum.new(params[:factura_ventum])
+    respond_to do |format|
+      if @factura_ventum.save
+        @factura_venta=FacturaVentum.find(:last)
+        @detalles_facturas_ventas_auxs=DetalleFacturaVentaAux.find(:all)
+
+        @detalles_facturas_ventas_auxs.each  do |detalle_factura_venta_aux|
+           @detalle_factura_venta= DetalleFacturaVentum.new(:id_factura_venta=>@factura_venta.id,:id_producto=>detalle_factura_venta_aux.id_producto,:cantidad=>detalle_factura_venta_aux.cantidad,:descuento=>detalle_factura_venta_aux.descuento)
+           @detalle_factura_venta.save
+           @stock=Stock.find(:first ,:conditions=>['id_producto = ? ',@detalle_factura_venta_aux.id_producto])
+           @stock=Stock.find(@stock.id)
+           @stock.update_attributes(:cantidad=>@stock.cantidad-@detalle_factura_venta_aux.cantidad)
+        end
+        destroy_detalle_factura_venta_aux
+        format.html { redirect_to @factura_ventum, notice: 'Los datos de las Factura se han creado correctamente.'}
+        #CustomLogger.info("Se ha creado un nuevo Cliente: Datos: Nombre: #{@cliente.nombre.inspect} , Apellido:#{@cliente.apellido.inspect}, Nro de CI o RUC: #{@cliente.num_identidad.inspect}, Direccion:#{@cliente.direccion.inspect}, Telefono:#{@cliente.telefono.inspect}, Sexo:#{@cliente.sexo.inspect} y Localidad:#{@cliente.localidad.nombre}. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
+        format.json { render json: @factura_ventum, status: :created, location: @factura_ventum}
+        format.js   {render 'create'}
+      else
+        format.html { render action: "new" }
+        #CustomLogger.error("Error al intentar Crear un Nuevo Cliente. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
+        format.json { render json: @factura_ventum.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PUT /factura_venta/1
@@ -92,9 +116,9 @@ class FacturaVentaController < ApplicationController
     end
   end
  
-  def detalle_factura_venta
-      @detalle_factura_ventum  = DetalleFacturaVentum.new
-      @detalles_factura_ventas = DetalleFacturaVentum.listas_productos
+  def detalle_factura_venta_aux
+      @detalle_factura_venta_aux  = DetalleFacturaVentaAux.new
+      @detalles_factura_ventas = DetalleFacturaVentaAux.listas_productos
   end
   def cliente_new
       @cliente= Cliente.new
@@ -116,5 +140,10 @@ class FacturaVentaController < ApplicationController
     @cliente=@factura_venta.cliente
     @detalles_factura_venta=DetalleFacturaVentum.find(:all,:conditions=>['id_factura_venta = ? ',@factura_venta.id])
  end
-
+  def destroy_detalle_factura_venta_aux
+     @detalles_facturas_ventas_auxs=DetalleFacturaVentaAux.find(:all)
+     @detalles_facturas_ventas_auxs.each  do |detalle_factura_venta_aux|
+        detalle_factura_venta_aux.destroy
+      end
+  end
 end
