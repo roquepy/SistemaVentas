@@ -9,7 +9,7 @@ class Funcionario < ActiveRecord::Base
   validates :nombres, presence: true,:length => { :minimum => 3}, :format => { :with => /\A[a-zA-Z\s]+\z/ }
   validates :apellidos,presence: true, :length => { :minimum => 3}, :format => { :with => /\A[a-zA-Z\s]+\z/ }
   validates :direccion,presence: true,  :length => { :minimum =>3}, :format => { :with => /\A[a-zA-Z\s\d\.\/]+\z/}
-  validates :telefono,presence: true, :length => { :minimum => 6}, :format => { :with =>  /^[0-9]{3,4}-? ?[0-9]{5,6}$/ }
+  validates :telefono,presence: true, :length => { :minimum => 6}, :format => { :with => /^\d{3,4}\s\d{5,6}$/ }
 
   def full_name
    self.nombres.capitalize + ' ' + self.apellidos.capitalize
