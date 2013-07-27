@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130727122636) do
+ActiveRecord::Schema.define(:version => 20130727205533) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id"
@@ -189,6 +189,15 @@ ActiveRecord::Schema.define(:version => 20130727122636) do
     t.integer "cant_optima",                                                  :null => false
     t.decimal "precio_unitario",               :precision => 10, :scale => 0, :null => false
     t.integer "porcentaje",      :limit => 2,                                 :null => false
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string "rol", :limit => 20, :null => false
+  end
+
+  create_table "roles_usuarios", :force => true do |t|
+    t.integer "id_rol",     :null => false
+    t.integer "id_usuario", :null => false
   end
 
   create_table "stock", :force => true do |t|

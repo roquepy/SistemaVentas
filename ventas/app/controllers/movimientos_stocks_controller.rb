@@ -2,7 +2,7 @@ class MovimientosStocksController < ApplicationController
   # GET /movimientos_stocks
   # GET /movimientos_stocks.json
   def index
-    @movimientos_stocks = MovimientoStock.all
+    @detalles_movimientos_stocks = DetalleMovimientoStock.all
 
     respond_to do |format|
       format.html # index.html.erb
