@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @roles= Rol.find(:all)
     funcionario_new
   end
 

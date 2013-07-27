@@ -16,6 +16,8 @@
   inflect.irregular 'detalle_movimiento_stock', 'detalles_movimientos_stocks'
   inflect.irregular 'detalle_movimiento_stock_aux', 'detalles_movimientos_stocks_auxs'
   inflect.irregular 'tipo_movimiento', 'tipos_movimientos'
+  inflect.irregular 'rol', 'roles'
+  inflect.irregular 'rol_usuario', 'roles_usuarios'
 #   inflect.uncountable %w( fish sheep )
 end
 #

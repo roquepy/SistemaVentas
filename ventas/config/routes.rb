@@ -44,6 +44,8 @@ Ventas::Application.routes.draw do
   resources :clientes 
   resources :funcionarios
   resources :users
+  resources :roles
+  resources :roles_usuarios
   resources :sesiones
   resources :localidads
   resources :factura_venta do
