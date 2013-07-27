@@ -1,0 +1,51 @@
+
+
+
+<div class="mover">
+
+    <%= form_for@movimiento_stock, :validate => true do |f| %>
+       <%= render 'mensajes/error_mensajes', object: f.object %>
+          <legend class="span10">Nuevo Movimiento Stock </legend><br/>
+           <div class="container">
+              <div class= "span11" id="cabecera">
+                <!--<div class="row">-->
+                  <div class="span2" style="margin-top:10px;">
+                     <%= f.label :fecha,class:"label"%><br/>
+                     <%= f.text_field :fecha,:value => Date.today,:readonly => true%>
+                     <%= f.label "descripcion:",class:"label"%><br/>
+                     <%= f.text_field :descripcion%>
+                  </div>
+                  <div class="span3 offset1" style="margin-top:10px; margin-right:20px;">
+                       <%= f.label "Funcionario:",class:"label"%>
+                     <%= f.label current_user.funcionario.nombres+" " + current_user.funcionario.apellidos %> 
+                     <%= f.hidden_field :id_funcionario,:value =>current_user.funcionario.id,:readonly => true %>
+                  </div>   
+                  <div class="span3 " style="margin-top:10px;">
+                     <%= f.label "Tipo de Movimiento:",class:"label"%>
+                     <%=f.collection_select :id_tipo_movimiento,TipoMovimiento.find(:all),:id,:descripcion%>
+
+                  </div> 
+                </div> 
+              <div class="span10">
+                <div class="span2" style="margin-left:10px; margin-top:5px; margin-bottom:5px;">  
+                       <a style='cursor: pointer;' onclick="muestra_oculta('producto')"><i class="icon-plus-sign"></i>Cargar Producto</a>
+                </div>  
+                <div id="producto" style="display: none;">
+                      <%=render 'detalles_movimientos_stocks_auxs/form'%>
+                </div>
+              </div>
+              <div class="span10" style="margin-left:10px; width:1120px;">
+                    <div id="lista_productos">
+                      <%=render 'detalles_movimientos_stocks_auxs/lista_productos'%>
+                    </div>   
+              </div> 
+              <div class = "span11"> 
+                
+                  <div class="span2 offset8"><br/>
+                      <%= f.submit "Guardar", class: "btn btn-primary"%>
+                      <%= link_to "Cancelar", factura_venta_path, class: "btn btn-primary"%>
+                  </div> 
+              </div>    
+         
+        <% end %>
+          

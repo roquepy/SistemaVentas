@@ -1,0 +1,62 @@
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("table").tablecloth({
+          theme: "stats",
+          striped: true,
+          sortable: true,
+          condensed: true
+        });
+
+       var buscarEnTabla = function() {
+        var table = $('#table');
+        var value = this.value;
+        table.find('tr').each(function(index, row) {
+            var allCells = $(row).find('td');
+            if(allCells.length > 0) {
+                var found = false;
+                allCells.each(function(index, td) {
+                    var regExp = new RegExp(value, 'i');
+                    if(regExp.test($(td).text())) {
+                        found = true;
+                        return false;
+                    }
+                });
+                if (found == true) $(row).show();
+                else $(row).hide();
+            }
+        });
+    };
+     
+ });
+    
+  </script>
+  <%= form_tag detalles_movimientos_stocks_auxs_path,:method => 'get' do %>
+    
+     <div class="container-fluid">
+    <table class="table table-bordered" >
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @detalles_movimientos_stocks_auxs==nil
+      else
+        @detalles_movimientos_stocks_auxs.each  do |detalle_movimiento_stock_aux| %>  
+          <tr>
+          <td><%=detalle_movimiento_stock_aux.stock.producto.descripcion %></td>
+          <td><%=detalle_movimiento_stock_aux.cantidad%></td>
+                <td><i class="icon-edit" title="editar"></i><%=link_to "editar",edit_detalle_movimiento_stock_aux_path(detalle_movimiento_stock_aux),:onclick=>"muestra_oculta('producto')",:remote=>true%> &nbsp &nbsp &nbsp   
+              <i class="icon-remove-sign" title="borrar"></i><%= link_to "borrar",detalle_movimiento_stock_aux, :confirm => "Desea Eliminar el producto "+ detalle_movimiento_stock_aux.stock.producto.descripcion, :remote => true,:method => :delete %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+
+     </tbody>
+  </table>
+</div>
+<% end %>
+

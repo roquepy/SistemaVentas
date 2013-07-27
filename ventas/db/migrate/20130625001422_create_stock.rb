@@ -4,7 +4,6 @@ class CreateStock < ActiveRecord::Migration
       t.integer :id_deposito
       t.integer :id_producto
       t.integer :cantidad
-
       t.timestamps
     end
   end

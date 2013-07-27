@@ -1,5 +1,23 @@
 Ventas::Application.routes.draw do
 
+  resources :detalles_movimientos_stocks_auxs do
+    collection do
+       get :autocomplete_producto_descripcion
+    end
+    collection do
+      get :actualizar
+    end
+      collection do
+      get :guardar_o_actualizar
+    end
+  end
+
+  resources :detalles_movimientos_stocks
+
+  resources :movimientos_stocks
+
+  resources :tipos_movimientos
+
   resources :detalles_facturas_ventas_auxs do
      collection do
        get :autocomplete_producto_descripcion

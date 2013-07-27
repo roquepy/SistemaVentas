@@ -1,0 +1,21 @@
+<h1>Listing movimientos_stocks</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @movimientos_stocks.each do |movimiento_stock| %>
+  <tr>
+    <td><%= link_to 'Show', movimiento_stock %></td>
+    <td><%= link_to 'Edit', edit_movimiento_stock_path(movimiento_stock) %></td>
+    <td><%= link_to 'Destroy', movimiento_stock, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Movimiento stock', new_movimiento_stock_path %>
