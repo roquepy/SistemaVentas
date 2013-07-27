@@ -58,9 +58,16 @@ class DetallesMovimientosStocksController < ApplicationController
   # PUT /detalles_movimientos_stocks/1.json
   def update
     @detalle_movimiento_stock = DetalleMovimientoStock.find(params[:id])
-
+    @cantidad_vieja=@detalle_movimiento_stock.cantidad
+    @stock=Stock.find(:first,:conditions=>['id_stock = ? ',@detalle_movimiento_stock.id_stock])
     respond_to do |format|
       if @detalle_movimiento_stock.update_attributes(params[:detalle_movimiento_stock])
+        @cantidad_nueva=@detalle_movimiento_stock.cantidad
+        if @detalle_movimiento_stock.tipo_movimiento.descripcion=='entrada'
+          @stock.update_attributes(:cantidad=>@stock.cantidad-(@cantidad_vieja-@cantidad_nueva))
+          else
+          @stock.update_attributes(:cantidad=>@stock.cantidad+(@cantidad_vieja-@cantidad_nueva))
+        end    
         format.html { redirect_to @detalle_movimiento_stock, notice: 'Detalle movimiento stock was successfully updated.' }
         format.json { head :no_content }
       else
@@ -74,6 +81,12 @@ class DetallesMovimientosStocksController < ApplicationController
   # DELETE /detalles_movimientos_stocks/1.json
   def destroy
     @detalle_movimiento_stock = DetalleMovimientoStock.find(params[:id])
+    @stock=Stock.find(:first,:conditions=>['id_stock = ? ',@detalle_movimiento_stock.id_stock])
+    if @detalle_movimiento_stock.tipo_movimiento.descripcion=='entrada'
+      @stock.update_attributes(:cantidad=>@stock.cantidad-@detalle_movimiento_stock.cantidad)
+       else
+      @stock.update_attributes(:cantidad=>@stock.cantidad+@detalle_movimiento_stock.cantidad)
+    end   
     @detalle_movimiento_stock.destroy
 
     respond_to do |format|
