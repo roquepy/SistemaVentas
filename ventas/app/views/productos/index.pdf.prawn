@@ -1,9 +1,9 @@
-pdf.move_down(10) 
-
 require 'rubygems'
- require 'prawn'
+require 'prawn'
+  
 
-pdf.move_down(10) 
+  pdf.text_box @fecha, :size => 10, :style => :italic, :at => [10, pdf.cursor]
+  pdf.move_down(30) 
 
 logo = @logo
   initial_y = pdf.cursor
@@ -13,6 +13,7 @@ logo = @logo
   lineheight_y = 12
   font_size = 9
 
+  
   pdf.move_down initialmove_y
 
   # Add the font style and size
@@ -38,9 +39,12 @@ logo = @logo
   pdf.image logo, :width => 165, :heigth => 100, :position => :right
 
   pdf.move_cursor_to last_measured_y
+  pdf.move_down 30
+  pdf.text_box "Cantidad de productos registrados: ", :size => 10, :style => :bold, :at => [address_x,  pdf.cursor]
+  pdf.text_box "#{@productos.size}", :at => [address_x+180,  pdf.cursor]
 
   # client address
-  pdf.move_down 65
+  pdf.move_down 20
   last_measured_y = pdf.cursor
 
   pdf.move_down 45
@@ -76,3 +80,5 @@ end
   end
 
   pdf.move_down 1
+
+  pdf.text_box "#{will_paginate @productos}", :size => 10, :style => :bold, :at => [address_x,  pdf.cursor]

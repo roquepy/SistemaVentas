@@ -34,7 +34,7 @@
                     <td><%= f.total_descuento %></td>
                     <td><%= f.monto_total %></td>
                     <td><i class="icon-remove-sign" title="anular">&nbsp</i><%= link_to "Anular"%> &nbsp &nbsp &nbsp   
-                        <i class="icon-file" title="ver"></i></i>&nbsp<%= link_to "Ver",view_factura_ventum_path(f,:format => 'pdf') %>
+                        <i class="icon-file" title="ver"></i></i>&nbsp<%= link_to "Ver",view_factura_ventum_path(f,:format => 'pdf'), :target => '_blank' %>
                     </td>
                   </tr>
                 <% end %>
