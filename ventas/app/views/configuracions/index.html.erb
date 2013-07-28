@@ -1,13 +1,11 @@
   <%= form_tag configuracions_path, :method => 'get' do %>
+    <br/><br/>
     <div align="center">
     <h3> Datos de la Empresa</h3>
     </div>
-    
+    <br/>
      <div class="container-fluid">
-      <div class="mismalinea">
-        <label class="mismalinea">Filtrar:</label>
-       <input type="text" id="filtrar" placeholder="Filtrar" class="mismalinea-espacio">
-      </div>
+      
       <table id="table" class="table table-bordered">
         <thead>
             <tr>
@@ -32,7 +30,6 @@
               <td><%= c.telefono %></td>
               <td><%= c.telefono_auxiliar %></td>
               <td><i class="icon-edit" title="editar"></i><%= link_to "Editar", edit_configuracion_path(c) %> &nbsp &nbsp &nbsp   
-                      <i class="icon-remove-sign" title="borrar"></i><%= link_to "Borrar",c, :confirm => "Desea eliminar el cliente "+c.nombre_empresa, :method => :delete %>
               </td>
 
             </tr>
