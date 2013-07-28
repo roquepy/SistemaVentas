@@ -35,4 +35,29 @@
 				</div>
 	</div>	
 <% end %> 
+<script>
+  $(document).ready(function(){
+    $("input#timbrado").datepicker({
+      altField: $(this).attr("id"),
+      changeMonth: true,
+      changeYear: true,
+      dateFormat: 'dd-mm-yy',
+      monthNamesShort: ['Ene','Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul',
+        'Ago', 'Set', 'Oct', 'Nov', 'Dic'],
+      dayNamesMin: ['Do', 'Lu', 'Ma', 'Mie', 'Ju', 'Vie', 'Sa'],
+      gotoCurrent: true,
+      yearRange: '1900:2040'
+
+    });
+    // place holder para fechas
+    $("input#timbrado").attr({
+      'placeholder':'dd/mm/aaaa',
+      'size':'12',
+      'maxlength':'12'
+    });
+  });
+  
+  
+  
+</script>
      
