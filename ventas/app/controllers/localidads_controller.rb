@@ -1,4 +1,5 @@
 require 'custom_logger'
+
 class LocalidadsController < ApplicationController
   #
   # Antes de hacer cualquier cosa con este controler,
@@ -10,6 +11,7 @@ class LocalidadsController < ApplicationController
   # GET /localidads.json
   def index
     @localidads = Localidad.paginate(:page => params[:page], :per_page => 10)
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @localidads }
@@ -48,6 +50,7 @@ class LocalidadsController < ApplicationController
   def create
     @localidad = Localidad.new(params[:localidad])
      departamento_new
+     
     respond_to do |format|
       if @localidad.save
         format.html { redirect_to @localidad, notice: 'Los datos de la Localidad se han creado correctamente' }

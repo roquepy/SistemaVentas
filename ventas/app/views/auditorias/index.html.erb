@@ -1,21 +1,10 @@
 <div class="span13">
 <fieldset>
     <legend>
-      Log de Auditoria
+      Logo de Auditoria
     </legend>
     <%= form_tag :action => 'index', :controller => 'auditorias', :method => :post do%>
-      <div class="span1" align="center">
-          <%= label_tag :from, 'Desde:' %>
-      </div>
-      <div class="span3">
-          <%= text_field_tag :from, '', id: :from, :size => '20'%>  
-      </div>
-      <div class="span1">
-          <%= label_tag :to, "Hasta:" %>
-      </div>
-      <div class="span3">
-          <%= text_field_tag :to, '', id: :to, :size => '20'%>
-      </div>
+
     <% end %>
   </fieldset>
 
@@ -30,7 +19,9 @@
     </thead>
     <tbody>
       <tr>
-      <% @objects.each do |array| %>
+      <% @objects.each_with_index do |array, i| %>
+        <% id = "page-" + i.to_s %>
+
           <td class="span3">  <%= array[1] %> </td>
           <td class="span1">  <%= array[2] %>  </td>
           <td class="span8">  <%= array[3] %>  </td>
@@ -38,31 +29,19 @@
       <% end %>
     </tbody>
   </table>
+  <% if @objects.size > 9 %>
+    <div id="selector"></div>
+  <% end %>
 </div>
 </div>
-
-<script>
-  $(document).ready(function(){
-    $("input#from,input#to").datepicker({
-      altField: $(this).attr("id"),
-      changeMonth: true,
-      changeYear: true,
-      dateFormat: 'dd-mm-yy',
-      monthNamesShort: ['Ene','Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul',
-        'Ago', 'Set', 'Oct', 'Nov', 'Dic'],
-      dayNamesMin: ['Do', 'Lu', 'Ma', 'Mie', 'Ju', 'Vie', 'Sa'],
-      gotoCurrent: true,
-      yearRange: '1900:2040'
-
+<script type="text/javascript">
+    $(document).ready(function(){
+      test(0);
     });
-    // place holder para fechas
-    $("input#from,input#to").attr({
-      'placeholder':'dd/mm/aaaa',
-      'size':'12',
-      'maxlength':'12'
+    $('#selector').pagination({
+        items: <%= @objects.size %>,
+        itemsOnPage: 10,
+        cssStyle: 'light-theme',
+        onPageClick: function(pageNumber){test(((pageNumber-1)*10))}
     });
-  });
-  
-  
-  
 </script>
