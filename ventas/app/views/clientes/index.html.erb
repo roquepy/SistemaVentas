@@ -13,6 +13,7 @@
 			<table id="table" class="table table-bordered">
 				<thead>
 						<tr>
+							<th>N°</th>
 							<th>Nombre</th>
 							<th>Apellido</th>
 							<th>RUC/Nro CI</th>
@@ -24,8 +25,10 @@
 						</tr>
 				</thead>
 				<tbody>
-		            <% @clientes.each  do |cliente| %>					
+		            <% @clientes.each_with_index  do |cliente, i| %>
+		            <% id = "page-" +i.to_s %> 					
 						<tr>
+							<td><%= i+1 %></td>
 							<td><%= cliente.nombre %></td>
 							<td><%= cliente.apellido %></td>
 	                        <td><%= cliente.num_identidad %></td>

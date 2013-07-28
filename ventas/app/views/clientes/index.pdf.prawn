@@ -47,10 +47,11 @@ logo = @logo
   pdf.move_down 45
 
   invoice_services_data = [ 
-    ["Nombre(s)", "Apellido(s)", "RUC/N° CI", "Dirección", "Localidad", "Telefóno"]
+    ["N°", "Nombre(s)", "Apellido(s)", "RUC/N° CI", "Dirección", "Localidad", "Telefóno"]
   ]
-  invoice_services_data += @clientes.map do |item|  
+  invoice_services_data += @clientes.each_with_index.map do |item, i|  
     [  
+          i+1,
           item.nombre,  
           item.apellido,
           item.num_identidad,
@@ -61,21 +62,27 @@ logo = @logo
 
 end  
 
-  pdf.table(invoice_services_data, :width => pdf.bounds.width) do
-    style(row(1..-1).columns(0..-1), :padding => [4, 5, 4, 5], :borders => [:bottom], :border_color => 'dddddd')
+  pdf.table(invoice_services_data, :width => pdf.bounds.width, :header => true) do
+    style(row(1..-1).columns(0..-1), :padding => [4, 5, 3, 5], :borders => [:bottom], :border_color => 'dddddd')
     style(row(0), :background_color => 'e9e9e9', :border_color => 'dddddd', :font_style => :bold)
     style(row(0).columns(0..-1), :borders => [:top, :bottom])
     style(row(0).columns(0), :borders => [:top, :left, :bottom])
     style(row(0).columns(-1), :borders => [:top, :left, :bottom])
     style(row(-1), :border_width => 2)
     style(column(2..-1), :align => :left)
-    style(columns(0), :width => 90)
-    style(columns(1), :width => 90)
-    style(columns(2), :width => 65)
-    style(columns(3), :width => 165)
-    style(columns(4), :width => 65)
+    style(columns(0), :width => 30)
+    style(columns(1), :width => 80)
+    style(columns(2), :width => 80)
+    style(columns(3), :width => 65)
+    style(columns(4), :width => 155)
     style(columns(5), :width => 65)
+    style(columns(6), :width => 65)
 
   end
 
-  pdf.move_down 1
+pdf.page_count.times do |i| 
+  pdf.go_to_page(i+1) 
+  pdf.move_cursor_to last_measured_y
+  pdf.move_down 578.5
+  pdf.text_box "Pagina #{(i+1)} de #{pdf.page_count}", :at => [address_x+210,  pdf.cursor] 
+end
