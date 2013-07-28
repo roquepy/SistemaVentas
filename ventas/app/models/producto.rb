@@ -1,5 +1,6 @@
 class Producto < ActiveRecord::Base
-	attr_accessible :codigo,:descripcion, :cant_minima,:cant_optima,:precio_unitario,:porcentaje
+	
+  attr_accessible :codigo,:descripcion, :cant_minima,:cant_optima,:precio_unitario,:porcentaje
 	
   	validates :codigo, :numericality =>{:message => "El campo de datos debe ser un numero"}
     validates :codigo, :presence => true,:length => { :minimum =>1}, numericality: {greater_than_or_equal_to:1} ,:uniqueness =>{:message => "Este codigo se encuentra registrado"}
@@ -16,6 +17,7 @@ class Producto < ActiveRecord::Base
     validates :porcentaje,presence: true, :length => { :minimum => 1}
     has_many :detalle_factura_venta
     has_many :stock
+    
     def self.obtenerProducto(id_producto)
       descripcion=" "
           producto=Producto.find(:first,:conditions=>['id = ? ',id_producto]) 

@@ -1,7 +1,11 @@
 class DetalleFacturaVentum < ActiveRecord::Base
    attr_accessible :id_factura_venta,:id_producto,:cantidad,:descuento
+   
    belongs_to :factura_ventum, :foreign_key=>"id_factura_venta"
    belongs_to :producto, :foreign_key=>"id_producto"
+
+   validates :cantidad, :numericality =>{:message => "El campo de datos debe ser un numero"}
+   validates :cantidad, presence: true, :length => { :minimum => 1}, numericality: {greater_than_or_equal_to:1}
 
    def self.inicializar_detalle_factura_venta(_id_factura_venta,_id_producto,_cantidad,_descuento)
       id_factura_venta=_id_factura_venta
