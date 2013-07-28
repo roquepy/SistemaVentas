@@ -17,6 +17,7 @@
       <table id ="table" class="table table-bordered">
         <thead>
             <tr>
+              <th>N°</th>
               <th>Codigo</th>
               <th>Descripcion</th>
               <th>Cantidad Minima</th>
@@ -27,8 +28,10 @@
             </tr>
         </thead>
         <tbody>
-                <% @productos.each  do |producto| %>          
+                <% @productos.each_with_index  do |producto, i| %>
+                <% id = "page-" +i.to_s %>          
             <tr>
+              <td><%= i+1 %></td>
               <td><%= producto.codigo %></td>
               <td><%= producto.descripcion %></td>
               <td><%= producto.cant_minima %></td>

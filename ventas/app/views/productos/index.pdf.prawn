@@ -1,11 +1,12 @@
 require 'rubygems'
 require 'prawn'
+require 'date'
   
 
   pdf.text_box @fecha, :size => 10, :style => :italic, :at => [10, pdf.cursor]
   pdf.move_down(30) 
 
-logo = @logo
+  logo = @logo
   initial_y = pdf.cursor
   initialmove_y = 5
   address_x = 35
@@ -47,38 +48,45 @@ logo = @logo
   pdf.move_down 20
   last_measured_y = pdf.cursor
 
-  pdf.move_down 45
+  pdf.move_down 10
 
   invoice_services_data = [ 
-    ["Código", "Descripción", "(%) IVA", "Unidad Básica", "Precio Unitario (Gs)"]
+    ["N°",  "Código", "Descripción", "(%) IVA", "Unidad Básica", "Precio Unitario (Gs)"]
   ]
-  invoice_services_data += @productos.map do |item|  
+  #invoice_services_data += [["1","5555","coca cola 1 lts", "5", "unidad","56000"]]*35
+   invoice_services_data += @productos.each_with_index.map do |item,i|  
     [  
-        item.codigo,  
-        item.descripcion,
-        item.porcentaje,
-        "Unidad",
-        item.precio_unitario
+          i+1,
+          item.codigo,  
+          item.descripcion,
+          item.porcentaje,
+          "Unidad",
+          item.precio_unitario
     ] 
+  end  
 
-end  
-
-  pdf.table(invoice_services_data, :width => pdf.bounds.width) do
-    style(row(1..-1).columns(0..-1), :padding => [4, 5, 4, 5], :borders => [:bottom], :border_color => 'dddddd')
+  pdf.table(invoice_services_data, :width => pdf.bounds.width, :header => true) do
+    style(row(1..-1).columns(0..-1), :padding => [4, 5, 3, 5], :borders => [:bottom], :border_color => 'dddddd')
     style(row(0), :background_color => 'e9e9e9', :border_color => 'dddddd', :font_style => :bold)
     style(row(0).columns(0..-1), :borders => [:top, :bottom])
     style(row(0).columns(0), :borders => [:top, :left, :bottom])
     style(row(0).columns(-1), :borders => [:top, :left, :bottom])
     style(row(-1), :border_width => 2)
-    style(column(2..-1), :align => :center)
-    style(columns(0), :width => 90)
-    style(columns(1), :width => 260)
-    style(columns(2), :width => 50)
-    style(columns(3), :width => 70)
+    style(column(3..-1), :align => :center)
+    style(columns(0), :width => 30)
+    style(columns(1), :width => 70)
+    style(columns(2), :width => 250)
+    style(columns(3), :width => 50)
     style(columns(4), :width => 70)
+    style(columns(5), :width => 70)
 
   end
 
-  pdf.move_down 1
+  
 
-  pdf.text_box "#{will_paginate @productos}", :size => 10, :style => :bold, :at => [address_x,  pdf.cursor]
+pdf.page_count.times do |i| 
+  pdf.go_to_page(i+1) 
+  pdf.move_cursor_to last_measured_y
+  pdf.move_down 568.5
+  pdf.text_box "Pagina #{(i+1)} de #{pdf.page_count}", :at => [address_x+210,  pdf.cursor] 
+end
