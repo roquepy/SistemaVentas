@@ -1,3 +1,4 @@
+require 'custom_logger'
 class DetallesFacturasVentasAuxsController < ApplicationController
  before_filter :require_login
     autocomplete :producto, :descripcion, :extra_data => [:id,:descripcion] ,:display_value => :producto_descripcion
@@ -59,10 +60,7 @@ class DetallesFacturasVentasAuxsController < ApplicationController
         @detalle_factura_venta_aux = DetalleFacturaVentaAux.new(:id_producto=>params[:id_producto],:cantidad=>params[:cantidad],:descuento=>params[:descuento])
         respond_to do |format|
           if @detalle_factura_venta_aux.save
-            # CustomLogger.info("Se ha creado un Nuevo Detalle de Factura: Nro de Factura: #{@detalle_factura_ventum.factura_ventum.nro_factura.inspect}, Nombre del Producto: #{@detalle_factura_ventum.producto.descripcion.inspect}, Cantidad: #{@detalle_factura_ventum.cantidad.inspect}, Descuento: #{@detalle_factura_ventum.descuento.inspect}. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
-              #@stock=Stock.find(:first ,:conditions=>['id_producto = ? ',@detalle_factura_venta_aux.id_producto])
-             #@stock=Stock.find(@stock.id)
-             #@stock.update_attributes(:cantidad=>@stock.cantidad-@detalle_factura_venta_aux.cantidad)
+          CustomLogger.info("Se ha creado un Nuevo Detalle de Factura: Producto: #{@detalle_factura_venta_aux.producto.descripcion.inspect}, Cantidad: #{@detalle_factura_venta_aux.cantidad.inspect}, Descuento: #{@detalle_factura_venta_aux.descuento.inspect}. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
              @detalles_factura_ventas = DetalleFacturaVentaAux.listas_productos
              format.js {render 'guardar'}
           else
@@ -78,14 +76,18 @@ class DetallesFacturasVentasAuxsController < ApplicationController
   # PUT /detalle_factura_venta/1.json
   def update
     @detalle_factura_venta_aux = DetalleFacturaVentaAux.find(params[:id])
-    #@stock=Stock.find(:first ,:conditions=>['id_producto = ? ',@detalle_factura_venta_aux.id_producto])
-    @cantidad_anterior=@detalle_factura_venta_aux.cantidad
+     producto_antiguo= @detalle_factura_venta_aux.producto.descripcion
+     cantidad_antiguo= @detalle_factura_venta_aux.cantidad
+    descuento_antiguo= @detalle_factura_venta_aux.descuento
+  
     
      respond_to do |format|
       if @detalle_factura_venta_aux.update_attributes(:id_producto=>params[:id_producto],:cantidad=>params[:cantidad],:descuento=>params[:descuento])
-       # @cantidad_actual=@detalle_factura_venta_aux.cantidad
-        #@diferencia=@cantidad_anterior-@cantidad_actual
-        #@stock.update_attributes(:cantidad=>@stock.cantidad+@diferencia)
+        producto_nuevo= @detalle_factura_venta_aux.producto.descripcion
+         cantidad_nuevo= @detalle_factura_venta_aux.cantidad
+        descuento_nuevo= @detalle_factura_venta_aux.descuento
+
+        CustomLogger.info("Datos antes de realizar la Actualizacion del Detalle Factura: Producto: #{producto_antiguo.inspect}, Cantidad:#{cantidad_antiguo.inspect},Descuento: #{descuento_antiguo.inspect} .Usuario Responsable: #{current_user.funcionario.full_name.inspect}.Datos Actualizados: Producto:#{producto_nuevo.inspect}, Cantidad:#{cantidad_nuevo.inspect},Descuento:#{descuento_nuevo.inspect}. Fecha y Hora: #{Time.now}")
         @detalles_factura_ventas = DetalleFacturaVentaAux.listas_productos
          format.html { redirect_to detalle_factura_venta_aux_url }
       format.json { head :no_content }
@@ -104,10 +106,8 @@ class DetallesFacturasVentasAuxsController < ApplicationController
   # DELETE /detalle_factura_venta/1.json
   def destroy
     @detalle_factura_venta_aux = DetalleFacturaVentaAux.find(params[:id])
-    #@stock=Stock.find(:first ,:conditions=>['id_producto = ? ',@detalle_factura_venta_aux.id_producto])
-    #@stock=Stock.find(@stock.id)
-    #@stock.update_attributes(:cantidad=>@stock.cantidad+@detalle_factura_venta_aux.cantidad)
      @detalle_factura_venta_aux.destroy
+     CustomLogger.info("Han sido eliminados los siguientes datos del Detalle Factura: Producto:#{@detalle_factura_venta_aux.producto.descripcion.inspect}, Cantidad:#{@detalle_factura_venta_aux.cantidad.inspect}, Descuento: #{@detalle_factura_venta_aux.descuento.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
     respond_to do |format|
       format.html { redirect_to detalle_factura_venta_aux_url }
       format.json { head :no_content }

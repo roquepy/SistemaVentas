@@ -54,6 +54,7 @@ class FacturaVentaController < ApplicationController
      @factura_ventum = FacturaVentum.new(params[:factura_ventum])
     respond_to do |format|
       if @factura_ventum.save
+        CustomLogger.info("Se ha creado una nueva factura: Datos: Nro Factura: #{ @factura_ventum.nro_factura.inspect} ,Fecha:#{ @factura_ventum.fecha.inspect},Cliente: #{ @factura_ventum.cliente.nombre.inspect},Condicion de Pago:#{ @factura_ventum.condicion_de_pago.nombre_condicion_de_pago.inspect},Tipo de Valor:#{ @factura_ventum.tipo_valor_pago.descripcion.inspect}, Total IVA 5:#{@factura_ventum.total_iva5.inspect},Total IVA 10:#{ @factura_ventum.total_iva10.inspect},Descuento:#{ @factura_ventum.total_descuento.inspect},Total IVA :#{ @factura_ventum.total_iva.inspect},Monto Total:#{ @factura_ventum.monto_total.inspect}. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         @factura_venta=FacturaVentum.find(:last)
         @detalles_facturas_ventas_auxs=DetalleFacturaVentaAux.find(:all)
         @detalles_facturas_ventas_auxs.each  do |detalle_factura_venta_aux|
@@ -69,7 +70,6 @@ class FacturaVentaController < ApplicationController
         @libro_caja.update_attributes(:saldo_final=>@libro_caja.saldo_final+@factura_ventum.monto_total)
         destroy_detalle_factura_venta_aux
         format.html { redirect_to @factura_ventum, notice: 'Los datos de las Factura se han creado correctamente.'}
-        #CustomLogger.info("Se ha creado un nuevo Cliente: Datos: Nombre: #{@cliente.nombre.inspect} , Apellido:#{@cliente.apellido.inspect}, Nro de CI o RUC: #{@cliente.num_identidad.inspect}, Direccion:#{@cliente.direccion.inspect}, Telefono:#{@cliente.telefono.inspect}, Sexo:#{@cliente.sexo.inspect} y Localidad:#{@cliente.localidad.nombre}. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         format.json { render json: @factura_ventum, status: :created, location: @factura_ventum}
         format.js   {render 'create'}
       else
@@ -88,7 +88,7 @@ class FacturaVentaController < ApplicationController
     respond_to do |format|
       if @factura_ventum.update_attributes(params[:factura_ventum])
         @factura_ventum.update_attributes(:total_descuento=>params[:total_descuento],:total_iva5=>params[:total_iva5],:total_iva10=>params[:total_iva10],:total_iva=>params[:total_iva],:monto_total=>params[:monto_total])
-        CustomLogger.info("Se ha creado una Nueva Factura de Ventas con los siguientes datos: Numero de Factura: #{@factura_ventum.nro_factura.inspect} , Cliente:#{@factura_ventum.cliente.nombre.inspect}, Funcionario: #{current_user.funcionario.full_name.inspect}, Fecha:#{@factura_ventum.fecha.inspect}, Condicion de Pago:#{@factura_ventum.condicion_de_pago.nombre_condicion_de_pago.inspect}, Tipo de Valor:#{@factura_ventum.tipo_valor_pago.descripcion.inspect}, Total IVA 5: #{@factura_ventum.total_iva5.inspect}, Total IVA 10: #{@factura_ventum.total_iva10.inspect}, Total IVA: #{@factura_ventum.total_iva.inspect}, Descuento: #{@factura_ventum.total_descuento.inspect} y Monto Total: #{@factura_ventum.monto_total}. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
+        CustomLogger.info("Se ha creado una Nueva Factura de Ventas con los siguientes datos: Numero de Factura: #{@factura_ventum.nro_factura.inspect} , Cliente:#{@factura_ventum.cliente.nombre.inspect}, Funcionario: #{current_user.funcionario.full_name.inspect}, Fecha: #{@factura_ventum.fecha.inspect}, Condicion de Pago: #{@factura_ventum.condicion_de_pago.nombre_condicion_de_pago.inspect}, Tipo de Valor: #{@factura_ventum.tipo_valor_pago.descripcion.inspect}, Total IVA 5: #{@factura_ventum.total_iva5.inspect}, Total IVA 10: #{@factura_ventum.total_iva10.inspect}, Total IVA: #{@factura_ventum.total_iva.inspect}, Descuento: #{@factura_ventum.total_descuento.inspect} y Monto Total: #{@factura_ventum.monto_total}. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         @libro_caja=LibroCaja.find(:first)
         @tipo_documento=TipoDocumento.find(:first)
         @detalle_libro_caja=DetalleLibroCaja.new(:id_libro_caja=>@libro_caja.id,:id_funcionario=>@factura_ventum.id_funcionario,:id_tipo_documento=>@tipo_documento.id,:nro_asiento=>1,:fecha=>Date.today,:descripcion=>"Ventas de Mercaderias",:ingreso=>1,:egreso=>0,:nro_documento=>@factura_ventum.nro_factura)
@@ -113,6 +113,8 @@ class FacturaVentaController < ApplicationController
      detalle_factura_venta.destroy
      end     
      @factura_ventum.destroy
+     CustomLogger.info("Se ha anulado  Factura de Ventas con los siguientes datos: Nro de Factura: #{@factura_ventum.nro_factura.inspect} , Cliente:#{@factura_ventum.cliente.nombre.inspect}, y Monto Total: #{@factura_ventum.monto_total}. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
+       
     respond_to do |format|
        format.html { redirect_to factura_venta_url }
       format.json { render json: @factura_ventum }

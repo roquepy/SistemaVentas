@@ -32,7 +32,7 @@
                      <%= hidden_field_tag :id,params[:id],:value=>@id%>
                         <label class="label">Producto:</label>
                          <%= autocomplete_field_tag :id_producto,params[:id_producto] ,autocomplete_producto_descripcion_detalles_facturas_ventas_auxs_path,:id_element=>"#id_producto",:value=>@producto,:id=>"descripcion",:onblur=>"validarCampoVacioProducto(this)"%>
-                         <%= hidden_field_tag :id_producto,:id=>"id_producto"%>
+                         <%= hidden_field_tag :id_producto,params[:id_producto],:id=>"id_producto",:value=>@producto_id%>
                          <div id="producto_error" class="span3" style="display: none; " >
                                <label>El campo no puede estar vacio </label>
                         </div>
