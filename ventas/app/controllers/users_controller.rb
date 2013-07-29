@@ -2,7 +2,7 @@
 require 'custom_logger'
 
 class UsersController < ApplicationController
-    before_filter :require_login
+    #before_filter :require_login
 
   def index
     @users =User.paginate(:page => params[:page], :per_page => 10)
@@ -27,6 +27,8 @@ class UsersController < ApplicationController
     funcionario_new
      respond_to do |format|
         if @user.save
+          @rol_usuario=RolUsuario.new(:id_usuario=>@user.id,:id_rol=>params[:id_rol])
+          @rol_usuario.save
           format.html { redirect_to @user, notice: 'Los datos del  usuario se han creado correctamente.' }
           CustomLogger.info("Se ha creado un nuevo Usuario. Datos: Usuario:#{@user.username.inspect},Nueva Contrasena pertenecientes al Funcionario:#{@user.funcionario.nombres.inspect} .Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
           format.json { render json: @user, status: :created, location: @user }
@@ -50,6 +52,9 @@ class UsersController < ApplicationController
     usuario_antiguo= @user.username
     funcionario_antiguo= @user.funcionario.nombres
       if @user.update_attributes(params[:user])
+          @rol_usuario=RolUsuario.find(:first,:conditions=>['id_usuario = ? ',@user.id])
+          @rol_usuario=RolUsuario.find(@rol_usuario.id)
+          @rol_usuario.update_attributes(:id_usuario=>@user.id,:id_rol=>2)
            usuario_nuevo= @user.username
            funcionario_nuevo= @user.funcionario.nombres
            CustomLogger.info("Datos antes de realizar la Actualizacion del Usuario: Usuario: #{usuario_antiguo.inspect}, Contrasena Original y Funcionario:#{funcionario_antiguo.inspect}.Usuario Responsable: #{current_user.funcionario.full_name.inspect}.Nuevos Datos: Usuario:#{usuario_nuevo.inspect}, Contrasena Nueva y Funcionario:#{funcionario_nuevo.inspect}. Fecha y Hora: #{Time.now}")

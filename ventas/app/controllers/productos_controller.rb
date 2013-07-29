@@ -54,6 +54,9 @@ class ProductosController < ApplicationController
     @producto = Producto.new(params[:producto])
     respond_to do |format|
       if @producto.save
+        @deposito=Deposito.find(:first)
+        @stock=Stock.new(:cantidad=>0,:id_producto=>@producto.id,:id_deposito=>@deposito.id)
+        @stock.save
         format.html { redirect_to @producto, notice: 'Los datos del producto se han creado correctamente'}
         CustomLogger.info("Se ha creado un nuevo Producto: Datos: Codigo: #{@producto.codigo.inspect} , Descripcion:#{@producto.descripcion.inspect}, Cantidad Minima: #{@producto.cant_minima.inspect}, Cantidad Optima: #{@producto.cant_optima.inspect}, Precio Unitario: #{@producto.precio_unitario.inspect}, Porcentaje IVA: #{@producto.porcentaje.inspect}.Usuario Responsable:#{current_user.funcionario.full_name.inspect}, Fecha y Hora: #{Time.now}")
         format.json { render json: @producto, status: :created, location: @producto }

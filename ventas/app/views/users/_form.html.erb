@@ -1,3 +1,16 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+             var _id_rol = 1;
+             $.ajax({
+                    data: {"id_rol":_id_rol},
+                    async: true,
+                    dataType: 'script'
+                    });
+                    return false;
+         });
+</script>
+
+
 <div class="span8 offset2" style="margin-top:80px;">
     <%= form_for(@user, :validate => true) do |f| %>
           <%= render 'mensajes/error_mensajes', object: f.object %>
@@ -15,14 +28,8 @@
 						<%= f.label "Contrasena (*)",class:"label" %>
 					    <%= f.password_field :password,:placeholder => " Ingrese Contrasena",:maxlength=>"18" %><br/>
 					    <%= f.label "Roles(*)" ,class:"label"%>
-					    <ul class="field-list">
-						    <% @roles.each do |rol| %>
-				              <li class="left">
-				                <%= radio_button_tag :rol_id, rol.id %>
-                              <%= label_tag :rol_id, rol.rol %>				                
-				              </li>
-	                       <% end %>
-	                     </ul>
+					
+            <%= select_tag :id_rol, options_for_select(Rol.find(:all).collect{ |u| [u.rol, u.id] })%>
                   </div> 
                </div>
         

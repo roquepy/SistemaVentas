@@ -42,7 +42,7 @@
                     </div>   
                     <div class="span2 ">
                        <label class="label">Cantidad:</label>
-                       <%= text_field_tag :cantidad,params[:cantidad] ,class:"span1",:id=>"cantidad",:ajax_path => precio_producto_detalles_facturas_ventas_auxs_path,:onblur=>"validarCampoCantidad(this)",:maxlength=>"3"%>
+                       <%= text_field_tag :cantidad,params[:cantidad] ,class:"span1",:id=>"cantidad",:ajax_path => precio_producto_detalles_facturas_ventas_auxs_path,:onblur=>"validarCampoCantidad(this)",:maxlength=>"3",:value=>@cantidad%>
                         <div id="cantidad_error" class="span3" style="display:none; ">
                                <label>El campo no puede estar vacio </label>
                         </div>
@@ -55,7 +55,7 @@
                   </div>
                     <div class="span2" >
                         <label class="label">Descuento:</label>
-                        <%= text_field_tag :descuento,params[:descuento], class:"span1", :id=>"descuento",:onblur=>"validarCampoDescuento(this)",:maxlength=>"3"%>
+                        <%= text_field_tag :descuento,params[:descuento], class:"span1", :id=>"descuento",:onblur=>"validarCampoDescuento(this)",:maxlength=>"3",:value=>@descuento%>
                         <div id="descuento_error" class="span3" style="display:none; ">
                                <label>El campo no puede estar vacio </label>
                         </div>
