@@ -45,12 +45,7 @@ Ventas::Application.routes.draw do
   resources :reports do
     collection do
       get :consult_between
-    end
-    collection do
       get :change_data
-    end
-    collection do
-      get :alumnos
     end
   end
   resources :funcionarios
