@@ -10,6 +10,9 @@ Ventas::Application.routes.draw do
       collection do
       get :guardar_o_actualizar
     end
+    collection do
+      get :cantidad_stock
+    end
   end
 
   resources :detalles_movimientos_stocks

@@ -13,22 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20130727205533) do
 
-  create_table "audits", :force => true do |t|
-    t.integer  "auditable_id"
-    t.string   "auditable_type"
-    t.integer  "user_id"
-    t.string   "user_type"
-    t.string   "username"
-    t.string   "action"
-    t.text     "change_log"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
-
-  add_index "audits", ["auditable_id", "auditable_type"], :name => "auditable_index"
-  add_index "audits", ["created_at"], :name => "index_audits_on_created_at"
-  add_index "audits", ["user_id", "user_type"], :name => "user_index"
-
   create_table "clientes", :force => true do |t|
     t.string  "nombre",        :limit => 50, :null => false
     t.string  "apellido",      :limit => 50, :null => false
@@ -77,29 +61,17 @@ ActiveRecord::Schema.define(:version => 20130727205533) do
   add_index "detalle_factura_venta", ["id_factura_venta"], :name => "detalle_factura_venta_id_factura_venta_fk"
   add_index "detalle_factura_venta", ["id_producto"], :name => "detalle_factura_venta_id_producto_fk"
 
-  create_table "detalles_facturas_ventas_auxs", :force => true do |t|
+  create_table "detalle_factura_venta_auxes", :force => true do |t|
     t.integer "id_producto", :null => false
     t.integer "cantidad",    :null => false
     t.integer "descuento"
   end
 
-  create_table "detalles_libros_cajas", :force => true do |t|
-    t.integer  "id_libro_caja"
-    t.integer  "id_funcionario"
-    t.integer  "id_tipo_documento"
-    t.integer  "nro_asiento"
-    t.string   "fecha"
-    t.string   "descripcion"
-    t.integer  "ingreso"
-    t.integer  "egreso"
-    t.integer  "nro_documento"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+  create_table "detalles_facturas_ventas_auxs", :force => true do |t|
+    t.integer "id_producto", :null => false
+    t.integer "cantidad",    :null => false
+    t.integer "descuento"
   end
-
-  add_index "detalles_libros_cajas", ["id_funcionario"], :name => "detalles_libros_cajas_id_funcionario_fk"
-  add_index "detalles_libros_cajas", ["id_libro_caja"], :name => "detalles_libros_cajas_id_libro_caja_fk"
-  add_index "detalles_libros_cajas", ["id_tipo_documento"], :name => "detalles_libros_cajas_id_tipo_documento_fk"
 
   create_table "detalles_movimientos_stocks", :force => true do |t|
     t.integer "id_movimiento_stock", :null => false
@@ -191,13 +163,13 @@ ActiveRecord::Schema.define(:version => 20130727205533) do
     t.integer "porcentaje",                                                   :null => false
   end
 
-  create_table "roles", :force => true do |t|
-    t.string "rol", :limit => 20, :null => false
-  end
-
   create_table "roles_usuarios", :force => true do |t|
     t.integer "id_rol",     :null => false
     t.integer "id_usuario", :null => false
+  end
+
+  create_table "rols", :force => true do |t|
+    t.string "rol", :limit => 20, :null => false
   end
 
   create_table "stock", :force => true do |t|
@@ -239,10 +211,6 @@ ActiveRecord::Schema.define(:version => 20130727205533) do
 
   add_foreign_key "detalle_factura_venta", "factura_venta", :name => "detalle_factura_venta_id_factura_venta_fk", :column => "id_factura_venta"
   add_foreign_key "detalle_factura_venta", "productos", :name => "detalle_factura_venta_id_producto_fk", :column => "id_producto"
-
-  add_foreign_key "detalles_libros_cajas", "funcionarios", :name => "detalles_libros_cajas_id_funcionario_fk", :column => "id_funcionario"
-  add_foreign_key "detalles_libros_cajas", "libros_cajas", :name => "detalles_libros_cajas_id_libro_caja_fk", :column => "id_libro_caja"
-  add_foreign_key "detalles_libros_cajas", "tipos_documentos", :name => "detalles_libros_cajas_id_tipo_documento_fk", :column => "id_tipo_documento"
 
   add_foreign_key "factura_venta", "clientes", :name => "factura_venta_id_cliente_fk", :column => "id_cliente"
   add_foreign_key "factura_venta", "condicion_de_pagos", :name => "factura_venta_id_condicion_pago_fk", :column => "id_condicion_pago"

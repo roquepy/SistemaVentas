@@ -56,7 +56,6 @@ class FacturaVentaController < ApplicationController
       if @factura_ventum.save
         @factura_venta=FacturaVentum.find(:last)
         @detalles_facturas_ventas_auxs=DetalleFacturaVentaAux.find(:all)
-
         @detalles_facturas_ventas_auxs.each  do |detalle_factura_venta_aux|
            @detalle_factura_venta= DetalleFacturaVentum.new(:id_factura_venta=>@factura_venta.id,:id_producto=>detalle_factura_venta_aux.id_producto,:cantidad=>detalle_factura_venta_aux.cantidad,:descuento=>detalle_factura_venta_aux.descuento)
            @detalle_factura_venta.save
@@ -64,6 +63,10 @@ class FacturaVentaController < ApplicationController
            @stock=Stock.find(@stock.id)
            @stock.update_attributes(:cantidad=>@stock.cantidad-detalle_factura_venta_aux.cantidad)
         end
+        @libro_caja=LibroCaja.find(:first)
+        @detalle_libro_caja=DetalleLibroCaja.new(:id_libro_caja=>@libro_caja.id,:id_funcionario=>@factura_venta.id_funcionario,:id_tipo_documento=>1,:fecha=>Date.today,:descripcion=>"Ventas de Mercaderias",:ingreso=>@factura_ventum.monto_total,:egreso=>0,:nro_documento=>@factura_ventum.nro_factura)
+        @detalle_libro_caja.save
+        @libro_caja.update_attributes(:saldo_final=>@libro_caja.saldo_final+@factura_ventum.monto_total)
         destroy_detalle_factura_venta_aux
         format.html { redirect_to @factura_ventum, notice: 'Los datos de las Factura se han creado correctamente.'}
         #CustomLogger.info("Se ha creado un nuevo Cliente: Datos: Nombre: #{@cliente.nombre.inspect} , Apellido:#{@cliente.apellido.inspect}, Nro de CI o RUC: #{@cliente.num_identidad.inspect}, Direccion:#{@cliente.direccion.inspect}, Telefono:#{@cliente.telefono.inspect}, Sexo:#{@cliente.sexo.inspect} y Localidad:#{@cliente.localidad.nombre}. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")

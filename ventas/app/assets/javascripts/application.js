@@ -124,6 +124,22 @@ function rangeDate() {
    
  }
 
+  function validarCampoCantidadMS(campo) {
+   
+   if (CampoVacioCantidad(campo)==true){
+    return true;
+   }
+     if (esNumeroCantidad(campo)==true){
+      return true;
+     }
+    if( comparar_cantidad_stock(campo)==true){
+        return true;
+    }
+    
+   
+   
+ }
+
  function validarCampoDescuento(campo) {
    
    if (CampoVacioDescuento(campo)==true){
@@ -206,3 +222,4 @@ function cancelar() {
    $("#cantidad").val("");
    $("#descuento").val("");
 }
+

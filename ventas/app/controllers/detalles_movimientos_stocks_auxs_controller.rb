@@ -42,6 +42,7 @@ class DetallesMovimientosStocksAuxsController < ApplicationController
      @producto_id=@detalle_movimiento_stock_aux.stock.producto.id
     @producto=@detalle_movimiento_stock_aux.stock.producto.descripcion
     @cantidad=@detalle_movimiento_stock_aux.cantidad
+    
     respond_to do |format|
       format.js {render 'edit'}
       
@@ -105,5 +106,15 @@ class DetallesMovimientosStocksAuxsController < ApplicationController
          else
           update
          end
+  end
+  def cantidad_stock
+    if params[:id_producto].blank?
+      else
+      @stock=Stock.find(:first ,:conditions=>['id_producto = ? ',params[:id_producto]])
+      @cantidad=@stock.cantidad
+      respond_to do |format|
+        format.js{render 'cantidad_stock'}
+      end
+    end
   end
 end

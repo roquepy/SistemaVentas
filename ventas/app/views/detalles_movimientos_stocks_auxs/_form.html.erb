@@ -12,23 +12,49 @@
                     dataType: 'script'
                     });
                     return false;
-         })
+         });
+        $('#cantidad').on("click", function() {
+             var _id_producto = $("#id_producto").val();
+             $.ajax({
+                    url: $(this).attr('ajax_path'),
+                    data: {"id_producto":_id_producto},
+                    async: true,
+                    dataType: 'script'
+                    });
+                    return false;
+         });
     });
 </script>
        <div class="span11" id="productmodal">
         <%=hidden_field_tag :id,params[:id],:value=>@id%>
             <div class="span2">
                 <label class="label">Producto:</label>
-                 <%= autocomplete_field_tag :descripcion,params[:descripcion], autocomplete_producto_descripcion_detalles_movimientos_stocks_auxs_path,:id_element=>"#id_producto",:value=>@producto,:id=>"descripcion"%>
+                 <%= autocomplete_field_tag :descripcion,params[:descripcion], autocomplete_producto_descripcion_detalles_movimientos_stocks_auxs_path,:id_element=>"#id_producto",:value=>@producto,:id=>"descripcion",:onblur=>"validarCampoVacioProducto(this)"%>
                  <%=hidden_field_tag :id_producto,params[:id_producto],:id=>"id_producto",:value=>@producto_id%>
+                 <div id="producto_error" style="display: none; " >
+                      <label>El campo no puede estar vacio </label>
+                </div>
+                <div id="cant_stock" style="display:none;">
+                    <%= render 'detalles_movimientos_stocks_auxs/cantidad_stock'%>
+                </div>
             </div>
             <div class="span1 offset1">
                <label class="label">Cantidad:</label>
-               <%=text_field_tag :cantidad,params[:cantidad],:value=>@cantidad, class: "span2",:id=>"cantidad"%>
+               <%=text_field_tag :cantidad,params[:cantidad],:value=>@cantidad, class: "span2",:ajax_path => cantidad_stock_detalles_movimientos_stocks_auxs_path,:id=>"cantidad",:onblur=>"validarCampoCantidadMS(this)",:maxlength=>"2"%>
+               <div id="cantidad_error" style="display:none; ">
+                     <label>El campo no puede estar vacio </label>
+               </div>
+               <div id="numero_error" style="display:none; ">
+                    <label>El campo debe de ser numerico </label>
+                </div>
+                <div id="stock_cantidad_error" style="display:none; ">
+                    <label>La cantidad introducida supera a la cantidad del stock </label>
+                 </div>
           </div>
                         
             <div class="span1 offset1" align="center" style="margin-top:25px;">
                 <%= link_to "Guardar", "#", :id => "guardar_o_actualizar",  :class => 'btn btn-success',:ajax_path => guardar_o_actualizar_detalles_movimientos_stocks_auxs_path%>
+                <button type="button" class="btn" onclick="cancelar()">Cancelar</button>
             </div>  
         </div>  <br/><br/>               
 
