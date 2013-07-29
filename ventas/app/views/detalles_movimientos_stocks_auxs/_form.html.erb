@@ -23,6 +23,15 @@
                     });
                     return false;
          });
+
+        function validarCampoProducto(campo){
+         if (validarCampoVacioProducto(campo)==true){
+            return true;
+           }
+             if (solo_Letras(campo)==true){
+              return true;
+             }
+         }
     });
 </script>
        <div class="span11" id="productmodal">

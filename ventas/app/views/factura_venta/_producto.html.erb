@@ -24,6 +24,7 @@
                     });
                     return false;
          });
+
     });
 </script>
        <div class="span11" id="productmodal">
@@ -34,6 +35,9 @@
                          <%= hidden_field_tag :id_producto,:id=>"id_producto"%>
                          <div id="producto_error" class="span3" style="display: none; " >
                                <label>El campo no puede estar vacio </label>
+                        </div>
+                        <div id="solo_letras_error" class="span3" style="display: none; " >
+                               <label>El texto no es valido</label>
                         </div>
         
                     </div>

@@ -19,10 +19,13 @@
                        <%= f.label "Clientes:",class:"label"%>
                        <%= f.autocomplete_field :id_cliente,autocomplete_cliente_nombre_factura_venta_path,:id_element=>"#cliente_id",:onblur=>"validarCampoVacioCliente(this)",id:"cliente"%>  
                         <%= f.hidden_field :id_cliente,id:"cliente_id"%>
+                        <a data-toggle="modal" href="#cliente" > <i class="icon-plus-sign"></i></a>
                         <div id="cliente_error" style="display: none; " >
                                <label>El campo no puede estar vacio </label>
                         </div>
-                      <a data-toggle="modal" href="#cliente" > <i class="icon-plus-sign"></i></a>
+                        <div id="solo_letras_error" class="span3" style="display: none; " >
+                               <label>El texto no es valido</label>
+                        </div>
                         <%= f.label "Condicion de Pago:",class:"label"%>
                         <%=f.collection_select :id_condicion_pago,CondicionDePago.find(:all),:id,:nombre_condicion_de_pago,id:"select",:selected => 1%>
                   </div>  

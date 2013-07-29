@@ -33,7 +33,7 @@
                     <td><%= f.total_iva10 %></td>
                     <td><%= f.total_descuento %></td>
                     <td><%= f.monto_total %></td>
-                    <td><i class="icon-remove-sign" title="anular">&nbsp</i><%= link_to "Anular"%> &nbsp &nbsp &nbsp   
+                    <td><i class="icon-remove-sign" title="anular">&nbsp</i><%= link_to "Anular",f, :confirm => "Desea eliminar la factura nro: "+f.nro_factura.to_s, :method => :delete%> &nbsp &nbsp &nbsp   
                         <i class="icon-file" title="ver"></i></i>&nbsp<%= link_to "Ver",view_factura_ventum_path(f,:format => 'pdf'), :target => '_blank' %>
                     </td>
                   </tr>
