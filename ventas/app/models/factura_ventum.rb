@@ -8,7 +8,8 @@ class FacturaVentum < ActiveRecord::Base
     belongs_to :funcionario, :foreign_key=>"id_funcionario"
     has_many :detalle_factura_venta
 
-    
+    validates :id_cliente,:presence => true
+
     def  self.ultima_factura()
         return FacturaVentum.find(:last)
     end
