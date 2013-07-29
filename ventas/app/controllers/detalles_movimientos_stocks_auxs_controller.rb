@@ -1,3 +1,4 @@
+require 'custom_logger'
 class DetallesMovimientosStocksAuxsController < ApplicationController
   before_filter :require_login
     autocomplete :producto, :descripcion, :extra_data => [:id,:descripcion] ,:display_value => :producto_descripcion
@@ -57,6 +58,8 @@ class DetallesMovimientosStocksAuxsController < ApplicationController
    
     respond_to do |format|
       if @detalle_movimiento_stock_aux.save
+
+        CustomLogger.info("Se ha creado un Nuevo Detalle Movimiento Stock: Producto: #{@detalle_movimiento_stock_aux.stock.producto.descripcion.inspect}, Cantidad: #{@detalle_movimiento_stock_aux.cantidad.inspect}. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         format.html { redirect_to @detalle_movimiento_stock_aux, notice: 'Detalle movimiento stock aux was successfully created.' }
         format.json { render json: @detalle_movimiento_stock_aux, status: :created, location: @detalle_movimiento_stock_aux }
           @detalles_movimientos_stocks_auxs = DetalleMovimientoStockAux.listas_productos
@@ -73,8 +76,13 @@ class DetallesMovimientosStocksAuxsController < ApplicationController
   # PUT /detalles_movimientos_stocks_auxs/1.json
   def update
     @detalle_movimiento_stock_aux = DetalleMovimientoStockAux.find(params[:id])
+    producto_antiguo= @detalle_movimiento_stock_aux.stock.producto.descripcion
+     cantidad_antiguo= @detalle_movimiento_stock_aux.cantidad
     respond_to do |format|
       if @detalle_movimiento_stock_aux.update_attributes(:id_stock=>@detalle_movimiento_stock_aux.id_stock,:cantidad=>params[:cantidad])
+        producto_nuevo= @detalle_movimiento_stock_aux.stock.producto.descripcion
+        cantidad_nuevo= @detalle_movimiento_stock_aux.cantidad
+        CustomLogger.info("Datos antes de realizar la Actualizacion del Detalle Movimiento Stock: Producto: #{producto_antiguo.inspect}, Cantidad:#{cantidad_antiguo.inspect} .Usuario Responsable: #{current_user.funcionario.full_name.inspect}.Datos Actualizados: Producto:#{producto_nuevo.inspect}, Cantidad:#{cantidad_nuevo.inspect}. Fecha y Hora: #{Time.now}")
         format.html { redirect_to @detalle_movimiento_stock_aux, notice: 'Detalle movimiento stock aux was successfully updated.' }
         format.json { head :no_content }
          @detalles_movimientos_stocks_auxs = DetalleMovimientoStockAux.listas_productos
@@ -91,7 +99,7 @@ class DetallesMovimientosStocksAuxsController < ApplicationController
   def destroy
     @detalle_movimiento_stock_aux = DetalleMovimientoStockAux.find(params[:id])
     @detalle_movimiento_stock_aux.destroy
-
+     CustomLogger.info("Han sido eliminados los siguientes datos del Detalle Movimiento Stock: Producto:#{@detalle_movimiento_stock_aux.stock.producto.descripcion.inspect}, Cantidad:#{@detalle_movimiento_stock_aux.cantidad.inspect}. Usuario Responsable: #{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
     respond_to do |format|
       format.html { redirect_to detalles_movimientos_stocks_auxs_url }
       format.json { head :no_content }

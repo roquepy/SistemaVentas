@@ -45,6 +45,7 @@ class MovimientosStocksController < ApplicationController
    #detalle_movimiento_stock_aux
     respond_to do |format|
       if @movimiento_stock.save
+        CustomLogger.info("Se ha creado un Nuevo Movimiento Stock: Fecha: #{@movimiento_stock.fecha.inspect}, Tipo de Movimiento: #{@movimiento_stock.tipo_movimiento.descripcion.inspect},Descripcion: #{@movimiento_stock.descripcion.inspect}. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
         @movimiento_stock=MovimientoStock.find(:last)
         @detalles_movimientos_stocks_auxs=DetalleMovimientoStockAux.find(:all)
 
@@ -87,8 +88,12 @@ class MovimientosStocksController < ApplicationController
   # DELETE /movimientos_stocks/1.json
   def destroy
     @movimiento_stock = MovimientoStock.find(params[:id])
+    @detalles_movimientos_stocks = DetalleMovimientoStock.find(:all,:conditions=>['id_movimiento_stock = ? ',@movimiento_stock.id])
+     @detalles_movimientos_stocks.each  do |detalle_movimiento_stock|
+     detalle_movimiento_stock.destroy
+     end
     @movimiento_stock.destroy
-
+    CustomLogger.info("Se ha eliminado un  Movimiento Stock: Fecha: #{@movimiento_stock.fecha.inspect}, Tipo de Movimiento: #{@movimiento_stock.tipo_movimiento.descripcion.inspect},Descripcion: #{@movimiento_stock.descripcion.inspect}. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
     respond_to do |format|
       format.html { redirect_to movimientos_stocks_url }
       format.json { head :no_content }

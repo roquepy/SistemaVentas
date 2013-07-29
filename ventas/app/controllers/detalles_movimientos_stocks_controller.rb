@@ -81,7 +81,7 @@ class DetallesMovimientosStocksController < ApplicationController
   # DELETE /detalles_movimientos_stocks/1.json
   def destroy
     @detalle_movimiento_stock = DetalleMovimientoStock.find(params[:id])
-    @stock=Stock.find(:first,:conditions=>['id_stock = ? ',@detalle_movimiento_stock.id_stock])
+    @stock=Stock.find(:first,:conditions=>['id= ? ',@detalle_movimiento_stock.id_stock])
     if @detalle_movimiento_stock.tipo_movimiento.descripcion=='entrada'
       @stock.update_attributes(:cantidad=>@stock.cantidad-@detalle_movimiento_stock.cantidad)
        else
