@@ -27,27 +27,53 @@
     });
 </script>
        <div class="span11" id="productmodal">
-        <%=hidden_field_tag :id,params[:id],:value=>@id%>
-            <div class="span2">
-                <label class="label">Producto:</label>
-                 <%= autocomplete_field_tag :descripcion,params[:descripcion], autocomplete_producto_descripcion_detalles_facturas_ventas_auxs_path,:id_element=>"#id_producto",:value=>@producto,:id=>"descripcion"%>
-                 <div id="precio_producto" style="display: none; ">
-                      <%=render 'detalles_facturas_ventas_auxs/precio_producto'%>
-                </div>
-                 <%=hidden_field_tag :id_producto,params[:id_producto],:id=>"id_producto",:value=>@producto_id%>
-            </div>
-            <div class="span1 offset1">
-               <label class="label">Cantidad:</label>
-               <%=text_field_tag :cantidad,params[:cantidad],:value=>@cantidad, class: "span2",:id=>"cantidad",:ajax_path => precio_producto_detalles_facturas_ventas_auxs_path%>
-          </div>
-            <div class="span2 offset1" >
-                <label class="label">Descuento:</label>
-                 <%= text_field_tag :descuento,params[:descuento],:value=>@descuento, class: "span2",:id=>"descuento" %>
-            </div> 
-                        
-            <div class="span1 offset1" align="center" style="margin-top:25px;">
-                <%= link_to "Guardar", "#", :id => "guardar_o_actualizar",  :class => 'btn btn-success',:ajax_path => guardar_o_actualizar_detalles_facturas_ventas_auxs_path%>
-            </div>  
-        </div>  <br/><br/>               
+                    <div class="span2">     
+                     <%= hidden_field_tag :id,params[:id],:value=>@id%>
+                        <label class="label">Producto:</label>
+                         <%= autocomplete_field_tag :id_producto,params[:id_producto] ,autocomplete_producto_descripcion_detalles_facturas_ventas_auxs_path,:id_element=>"#id_producto",:value=>@producto,:id=>"descripcion",:onblur=>"validarCampoVacioProducto(this)"%>
+                         <%= hidden_field_tag :id_producto,:id=>"id_producto"%>
+                         <div id="producto_error" style="display: none; " >
+                               <label>El campo no puede estar vacio </label>
+                        </div>
+                         <div id="precio_producto" style="display: none; ">
+                              <%=render 'detalles_facturas_ventas_auxs/precio_producto'%>
+                        </div>
+
+        
+                       </div>   
+                    <div class="span1 offset1">
+                       <label class="label">Cantidad:</label>
+                       <%= text_field_tag :cantidad,params[:cantidad] ,class:"span2",:id=>"cantidad",:ajax_path => precio_producto_detalles_facturas_ventas_auxs_path,:onblur=>"validarCampoCantidad(this)",:maxlength=>"3"%>
+                        <div id="cantidad_error" style="display:none; ">
+                               <label>El campo no puede estar vacio </label>
+                        </div>
+                        <div id="numero_error" style="display:none; ">
+                               <label>El campo debe de ser numerico </label>
+                        </div>
+                        <div id="stock_cantidad_error" style="display:none; ">
+                               <label>La cantidad introducida supera a la cantidad del stock </label>
+                        </div>
+                  </div>
+                    <div class="span2 offset1" >
+                        <label class="label">Descuento:</label>
+                        <%= text_field_tag :descuento,params[:descuento], class:"span2",:id=>"descuento",:onblur=>"validarCampoDescuento(this)",:maxlength=>"3"%>
+                        <div id="descuento_error" style="display:none; ">
+                               <label>El campo no puede estar vacio </label>
+                        </div>
+                        <div id="numero_descuento_error" style="display:none; ">
+                               <label>El campo debe de ser numerico </label>
+                        </div>
+                        <div id="rango_descuento_error" style="display:none; ">
+                               <label>Debe ingresar en un rango de 0 a 100 porciento </label>
+                        </div>
+                    </div> 
+                                
+                    <div class="span2 offset8" align="center" style="margin-top:25px;">
+                       <%= link_to "Guardar", "#", :id => "guardar_o_actualizar",  :class => 'btn btn-success',:ajax_path => guardar_o_actualizar_detalles_facturas_ventas_auxs_path%>
+                       <button type="button" class="btn" onclick="cancelar()">Cancelar</button>
+                    </div>  
+                </div>  <br/><br/>
+
+                             
 
 

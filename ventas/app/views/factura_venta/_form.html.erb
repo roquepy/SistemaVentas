@@ -1,5 +1,9 @@
+
+
+
 <div class="mover">
-    <%= form_for@factura_ventum, :validate => true do |f| %>
+
+    <%= form_for(@factura_ventum,:validate => true) do |f| %>
        <%= render 'mensajes/error_mensajes', object: f.object %>
           <legend class="span10">Nueva Factura </legend><br/>
            <div class="container">
@@ -13,12 +17,15 @@
                   </div>
                   <div class="span3 offset1" style="margin-top:10px; margin-right:20px;">
                        <%= f.label "Clientes:",class:"label"%>
-                       <%= f.autocomplete_field :id_cliente,autocomplete_cliente_nombre_factura_venta_path,:id_element=>"#cliente_id"%>
+                       <%= f.autocomplete_field :id_cliente,autocomplete_cliente_nombre_factura_venta_path,:id_element=>"#cliente_id",:onblur=>"validarCampoVacioCliente(this)",id:"cliente"%>  
                         <%= f.hidden_field :id_cliente,id:"cliente_id"%>
+                        <div id="cliente_error" style="display: none; " >
+                               <label>El campo no puede estar vacio </label>
+                        </div>
                       <a data-toggle="modal" href="#cliente" > <i class="icon-plus-sign"></i></a>
                         <%= f.label "Condicion de Pago:",class:"label"%>
                         <%=f.collection_select :id_condicion_pago,CondicionDePago.find(:all),:id,:nombre_condicion_de_pago,id:"select",:selected => 1%>
-                  </div>   
+                  </div>  
                   <div class="span3 " style="margin-top:10px;">
                      <%= f.label "Funcionario:",class:"label"%>
                      <%= f.label current_user.funcionario.nombres+" " + current_user.funcionario.apellidos %> 
@@ -49,7 +56,7 @@
                   </div>                
                   <div class="span2 offset8"><br/>
                       <%= f.submit "Guardar", class: "btn btn-primary"%>
-                      <%= link_to "Cancelar", factura_venta_path, class: "btn"%>
+                      <%= link_to "Cancelar", factura_venta_path, class: "btn btn-primary"%>
                   </div> 
               </div>    
          

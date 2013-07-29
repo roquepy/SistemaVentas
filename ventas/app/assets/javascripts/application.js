@@ -90,3 +90,119 @@ function rangeDate() {
       onSelect: function(dateText, inst) {}
     });
   }
+  function validarCampoVacioCliente(campo) {
+   if(campo.value=="") { //comprueba que no esté vacío   
+        $("#cliente_error").show();        
+        return false; //devolvemos el foco
+   }else{
+    $("#cliente_error").hide(); 
+   }
+ }
+
+ function validarCampoVacioProducto(campo) {
+   if(campo.value=="") { //comprueba que no esté vacío
+        $("#producto_error").show();        
+        return false; //devolvemos el foco
+   }else{
+    $("#producto_error").hide();
+   }
+ }
+
+ function validarCampoCantidad(campo) {
+   
+   if (CampoVacioCantidad(campo)==true){
+    return true;
+   }
+     if (esNumeroCantidad(campo)==true){
+      return true;
+     }
+    if( comparar_stock(campo)==true){
+        return true;
+    }
+    
+   
+   
+ }
+
+ function validarCampoDescuento(campo) {
+   
+   if (CampoVacioDescuento(campo)==true){
+    return true;
+   }
+     if (esNumeroDescuento(campo)==true){
+      return true;
+     }
+    if( rango_descuento(campo)==true){
+        return true;
+    } 
+ }
+ function CampoVacioCantidad(campo) {
+   if(campo.value=="") { //comprueba que no esté vacío  
+        $("#cantidad_error").show();        
+        return true; //devolvemos el foco
+   }else{
+    $("#cantidad_error").hide();
+    return false;
+   }
+ }
+
+  function esNumeroCantidad(campo) {
+   var RegExPattern = /^\d{1,3}$/;
+   if ((campo.value.match(RegExPattern)) && (campo.value!='')) {
+       $("#numero_error").hide(); 
+       return false;
+   }else {
+        $("#numero_error").show(); 
+        return true;
+   } 
+}
+
+function comparar_stock(campo) {
+   var cantidad_stock= document.getElementById('cantidad_stock').value;
+   if (parseInt(campo.value) > parseInt(cantidad_stock)) {
+       $("#stock_cantidad_error").show(); 
+       return true;
+   }else {
+        $("#stock_cantidad_error").hide(); 
+        return false;
+   } 
+}
+
+   function CampoVacioDescuento(campo) {
+   if(campo.value=="") { //comprueba que no esté vacío  
+        $("#descuento_error").show();        
+        return true; //devolvemos el foco
+   }else{
+    $("#descuento_error").hide();
+    return false;
+   }
+ }
+
+  function esNumeroDescuento(campo) {
+   var RegExPattern = /^\d{1,3}$/;
+   if ((campo.value.match(RegExPattern)) && (campo.value!='')) {
+       $("#numero_descuento_error").hide(); 
+       return false;
+   }else {
+        $("#numero_descuento_error").show(); 
+        return true;
+   } 
+}
+
+function rango_descuento(campo) {
+   
+   if (campo.value>=0&&campo.value<=100) {
+       $("#rango_descuento_error").hide();
+       return false;
+   }else {
+        $("#rango_descuento_error").show(); 
+        return true;
+   } 
+}
+
+function cancelar() {
+   $("#producto").hide();
+   $("#descripcion").val("");
+   $("#cantidad").val("");
+   $("#descuento").val("");
+}

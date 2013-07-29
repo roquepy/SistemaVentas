@@ -60,9 +60,9 @@ class FacturaVentaController < ApplicationController
         @detalles_facturas_ventas_auxs.each  do |detalle_factura_venta_aux|
            @detalle_factura_venta= DetalleFacturaVentum.new(:id_factura_venta=>@factura_venta.id,:id_producto=>detalle_factura_venta_aux.id_producto,:cantidad=>detalle_factura_venta_aux.cantidad,:descuento=>detalle_factura_venta_aux.descuento)
            @detalle_factura_venta.save
-           @stock=Stock.find(:first ,:conditions=>['id_producto = ? ',@detalle_factura_venta_aux.id_producto])
+           @stock=Stock.find(:first ,:conditions=>['id_producto = ? ',detalle_factura_venta_aux.id_producto])
            @stock=Stock.find(@stock.id)
-           @stock.update_attributes(:cantidad=>@stock.cantidad-@detalle_factura_venta_aux.cantidad)
+           @stock.update_attributes(:cantidad=>@stock.cantidad-detalle_factura_venta_aux.cantidad)
         end
         destroy_detalle_factura_venta_aux
         format.html { redirect_to @factura_ventum, notice: 'Los datos de las Factura se han creado correctamente.'}
@@ -111,8 +111,8 @@ class FacturaVentaController < ApplicationController
      end     
      @factura_ventum.destroy
     respond_to do |format|
-      format.html { render "" }
-      format.json { head :no_content }
+       format.html { redirect_to factura_venta_url }
+      format.json { render json: @factura_ventum }
     end
   end
  

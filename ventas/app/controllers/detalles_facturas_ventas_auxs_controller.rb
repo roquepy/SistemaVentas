@@ -128,10 +128,11 @@ class DetallesFacturasVentasAuxsController < ApplicationController
       else
       @producto=Producto.find(:first ,:conditions=>['id = ? ',params[:id_producto]])
       @precio=@producto.precio_unitario
+      @stock=Stock.find(:first ,:conditions=>['id_producto = ? ',params[:id_producto]])
+      @cantidad=@stock.cantidad
       respond_to do |format|
         format.js{render 'precio_producto'}
       end
-
     end
   end
 end
