@@ -42,6 +42,17 @@ Ventas::Application.routes.draw do
   get "signup" => "users#new", :as => "signup"
   
   resources :clientes 
+  resources :reports do
+    collection do
+      get :consult_between
+    end
+    collection do
+      get :change_data
+    end
+    collection do
+      get :alumnos
+    end
+  end
   resources :funcionarios
   resources :users
   resources :roles

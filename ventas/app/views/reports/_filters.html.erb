@@ -1,0 +1,17 @@
+<form id="form_filter" class="well form-inline">
+	<div>
+		<%= label_tag(:label_from, "From") %>
+		<%= text_field_tag(:from, params[:from]) %>
+		<%= label_tag(:label_to, "to") %>
+		<%= text_field_tag(:to, params[:to]) %>
+		<label id="radio" >
+		  <input type="radio" id="year" name="radio" />
+		  	<%= label_tag(:year,'Year') %>
+		  <input type="radio" id="month" name="radio" checked="checked"/>
+		  	<%= label_tag(:month,'Months') %>
+		  <input type="radio" id="day" name="radio" />
+		  	<%= label_tag(:day,'Days') %>
+		</label>
+		
+	</div>	
+</form>

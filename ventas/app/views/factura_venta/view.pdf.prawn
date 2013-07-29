@@ -30,7 +30,7 @@
   last_measured_y = pdf.cursor
   pdf.move_cursor_to pdf.bounds.height
 
-  pdf.image logo, :width => 215, :position => :right
+  pdf.image logo, :width => 165, :height => 80, :position => :right
 
   pdf.move_cursor_to last_measured_y
 
@@ -38,13 +38,13 @@
   pdf.move_down 65
   last_measured_y = pdf.cursor
 
-  pdf.text_box @cliente.nombre, :at => [address_x,  pdf.cursor]
+  pdf.text_box "Razon Social: #{@cliente.nombre} #{@cliente.apellido}", :at => [address_x,  pdf.cursor]
   pdf.move_down lineheight_y
-   pdf.text_box @cliente.num_identidad, :at => [address_x,  pdf.cursor]
+   pdf.text_box "N° Documento: #{@cliente.num_identidad}", :at => [address_x,  pdf.cursor]
   pdf.move_down lineheight_y
-   pdf.text_box @cliente.direccion, :at => [address_x,  pdf.cursor]
+   pdf.text_box "Direccion: #{@cliente.direccion}", :at => [address_x,  pdf.cursor]
   pdf.move_down lineheight_y
- pdf.text_box @cliente.telefono, :at => [address_x,  pdf.cursor]
+ pdf.text_box "Telefono: #{@cliente.telefono}", :at => [address_x,  pdf.cursor]
 
   pdf.move_cursor_to last_measured_y
 

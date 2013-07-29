@@ -1,0 +1,8 @@
+<div id="graphics_and_tables" class="row">
+	<div id="chart" class="span7">
+	  	<%= render_chart(@chart, 'chart') if @chart.data_table %>
+	</div>
+	<div id="table" class="span4">
+	    <%= render_chart(@table, 'table') if @table.data_table %>
+	</div>
+</div>

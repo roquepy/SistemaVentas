@@ -26,6 +26,7 @@ gem 'sorcery'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'carrierwave'  
+gem 'google_visualr', ">= 2.1"
 gem 'client_side_validations'
 gem 'rails3-jquery-autocomplete'
 gem 'prawn',  git: 'https://github.com/prawnpdf/prawn.git'
