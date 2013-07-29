@@ -16,7 +16,7 @@
                   </div>
                   <div class="span3 offset1" style="margin-top:10px; margin-right:20px;">
                        <%= f.label "Clientes:",class:"label"%>
-                       <%= f.autocomplete_field :id_cliente,autocomplete_cliente_nombre_factura_venta_path,:id_element=>"#cliente_id",:onblur=>"validarCampoVacioCliente(this)"%>  
+                       <%= f.autocomplete_field :id_cliente,autocomplete_cliente_nombre_factura_venta_path,:id_element=>"#cliente_id",:onblur=>"validarCampoVacioCliente(this)",:maxlength=>"25"%>  
                         <%= f.hidden_field :id_cliente,id:"cliente_id"%>
                        <a data-toggle="modal" href="#cliente" > <i class="icon-plus-sign"></i></a>
                         <div id="cliente_error" style="display: none; " >

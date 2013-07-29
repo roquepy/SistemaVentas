@@ -38,7 +38,7 @@
         <%=hidden_field_tag :id,params[:id],:value=>@id%>
             <div class="span2">
                 <label class="label">Producto:</label>
-                 <%= autocomplete_field_tag :descripcion,params[:descripcion], autocomplete_producto_descripcion_detalles_movimientos_stocks_auxs_path,:id_element=>"#id_producto",:value=>@producto,:id=>"descripcion",:onblur=>"validarCampoVacioProducto(this)"%>
+                 <%= autocomplete_field_tag :descripcion,params[:descripcion], autocomplete_producto_descripcion_detalles_movimientos_stocks_auxs_path,:id_element=>"#id_producto",:value=>@producto,:id=>"descripcion",:onblur=>"validarCampoVacioProducto(this)",:maxlength=>"25"%>
                  <%=hidden_field_tag :id_producto,params[:id_producto],:id=>"id_producto",:value=>@producto_id%>
                  <div id="producto_error" classs="span3" style="display: none; " >
                       <label>El campo no puede estar vacio </label>
