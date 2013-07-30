@@ -6,7 +6,7 @@
 
                   <div class="span2">
 						          <%= f.label "Localidad (*)",class:"label"%>
-						          <%= f.text_field :nombre,class: "span3",:placeholder => "Ingrese Localidad",:maxlength=>"35" %>	
+						          <%= f.text_field :nombre,class: "span3",:placeholder => "Ingrese Localidad",:maxlength=>"35", :onkeypress => "return validarText(event, this)" %>	
 	                    <%= f.label "Departamento (*)",class:"label"%>
 	                	   <div id="collectiondepartamento"> <%=render 'select_departamentos'%></div>
 					            <i class="icon-plus-sign"></i>&nbsp<a data-toggle="modal" href="#departamento" > Nuevo Departamento</a>

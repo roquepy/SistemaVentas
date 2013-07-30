@@ -19,7 +19,7 @@
 
                   <div class="span2">
 						<%= f.label "Usuario (*)" ,class:"label"%>
-					    <%= f.text_field :username,class: "span3",:placeholder => "Nuevo Usuario",:maxlength=>"15"%>
+					    <%= f.text_field :username,class: "span3",:placeholder => "Nuevo Usuario",:maxlength=>"15", :onkeypress => "return validarText(event, this)"%>
 					    <%= f.label "Funcionario (*)" ,class:"label"%>
 						<div id="collectionfuncionario"> <%=render 'select_funcionarios'%></div>    
 						<i class="icon-plus-sign"></i>&nbsp<a data-toggle="modal" href="#funcionario" >Nuevo Funcionario</a> 

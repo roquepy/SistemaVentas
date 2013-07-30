@@ -13,7 +13,7 @@
                      <%= f.label :fecha,class:"label"%><br/>
                      <%= f.text_field :fecha,:value => Date.today,:readonly => true%>
                      <%= f.label "descripcion:",class:"label"%><br/>
-                     <%= f.text_field :descripcion,:maxlength=>"25"%>
+                     <%= f.text_field :descripcion,:maxlength=>"25", :onkeypress => "return validarText(event, this)"%>
                   </div>
                   <div class="span3 offset1" style="margin-top:10px; margin-right:20px;">
                        <%= f.label "Funcionario:",class:"label"%>
