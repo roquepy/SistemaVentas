@@ -27,8 +27,7 @@
               <td><%= detalle_movimiento_stock.stock.cantidad %></td>
               <td><%= detalle_movimiento_stock.stock.producto.cant_optima %></td>
               <td><%= detalle_movimiento_stock.movimiento_stock.tipo_movimiento.descripcion %></td>
-               <td><i class="icon-edit" title="editar"></i><%= link_to "Editar", edit_detalle_movimiento_stock_path(detalle_movimiento_stock) %> &nbsp &nbsp &nbsp   
-                    <i class="icon-remove-sign" title="borrar"></i><%= link_to "Borrar", detalle_movimiento_stock, :confirm => "Desea eliminar el producto: "+detalle_movimiento_stock.stock.producto.descripcion, :method => :delete, remote: true %>
+               <td>   <i class="icon-remove-sign" title="borrar"></i><%= link_to "Borrar", detalle_movimiento_stock, :confirm => "Desea eliminar el producto: "+detalle_movimiento_stock.stock.producto.descripcion, :method => :delete, remote: true %>
               </td>
             <% end %>  
             </tr>         
