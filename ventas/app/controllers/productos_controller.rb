@@ -12,7 +12,8 @@ class ProductosController < ApplicationController
     @logo = @empresa.logo
     @direccion = @empresa.direccion
     @telefono = @empresa.telefono
-    @fecha = Time.now.strftime("%a %d %b %Y, %H:%m")
+    @funcionario = current_user.funcionario.full_name
+    @fecha = Time.now.strftime(" %d %b %Y, %H:%m")
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @productos }

@@ -3,8 +3,10 @@ require 'prawn'
 require 'date'
   
 
-  pdf.text_box @fecha, :size => 10, :style => :italic, :at => [10, pdf.cursor]
-  pdf.move_down(30) 
+  pdf.text_box @fecha, :size => 9, :at => [10, pdf.cursor]
+  pdf.move_down(10)
+  pdf.text_box @funcionario, :size => 9, :at => [10, pdf.cursor]
+  pdf.move_down(20) 
 
   logo = @logo
   initial_y = pdf.cursor
@@ -22,7 +24,7 @@ require 'date'
   pdf.font_size font_size
 
   #start with EON Media Group
-  pdf.text_box "LISTADO DE PRODUCTOS", :size => 15, :style => :bold_italic, :at => [address_x,  pdf.cursor]
+  pdf.text_box "LISTADO DE PRODUCTOS", :size => 13, :style => :bold_italic, :at => [address_x,  pdf.cursor]
   pdf.move_down lineheight_y
   pdf.move_down(5) 
   pdf.stroke_horizontal_rule
