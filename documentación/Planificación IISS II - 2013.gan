@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Planeamiento IISS II 2013" company="FIUNI" webLink="" view-date="2013-05-20" view-index="0" gantt-divider-location="709" resource-divider-location="301" version="2.0">
+<?xml version="1.0" encoding="UTF-8"?><project name="Planeamiento IISS II 2013" company="FIUNI" webLink="" view-date="2013-02-25" view-index="0" gantt-divider-location="709" resource-divider-location="301" version="2.0">
     <description><![CDATA[Planeamiento del Sistema de Ventas de la Empresa de Karajallo y Cia - Encarnación.
 Desarrollado por :
 - Diego Rodriguez
@@ -104,7 +104,7 @@ Desarrollado por :
             <task id="128" name="T10.3. Elaboración de los Estandares de Programación" color="#8cb6ce" meeting="false" start="2013-04-28" duration="1" complete="0" priority="1" expand="true"/>
             <task id="129" name="T10.4. Elaboración de Gestión de Pruebas" color="#8cb6ce" meeting="false" start="2013-04-29" duration="1" complete="0" priority="1" expand="true"/>
         </task>
-        <task id="18" name="IMPLEMENTACION" color="#8cb6ce" meeting="false" start="2013-05-06" duration="90" complete="0" priority="1" expand="true">
+        <task id="18" name="IMPLEMENTACION" color="#8cb6ce" meeting="false" start="2013-05-06" duration="84" complete="0" priority="1" expand="true">
             <depend id="48" type="2" difference="0" hardness="Strong"/>
             <depend id="51" type="2" difference="0" hardness="Strong"/>
             <task id="94" name="T11. GESTION DE BASE DE DATOS" color="#8cb6ce" meeting="false" start="2013-05-06" duration="12" complete="0" priority="1" expand="true">
@@ -117,7 +117,7 @@ Desarrollado por :
                 </task>
                 <task id="124" name="T11.3. Revision del Modelo de Datos" color="#8cb6ce" meeting="false" start="2013-05-09" duration="9" complete="0" priority="1" expand="true"/>
             </task>
-            <task id="22" name="DESARROLLO" color="#8cb6ce" meeting="false" start="2013-05-12" duration="84" complete="0" priority="1" expand="true">
+            <task id="22" name="DESARROLLO" color="#8cb6ce" meeting="false" start="2013-05-12" duration="78" complete="0" priority="1" expand="true">
                 <task id="59" name="T12. LOGIN/LOGOUT  - PAGINA PRINCIPAL" color="#8cb6ce" meeting="false" start="2013-05-12" duration="8" complete="0" priority="1" expand="true">
                     <depend id="33" type="2" difference="0" hardness="Strong"/>
                     <depend id="41" type="2" difference="0" hardness="Strong"/>
@@ -180,7 +180,7 @@ Desarrollado por :
                     </task>
                     <task id="36" name="T15.4.Testeo de las tareas T15.1, T15.2 y T15.3" color="#8cb6ce" meeting="false" start="2013-05-23" duration="2" complete="0" priority="1" expand="true"/>
                 </task>
-                <task id="97" name="T16. PRODUCTOS" color="#8cb6ce" meeting="false" start="2013-05-27" duration="69" complete="0" priority="1" expand="true">
+                <task id="97" name="T16. PRODUCTOS" color="#8cb6ce" meeting="false" start="2013-05-27" duration="63" complete="0" priority="1" expand="true">
                     <depend id="43" type="2" difference="0" hardness="Strong"/>
                     <depend id="93" type="2" difference="0" hardness="Strong"/>
                     <depend id="117" type="2" difference="0" hardness="Strong"/>
@@ -197,10 +197,10 @@ Desarrollado por :
                     <task id="123" name="T16.3. Diseño de Vista e Impresion de la Lista de Productos." color="#8cb6ce" meeting="false" start="2013-05-30" duration="2" complete="0" priority="1" expand="true">
                         <depend id="101" type="2" difference="0" hardness="Strong"/>
                     </task>
-                    <task id="130" name="T16.4.  Formulario de Movimiento de Stock" color="#8cb6ce" meeting="false" start="2013-05-29" duration="9" complete="0" priority="1" expand="true">
+                    <task id="130" name="T16.4.  Formulario de Movimiento de Stock" color="#8cb6ce" meeting="false" start="2013-07-10" duration="19" complete="0" priority="1" expand="true">
                         <depend id="101" type="2" difference="0" hardness="Strong"/>
                     </task>
-                    <task id="101" name="T16.5. Testeo de las tareas T16.1, 16.2, 16.3 y 16.4" color="#8cb6ce" meeting="false" start="2013-06-07" duration="58" complete="0" priority="1" expand="true"/>
+                    <task id="101" name="T16.5. Testeo de las tareas T16.1, 16.2, 16.3 y 16.4" color="#8cb6ce" meeting="false" start="2013-05-29" duration="61" complete="0" priority="1" expand="true"/>
                 </task>
                 <task id="102" name="T17. LOCALIDADES" color="#8cb6ce" meeting="false" start="2013-05-20" duration="3" complete="0" priority="1" expand="true">
                     <depend id="93" type="2" difference="0" hardness="Strong"/>
