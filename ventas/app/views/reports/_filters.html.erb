@@ -1,17 +1,40 @@
 <form id="form_filter" class="well form-inline">
-	<div>
-		<%= label_tag(:label_from, "From") %>
-		<%= text_field_tag(:from, params[:from]) %>
-		<%= label_tag(:label_to, "to") %>
-		<%= text_field_tag(:to, params[:to]) %>
+
+  		<%= label_tag(:label_from, "Desde") %>
+  		<%= text_field_tag(:from, params[:from], class: "span2") %>
+  		<%= label_tag(:label_to, "Hasta") %>
+  		<%= text_field_tag(:to, params[:to], class: "span2") %>&nbsp &nbsp
 		<label id="radio" >
-		  <input type="radio" id="year" name="radio" />
-		  	<%= label_tag(:year,'Year') %>
-		  <input type="radio" id="month" name="radio" checked="checked"/>
-		  	<%= label_tag(:month,'Months') %>
-		  <input type="radio" id="day" name="radio" />
-		  	<%= label_tag(:day,'Days') %>
+		  <input type="radio" id="ano" name="radio" />
+		  	<%= label_tag(:year,'Año') %>&nbsp
+		  <input type="radio" id="mes" name="radio" checked="checked"/>
+		  	<%= label_tag(:month,'Meses') %>&nbsp
+		  <input type="radio" id="dia" name="radio" />
+		  	<%= label_tag(:day,'Dias') %>
 		</label>
-		
-	</div>	
 </form>
+<script>
+  $(document).ready(function(){
+    $("input#from,#to").datepicker({
+      altField: $(this).attr("id"),
+      changeMonth: true,
+      changeYear: true,
+      dateFormat: 'yy-mm-dd',
+      monthNamesShort: ['Ene','Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul',
+        'Ago', 'Set', 'Oct', 'Nov', 'Dic'],
+      dayNamesMin: ['Do', 'Lu', 'Ma', 'Mie', 'Ju', 'Vie', 'Sa'],
+      gotoCurrent: true,
+      yearRange: '1900:2040'
+
+    });
+    // place holder para fechas
+    $("input#from,#to").attr({
+      'placeholder':'aaaa/mm/dd',
+      'size':'12',
+      'maxlength':'12'
+    });
+  });
+  
+  
+  
+</script>

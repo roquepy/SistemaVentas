@@ -4,7 +4,7 @@ class ReportsController < ApplicationController
 
   def index
     @facturas = FacturaVentum.all
-    data_table = generate_data_table "dia", "2013-07-29", "2013-08-01"
+    data_table = generate_data_table "dia"
     @chart = generate_graphic data_table, "", "Ventas por dia"
     @table = generate_table data_table
 
@@ -22,8 +22,6 @@ class ReportsController < ApplicationController
     end
   end
 
-  private
-
     def generate_hash range, limit, lower_limit, upper_limit
       hash = Hash.new
       facturas = FacturaVentum.order("monto_total ASC").all
@@ -40,13 +38,22 @@ class ReportsController < ApplicationController
       hash
     end
 
+    def change_data
+    @range = params[:select_range]
+    data_table = generate_data_table @range
+    @chart = generate_graphic data_table, @range
+    @table = generate_table data_table
+    respond_to do |format|
+      format.js { render 'change_report' }
+    end
+  end
+
     def consult_between
     @from = params[:from]
     @to = params[:to]
-    @type = params[:select_type]
     @range = params[:select_range]
-    data_table = generate_data_table(@range, @type, @from, @to)
-    @chart = generate_graphic data_table, @type , @range
+    data_table = generate_data_table(@range, @from, @to)
+    @chart = generate_graphic data_table, "" , "Ventas por #{@range}"
     @table = generate_table data_table
     respond_to do |format|
       if data_table.rows.size > 0
@@ -74,7 +81,13 @@ class ReportsController < ApplicationController
       lower_limit   = Date.parse(param1)
       upper_limit   = Date.parse(param2)
       head_general_report  = [{:type=>"string",:label=> "Fecha"},{:type=>"number",:label=> "Monto (Gs)"}]
-      hash = generate_hash range, 10, lower_limit, upper_limit
+      if range == "dia"
+        hash = generate_hash range, 10, lower_limit, upper_limit
+      elsif range == "mes"
+        hash = generate_hash range, 7, lower_limit, upper_limit
+      else
+        hash = generate_hash range, 4, lower_limit, upper_limit
+      end
 
       data_table = GoogleVisualr::DataTable.new
       data_table.cols= head_general_report

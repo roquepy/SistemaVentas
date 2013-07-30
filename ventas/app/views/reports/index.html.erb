@@ -1,15 +1,18 @@
 <% provide(:title, 'Inicio') %>
-<div id="fondo" class="fondo">
-    <h2 align="center"> Pagina de Reportes </h2>
+
+	<div  class="span11 offset1" align="center">
+	    <h3 align="center"> Pagina de Reportes </h3>
+	</div>
+	<div class="container">  
+		<div class="span10">
+		  	<div id="filters" class="row">
+				<%= render 'filters' %>
+			</div>
+		</div>
+		<div id="graphic" class="row">
+			<%= render 'graphic' if @table and @chart %>
+		</div>
 </div>
-  <div class="container">
-  	<div id="filters" class="row">
-		<%= render 'filters' %>
-	</div>
-	<div id="graphic" class="row">
-		<%= render 'graphic' if @table and @chart %>
-	</div>
-  </div>
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -20,12 +23,11 @@
 			change: function (event, ui) {
           var _from = $("#from").val();
           var _to = $("#to").val();
-          var _type = $("#select_type").val();
           var range = $("input[name='radio']:checked").attr('id');
           var path = path_two;
           $.ajax({
             url: path,
-            data: { "from": _from, "to": _to, "select_type": _type, "select_range": range },
+            data: { "from": _from, "to": _to, "select_range": range },
             async: true,
             dataType: 'script'
           });
