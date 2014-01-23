@@ -7,7 +7,7 @@ class FacturaVentum < ActiveRecord::Base
     belongs_to :tipo_valor_pago, :foreign_key=>"id_tipo_valor"
     belongs_to :funcionario, :foreign_key=>"id_funcionario"
     has_many :detalle_factura_venta
-    validates :monto_total,numericality: {equal_to:0.0}
+    validates :monto_total,:numericality =>{:greater_than=>0.0}
     validates :id_cliente,:presence => true
 
     def  self.ultima_factura()
@@ -85,7 +85,7 @@ class FacturaVentum < ActiveRecord::Base
           else
           detalles_factura_ventas.each do |detalle_factura_venta|
             if detalle_factura_venta.producto.porcentaje==10
-             total_iva10=total_iva10+(detalle_factura_venta.producto.precio_unitario*detalle_factura_venta.cantidad)*10/100
+             total_iva10=total_iva10+(detalle_factura_venta.producto.precio_unitario)*0.1
            end
           end
         end  
@@ -98,7 +98,7 @@ class FacturaVentum < ActiveRecord::Base
           else
           detalles_factura_ventas.each do |detalle_factura_venta|
             if detalle_factura_venta.producto.porcentaje==5
-                total_iva5=total_iva5+(detalle_factura_venta.producto.precio_unitario*detalle_factura_venta.cantidad)*5/100
+                total_iva5=total_iva5+(detalle_factura_venta.producto.precio_unitario)*0.05
             end
           end
         end  

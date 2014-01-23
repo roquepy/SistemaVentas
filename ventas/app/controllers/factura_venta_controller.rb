@@ -52,6 +52,7 @@ class FacturaVentaController < ApplicationController
   # POST /factura_venta.json
   def create
      @factura_ventum = FacturaVentum.new(params[:factura_ventum])
+     cliente_new
     respond_to do |format|
       if @factura_ventum.save
         CustomLogger.info("Se ha creado una nueva factura: Datos: Nro Factura: #{ @factura_ventum.nro_factura.inspect} ,Fecha:#{ @factura_ventum.fecha.inspect},Cliente: #{ @factura_ventum.cliente.nombre.inspect},Condicion de Pago:#{ @factura_ventum.condicion_de_pago.nombre_condicion_de_pago.inspect},Tipo de Valor:#{ @factura_ventum.tipo_valor_pago.descripcion.inspect}, Total IVA 5:#{@factura_ventum.total_iva5.inspect},Total IVA 10:#{ @factura_ventum.total_iva10.inspect},Descuento:#{ @factura_ventum.total_descuento.inspect},Total IVA :#{ @factura_ventum.total_iva.inspect},Monto Total:#{ @factura_ventum.monto_total.inspect}. Usuario Responsable:#{current_user.funcionario.full_name.inspect}. Fecha y Hora: #{Time.now}")
