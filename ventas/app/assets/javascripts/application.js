@@ -1,4 +1,4 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
+/// This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
 // Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
@@ -25,24 +25,12 @@
 
 
 function muestra_oculta(id){
-	if (document.getElementById){ //se obtiene el id
-		var el = document.getElementById(id); //se define la variable "el" igual a nuestro div
-		el.style.display = (el.style.display == 'none') ? 'block' : 'none'; //damos un atributo display:none que oculta el div
-	}
+  if (document.getElementById){ //se obtiene el id
+    var el = document.getElementById(id); //se define la variable "el" igual a nuestro div
+    el.style.display = (el.style.display == 'none') ? 'block' : 'none'; //damos un atributo display:none que oculta el div
+  }
 }
 
-function validarText(e,div) {
-  txt = $(div).val();
-  if (txt.length > 2){
-    chart_one = txt.charAt(txt.length - 1);
-    chart_two = txt.charAt(txt.length - 2);
-    chart_three = txt.charAt(txt.length - 3);
-    if (chart_one == chart_two && chart_one == chart_three){
-      $(div).val(txt.substring(0, txt.length-1));
-    }
-  }
-  return true;
-}
 
 function test(pageNumber)
 {

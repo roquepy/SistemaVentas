@@ -1,5 +1,5 @@
 class FacturaVentum < ActiveRecord::Base
-	
+  
   attr_accessible :id_cliente,:id_condicion_pago,:id_tipo_valor,:id_funcionario,:monto_total,:fecha,:nro_factura,:total_descuento,:total_iva5,:total_iva10,:total_iva
     
     belongs_to :cliente, :foreign_key=>"id_cliente"
@@ -16,15 +16,15 @@ class FacturaVentum < ActiveRecord::Base
 
     def  self.aumentar_nro_factura()
         factura_nro=100
-    	factura=ultima_factura
-    	if factura.blank?
-    		factura_nro=100
-    	    else
-    	    	factura_nro=factura.nro_factura+1
+      factura=ultima_factura
+      if factura.blank?
+        factura_nro=100
+          else
+            factura_nro=factura.nro_factura+1
                 
-    	end	
-    	return factura_nro
-    	
+      end 
+      return factura_nro
+      
     end
       def  self.actual_nro_factura()
          factura_nro=100
@@ -85,7 +85,7 @@ class FacturaVentum < ActiveRecord::Base
           else
           detalles_factura_ventas.each do |detalle_factura_venta|
             if detalle_factura_venta.producto.porcentaje==10
-             total_iva10=total_iva10+(detalle_factura_venta.producto.precio_unitario)*0.1
+             total_iva10=total_iva10+(detalle_factura_venta.producto.precio_unitario*detalle_factura_venta.cantidad)/11
            end
           end
         end  
@@ -98,7 +98,7 @@ class FacturaVentum < ActiveRecord::Base
           else
           detalles_factura_ventas.each do |detalle_factura_venta|
             if detalle_factura_venta.producto.porcentaje==5
-                total_iva5=total_iva5+(detalle_factura_venta.producto.precio_unitario)*0.05
+                total_iva5=total_iva5+(detalle_factura_venta.producto.precio_unitario*detalle_factura_venta.cantidad)/21
             end
           end
         end  
