@@ -76,10 +76,11 @@ class DetallesMovimientosStocksAuxsController < ApplicationController
   # PUT /detalles_movimientos_stocks_auxs/1.json
   def update
     @detalle_movimiento_stock_aux = DetalleMovimientoStockAux.find(params[:id])
+     @stock=Stock.find(:first,:conditions=>['id_producto = ? ',params[:id_producto]])
     producto_antiguo= @detalle_movimiento_stock_aux.stock.producto.descripcion
      cantidad_antiguo= @detalle_movimiento_stock_aux.cantidad
     respond_to do |format|
-      if @detalle_movimiento_stock_aux.update_attributes(:id_stock=>@detalle_movimiento_stock_aux.id_stock,:cantidad=>params[:cantidad])
+      if @detalle_movimiento_stock_aux.update_attributes(:id_stock=>@stock.id,:cantidad=>params[:cantidad])
         producto_nuevo= @detalle_movimiento_stock_aux.stock.producto.descripcion
         cantidad_nuevo= @detalle_movimiento_stock_aux.cantidad
         CustomLogger.info("Datos antes de realizar la Actualizacion del Detalle Movimiento Stock: Producto: #{producto_antiguo.inspect}, Cantidad:#{cantidad_antiguo.inspect} .Usuario Responsable: #{current_user.funcionario.full_name.inspect}.Datos Actualizados: Producto:#{producto_nuevo.inspect}, Cantidad:#{cantidad_nuevo.inspect}. Fecha y Hora: #{Time.now}")
