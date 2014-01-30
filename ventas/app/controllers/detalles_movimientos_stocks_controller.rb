@@ -63,7 +63,7 @@ class DetallesMovimientosStocksController < ApplicationController
     respond_to do |format|
       if @detalle_movimiento_stock.update_attributes(params[:detalle_movimiento_stock])
         @cantidad_nueva=@detalle_movimiento_stock.cantidad
-        if @detalle_movimiento_stock.tipo_movimiento.descripcion=='entrada'
+        if @detalle_movimiento_stock.movimiento_stock.tipo_movimiento.descripcion=='entrada'
           @stock.update_attributes(:cantidad=>@stock.cantidad-(@cantidad_vieja-@cantidad_nueva))
           else
           @stock.update_attributes(:cantidad=>@stock.cantidad+(@cantidad_vieja-@cantidad_nueva))
@@ -82,7 +82,7 @@ class DetallesMovimientosStocksController < ApplicationController
   def destroy
     @detalle_movimiento_stock = DetalleMovimientoStock.find(params[:id])
     @stock=Stock.find(:first,:conditions=>['id= ? ',@detalle_movimiento_stock.id_stock])
-    if @detalle_movimiento_stock.tipo_movimiento.descripcion=='entrada'
+    if @detalle_movimiento_stock.movimiento_stock.tipo_movimiento.descripcion=='entrada'
       @stock.update_attributes(:cantidad=>@stock.cantidad-@detalle_movimiento_stock.cantidad)
        else
       @stock.update_attributes(:cantidad=>@stock.cantidad+@detalle_movimiento_stock.cantidad)
@@ -90,7 +90,7 @@ class DetallesMovimientosStocksController < ApplicationController
     @detalle_movimiento_stock.destroy
 
     respond_to do |format|
-      format.html { redirect_to detalles_movimientos_stocks_url }
+      format.html { redirect_to movimientos_stocks_url }
       format.json { head :no_content }
     end
   end

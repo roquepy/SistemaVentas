@@ -25,7 +25,7 @@ class MovimientosStocksController < ApplicationController
   # GET /movimientos_stocks/new.json
   def new
     @movimiento_stock = MovimientoStock.new
-    #destroy_detalle_movimiento_stock_aux
+    destroy_detalle_movimiento_stock_aux
     detalle_movimiento_stock_aux
     respond_to do |format|
       format.html # new.html.erb

@@ -1,9 +1,5 @@
-
-
-
 <div class="mover">
-
-    <%= form_for@movimiento_stock, :validate => true do |f| %>
+   <%= form_for(@movimiento_stock, :validate => true) do |f| %>
        <%= render 'mensajes/error_mensajes', object: f.object %>
           <legend class="span10">Nuevo Movimiento Stock </legend><br/>
            <div class="container">
@@ -13,7 +9,7 @@
                      <%= f.label :fecha,class:"label"%><br/>
                      <%= f.text_field :fecha,:value => Date.today,:readonly => true%>
                      <%= f.label "descripcion:",class:"label"%><br/>
-                     <%= f.text_field :descripcion,:maxlength=>"25", :onkeypress => "return validarText(event, this)"%>
+                     <%= f.text_field :descripcion,:maxlength=>"25"%>
                   </div>
                   <div class="span3 offset1" style="margin-top:10px; margin-right:20px;">
                        <%= f.label "Funcionario:",class:"label"%>
@@ -42,8 +38,8 @@
               <div class = "span11"> 
                 
                   <div class="span2 offset8"><br/>
-                      <%= f.submit "Guardar", class: "btn btn-primary"%>
-                      <%= link_to "Cancelar", detalles_movimientos_stocks_path, class: "btn"%>
+                      <%= f.submit "Guardar",class: "btn btn-primary"%>
+                      <%=link_to "Cancelar", detalles_movimientos_stocks_path, class: "btn"%>
                   </div> 
               </div>    
          

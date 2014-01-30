@@ -23,15 +23,6 @@
                     });
                     return false;
          });
-
-        function validarCampoProducto(campo){
-         if (validarCampoVacioProducto(campo)==true){
-            return true;
-           }
-             if (solo_Letras(campo)==true){
-              return true;
-             }
-         }
     });
 </script>
        <div class="span11" id="productmodal">
@@ -65,7 +56,7 @@
                 <%= link_to "Guardar", "#", :id => "guardar_o_actualizar",  :class => 'btn btn-success',:ajax_path => guardar_o_actualizar_detalles_movimientos_stocks_auxs_path%>
                 <button type="button" class="btn" onclick="cancelar()">Cancelar</button>
             </div>  
-            </div>
-        </div>  <br/><br/>               
+     </div>
+      <br/><br/>               
 
 
