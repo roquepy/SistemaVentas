@@ -3,7 +3,7 @@ class Cliente < ActiveRecord::Base
 
   belongs_to :localidad, :foreign_key=>"id_localidad"
 
-  validates :nombre,:apellido,:num_identidad,:telefono, :presence => true
+  validates :nombre,:apellido,:num_identidad,:direccion, :presence => true
   validates :num_identidad, :length => { :minimum => 6}, :uniqueness => true, :format => { :with => /\d\-|\d\./}
   validates :nombre, :length => { :minimum => 3}, :format => { :with => /\A[a-zA-Z\s]+\z/}
   validates :apellido, :length => { :minimum => 3}, :format => { :with => /\A[a-zA-Z\s]+\z/}
