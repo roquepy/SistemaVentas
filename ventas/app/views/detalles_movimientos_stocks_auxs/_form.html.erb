@@ -40,7 +40,7 @@
             </div>
             <div class="span2 offset1">
                <label class="label">Cantidad:</label>
-               <%=text_field_tag :cantidad,params[:cantidad],:value=>@cantidad, class: "span2",:ajax_path => cantidad_stock_detalles_movimientos_stocks_auxs_path,:id=>"cantidad",:onblur=>"validarCampoCantidadMS(this)",:maxlength=>"2"%>
+               <%=text_field_tag :cantidad,params[:cantidad],:value=>@cantidad, class: "span2",:ajax_path => cantidad_stock_detalles_movimientos_stocks_auxs_path,:id=>"cantidad",:onblur=>"validarCampoCantidadMS(this)",:maxlength=>"3"%>
            
                <div id="cantidad_error" classs="span3" style="display:none; ">
                      <label>El campo no puede estar vacio </label>

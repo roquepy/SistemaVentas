@@ -53,7 +53,7 @@ class MovimientosStocksController < ApplicationController
            @detalle_movimiento_stock= DetalleMovimientoStock.new(:id_movimiento_stock=>@movimiento_stock.id,:id_stock=>detalle_movimiento_stock_aux.id_stock,:cantidad=>detalle_movimiento_stock_aux.cantidad)
            @detalle_movimiento_stock.save
            @stock=Stock.find(detalle_movimiento_stock_aux.id_stock)
-           if  @movimiento_stock.tipo_movimiento.descripcion=='Entrada'
+           if  @movimiento_stock.tipo_movimiento.id == 1
                @stock.update_attributes(:cantidad=>@stock.cantidad+detalle_movimiento_stock_aux.cantidad)
              else
                @stock.update_attributes(:cantidad=>@stock.cantidad-detalle_movimiento_stock_aux.cantidad)
