@@ -116,13 +116,16 @@ class DetallesMovimientosStocksAuxsController < ApplicationController
           update
          end
   end
-  def cantidad_stock
+  def cantidad_producto
     if params[:id_producto].blank?
       else
-      @stock=Stock.find(:first ,:conditions=>['id_producto = ? ',params[:id_producto]])
-      @cantidad=@stock.cantidad
+      @producto=Producto.find(:first ,:conditions=>['id= ? ',params[:id_producto]])
+      @stock=Stock.find(:first ,:conditions=>['id_producto= ? ',params[:id_producto]])
+      @cantidad_stock=@stock.cantidad
+      @cantidad_minima=@producto.cant_minima
+      @cantidad_optima=@producto.cant_optima
       respond_to do |format|
-        format.js{render 'cantidad_stock'}
+        format.js{render 'cantidad_producto'}
       end
     end
   end

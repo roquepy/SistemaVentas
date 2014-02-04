@@ -102,40 +102,37 @@ function rangeDate() {
  
 
  function validarCampoVacioProducto(campo) {
-   if(campo.value=="") { //comprueba que no esté vacío
+   if(campo.value=='') { //comprueba que no esté vacío
         $("#producto_error").show();        
+          $('#guardar_o_actualizar').attr('disabled','-1'); 
         return false; //devolvemos el foco
    }else{
     $("#producto_error").hide();
+      $('#guardar_o_actualizar').attr('disabled',false); 
    }
  }
 
  function validarCampoCantidad(campo) {
    
-   if (CampoVacioCantidad(campo)==true){
-    return true;
-   }
-     if (esNumeroCantidad(campo)==true){
-      return true;
-     }
-    if( comparar_stock(campo)==true){
+    if (CampoVacioCantidad(campo)==true||esNumeroCantidad(campo)==true||comparar_stock(campo)==true) {
+        $('#guardar_o_actualizar').attr('disabled','-1'); 
         return true;
     }
-    
-   
+    else {
+       $('#guardar_o_actualizar').attr('disabled',false); 
+        return false;
+    }
+     
    
  }
 
   function validarCampoCantidadMS(campo) {
-   
-   if (CampoVacioCantidad(campo)==true){
-    return true;
-   }
-     if (esNumeroCantidad(campo)==true){
-      return true;
-     }
-    if( comparar_cantidad_stock(campo)==true){
+    if(CantidadMinima(campo)==true||CantidadOptima(campo)==true||CampoVacioCantidad(campo)==true||esNumeroCantidad(campo)==true){
+      $('#guardar_o_actualizar').attr('disabled','-1'); 
         return true;
+    }else{
+      $('#guardar_o_actualizar').attr('disabled',false); 
+      return true;
     }
     
    
@@ -155,7 +152,7 @@ function rangeDate() {
     } 
  }
  function CampoVacioCantidad(campo) {
-   if(campo.value=="") { //comprueba que no esté vacío  
+   if(campo.value=='') { //comprueba que no esté vacío  
         $("#cantidad_error").show();        
         return true; //devolvemos el foco
    }else{
@@ -163,10 +160,32 @@ function rangeDate() {
     return false;
    }
  }
+ function CantidadMinima(campo) {
+   var cantidad_minima= document.getElementById('cantidad_minima').value;
+   var cantidad_stock= document.getElementById('cantidad_stock').value;
+   if(parseInt(campo.value) + parseInt(cantidad_stock) < parseInt(cantidad_minima)) { //comprueba que no esté vacío  
+        $("#cantidad_minima_error").show();        
+        return true; //devolvemos el foco
+   }else{
+    $("#cantidad_minima_error").hide();
+    return false;
+   }
+ }
+ function CantidadOptima(campo) {
+   var cantidad_optima= document.getElementById('cantidad_optima').value;
+   var cantidad_stock= document.getElementById('cantidad_stock').value;
+   if(parseInt(campo.value) + parseInt(cantidad_stock)> parseInt(cantidad_optima)) { //comprueba que no esté vacío  
+        $("#cantidad_optima_error").show();        
+        return true; //devolvemos el foco
+   }else{
+    $("#cantidad_optima_error").hide();
+    return false;
+   }
+ }
 
   function esNumeroCantidad(campo) {
    var RegExPattern = /^\d{1,3}$/;
-   if ((campo.value.match(RegExPattern)) && (campo.value!='')) {
+   if ((campo.value.match(RegExPattern))) {
        $("#numero_error").hide(); 
        return false;
    }else {

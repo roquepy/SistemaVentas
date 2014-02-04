@@ -34,23 +34,25 @@
                  <div id="producto_error" classs="span3" style="display: none; " >
                       <label>El campo no puede estar vacio </label>
                 </div>
-                <div id="cant_stock" classs="span3" style="display:none;">
-                    <%= render 'detalles_movimientos_stocks_auxs/cantidad_stock'%>
+                <div id="cant_stock" classs="span3" >
+                    <%= render 'detalles_movimientos_stocks_auxs/cantidad_producto'%>
                 </div>
             </div>
             <div class="span2 offset1">
                <label class="label">Cantidad:</label>
-               <%=text_field_tag :cantidad,params[:cantidad],:value=>@cantidad, class: "span2",:ajax_path => cantidad_stock_detalles_movimientos_stocks_auxs_path,:id=>"cantidad",:onblur=>"validarCampoCantidadMS(this)",:maxlength=>"3"%>
-           
-               <div id="cantidad_error" classs="span3" style="display:none; ">
-                     <label>El campo no puede estar vacio </label>
-               </div>
-               <div id="numero_error" classs="span3" style="display:none; ">
+               <%=text_field_tag :cantidad,params[:cantidad],:value=>@cantidad, class: "span2",:ajax_path => cantidad_producto_detalles_movimientos_stocks_auxs_path,:id=>"cantidad",:onblur=>"validarCampoCantidadMS(this)",:maxlength=>"3"%>
+               <div id="numero_error" classs="span3" style="display:none;">
                     <label>El campo debe de ser numerico </label>
                 </div>
-                <div id="stock_cantidad_error" classs="span3" style="display:none; ">
-                    <label>La cantidad introducida supera a la cantidad del stock </label>
-                 </div>
+                 <div id="cantidad_minima_error" classs="span3" style="display:none;">
+                     <label>La cantidad tiene que ser mayor o igual a la cantidad minima </label>
+               </div>
+               <div id="cantidad_optima_error" classs="span3" style="display:none;">
+                     <label>La cantidad tiene que ser menor o igual a la cantidad optima </label>
+               </div>
+               <div id="cantidad_error" classs="span3" style="display:none;">
+                     <label>El campo no puede estar vacio </label>
+               </div>
            </div>             
             <div class="span3 offset1" align="center" style="margin-top:25px;">
                 <%= link_to "Guardar", "#", :id => "guardar_o_actualizar",  :class => 'btn btn-success',:ajax_path => guardar_o_actualizar_detalles_movimientos_stocks_auxs_path%>

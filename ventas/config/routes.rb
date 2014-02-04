@@ -11,7 +11,7 @@ Ventas::Application.routes.draw do
       get :guardar_o_actualizar
     end
     collection do
-      get :cantidad_stock
+      get :cantidad_producto
     end
   end
 
